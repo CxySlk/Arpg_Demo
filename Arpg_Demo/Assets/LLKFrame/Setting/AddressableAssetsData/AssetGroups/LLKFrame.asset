@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: LLKFrame
+  m_EditorClassIdentifier: 
+  m_GroupName: LLKFrame
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d6d5e0a001405f84480098f956b224ac
+  m_SerializeEntries: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 44b8e1bb8fec35e488fd0ac0f9397a8d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7e1681573fda09741a363bffebc62e64, type: 2}
+    - {fileID: 11400000, guid: 020657f30bc54f343928b46e374c3a55, type: 2}

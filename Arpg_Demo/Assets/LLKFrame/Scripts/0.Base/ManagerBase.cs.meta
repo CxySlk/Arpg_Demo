@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<<< Updated upstream:Arpg_Demo/Assets/LLKFrame/Scripts/0.Base/ManagerBase.cs.meta
+guid: 5bc8a28b606fc234d846e0fb4276d502
+========
+guid: 4380d66ddc54bf245a5ada5576670b94
+>>>>>>>> Stashed changes:Arpg_Demo/Assets/LLKFrame/Scripts/3.Component/0.Event/LLKEventListener.cs.meta
+=======
+<<<<<<<< HEAD:Arpg_Demo/Assets/LLKFrame/Scripts/3.Component/0.Event/LLKEventListenerExtension.cs.meta
+guid: 2af25704e7075cf41a2ef11d7f629994
+========
+guid: 5bc8a28b606fc234d846e0fb4276d502
+>>>>>>>> parent of 46bee85 (框架-场景管理模块):Arpg_Demo/Assets/LLKFrame/Scripts/0.Base/ManagerBase.cs.meta
+>>>>>>> parent of 46bee85 (框架-场景管理模块)
+=======
+<<<<<<<< HEAD:Arpg_Demo/Assets/LLKFrame/Scripts/3.Component/1.Animation/AnimationController.cs.meta
+guid: b3622fdc7793e264c9eb81a014af8d9f
+========
+guid: 5bc8a28b606fc234d846e0fb4276d502
+>>>>>>>> parent of 46bee85 (框架-场景管理模块):Arpg_Demo/Assets/LLKFrame/Scripts/0.Base/ManagerBase.cs.meta
+>>>>>>> parent of 46bee85 (框架-场景管理模块)
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

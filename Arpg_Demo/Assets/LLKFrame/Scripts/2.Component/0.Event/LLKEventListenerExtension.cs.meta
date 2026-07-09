@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Arpg_Demo/Assets/LLKFrame/Scripts/3.Component/0.Event/LLKEventListenerExtension.cs.meta
+guid: 2af25704e7075cf41a2ef11d7f629994
+========
+guid: 5bc8a28b606fc234d846e0fb4276d502
+>>>>>>>> parent of 46bee85 (框架-场景管理模块):Arpg_Demo/Assets/LLKFrame/Scripts/0.Base/ManagerBase.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

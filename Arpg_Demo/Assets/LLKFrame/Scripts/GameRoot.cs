@@ -1,0 +1,60 @@
+﻿using Sirenix.OdinInspector;
+using UnityEditor;
+using UnityEngine;
+
+namespace LLKFrame
+{
+    public class GameRoot : MonoBehaviour
+    {
+        private static GameRoot instance;
+
+        /// <summary>GameRoot 的 Transform，可能为空（域重载后实例尚未 Awake 时）</summary>
+        public static Transform RootTransform => instance?.transform;
+        [LabelText("框架配置"), SerializeField] private LLKFrameSetting frameSetting;
+        public static LLKFrameSetting FrameSetting => instance.frameSetting;
+        [LabelText("本地化系统"), SerializeField] private LocalizationSystem localizationSystem;
+        public static LocalizationSystem LocalizationSystem => instance.localizationSystem;
+
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            InitSystems();
+        }
+        private void InitSystems()
+        {
+            PoolSystem.Init();
+            EventCenter.Init();
+            SaveSystem.Init();
+            AudioSystem.Init();
+            LocalizationSystem.Init();
+        }
+        #region Editor
+#if UNITY_EDITOR
+        [InitializeOnLoadMethod]
+        private static void InitForEditor()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode)
+                return;
+
+            // 域重载后 instance 为 null，需延迟到下一帧等场景加载完再执行
+            EditorApplication.delayCall += () =>
+            {
+                if (instance == null)
+                    instance = FindAnyObjectByType<GameRoot>();
+                instance?.InitSystemForEditor();
+            };
+        }
+        private void InitSystemForEditor()
+        {
+            frameSetting?.InitForEditor();
+        }
+#endif
+        #endregion
+    }
+}
