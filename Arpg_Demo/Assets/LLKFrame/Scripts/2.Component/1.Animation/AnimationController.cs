@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
 
 namespace LLKFrame
 {
+    [RequireComponent(typeof(Animator))]
     public class AnimationController : MonoBehaviour
     {
         [SerializeField] private Animator animator;
@@ -39,8 +41,16 @@ namespace LLKFrame
             mixer = AnimationMixerPlayable.Create(graph, 2);
             output.SetSourcePlayable(mixer);
         }
-        private void OnDisable() => graph.Stop();
-        private void OnDestroy() => graph.Destroy();
+        private void OnDisable()
+        {
+            if (graph.IsValid())
+                graph.Stop();
+        }
+        private void OnDestroy()
+        {
+            if (graph.IsValid())
+                graph.Destroy();
+        }
 
         #region 动画播放
         /// <summary>
@@ -151,6 +161,30 @@ namespace LLKFrame
         public void SetRootMotion(Action<Vector3, Quaternion> callBack) => onRootMotion = callBack;
         /// <summary>动画根运动回调函数置空</summary>
         public void ClearRootMotion() => onRootMotion = null;
+        #endregion
+        #region 动画时间
+        private Dictionary<string, Action> animationEventDic = new Dictionary<string, Action>();
+
+        private void AnimationEvent(string eventName)
+        {
+            if(animationEventDic.TryGetValue(eventName,out Action action))
+                action?.Invoke();
+        }
+
+        public void AddAnimationEvent(string eventName, Action action)
+        {
+            if (!animationEventDic.TryGetValue(eventName, out Action _action))
+                animationEventDic.Add(eventName, _action);
+            _action += action;
+        }
+        public void RemoveAnimationEvent(string eventName, Action action)
+        {
+            if (!animationEventDic.TryGetValue(eventName, out Action _action))
+                animationEventDic.Add(eventName, _action);
+            _action -= action;
+            if(_action == null) animationEventDic.Remove(eventName);
+        }
+        public void RemoveAnimationEvent(string eventName) => animationEventDic.Remove(eventName);
         #endregion
     }
 }

@@ -7,6 +7,7 @@ namespace LLKFrame
     public class GameRoot : MonoBehaviour
     {
         private static GameRoot instance;
+        public static GameRoot Instance => instance;
 
         /// <summary>GameRoot 的 Transform，可能为空（域重载后实例尚未 Awake 时）</summary>
         public static Transform RootTransform => instance?.transform;
@@ -26,13 +27,15 @@ namespace LLKFrame
             DontDestroyOnLoad(gameObject);
             InitSystems();
         }
-        private void InitSystems()
+        private static void InitSystems()
         {
             PoolSystem.Init();
             EventCenter.Init();
             SaveSystem.Init();
             AudioSystem.Init();
             LocalizationSystem.Init();
+            UISystem.Init();
+            MonoSystem.Init();
         }
         #region Editor
 #if UNITY_EDITOR

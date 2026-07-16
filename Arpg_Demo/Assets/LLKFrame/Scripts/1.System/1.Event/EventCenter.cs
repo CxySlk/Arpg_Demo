@@ -22,9 +22,9 @@ namespace LLKFrame
             public Action action;
             public EventData(Action action) => this.action = action;
             /// <summary>注册事件（注意：this.action 才是字段，入参 action 会遮蔽字段）</summary>
-            public void AddEvent(Action action) => action += action;
+            public void AddEvent(Action action) => this.action += action;
             /// <summary>注销事件</summary>
-            public void RemoveEvent(Action action) => action -= action;
+            public void RemoveEvent(Action action) => this.action -= action;
             /// <summary>触发事件</summary>
             public void TriggerEvent() => action?.Invoke();
             public void Clear() => action = null;
@@ -37,8 +37,8 @@ namespace LLKFrame
         {
             public Action<T> action;
             public EventData(Action<T> action) => this.action = action;
-            public void AddEvent(Action<T> action) => action += action;
-            public void RemoveEvent(Action<T> action) => action -= action;
+            public void AddEvent(Action<T> action) => this.action += action;
+            public void RemoveEvent(Action<T> action) => this.action -= action;
             public void TriggerEvent(T arg) => action?.Invoke(arg);
             public void Clear() => action = null;
         }
@@ -51,8 +51,8 @@ namespace LLKFrame
         {
             public Action<T1, T2> action;
             public EventData(Action<T1, T2> action) => this.action = action;
-            public void AddEvent(Action<T1, T2> action) => action += action;
-            public void RemoveEvent(Action<T1, T2> action) => action -= action;
+            public void AddEvent(Action<T1, T2> action) => this.action += action;
+            public void RemoveEvent(Action<T1, T2> action) => this.action -= action;
             public void TriggerEvent(T1 arg1, T2 arg2) => action?.Invoke(arg1, arg2);
             public void Clear() => action = null;
         }
@@ -66,49 +66,56 @@ namespace LLKFrame
         {
             public Action<T1, T2, T3> action;
             public EventData(Action<T1, T2, T3> action) => this.action = action;
-            public void AddEvent(Action<T1, T2, T3> action) => action += action;
-            public void RemoveEvent(Action<T1, T2, T3> action) => action -= action;
+            public void AddEvent(Action<T1, T2, T3> action) => this.action += action;
+            public void RemoveEvent(Action<T1, T2, T3> action) => this.action -= action;
             public void TriggerEventData(T1 arg1, T2 arg2, T3 arg3) => action?.Invoke(arg1, arg2, arg3);
             public void Clear() => action = null;
+        }
+        #endregion
+        #region 事件类型字典的比较器
+        private class EventDicEqualityComparer : IEqualityComparer<EventCenterType>
+        {
+            public bool Equals(EventCenterType x, EventCenterType y) => (int)x == (int)y;
+            public int GetHashCode(EventCenterType arg) => (int)arg;
         }
         #endregion
         /// <summary>
         /// 事件字典，key 为事件名，value 为对应的事件数据对象
         /// </summary>
-        private static Dictionary<string, IEventData> eventDic;
-        public static void Init() => eventDic = new Dictionary<string, IEventData>();
+        private static Dictionary<EventCenterType, IEventData> eventDic;
+        public static void Init() => eventDic = new Dictionary<EventCenterType, IEventData>(new EventDicEqualityComparer());
 
         #region 无参事件
         /// <summary>
         /// 注册无参事件监听
         /// </summary>
-        /// <param name="eventKey">事件标识</param>
+        /// <param name="eventType">事件标识</param>
         /// <param name="action">回调方法</param>
-        public static void AddEventListener(string eventKey, Action action)
+        public static void AddEventListener(EventCenterType eventType, Action action)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData).AddEvent(action);
             else
-                eventDic.Add(eventKey, new EventData(action));
+                eventDic.Add(eventType, new EventData(action));
         }
 
         /// <summary>
         /// 注销无参事件监听
         /// </summary>
-        /// <param name="eventKey">事件标识</param>
+        /// <param name="eventType">事件标识</param>
         /// <param name="action">回调方法</param>
-        public static void RemoveEventListener(string eventKey, Action action)
+        public static void RemoveEventListener(EventCenterType eventType, Action action)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData).RemoveEvent(action);
         }
         /// <summary>
         /// 触发无参事件
         /// </summary>
-        /// <param name="eventKey">事件标识</param>
-        public static void TriggerEvent(string eventKey)
+        /// <param name="eventType">事件标识</param>
+        public static void TriggerEvent(EventCenterType eventType)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData).TriggerEvent();
         }
         #endregion
@@ -116,28 +123,28 @@ namespace LLKFrame
         /// <summary>
         /// 注册带 1 个参数的事件监听
         /// </summary>
-        public static void AddEventListener<T>(string eventKey, Action<T> action)
+        public static void AddEventListener<T>(EventCenterType eventType, Action<T> action)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData<T>).AddEvent(action);
             else
-                eventDic.Add(eventKey, new EventData<T>(action));
+                eventDic.Add(eventType, new EventData<T>(action));
         }
 
         /// <summary>
         /// 注销带 1 个参数的事件监听
         /// </summary>
-        public static void RemoveEventListener<T>(string eventKey, Action<T> action)
+        public static void RemoveEventListener<T>(EventCenterType eventType, Action<T> action)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData<T>).RemoveEvent(action);
         }
         /// <summary>
         /// 触发带 1 个参数的事件
         /// </summary>
-        public static void TriggerEvent<T>(string eventKey, T arg)
+        public static void TriggerEvent<T>(EventCenterType eventType, T arg)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData<T>).TriggerEvent(arg);
         }
         #endregion
@@ -145,28 +152,28 @@ namespace LLKFrame
         /// <summary>
         /// 注册带 2 个参数的事件监听
         /// </summary>
-        public static void AddEventListener<T1, T2>(string eventKey, Action<T1, T2> action)
+        public static void AddEventListener<T1, T2>(EventCenterType eventType, Action<T1, T2> action)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData<T1, T2>).AddEvent(action);
             else
-                eventDic.Add(eventKey, new EventData<T1, T2>(action));
+                eventDic.Add(eventType, new EventData<T1, T2>(action));
         }
 
         /// <summary>
         /// 注销带 2 个参数的事件监听
         /// </summary>
-        public static void RemoveEventListener<T1, T2>(string eventKey, Action<T1, T2> action)
+        public static void RemoveEventListener<T1, T2>(EventCenterType eventType, Action<T1, T2> action)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData<T1, T2>).RemoveEvent(action);
         }
         /// <summary>
         /// 触发带 2 个参数的事件
         /// </summary>
-        public static void TriggerEvent<T1, T2>(string eventKey, T1 arg1, T2 arg2)
+        public static void TriggerEvent<T1, T2>(EventCenterType eventType, T1 arg1, T2 arg2)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData<T1, T2>).TriggerEvent(arg1, arg2);
         }
         #endregion
@@ -174,28 +181,28 @@ namespace LLKFrame
         /// <summary>
         /// 注册带 3 个参数的事件监听
         /// </summary>
-        public static void AddEventListener<T1, T2, T3>(string eventKey, Action<T1, T2, T3> action)
+        public static void AddEventListener<T1, T2, T3>(EventCenterType eventType, Action<T1, T2, T3> action)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData<T1, T2, T3>).AddEvent(action);
             else
-                eventDic.Add(eventKey, new EventData<T1, T2, T3>(action));
+                eventDic.Add(eventType, new EventData<T1, T2, T3>(action));
         }
 
         /// <summary>
         /// 注销带 3 个参数的事件监听
         /// </summary>
-        public static void RemoveEventListener<T1, T2, T3>(string eventKey, Action<T1, T2, T3> action)
+        public static void RemoveEventListener<T1, T2, T3>(EventCenterType eventType, Action<T1, T2, T3> action)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData<T1, T2, T3>).RemoveEvent(action);
         }
         /// <summary>
         /// 触发带 3 个参数的事件
         /// </summary>
-        public static void TriggerEvent<T1, T2, T3>(string eventKey, T1 arg1, T2 arg2, T3 arg3)
+        public static void TriggerEvent<T1, T2, T3>(EventCenterType eventType, T1 arg1, T2 arg2, T3 arg3)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 (eventData as EventData<T1, T2, T3>).TriggerEventData(arg1, arg2, arg3);
         }
         #endregion
@@ -204,10 +211,10 @@ namespace LLKFrame
         /// <summary>
         /// 清理指定事件的回调列表
         /// </summary>
-        /// <param name="eventKey">事件标识</param>
-        public static void Clear(string eventKey)
+        /// <param name="eventType">事件标识</param>
+        public static void Clear(EventCenterType eventType)
         {
-            if (eventDic.TryGetValue(eventKey, out IEventData eventData))
+            if (eventDic.TryGetValue(eventType, out IEventData eventData))
                 eventData.Clear();
         }
         /// <summary>

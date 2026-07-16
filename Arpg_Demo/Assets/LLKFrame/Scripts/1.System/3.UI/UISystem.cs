@@ -11,16 +11,6 @@ namespace LLKFrame
     /// </summary>
     public class UISystem : SerializedMonoBehaviour
     {
-        /// <summary>初始化 UISystem 单例</summary>
-        private void Awake()
-        {
-            if(instance!=null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            instance = this;
-        }        
         #region UI_Layer 内部类
         /// <summary>
         /// 单个 UI 层级，管理该层级内窗口的排序、显隐与遮罩
@@ -29,7 +19,7 @@ namespace LLKFrame
         {
             [LabelText("层级根节点"), SerializeField] private Transform layerRoot;
             [LabelText("遮罩"), SerializeField] private Image layerMask;
-            [LabelText("是否开启遮罩"), SerializeField, OnValueChanged(nameof(IsMaskValueChanged))] private bool isMask;
+            [LabelText("是否开启遮罩"), SerializeField, OnValueChanged("IsMaskValueChanged")] private bool isMask;
 
             /// <summary>遮罩开关：开启时拦截下层鼠标事件</summary>
             public bool IsMask
@@ -39,7 +29,6 @@ namespace LLKFrame
                 {
                     if (value == isMask) return;
                     isMask = value;
-                    layerMask.raycastTarget = value;
                 }
             }
 #if UNITY_EDITOR
@@ -86,18 +75,18 @@ namespace LLKFrame
             }
         }
         #endregion
-
+        #region 变量定义
         [SerializeField] private UI_Layer[] uiLayers;
-        [SerializeField]private UISystem uiSystem;
         private static UISystem instance;
 
         /// <summary>窗口配置字典，来自 GameRoot.FrameSetting</summary>
-        private static Dictionary<string, UIWindowData> uiWindowDataDic => GameRoot.FrameSetting.uiWindowDataDic;
+        private static Dictionary<string, UIWindowData> UiWindowDataDic => GameRoot.FrameSetting.uiWindowDataDic;
 
         /// <summary>已实例化的窗口缓存字典</summary>
         private static Dictionary<string, UI_WindowBase> uiWindowDic = new Dictionary<string, UI_WindowBase>();
+        #endregion
 
-
+        public static void Init() => instance = GameRoot.Instance.GetComponentInChildren<UISystem>();
 
         // ==============================
         //  Show 方法族
@@ -111,7 +100,7 @@ namespace LLKFrame
         /// <returns>窗口基类引用</returns>
         public static UI_WindowBase Show(string keyName, int layer = -1)
         {
-            if (!uiWindowDataDic.TryGetValue(keyName, out UIWindowData windowData))
+            if (!UiWindowDataDic.TryGetValue(keyName, out UIWindowData windowData))
                 Debug.LogError($"LLKFrame：未找到{keyName}的Window配置");
 
             // 之前有过缓存 → 直接复用
@@ -169,14 +158,19 @@ namespace LLKFrame
             if (!uiWindowDic.TryGetValue(keyName, out UI_WindowBase window))
                 return;
 
-            if (!uiWindowDataDic.TryGetValue(keyName, out UIWindowData windowData))
+            if (!UiWindowDataDic.TryGetValue(keyName, out UIWindowData windowData))
                 Debug.LogError($"LLKFrame：未找到{keyName}的Window配置");
 
             window.Close();
+            // 可以缓存的窗口
             if (windowData.isCache)
                 instance.uiLayers[window.layer].CloseWindow(window.transform);
+            // 无法缓存
             else
             {
+                // 释放Addressables资源
+                ResSystem.Release<GameObject>(windowData.prefabPath);
+
                 windowData.instance = null;
                 instance.uiLayers[window.layer].DestroyWindow(window.transform);
                 uiWindowDic.Remove(keyName);

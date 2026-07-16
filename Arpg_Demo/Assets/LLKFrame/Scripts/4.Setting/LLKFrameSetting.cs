@@ -6,22 +6,16 @@ using UnityEngine;
 
 namespace LLKFrame
 {
-    [CreateAssetMenu(fileName = "LLKFrameSetting", menuName = "Config/LLKFrame/LLKFrameSetting")]
+    [CreateAssetMenu(fileName = "LLKFrameSetting", menuName = "LLKFrame/LLKFrameSetting")]
     public class LLKFrameSetting : ConfigBase
     {
         [DictionaryDrawerSettings(KeyLabel = "窗口名", ValueLabel = "窗口信息")]
         public Dictionary<string, UIWindowData> uiWindowDataDic = new Dictionary<string, UIWindowData>();
 #if UNITY_EDITOR
         [Button("重置")]
-        public void Reset()
-        {
-            InitForEditor();
-        }
+        public void Reset() => InitForEditor();
 
-        public void InitForEditor()
-        {
-            InitUIDataDic();
-        }
+        public void InitForEditor() => InitUIDataDic();
 
         private void InitUIDataDic()
         {

@@ -17,7 +17,7 @@ namespace LLKFrame
         IPointerClickHandler
     { }
 
-    public enum LLKEventType
+    public enum EventSystemType
     {
         OnBeginDrag,
         OnDrag,
@@ -54,7 +54,7 @@ namespace LLKFrame
         private class LLKEventDatas
         {
             private Dictionary<int, ILLKEventData> eventDic = new Dictionary<int, ILLKEventData>();
-            public void AddEventListener<T>(LLKEventType eventType, Action<T> action)
+            public void AddEventListener<T>(EventSystemType eventType, Action<T> action)
             {
                 if (!eventDic.TryGetValue((int)eventType, out ILLKEventData eventData))
                 {
@@ -63,17 +63,17 @@ namespace LLKFrame
                 }
                 (eventData as LLKEventData<T>).AddEventListener(action);
             }
-            public void RemoveEventListener<T>(LLKEventType eventType, Action<T> action)
+            public void RemoveEventListener<T>(EventSystemType eventType, Action<T> action)
             {
                 if (eventDic.TryGetValue((int)eventType, out ILLKEventData eventData))
                     (eventData as LLKEventData<T>).RemoveEventListener(action);
             }
-            public void TriggerEvent<T>(LLKEventType eventType, T arg)
+            public void TriggerEvent<T>(EventSystemType eventType, T arg)
             {
                 if (eventDic.TryGetValue((int)eventType, out ILLKEventData eventData))
                     (eventData as LLKEventData<T>).TriggerEvent(arg);
             }
-            public void Clear(LLKEventType eventType)
+            public void Clear(EventSystemType eventType)
             {
                 if (eventDic.Remove((int)eventType, out ILLKEventData eventData))
                     eventData.Destroy();
@@ -95,17 +95,17 @@ namespace LLKFrame
 
         #region 鼠标相关（参数为PointerEventData）
         /// 拖拽相关
-        public void OnBeginDrag(PointerEventData eventData) => eventDatas.TriggerEvent(LLKEventType.OnBeginDrag, eventData);
-        public void OnDrag(PointerEventData eventData) => eventDatas.TriggerEvent(LLKEventType.OnDrag, eventData);
-        public void OnEndDrag(PointerEventData eventData) => eventDatas.TriggerEvent(LLKEventType.OnEndDrag, eventData);
+        public void OnBeginDrag(PointerEventData eventData) => eventDatas.TriggerEvent(EventSystemType.OnBeginDrag, eventData);
+        public void OnDrag(PointerEventData eventData) => eventDatas.TriggerEvent(EventSystemType.OnDrag, eventData);
+        public void OnEndDrag(PointerEventData eventData) => eventDatas.TriggerEvent(EventSystemType.OnEndDrag, eventData);
         /// 按下相关
-        public void OnPointerDown(PointerEventData eventData) => eventDatas.TriggerEvent(LLKEventType.OnMouseDown, eventData);
-        public void OnPointerUp(PointerEventData eventData) => eventDatas.TriggerEvent(LLKEventType.OnMouseUp, eventData);
-        public void OnPointerClick(PointerEventData eventData) => eventDatas.TriggerEvent(LLKEventType.OnClick, eventData);
+        public void OnPointerDown(PointerEventData eventData) => eventDatas.TriggerEvent(EventSystemType.OnMouseDown, eventData);
+        public void OnPointerUp(PointerEventData eventData) => eventDatas.TriggerEvent(EventSystemType.OnMouseUp, eventData);
+        public void OnPointerClick(PointerEventData eventData) => eventDatas.TriggerEvent(EventSystemType.OnClick, eventData);
         /// 鼠标进入、移动、退出
-        public void OnPointerEnter(PointerEventData eventData) => eventDatas.TriggerEvent(LLKEventType.OnMouseEnter, eventData);
-        public void OnPointerMove(PointerEventData eventData) => eventDatas.TriggerEvent(LLKEventType.OnMouseMove, eventData);
-        public void OnPointerExit(PointerEventData eventData) => eventDatas.TriggerEvent(LLKEventType.OnMouseExit, eventData);
+        public void OnPointerEnter(PointerEventData eventData) => eventDatas.TriggerEvent(EventSystemType.OnMouseEnter, eventData);
+        public void OnPointerMove(PointerEventData eventData) => eventDatas.TriggerEvent(EventSystemType.OnMouseMove, eventData);
+        public void OnPointerExit(PointerEventData eventData) => eventDatas.TriggerEvent(EventSystemType.OnMouseExit, eventData);
         #endregion
 
         /// <summary>
@@ -114,9 +114,9 @@ namespace LLKFrame
         /// <typeparam name="TArg">目前只支持鼠标相关事件---PointerEventData</typeparam>
         /// <param name="eventType">事件类型</param>
         /// <param name="action">事件</param>
-        public void AddEventListener<TArg>(LLKEventType eventType, Action<TArg> action) => eventDatas.AddEventListener(eventType, action);
-        public void RemovetListener<TArg>(LLKEventType eventType, Action<TArg> action) => eventDatas.RemoveEventListener(eventType, action);
-        public void Clear(LLKEventType eventType) => eventDatas.Clear(eventType);
+        public void AddEventListener<TArg>(EventSystemType eventType, Action<TArg> action) => eventDatas.AddEventListener(eventType, action);
+        public void RemovetListener<TArg>(EventSystemType eventType, Action<TArg> action) => eventDatas.RemoveEventListener(eventType, action);
+        public void Clear(EventSystemType eventType) => eventDatas.Clear(eventType);
         public void ClearAll() => eventDatas.ClearAll();
         public void Destroy()
         {
