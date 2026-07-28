@@ -8,7 +8,7 @@ using UnityEditor;
 public class GASEditorData : SerializedScriptableObject
 {
 #if UNITY_EDITOR
-    private const string AssetPath = "Assets/Scripts/GAS/Data/GASEditorData.asset";
+    private const string AssetPath = "Assets/Scripts/GAS/EditorData/GASEditorData.asset";
     private static GASEditorData instance;
     public static GASEditorData Instance
     {
@@ -29,6 +29,7 @@ public class GASEditorData : SerializedScriptableObject
         }
     }
 
-    public List<string> tagSet = new List<string>();
+    public List<string> Tags = new List<string>();
+    public List<string> Attributes = new List<string>();
 #endif
 }

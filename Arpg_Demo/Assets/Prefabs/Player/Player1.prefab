@@ -1219,6 +1219,7 @@ GameObject:
   - component: {fileID: 4647035460900684313}
   - component: {fileID: 2120178909444820014}
   - component: {fileID: 3006063876794371744}
+  - component: {fileID: 2820031083622904502}
   m_Layer: 6
   m_Name: Player1
   m_TagString: Untagged
@@ -1347,6 +1348,34 @@ MonoBehaviour:
   _updateMode: 0
   _graph: {fileID: 11400000, guid: 3087c6f5942c3c048886393f6f68dbd3, type: 2}
   _blackboard: {fileID: 0}
+--- !u!114 &2820031083622904502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4655545884804830308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f5ab582bc6de64aab61d762a80c0e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GAS.AbilitySystemComponent
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _attrDic
+      Entry: 6
+      Data: 
+    - Name: _tagAggregator
+      Entry: 6
+      Data: 
+  _preset: {fileID: 0}
 --- !u!1 &4663344335850136689
 GameObject:
   m_ObjectHideFlags: 0

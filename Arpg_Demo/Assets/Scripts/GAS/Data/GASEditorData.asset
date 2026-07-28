@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e63833669660c4243982bb662583cae3, type: 3}
   m_Name: GASEditorData
-  m_EditorClassIdentifier: Assembly-CSharp-Editor::GASEditorData
+  m_EditorClassIdentifier: Assembly-CSharp::GASEditorData
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -21,7 +21,5 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  tagSet:
-  - "State.\u7729\u6655.1"
-  - "State.\u7729\u6655"
-  - State
+  Tags: []
+  Attributes: []
