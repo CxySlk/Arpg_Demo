@@ -3,7 +3,7 @@ using UnityEngine;
 namespace LLKFrame
 {
     /// <summary>
-    /// 泛型单例基类（MonoBehaviour 版），子类需继承 SingletonMonoBase<T>
+    /// 泛型单例基类（MonoBehaviour 版），子类需继承 SingletonMonoBase<TSpec>
     /// </summary>
     /// <typeparam name="T">子类类型</typeparam>
     public abstract class SingletonMonoBase<T> : MonoBehaviour where T : SingletonMonoBase<T>

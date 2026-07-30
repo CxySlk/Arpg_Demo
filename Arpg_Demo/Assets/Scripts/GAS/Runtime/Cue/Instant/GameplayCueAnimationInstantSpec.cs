@@ -1,17 +1,20 @@
 ﻿using LLKFrame;
-using Sirenix.OdinInspector;
-using UnityEngine;
 
 namespace GAS
 {
-    public class GameplayCueAnimationInstantSpec : GameplayCueInstantSpec
+    /// <summary>
+    /// 瞬时动画 Cue 的运行时 Spec。在所有者 ASC 的 AnimationController 上播放动画片段。
+    /// </summary>
+    public class GameplayCueAnimationInstantSpec : GameplayCueInstantSpec<GameplayCueAnimationInstant>
     {
         public override void Trigger()
         {
             if (Owner == null) return;
             AnimationController controller = Owner.GetComponent<AnimationController>();
-            if (controller == null) return;
-            controller.PlaySingleAnimation(Cue.AnimationClip);
+            if (controller == null || Cue == null) return;
+            controller.PlaySingleAnimation(InstanceCue.AnimationClip);
+
+            Destroy();
         }
     }
 }

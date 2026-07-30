@@ -4,38 +4,58 @@ using UnityEngine;
 
 namespace GAS
 {
-    /// <summary>效果叠加方式</summary>
+    /// <summary>效果叠层的聚合方式</summary>
     public enum EffectStackAggregateType
     {
-        [LabelText("只叠层")] OnlyStack,
-        [LabelText("叠层且刷新持续时间")] StackAndRefresh,
+        /// <summary>仅叠层，不刷新持续时间</summary>
+        [LabelText("仅叠层")] OnlyStack,
+        /// <summary>叠层并刷新持续时间</summary>
+        [LabelText("叠层并刷新")] StackAndRefresh
     }
-    /// <summary>效果降层方式</summary>
+
+    /// <summary>效果到期时的降层方式</summary>
     public enum EffectStackDecreaseType
     {
-        [LabelText("直接清空")] Clear,
-        [LabelText("层数减少")] Refresh,
+        /// <summary>到期直接清空移除</summary>
+        [LabelText("清空")] Clear,
+        /// <summary>到期降低一层，为零时移除</summary>
+        [LabelText("降层")] Refresh
     }
+
+    /// <summary>
+    /// 效果叠层配置数据。控制最大叠层数、叠层聚合方式、到期降层方式。
+    /// 支持对象池回收。
+    /// </summary>
     public class GameplayEffectStackData
     {
-        [SerializeField, LabelText("层数增加方式")]
+        #region 叠层属性
+
+        [LabelText("叠层聚合方式"), SerializeField]
         private EffectStackAggregateType _aggregateType;
         public EffectStackAggregateType AggregateType => _aggregateType;
-        [SerializeField, LabelText("层数减少方式")]
+
+        [LabelText("叠层降低方式"), SerializeField]
         private EffectStackDecreaseType _decreaseType;
         public EffectStackDecreaseType DecreaseType => _decreaseType;
-        [SerializeField, LabelText("最大层数")]
-        private int _maxStackCount = 1;  // 默认为1
-        public int MaxStackCount => _maxStackCount; 
-        #region 生命周期相关
+
+        [LabelText("最大叠层数"), SerializeField]
+        private int _maxStackCount = 1;
+        public int MaxStackCount => _maxStackCount;
+
+        #endregion
+
+        /// <summary>从对象池获取或新建实例</summary>
         public static GameplayEffectStackData Create() => PoolSystem.GetOrNewObject<GameplayEffectStackData>();
+
+        /// <summary>初始化叠层配置</summary>
         public void Init(EffectStackAggregateType aggregateType, EffectStackDecreaseType decreaseType, int maxStackCount)
         {
             _aggregateType = aggregateType;
             _decreaseType = decreaseType;
             _maxStackCount = maxStackCount;
         }
+
+        /// <summary>回收到对象池</summary>
         public void Destroy() => this.PushObject();
-        #endregion
     }
 }

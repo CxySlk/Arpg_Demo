@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Test : SerializedMonoBehaviour
 {
-    [SerializeField]
-    public GameplayCueAnimationInstant effect;
+    public Transform A;
+    public Transform B;
 
-    [Button("播放动画")]
+    [Button("计算角度")]
     private void ApplyEffect()
     {
-        effect.ApplyFrom(GetComponent<AbilitySystemComponent>());
+        Debug.Log(GAS.GASTool.CalculateHorizontalAngle(A, B));
     }
 }

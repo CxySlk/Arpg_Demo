@@ -304,14 +304,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 273551824}
-  - component: {fileID: 273551825}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &273551824
 Transform:
   m_ObjectHideFlags: 0
@@ -327,27 +326,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &273551825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 273551822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0118346539786de4eb4a17526b0aa00c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AttributeTest
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
 --- !u!224 &522870558 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7933410478676357370, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
@@ -870,6 +848,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355820186}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1440192955 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4655545884804830308, guid: b85af62c6aaa01647b1c48694eaff556, type: 3}
+  m_PrefabInstance: {fileID: 6178742961271633692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1488646793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,6 +1451,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2820031083622904502, guid: b85af62c6aaa01647b1c48694eaff556, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2820031083622904502, guid: b85af62c6aaa01647b1c48694eaff556, type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 2820031083622904502, guid: b85af62c6aaa01647b1c48694eaff556, type: 3}
@@ -1478,13 +1465,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4655545884804830308, guid: b85af62c6aaa01647b1c48694eaff556, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6178742961271633703}
   m_SourcePrefab: {fileID: 100100000, guid: b85af62c6aaa01647b1c48694eaff556, type: 3}
 --- !u!4 &6178742961271633702 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2186361558236962509, guid: b85af62c6aaa01647b1c48694eaff556, type: 3}
   m_PrefabInstance: {fileID: 6178742961271633692}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6178742961271633703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440192955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc998555741e734418b2210d6627658b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Test
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  A: {fileID: 0}
+  B: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

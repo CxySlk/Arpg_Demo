@@ -6,79 +6,55 @@ using UnityEngine;
 
 namespace GAS
 {
-    [MessagePackObject(AllowPrivate = true)]
+    /// <summary>
+    /// 游戏标签结构体（值类型）。通过字符串的 HashCode 作为唯一标识，
+    /// 支持父子层级关系（用于 IsChildOf/IsParentOf 层级匹配）。
+    /// Editor 模式下保留字符串名称以供可读性。
+    /// </summary>
+    [MessagePackObject(keyAsPropertyName: true)]
     public partial struct GameplayTag
     {
         [Key(0)]
-        [SerializeField, ReadOnly, LabelText("哈希值")]
+        [SerializeField]
         private int _hashCode;
+
         [Key(1)]
-        [SerializeField, ReadOnly, LabelText("祖先的哈希值")]
+        [SerializeField]
         private int[] _ancestorHashCode;
 
-        #region 公开属性
-        [IgnoreMember]
+        /// <summary>标签哈希标识符</summary>
         public int HashCode => _hashCode;
-        [IgnoreMember]
+        /// <summary>所有祖先标签的哈希数组（由编辑器根据分隔符层级计算）</summary>
         public int[] AncestorHashCode => _ancestorHashCode;
-        #endregion
-        #region 重写基本函数
+
+        /// <summary>当前标签是否为 other 的子标签（即 other 是否在祖先列表中）</summary>
+        public bool IsChildOf(GameplayTag other) => _ancestorHashCode.Contains(other._hashCode);
+        /// <summary>当前标签是否为 other 的父标签</summary>
+        public bool IsParentOf(GameplayTag other) => other._ancestorHashCode.Contains(_hashCode);
+
         public override int GetHashCode() => _hashCode;
         public override bool Equals(object obj) => obj is GameplayTag tag && _hashCode == tag._hashCode;
         public static bool operator ==(GameplayTag a, GameplayTag b) => a._hashCode == b._hashCode;
         public static bool operator !=(GameplayTag a, GameplayTag b) => a._hashCode != b._hashCode;
-        #endregion
-        #region tag判断相关
-        public bool IsChildOf(GameplayTag tag)
-        {
-            foreach (var item in _ancestorHashCode)
-            {
-                if (item == tag._hashCode)
-                    return true;
-            }
-            return false;
-        }
-        public bool IsParentOf(GameplayTag tag)
-        {
-            foreach (var item in tag._ancestorHashCode)
-            {
-                if (item == _hashCode)
-                    return true;
-            }
-            return false;
-        }
-        #endregion
-        #region Editor
+
 #if UNITY_EDITOR
         [IgnoreMember]
-        [SerializeField, OnValueChanged(nameof(OnTagNameChanged)), ValueDropdown(nameof(TagGetter)), LabelText("标签名")]
-        private string tagName;
-        [IgnoreMember]
-        [SerializeField, ReadOnly, LabelText("简称")] private string _shortName;
-        [IgnoreMember]
-        [SerializeField, ReadOnly, LabelText("祖先标签")] private string[] _ancestorNames;
-        private void OnTagNameChanged()
-        {
-            _hashCode = tagName.GetHashCode();
-            string[] ancestorShortName = tagName.Split('.');
-            // ����ռ�
-            _ancestorHashCode = new int[ancestorShortName.Length - 1];
-            _ancestorNames = new string[ancestorShortName.Length - 1];
+        [SerializeField, LabelText("标签名"), ValueDropdown(nameof(TagGetter)), OnValueChanged(nameof(OnTagChanged))]
+        private string _tagName;
 
-            string ancestorName = "";
-            for (int i = 0; i < ancestorShortName.Length - 1; i++)
+        private void OnTagChanged()
+        {
+            _hashCode = _tagName.GetHashCode();
+            var parts = _tagName.Split('.');
+            _ancestorHashCode = new int[parts.Length - 1];
+            for (int i = 0; i < parts.Length - 1; i++)
             {
-                if (i != 0) ancestorName += '.';
-                ancestorName += ancestorShortName[i];
-                _ancestorHashCode[i] = ancestorName.GetHashCode();
-                _ancestorNames[i] = ancestorName;
+                var ancestor = string.Join(".", parts, 0, i + 1);
+                _ancestorHashCode[i] = ancestor.GetHashCode();
             }
-            // ����鿴
-            _shortName = ancestorShortName.Last();
         }
 
         private IList<string> TagGetter() => GASEditorData.Instance.Tags;
 #endif
-        #endregion
     }
 }

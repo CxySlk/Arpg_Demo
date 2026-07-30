@@ -4,12 +4,19 @@ using UnityEngine;
 
 namespace GAS
 {
-    [CreateAssetMenu(fileName = nameof(AbilitySystemComponentPreset), menuName = "GAS/" + nameof(AbilitySystemComponentPreset))]
+    /// <summary>
+    /// ASC 初始化预设资产。定义角色的初始属性集合和固定标签集。
+    /// 挂载在 AbilitySystemComponent 的 _preset 字段上。
+    /// </summary>
+    [CreateAssetMenu(fileName = nameof(AbilitySystemComponentPreset), menuName = "GAS/ASCPreset")]
     public class AbilitySystemComponentPreset : ConfigBase
     {
-        [SerializeField, Header("属性")] private HashSet<Attribute> _attributes = new HashSet<Attribute>();
+        [SerializeField]
+        private HashSet<Attribute> _attributes;
+        [SerializeField]
+        private GameplayTagSet _tagSet;
+
         public HashSet<Attribute> Attributes => _attributes;
-        [SerializeField, Header("标签")] private GameplayTagSet _tagSet = new GameplayTagSet();
         public GameplayTagSet TagSet => _tagSet;
     }
 }

@@ -1,15 +1,15 @@
 ﻿namespace GAS
 {
-    public abstract class GameplayCueInstant<T> : GameplayCue<T> where T : GameplayCueInstantSpec
+    /// <summary>
+    /// 瞬时 Cue 的非泛型基类。CreateSpec 返回 GameplayCueInstantSpec，子类可改用泛型版本。
+    /// </summary>
+    public abstract class GameplayCueInstant : GameplayCue<GameplayCueInstantSpec>
     {
         public override void ApplyFrom(AbilitySystemComponent asc)
         {
-            if (Triggerable(asc))
-            {
-                GameplayCueInstantSpec instantCue = CreateSpec();
-                instantCue.Init(this, asc);
-                instantCue.Trigger();
-            }
+            GameplayCueInstantSpec spec = CreateSpec();
+            spec.Init(this, asc);
+            spec.Trigger();
         }
     }
 }
