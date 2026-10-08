@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae8e6521da84df4ab073918c0666847, type: 3}
+  m_Name: ASCPreset2
+  m_EditorClassIdentifier: GAS::GAS.AbilitySystemComponentPreset
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _attrDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[GAS.AttributeType, GAS],[GAS.Attribute,
+        GAS]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[GAS.AttributeType,
+        GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _effects
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[GAS.GameplayEffect, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|GAS.DurationalHealEffect, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 4|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 6|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: grantedTags
+      Entry: 7
+      Data: 8|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 9|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 10|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 11|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: effectTag
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: Health
+    - Name: _hashCode
+      Entry: 3
+      Data: 1244978060
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 12|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 3
+    - Name: 
+      Entry: 3
+      Data: -1623813697
+    - Name: 
+      Entry: 3
+      Data: 1239030520
+    - Name: 
+      Entry: 3
+      Data: 332643092
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: Attr.Effect.Heal.Health
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: isInfinite
+      Entry: 5
+      Data: true
+    - Name: stackData
+      Entry: 7
+      Data: 13|GAS.GameplayEffectStackData, GAS
+    - Name: AggregateType
+      Entry: 3
+      Data: 0
+    - Name: DecreaseType
+      Entry: 3
+      Data: 0
+    - Name: MaxStackCount
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: durationSeconds
+      Entry: 4
+      Data: 0
+    - Name: periodicSeconds
+      Entry: 4
+      Data: 0.1
+    - Name: beginApplyOnce
+      Entry: 5
+      Data: true
+    - Name: healSpeed
+      Entry: 4
+      Data: 0.5
+    - Name: healAttrTag
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  _tagSet:
+    tagSet: []

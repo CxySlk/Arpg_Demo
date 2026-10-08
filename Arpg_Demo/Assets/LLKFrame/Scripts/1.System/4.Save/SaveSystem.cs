@@ -46,12 +46,9 @@ namespace LLKFrame
             // 创建目录
             if (!Directory.Exists(directory))
                 Directory.CreateDirectory(directory);
-            // 二进制序列化
-            using (FileStream stream = new FileStream(directory + fileName, FileMode.OpenOrCreate))
-            {
-                byte[] bytes = MessagePackSerializer.Serialize(obj);
-                stream.Write(bytes);
-            }
+            // 用 MessagePack 序列化后直接存储二进制
+            byte[] bytes = MessagePackSerializer.Serialize(obj);
+            File.WriteAllBytes(directory + fileName, bytes);
         }
         private static T LoadObject<T>(string path) where T : new()
         {
@@ -62,10 +59,9 @@ namespace LLKFrame
             if (!File.Exists(path))
                 return new T();
 
-            using (FileStream stream = new FileStream(path, FileMode.Open))
-            {
-                return MessagePackSerializer.Deserialize<T>(stream);
-            }
+            // 直接读取二进制反序列化
+            byte[] bytes = File.ReadAllBytes(path);
+            return MessagePackSerializer.Deserialize<T>(bytes);
         }
         #endregion
         #region 通用

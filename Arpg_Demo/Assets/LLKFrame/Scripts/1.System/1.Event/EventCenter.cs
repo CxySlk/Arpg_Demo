@@ -4,10 +4,12 @@ using System.Collections.Generic;
 namespace LLKFrame
 {
     /// <summary>
-    /// 事件中心，基于字符串 key 的观察者模式实现，支持 0~3 个参数的泛型事件
+    /// 事件中心，基于 EventKey 的观察者模式实现，支持 0~3 个参数的泛型事件
     /// </summary>
-    public static class EventCenter
+    public class EventCenter
     {
+        public static readonly EventCenter Global = new EventCenter();
+
         #region 事件数据类
         /// <summary>
         /// 事件数据接口，统一提供 ClearAll 方法以便清理
@@ -22,9 +24,9 @@ namespace LLKFrame
             public Action action;
             public EventData(Action action) => this.action = action;
             /// <summary>注册事件（注意：this.action 才是字段，入参 action 会遮蔽字段）</summary>
-            public void AddEvent(Action action) => this.action += action;
+            public void Subscribe(Action action) => this.action += action;
             /// <summary>注销事件</summary>
-            public void RemoveEvent(Action action) => this.action -= action;
+            public void UnSubscribe(Action action) => this.action -= action;
             /// <summary>触发事件</summary>
             public void TriggerEvent() => action?.Invoke();
             public void Clear() => action = null;
@@ -37,8 +39,8 @@ namespace LLKFrame
         {
             public Action<T> action;
             public EventData(Action<T> action) => this.action = action;
-            public void AddEvent(Action<T> action) => this.action += action;
-            public void RemoveEvent(Action<T> action) => this.action -= action;
+            public void Subscribe(Action<T> action) => this.action += action;
+            public void UnSubscribe(Action<T> action) => this.action -= action;
             public void TriggerEvent(T arg) => action?.Invoke(arg);
             public void Clear() => action = null;
         }
@@ -51,8 +53,8 @@ namespace LLKFrame
         {
             public Action<T1, T2> action;
             public EventData(Action<T1, T2> action) => this.action = action;
-            public void AddEvent(Action<T1, T2> action) => this.action += action;
-            public void RemoveEvent(Action<T1, T2> action) => this.action -= action;
+            public void Subscribe(Action<T1, T2> action) => this.action += action;
+            public void UnSubscribe(Action<T1, T2> action) => this.action -= action;
             public void TriggerEvent(T1 arg1, T2 arg2) => action?.Invoke(arg1, arg2);
             public void Clear() => action = null;
         }
@@ -66,165 +68,186 @@ namespace LLKFrame
         {
             public Action<T1, T2, T3> action;
             public EventData(Action<T1, T2, T3> action) => this.action = action;
-            public void AddEvent(Action<T1, T2, T3> action) => this.action += action;
-            public void RemoveEvent(Action<T1, T2, T3> action) => this.action -= action;
-            public void TriggerEventData(T1 arg1, T2 arg2, T3 arg3) => action?.Invoke(arg1, arg2, arg3);
+            public void Subscribe(Action<T1, T2, T3> action) => this.action += action;
+            public void UnSubscribe(Action<T1, T2, T3> action) => this.action -= action;
+            public void Publish(T1 arg1, T2 arg2, T3 arg3) => action?.Invoke(arg1, arg2, arg3);
             public void Clear() => action = null;
         }
         #endregion
         #region 事件类型字典的比较器
-        private class EventDicEqualityComparer : IEqualityComparer<EventCenterType>
+        private class EventDicEqualityComparer : IEqualityComparer<EventKeyBase>
         {
-            public bool Equals(EventCenterType x, EventCenterType y) => (int)x == (int)y;
-            public int GetHashCode(EventCenterType arg) => (int)arg;
+            public bool Equals(EventKeyBase x, EventKeyBase y) => x.Equals(y);
+            public int GetHashCode(EventKeyBase arg) => arg.GetHashCode();
         }
         #endregion
         /// <summary>
         /// 事件字典，key 为事件名，value 为对应的事件数据对象
         /// </summary>
-        private static Dictionary<EventCenterType, IEventData> eventDic;
-        public static void Init() => eventDic = new Dictionary<EventCenterType, IEventData>(new EventDicEqualityComparer());
+        private readonly Dictionary<EventKeyBase, IEventData> _eventDic = new Dictionary<EventKeyBase, IEventData>();
 
         #region 无参事件
         /// <summary>
         /// 注册无参事件监听
         /// </summary>
-        /// <param name="eventType">事件标识</param>
+        /// <param name="eventKey">事件标识</param>
         /// <param name="action">回调方法</param>
-        public static void AddEventListener(EventCenterType eventType, Action action)
+        public void Subscribe(EventKey eventKey, Action action)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData).AddEvent(action);
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData)!.Subscribe(action);
             else
-                eventDic.Add(eventType, new EventData(action));
+                _eventDic.Add(eventKey, new EventData(action));
         }
 
         /// <summary>
         /// 注销无参事件监听
         /// </summary>
-        /// <param name="eventType">事件标识</param>
+        /// <param name="eventKey">事件标识</param>
         /// <param name="action">回调方法</param>
-        public static void RemoveEventListener(EventCenterType eventType, Action action)
+        public void UnSubscribe(EventKey eventKey, Action action)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData).RemoveEvent(action);
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData)!.UnSubscribe(action);
         }
         /// <summary>
         /// 触发无参事件
         /// </summary>
-        /// <param name="eventType">事件标识</param>
-        public static void TriggerEvent(EventCenterType eventType)
+        /// <param name="eventKey">事件标识</param>
+        public void Publish(EventKey eventKey)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData).TriggerEvent();
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData)!.TriggerEvent();
         }
         #endregion
         #region 1个参数事件
         /// <summary>
         /// 注册带 1 个参数的事件监听
         /// </summary>
-        public static void AddEventListener<T>(EventCenterType eventType, Action<T> action)
+        public void Subscribe<T>(EventKey<T> eventKey, Action<T> action)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData<T>).AddEvent(action);
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData<T>)!.Subscribe(action);
             else
-                eventDic.Add(eventType, new EventData<T>(action));
+                _eventDic.Add(eventKey, new EventData<T>(action));
         }
 
         /// <summary>
         /// 注销带 1 个参数的事件监听
         /// </summary>
-        public static void RemoveEventListener<T>(EventCenterType eventType, Action<T> action)
+        public void UnSubscribe<T>(EventKey<T> eventKey, Action<T> action)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData<T>).RemoveEvent(action);
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData<T>)!.UnSubscribe(action);
         }
         /// <summary>
         /// 触发带 1 个参数的事件
         /// </summary>
-        public static void TriggerEvent<T>(EventCenterType eventType, T arg)
+        public void Publish<T>(EventKey<T> eventKey, T arg)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData<T>).TriggerEvent(arg);
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData<T>)!.TriggerEvent(arg);
         }
         #endregion
         #region 2个参数事件
         /// <summary>
         /// 注册带 2 个参数的事件监听
         /// </summary>
-        public static void AddEventListener<T1, T2>(EventCenterType eventType, Action<T1, T2> action)
+        public void Subscribe<T1, T2>(EventKey<T1, T2> eventKey, Action<T1, T2> action)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData<T1, T2>).AddEvent(action);
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData<T1, T2>)!.Subscribe(action);
             else
-                eventDic.Add(eventType, new EventData<T1, T2>(action));
+                _eventDic.Add(eventKey, new EventData<T1, T2>(action));
         }
 
         /// <summary>
         /// 注销带 2 个参数的事件监听
         /// </summary>
-        public static void RemoveEventListener<T1, T2>(EventCenterType eventType, Action<T1, T2> action)
+        public void UnSubscribe<T1, T2>(EventKey<T1, T2> eventKey, Action<T1, T2> action)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData<T1, T2>).RemoveEvent(action);
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData<T1, T2>)!.UnSubscribe(action);
         }
         /// <summary>
         /// 触发带 2 个参数的事件
         /// </summary>
-        public static void TriggerEvent<T1, T2>(EventCenterType eventType, T1 arg1, T2 arg2)
+        public void Publish<T1, T2>(EventKey<T1, T2> eventKey, T1 arg1, T2 arg2)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData<T1, T2>).TriggerEvent(arg1, arg2);
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData<T1, T2>)!.TriggerEvent(arg1, arg2);
         }
         #endregion
         #region 3个参数事件
         /// <summary>
         /// 注册带 3 个参数的事件监听
         /// </summary>
-        public static void AddEventListener<T1, T2, T3>(EventCenterType eventType, Action<T1, T2, T3> action)
+        public void Subscribe<T1, T2, T3>(EventKey<T1, T2, T3> eventKey, Action<T1, T2, T3> action)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData<T1, T2, T3>).AddEvent(action);
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData<T1, T2, T3>)!.Subscribe(action);
             else
-                eventDic.Add(eventType, new EventData<T1, T2, T3>(action));
+                _eventDic.Add(eventKey, new EventData<T1, T2, T3>(action));
         }
 
         /// <summary>
         /// 注销带 3 个参数的事件监听
         /// </summary>
-        public static void RemoveEventListener<T1, T2, T3>(EventCenterType eventType, Action<T1, T2, T3> action)
+        public void UnSubscribe<T1, T2, T3>(EventKey<T1, T2, T3> eventKey, Action<T1, T2, T3> action)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData<T1, T2, T3>).RemoveEvent(action);
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData<T1, T2, T3>)!.UnSubscribe(action);
         }
         /// <summary>
         /// 触发带 3 个参数的事件
         /// </summary>
-        public static void TriggerEvent<T1, T2, T3>(EventCenterType eventType, T1 arg1, T2 arg2, T3 arg3)
+        public void Publish<T1, T2, T3>(EventKey<T1, T2, T3> eventKey, T1 arg1, T2 arg2, T3 arg3)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
-                (eventData as EventData<T1, T2, T3>).TriggerEventData(arg1, arg2, arg3);
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                (eventData as EventData<T1, T2, T3>)!.Publish(arg1, arg2, arg3);
         }
         #endregion
-
         #region 清理
         /// <summary>
-        /// 清理指定事件的回调列表
+        /// 清理无参事件
         /// </summary>
-        /// <param name="eventType">事件标识</param>
-        public static void Clear(EventCenterType eventType)
+        public void Clear(EventKey eventKey)
         {
-            if (eventDic.TryGetValue(eventType, out IEventData eventData))
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                eventData.Clear();
+        }
+        /// <summary>
+        /// 清理带 1 个参数的事件
+        /// </summary>
+        public void Clear<T>(EventKey<T> eventKey)
+        {
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                eventData.Clear();
+        }
+        /// <summary>
+        /// 清理带 2 个参数的事件
+        /// </summary>
+        public void Clear<T1, T2>(EventKey<T1, T2> eventKey)
+        {
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
+                eventData.Clear();
+        }
+        /// <summary>
+        /// 清理带 3 个参数的事件
+        /// </summary>
+        public void Clear<T1, T2, T3>(EventKey<T1, T2, T3> eventKey)
+        {
+            if (_eventDic.TryGetValue(eventKey, out IEventData eventData))
                 eventData.Clear();
         }
         /// <summary>
         /// 清理所有事件
         /// </summary>
-        public static void ClearAll()
+        public void ClearAll()
         {
-            foreach (IEventData value in eventDic.Values)
+            foreach (IEventData value in _eventDic.Values)
                 value.Clear();
-            eventDic.Clear();
+            _eventDic.Clear();
         }
         #endregion
     }

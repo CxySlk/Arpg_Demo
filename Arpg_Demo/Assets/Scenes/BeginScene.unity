@@ -228,10 +228,6 @@ PrefabInstance:
       propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[9]'
       value: 
       objectReference: {fileID: 834776697}
-    - target: {fileID: 5960518841221827070, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 6939374333579097588, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

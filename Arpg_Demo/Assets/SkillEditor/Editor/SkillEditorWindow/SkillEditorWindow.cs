@@ -1,284 +1,207 @@
+using GAS;
 using UnityEditor;
-using UnityEditor.SceneManagement;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class SkillEditorWindow : EditorWindow
+namespace SkillEditor
 {
-    [SerializeField]
-    private VisualTreeAsset m_VisualTreeAsset = default;
-    private VisualElement root;
-    // 技能编辑器配置
-    private SkillEditorConfig skillEditorConfig = new SkillEditorConfig();
-    #region 初始化
-    [MenuItem("技能编辑器/打开技能编辑器")]
-    public static void ShowExample()
-    {
-        SkillEditorWindow wnd = GetWindow<SkillEditorWindow>();
-        wnd.titleContent = new GUIContent("技能编辑器窗口");
-    }
-
-    public void CreateGUI()
-    {
-        root = rootVisualElement;
-
-        VisualElement labelFromUXML = m_VisualTreeAsset.Instantiate();
-        root.Add(labelFromUXML);
-        // 初始化顶部
-        InitTop();
-        // 初始化时间轴
-        InitTimeShaft();
-        // 初始化Content
-        InitContent();
-    }
-    #endregion
-    #region Top初始化
-    private const string SkillEditorScenePath = "Assets/SkillEditor/Editor/SkillEditorScene.unity";
-    private string oldScenePath;
-    private Transform previewModelRoot;
-    private GameObject previewModel;
-    // 演示预制体Field
-    private ObjectField previewPrefabField;
-    // 演示物体Field
-    private ObjectField previewObjectField;
-    // 当前技能配置文件
-    private SkillClipConfig skillClipConfig;
-
-    // 获取角色展示根物体
-    private void GetPreviewModelRoot()
-    {
-        // 只有演示模型根物体为空及当前场景为编辑器场景才需要操作
-        if (previewModelRoot == null && EditorSceneManager.GetActiveScene().path == SkillEditorScenePath)
-        {
-            // 获取演示模型根物体
-            previewModelRoot = GameObject.Find("PreviewModelRoot")?.transform;
-            // 演示模型根物体为空，创建一个新的
-            if (previewModelRoot == null) previewModelRoot = new GameObject("PreviewModelRoot").transform;
-            // 获取演示模型
-            if (previewModelRoot.childCount > 0) previewModel = previewModelRoot.GetChild(0).gameObject;
-            // 如果角色演示根物体下没有模型，那么就从预制体生成一个
-            if (previewModel == null && previewPrefabField.value is GameObject prefab && prefab != null)
-                previewModel = Instantiate(prefab, Vector3.zero, Quaternion.identity, previewModelRoot);
-            previewObjectField.value = previewModel;
-        }
-    }
-
-    private void InitTop()
-    {
-        ObjectField skillClipConfigField;
-
-        // 打开编辑器场景
-        Button btnSkillEditorScene = root.Q<Button>(nameof(btnSkillEditorScene));
-        btnSkillEditorScene.clicked += () =>
-        {
-            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
-            {
-                oldScenePath = EditorSceneManager.GetActiveScene().path;
-                EditorSceneManager.OpenScene(SkillEditorScenePath);
-            }
-            GetPreviewModelRoot();
-        };
-
-        // 打开之前的旧场景
-        Button btnOldScene = root.Q<Button>(nameof(btnOldScene));
-        btnOldScene.clicked += () =>
-        {
-            if (oldScenePath != null && EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
-                EditorSceneManager.OpenScene(oldScenePath);
-            GetPreviewModelRoot();
-        };
-
-        // 显示配置信息
-        Button btnConfigInfo = root.Q<Button>(nameof(btnConfigInfo));
-        btnConfigInfo.clicked += () =>
-        {
-            if (skillClipConfig != null)
-                Selection.activeObject = skillClipConfig;
-        };
-
-        // 演示角色预制体
-        previewPrefabField = root.Q<ObjectField>(nameof(previewPrefabField));
-        previewPrefabField.objectType = typeof(GameObject);
-        previewPrefabField.allowSceneObjects = false;
-        previewPrefabField.RegisterValueChangedCallback((value) =>
-        {
-            // 预制体相同，没必要接下来的操作
-            if (value.newValue == null || value.newValue == value.previousValue) return;
-            // 删除之前的物体
-            DestroyImmediate(previewObjectField.value);
-            // 创建新的演示物体
-            previewModel = Instantiate(value.newValue as GameObject, Vector3.zero, Quaternion.identity, previewModelRoot);
-            previewObjectField.value = previewModel;
-        });
-
-        // 演示角色物体
-        previewObjectField = root.Q<ObjectField>(nameof(previewObjectField));
-        previewObjectField.objectType = typeof(GameObject);
-        previewObjectField.allowSceneObjects = true;
-        previewObjectField.RegisterValueChangedCallback((value) =>
-        {
-            if (value.newValue == value.previousValue) return;
-            // 删除之前的物体
-            DestroyImmediate(value.previousValue);
-            previewModel = value.newValue as GameObject;
-        });
-
-        // 技能配置文件
-        skillClipConfigField = root.Q<ObjectField>(nameof(skillClipConfigField));
-        skillClipConfigField.objectType = typeof(SkillClipConfig);
-        skillClipConfigField.allowSceneObjects = false;
-        skillClipConfigField.RegisterValueChangedCallback((value) =>
-        {
-            if (value.newValue == value.previousValue) return;
-            skillClipConfig = value.newValue as SkillClipConfig;
-        });
-
-        GetPreviewModelRoot();
-    }
-    #endregion
-    #region 时间轴绘制
-    /// <summary>时间轴容器（对应 UXML 中 name="timeShaft" 的 VisualElement）</summary>
-    private IMGUIContainer timeShaft;
-    /// <summary>当前选中的帧索引（从 0 开始）</summary>
-    private int currentFrameIndex = 0;
-    private int CurrentFrameIndex
-    {
-        get => currentFrameIndex;
-        set
-        {
-            value = Mathf.Max(0, value);
-            if (value == currentFrameIndex) return;
-            currentFrameIndex = value;
-            if (currentFrameIndex > frameCount) FrameCount = currentFrameIndex;
-            if (curFrameField != null) curFrameField.value = value;
-        }
-    }
-    private int frameCount = 30;
-    private int FrameCount
-    {
-        get => frameCount;
-        set
-        {
-            value = Mathf.Max(1, value);
-            if (value == frameCount) return;
-            frameCount = value;
-            if (totalFrameField != null) totalFrameField.value = value;
-            rightListView.style.width = value * skillEditorConfig.frameUnitWidth;
-        }
-    }
-    // 当前帧索引
-    private IntegerField curFrameField;
-    private IntegerField totalFrameField;
     /// <summary>
-    /// 初始化时间轴：
-    /// 1. 绑定 curFrameIndexField / totalFrameIndexField 的值变化回调
-    /// 2. 绑定上一帧/下一帧按钮的点击事件
+    /// 技能编辑器主窗口：组合各模块视图，协调模块间事件。
+    /// 所有运行时状态放在各普通类视图中（CreateGUI 时 new），
+    /// 主窗口仅保留需跨域重载的 [SerializeField] 状态（配置资产、预览模型）。
     /// </summary>
-    private void InitTimeShaft()
+    public class SkillEditorWindow : EditorWindow
     {
-        timeShaft = root.Q<IMGUIContainer>(nameof(timeShaft));
-        timeShaft.onGUIHandler = DrawTimeShaft;
-        timeShaft.RegisterCallback<WheelEvent>(e =>
-        {
-            int delta = -(int)e.delta.y;
-            skillEditorConfig.frameUnitWidth = Mathf.Clamp(skillEditorConfig.frameUnitWidth + delta, SkillEditorConfig.standFrameUnitWidth, SkillEditorConfig.maxFrameWidthLV * SkillEditorConfig.standFrameUnitWidth);
-            timeShaft.MarkDirtyRepaint();
-        });
-        timeShaft.RegisterCallback<MouseDownEvent>(e =>
-        {
-            CurrentFrameIndex = GetFrameIndexByLocalPos(e.localMousePosition.x);
-        });
+        [SerializeField] private VisualTreeAsset m_VisualTreeAsset = default;
 
+        [SerializeField] private AbilityAsset abilityAsset;
+        [SerializeField] private Transform previewModelRoot;
+        [SerializeField] private Transform previewModel;
 
-        // 当前帧索引
-        curFrameField = root.Q<IntegerField>("curFrameIndexField");
-        curFrameField.value = currentFrameIndex;
-        curFrameField.RegisterValueChangedCallback(e =>
-        {
-            if (e.newValue == e.previousValue) return;
-            currentFrameIndex = e.newValue;
-        });
-        // 总帧数
-        totalFrameField = root.Q<IntegerField>("totalFrameIndexField");
-        totalFrameField.value = frameCount;
-        totalFrameField.RegisterValueChangedCallback(e =>
-        {
-            if (e.newValue == currentFrameIndex) return;
-            FrameCount = e.newValue;
-        });
+        private SkillEditorUI ui;
+        private ContentView content;
+        private TimelineView timeline;
+        private PreviewSceneManager preview;
+        private EventListView eventList;
+        private TrackView track;
+        /// <summary>事件列表的显示顺序与行位置(分类 + 起始帧),左右两个列表共用</summary>
+        private MarkEventListLayout markLayout;
+        private PropertyPanelView propertyPanel;
+        private PlaybackController playback;
+        private SceneGizmoView gizmos;
 
-        root.Q<Button>("btnPreviousFrame").clicked += () => CurrentFrameIndex--;
-        root.Q<Button>("btnNextFrame").clicked += () => CurrentFrameIndex++;
-    }
-    // 画时间轴
-    private void DrawTimeShaft()
-    {
-        if (timeShaft == null) return;
+        // 供 PreviewSceneManager 读写（域重载保留的预览模型引用）
+        internal Transform PreviewModelRoot { get => previewModelRoot; set => previewModelRoot = value; }
+        internal Transform PreviewModel { get => previewModel; set => previewModel = value; }
 
-        Rect rect = timeShaft.contentRect;
-        // 计算每隔多少帧画一个长帧
-        int tickStep;
-        tickStep = SkillEditorConfig.maxFrameWidthLV + 1 - (int)(skillEditorConfig.frameUnitWidth / SkillEditorConfig.standFrameUnitWidth);
-        tickStep = Mathf.Max(1, tickStep / 2);
-        // 起始帧数
-        int index = Mathf.CeilToInt((contentOffsetPos / skillEditorConfig.frameUnitWidth));
-        // 起始偏移位置
-        float startOffset = (skillEditorConfig.frameUnitWidth - contentOffsetPos % skillEditorConfig.frameUnitWidth) % skillEditorConfig.frameUnitWidth;
-        Handles.BeginGUI();
-        // 画帧
-        for (float i = startOffset; i < rect.width; i += skillEditorConfig.frameUnitWidth)
+        /// <summary>记住最近使用的技能资产路径,域重载/Play 模式后用于恢复</summary>
+        private const string SkillAssetPathKey = "SkillEditor.LastAbilityAssetPath";
+
+        [MenuItem("技能编辑器/打开技能编辑器")]
+        public static void OpenSkillEditorWindow()
         {
-            // 画长帧
-            if (index % tickStep == 0)
+            SkillEditorWindow wnd = GetWindow<SkillEditorWindow>();
+            wnd.titleContent = new GUIContent("技能编辑器窗口");
+        }
+
+        public void CreateGUI()
+        {
+            rootVisualElement.Add(m_VisualTreeAsset.Instantiate());
+
+            ui = new SkillEditorUI(rootVisualElement);
+            content = new ContentView(ui);
+            SkillEditorConfig config = new();
+            markLayout = new MarkEventListLayout();
+            timeline = new TimelineView(ui, content, config);
+            preview = new PreviewSceneManager(ui, this);
+            eventList = new EventListView(ui, content, timeline, markLayout);
+            track = new TrackView(ui, content, config, timeline, markLayout);
+            propertyPanel = new PropertyPanelView(ui);
+            playback = new PlaybackController(ui, content, timeline, preview);
+            gizmos = new SceneGizmoView(abilityAsset, preview);
+            new LayoutToggle(ui);
+
+            // 资产绑定与初始化
+            timeline.BindAsset(abilityAsset);
+            eventList.BindAsset(abilityAsset);
+            track.BindAsset(abilityAsset);
+            propertyPanel.BindAsset(abilityAsset);
+            playback.BindAsset(abilityAsset);
+
+            BindEvents();
+            BindTopBar();
+
+            timeline.Init();
+            preview.Init();
+            playback.Init();
+            gizmos.Register();
+
+            // 恢复/同步能力配置（域重载/Play 模式后若序列化状态丢失,用 EditorPrefs 记住的路径恢复）
+            if (abilityAsset == null)
             {
-                Handles.DrawLine(new Vector2(i, rect.height), new Vector2(i, rect.height - 10));
-                // 绘制帧数
-                string indexStr = index.ToString();
-                GUI.Label(new Rect(i - indexStr.Length * 4.5f, 0, 35, 20), indexStr);
+                string path = EditorPrefs.GetString(SkillAssetPathKey, "");
+                if (!string.IsNullOrEmpty(path))
+                    abilityAsset = AssetDatabase.LoadAssetAtPath<AbilityAsset>(path);
             }
-            else Handles.DrawLine(new Vector2(i, rect.height), new Vector2(i, rect.height - 5));
-            index++;
+            if (abilityAsset != null)
+            {
+                ui.skillClipConfigField.SetValueWithoutNotify(abilityAsset);
+                ApplyConfig(abilityAsset);
+            }
+
+            // 脚本编译前清理预览物体
+            AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
+            playback.ClearPreviewObjects();
         }
-        // 画选择帧
-        float selectFrameOffset = currentFrameIndex * skillEditorConfig.frameUnitWidth - contentOffsetPos;
-        if (selectFrameOffset >= 0 && selectFrameOffset <= rect.width)
+
+        private void OnDestroy()
         {
-            Handles.DrawLine(new Vector2(selectFrameOffset, 0), new Vector2(selectFrameOffset, 1000));
+            playback.StopPlayback();
+            gizmos.Unregister();
+            AssemblyReloadEvents.beforeAssemblyReload -= OnBeforeAssemblyReload;
+            playback.ClearPreviewObjects();
         }
-        Handles.EndGUI();
-    }
 
+        private void BindEvents()
+        {
+            // 帧变化 → scrub 预览（传当前预览模型物体：动画/粒子/音效都以它为目标）
+            timeline.FrameChanged += (frame, outOfRange) => playback.ScrubTo(frame, outOfRange,
+                preview.PreviewModel != null ? preview.PreviewModel.gameObject : null);
+            // 总帧变化 → 轨道宽度与重建(不重排序)
+            timeline.FrameCountChanged += count =>
+            {
+                ui.rightListView.style.width = count * timeline.FrameUnitWidth;
+                track.Rebuild(false);
+            };
 
-    private int GetFrameIndexByLocalPos(float localPos)
-    {
-        float mousePos = localPos + contentOffsetPos;
-        return Mathf.RoundToInt(mousePos / skillEditorConfig.frameUnitWidth);
-    }
-    #endregion
-    #region Content相关
-    private ScrollView rightScrollView; // MainContent
-    private VisualElement rightListView; // MainContent
+            // 事件选中 → 属性面板 + 右侧高亮 + 场景手柄
+            eventList.SelectionChanged += mark =>
+            {
+                propertyPanel.Rebuild(mark);
+                track.RefreshSelection(mark);
+                gizmos.SelectedMark = mark;      // 场景手柄只绘制选中的事件
+                SceneView.RepaintAll();
+            };
+            // 事件结构变化（增删）→ 全量重建并重新排序
+            eventList.MarkEventsChanged += () =>
+            {
+                eventList.Rebuild(true);
+                track.Rebuild(true);
+                track.RefreshSelection(eventList.SelectedMark);
+                propertyPanel.Rebuild(eventList.SelectedMark);
+                gizmos.SelectedMark = eventList.SelectedMark;   // 新增/删除事件后同步选中
+                SceneView.RepaintAll();
+            };
+            // 事件名变化 → 同步右侧条文案
+            eventList.NameChanged += (mark, name) => track.UpdateBarName(mark, name);
+            // 点击右侧事件条 → 选中（同步左侧高亮 + 属性面板）
+            track.MarkClicked += mark => eventList.Select(mark);
+            // 拖拽改帧落定 → 刷新属性面板（起始帧等同步）
+            track.MarkFrameChanged += mark => propertyPanel.Rebuild(mark);
 
-    private ScrollView leftScrollView; // 左边滑动条
-    private VisualElement leftListView; // MainContent
-    private float contentOffsetPos => Mathf.Abs(rightScrollView.scrollOffset.x);
-    private void InitContent()
-    {
-        rightScrollView = root.Q<ScrollView>(nameof(rightScrollView));
-        rightListView = rightScrollView.Q<VisualElement>(nameof(rightListView));
-        rightScrollView.verticalScroller.valueChanged += e => leftScrollView.verticalScroller.value = e;
+            // 属性面板内容变化（时长等）→ 重建轨道(保持当前行顺序,不重排序)
+            propertyPanel.ContentChanged += () => track.Rebuild(false);
+            // 属性面板改起始帧 → 只挪事件条,不重建不重排(避免排序跳动)
+            propertyPanel.StartFrameChanged += mark => track.RefreshBarPosition(mark);
+            // 粒子 Cue 参数变化 → 刷新预览实例
+            propertyPanel.ParticleTransformChanged += mark => playback.RefreshPreviewParticleTransform(mark);
+            // 场景手柄改粒子位置/旋转 → 刷新预览实例
+            gizmos.ParticleTransformChanged += mark => playback.RefreshPreviewParticleTransform(mark);
+        }
 
-        leftScrollView = root.Q<ScrollView>(nameof(leftScrollView));
-        leftListView = leftScrollView.Q<VisualElement>(nameof(leftListView));
-        leftScrollView.verticalScroller.valueChanged += e => rightScrollView.verticalScroller.value = e;
-    }
-    #endregion
+        private void BindTopBar()
+        {
+            // 技能配置选择
+            ui.skillClipConfigField.objectType = typeof(AbilityAsset);
+            ui.skillClipConfigField.allowSceneObjects = false;
+            ui.skillClipConfigField.RegisterValueChangedCallback(e =>
+            {
+                if (e.newValue == e.previousValue) return;
+                SaveConfig();
+                abilityAsset = e.newValue as AbilityAsset;
+                // 记住最近使用的技能资产,域重载/Play 模式后自动恢复
+                if (abilityAsset != null)
+                    EditorPrefs.SetString(SkillAssetPathKey, AssetDatabase.GetAssetPath(abilityAsset));
+                else
+                    EditorPrefs.DeleteKey(SkillAssetPathKey);
+                ApplyConfig(abilityAsset);
+            });
+        }
 
-    private class SkillEditorConfig
-    {
-        public const float standFrameUnitWidth = 10;
-        public const int maxFrameWidthLV = 10;
-        public float frameUnitWidth = 10;
+        /// <summary>应用技能配置到各视图并重建</summary>
+        private void ApplyConfig(AbilityAsset asset)
+        {
+            playback.StopPlayback();
+            timeline.Reset(asset, asset != null ? asset.totalFrames : 30);
+            eventList.Reset(asset);
+            track.BindAsset(asset);
+            propertyPanel.BindAsset(asset);
+            playback.BindAsset(asset);
+            gizmos.BindAsset(asset);
+            gizmos.SelectedMark = null;   // 切换技能配置后无选中,不绘制场景手柄
+
+            eventList.Rebuild(true);
+            track.Rebuild(true);
+            propertyPanel.Rebuild(eventList.SelectedMark);
+            ui.rightListView.style.width = timeline.FrameCount * timeline.FrameUnitWidth;
+        }
+
+        /// <summary>保存当前配置文件到资产,并刷新界面重新排序(拖拽改帧期间不排序,保存后才排)</summary>
+        internal void SaveConfig()
+        {
+            if (abilityAsset == null) return;
+            if (!timeline.IsAssetLoaded) return;   // 时间轴未从资产加载过,不写回,防止默认帧数覆盖资产真实值
+            abilityAsset.totalFrames = timeline.FrameCount;
+            EditorUtility.SetDirty(abilityAsset);
+            AssetDatabase.SaveAssets();
+
+            // 保存后按"分类 + 起始帧"重新排序刷新界面
+            eventList.Rebuild(true);
+            track.Rebuild(true);
+            track.RefreshSelection(eventList.SelectedMark);
+            Debug.Log($"已保存配置文件：{abilityAsset.name}");
+        }
+
+        private void OnBeforeAssemblyReload() => playback.ClearPreviewObjects();
     }
 }

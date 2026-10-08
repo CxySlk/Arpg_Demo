@@ -1,6 +1,4 @@
-﻿using LLKFrame;
 using Sirenix.OdinInspector;
-using UnityEngine;
 
 namespace GAS
 {
@@ -26,36 +24,20 @@ namespace GAS
     /// 效果叠层配置数据。控制最大叠层数、叠层聚合方式、到期降层方式。
     /// 支持对象池回收。
     /// </summary>
+    [System.Serializable]
     public class GameplayEffectStackData
     {
-        #region 叠层属性
+        #region 叠层设置
 
-        [LabelText("叠层聚合方式"), SerializeField]
-        private EffectStackAggregateType _aggregateType;
-        public EffectStackAggregateType AggregateType => _aggregateType;
+        [LabelText("叠层聚合方式")]
+        public EffectStackAggregateType AggregateType;
 
-        [LabelText("叠层降低方式"), SerializeField]
-        private EffectStackDecreaseType _decreaseType;
-        public EffectStackDecreaseType DecreaseType => _decreaseType;
+        [LabelText("叠层降低方式")]
+        public EffectStackDecreaseType DecreaseType;
 
-        [LabelText("最大叠层数"), SerializeField]
-        private int _maxStackCount = 1;
-        public int MaxStackCount => _maxStackCount;
+        [LabelText("最大叠层数")]
+        public int MaxStackCount = 1;
 
         #endregion
-
-        /// <summary>从对象池获取或新建实例</summary>
-        public static GameplayEffectStackData Create() => PoolSystem.GetOrNewObject<GameplayEffectStackData>();
-
-        /// <summary>初始化叠层配置</summary>
-        public void Init(EffectStackAggregateType aggregateType, EffectStackDecreaseType decreaseType, int maxStackCount)
-        {
-            _aggregateType = aggregateType;
-            _decreaseType = decreaseType;
-            _maxStackCount = maxStackCount;
-        }
-
-        /// <summary>回收到对象池</summary>
-        public void Destroy() => this.PushObject();
     }
 }

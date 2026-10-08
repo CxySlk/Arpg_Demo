@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f548f9c25146386469d0649839b0bca4, type: 3}
+  m_Name: "\u666E\u901A\u653B\u51FB"
+  m_EditorClassIdentifier: Assembly-CSharp::SkillConfig
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _skillBehavior
+      Entry: 7
+      Data: 0|Skill.NormalAttackBehavior, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _costDic
+      Entry: 7
+      Data: 1|System.Collections.Generic.Dictionary`2[[GAS.AttributeType, GAS],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 2|System.Collections.Generic.EnumEqualityComparer`1[[GAS.AttributeType,
+        GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  _skillName: "\u666E\u901A\u653B\u51FB"
+  _skillDescription: "\u5F88\u666E\u901A\u7684\u653B\u51FB"
+  _skillIcon: {fileID: 21300000, guid: 8c878d0bb4ea1194bbf42beaf6ee48dd, type: 3}
+  _cdTime: 0
+  _abilities:
+  - {fileID: 11400000, guid: 61ecadf3180a82c47a964e0f8e646db9, type: 2}
+  - {fileID: 11400000, guid: 7f424005d3cb1cb47a70b81d063b6984, type: 2}
+  - {fileID: 11400000, guid: 5cca107f016aa0c4295b4961f785e923, type: 2}
+  - {fileID: 11400000, guid: c462c846d59a7ed428c344d538e80f50, type: 2}
+  _abilityInterval: 3

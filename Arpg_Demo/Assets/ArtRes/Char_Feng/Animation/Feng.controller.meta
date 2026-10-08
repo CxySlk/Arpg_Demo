@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8a545f381d6b09b4aa9f2ec85c21686a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 20005749
+  packageName: "\u6B66\u4FA0\u98CE\u683C\u89D2\u8272-\u950B"
+  packageVersion: 1.0.0
+  assetPath: Assets/Char_Feng/Animation/Feng.controller
+  uploadId: 0

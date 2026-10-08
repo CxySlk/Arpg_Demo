@@ -24,7 +24,7 @@ MonoBehaviour:
     - Name: uiWindowDataDic
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[LLKFrame.UIWindowData,
-        Assembly-CSharp]], mscorlib
+        LLKFrame]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
@@ -34,19 +34,127 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 1
-      Data: hhhh
+      Data: UI_BeginWindow
     - Name: $v
       Entry: 7
-      Data: 2|LLKFrame.UIWindowData, Assembly-CSharp
+      Data: 2|LLKFrame.UIWindowData, LLKFrame
     - Name: prefabPath
       Entry: 1
-      Data: 123456
+      Data: UI_BeginWindow
+    - Name: isCache
+      Entry: 5
+      Data: false
+    - Name: layer
+      Entry: 3
+      Data: 4
+    - Name: instance
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: UI_ChooseCharacterWindow
+    - Name: $v
+      Entry: 7
+      Data: 3|LLKFrame.UIWindowData, LLKFrame
+    - Name: prefabPath
+      Entry: 1
+      Data: UI_ChooseCharacterWindow
+    - Name: isCache
+      Entry: 5
+      Data: false
+    - Name: layer
+      Entry: 3
+      Data: 0
+    - Name: instance
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: UI_DeathWindow
+    - Name: $v
+      Entry: 7
+      Data: 4|LLKFrame.UIWindowData, LLKFrame
+    - Name: prefabPath
+      Entry: 1
+      Data: UI_DeathWindow
+    - Name: isCache
+      Entry: 5
+      Data: false
+    - Name: layer
+      Entry: 3
+      Data: 4
+    - Name: instance
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: UI_GameWindow
+    - Name: $v
+      Entry: 7
+      Data: 5|LLKFrame.UIWindowData, LLKFrame
+    - Name: prefabPath
+      Entry: 1
+      Data: UI_GameWindow
+    - Name: isCache
+      Entry: 5
+      Data: false
+    - Name: layer
+      Entry: 3
+      Data: 0
+    - Name: instance
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: UI_SkillBagWindow
+    - Name: $v
+      Entry: 7
+      Data: 6|LLKFrame.UIWindowData, LLKFrame
+    - Name: prefabPath
+      Entry: 1
+      Data: UI_SkillBagWindow
     - Name: isCache
       Entry: 5
       Data: true
@@ -67,19 +175,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: 123
+      Data: UI_LoadingSceneWindow
     - Name: $v
       Entry: 7
-      Data: 3|LLKFrame.UIWindowData, Assembly-CSharp
+      Data: 7|LLKFrame.UIWindowData, LLKFrame
     - Name: prefabPath
       Entry: 1
-      Data: 123
+      Data: UI_LoadingSceneWindow
     - Name: isCache
       Entry: 5
       Data: false
     - Name: layer
       Entry: 3
-      Data: 1
+      Data: 4
     - Name: instance
       Entry: 6
       Data: 
@@ -94,73 +202,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: 66
+      Data: UI_SettingWindow
     - Name: $v
       Entry: 7
-      Data: 4|LLKFrame.UIWindowData, Assembly-CSharp
+      Data: 8|LLKFrame.UIWindowData, LLKFrame
     - Name: prefabPath
       Entry: 1
-      Data: 32
+      Data: UI_SettingWindow
     - Name: isCache
       Entry: 5
       Data: true
     - Name: layer
       Entry: 3
-      Data: 2
-    - Name: instance
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: WindowA
-    - Name: $v
-      Entry: 7
-      Data: 5|LLKFrame.UIWindowData, Assembly-CSharp
-    - Name: prefabPath
-      Entry: 1
-      Data: WindowA
-    - Name: isCache
-      Entry: 5
-      Data: true
-    - Name: layer
-      Entry: 3
-      Data: 2
-    - Name: instance
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: WindowB
-    - Name: $v
-      Entry: 7
-      Data: 6|LLKFrame.UIWindowData, Assembly-CSharp
-    - Name: prefabPath
-      Entry: 1
-      Data: WindowB
-    - Name: isCache
-      Entry: 5
-      Data: false
-    - Name: layer
-      Entry: 3
-      Data: 3
+      Data: 4
     - Name: instance
       Entry: 6
       Data: 

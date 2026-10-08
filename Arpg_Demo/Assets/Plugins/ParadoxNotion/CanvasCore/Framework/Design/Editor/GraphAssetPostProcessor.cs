@@ -28,7 +28,7 @@ namespace NodeCanvas.Editor
                 var asset = AssetDatabase.LoadAssetAtPath(path, typeof(UnityEngine.TextAsset));
                 if ( asset is UnityEngine.TextAsset textAsset ) {
                     foreach ( var pair in AssetTracker.trackedAssets ) {
-                        if ( pair.Value is Graph && ( pair.Value as Graph ).externalSerializationFile == asset ) {
+                        if ( pair.Value is Graph && ( pair.Value as Graph ).ExternalSerializationFile == asset ) {
                             ( pair.Value as Graph ).Deserialize(textAsset.text, null, true);
                             break;
                         }

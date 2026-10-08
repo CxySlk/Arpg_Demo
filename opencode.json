@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "unity": {
+      "type": "local",
+      "command": ["C:/Users/45078/AppData/Local/Unity/bin/unity.exe", "mcp", "--project-path", "D:/Others/Projects/Unity/Arpg_Demo/Arpg_Demo"],
+      "enabled": true
+    }
+  }
+}

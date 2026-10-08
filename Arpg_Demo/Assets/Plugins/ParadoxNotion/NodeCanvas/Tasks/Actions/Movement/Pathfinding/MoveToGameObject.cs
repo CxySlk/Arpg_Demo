@@ -23,6 +23,8 @@ namespace NodeCanvas.Tasks.Actions
         protected override void OnExecute() {
             if ( target.value == null ) { EndAction(false); return; }
             agent.speed = speed.value;
+            Debug.Log(agent.speed);
+            Debug.Log("Dis:"+Vector3.Distance(agent.transform.position, target.value.transform.position));
             if ( Vector3.Distance(agent.transform.position, target.value.transform.position) <= agent.stoppingDistance + keepDistance.value ) {
                 EndAction(true);
                 return;
@@ -40,7 +42,7 @@ namespace NodeCanvas.Tasks.Actions
             }
 
             lastRequest = pos;
-
+            
             if ( !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + keepDistance.value ) {
                 EndAction(true);
             }

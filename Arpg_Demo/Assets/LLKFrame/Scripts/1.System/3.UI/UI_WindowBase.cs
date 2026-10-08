@@ -1,4 +1,5 @@
 ﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace LLKFrame
 {
@@ -11,28 +12,43 @@ namespace LLKFrame
         /// <summary>当前所在层级索引</summary>
         public int layer { get; private set; }
 
+        public bool IsShow { get; protected set; } = false;
+
         /// <summary>窗口初始化，`首次实例化时由 UISystem.Show 调用</summary>
-        public virtual void Init() { }
+        public virtual void Init()
+        {
+        }
 
         /// <summary>显示窗口</summary>
         public virtual void Show(int layer)
         {
             this.layer = layer;
             gameObject.SetActive(true);
+            IsShow = true;
             OnShow();
         }
 
-        public virtual void OnShow() { }
+        public virtual void OnShow()
+        {
+        }
 
 
         /// <summary>关闭窗口</summary>
         public virtual void Close()
         {
+            IsShow = false;
             OnClose();
             gameObject.SetActive(false);
         }
 
         /// <summary>窗口关闭时调用，子类在此清理资源（取消事件订阅等）</summary>
-        protected virtual void OnClose() { }
+        protected virtual void OnClose()
+        {
+        }
+
+        protected virtual void OnDestroy()
+        {
+            ResSystem.Release<GameObject>(name);
+        }
     }
 }

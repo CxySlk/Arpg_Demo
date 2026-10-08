@@ -1,6 +1,8 @@
-﻿using LLKFrame;
 using System.Collections.Generic;
+using LLKFrame;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GAS
 {
@@ -11,12 +13,24 @@ namespace GAS
     [CreateAssetMenu(fileName = nameof(AbilitySystemComponentPreset), menuName = "GAS/ASCPreset")]
     public class AbilitySystemComponentPreset : ConfigBase
     {
-        [SerializeField]
-        private HashSet<Attribute> _attributes;
-        [SerializeField]
-        private GameplayTagSet _tagSet;
+        [FoldoutGroup("属性配置", expanded: true)]
+        [BoxGroup("属性配置/属性合集")]
+        [GUIColor(0.25f, 0.56f, 1f)]
+        [LabelText("属性合集"), SerializeField]
+        [DictionaryDrawerSettings(KeyLabel = "属性类型", ValueLabel = "属性初始值")]
+        private Dictionary<AttributeType, Attribute> _attrDic = new();
+        
+        [FoldoutGroup("属性配置")]
+        [BoxGroup("属性配置/固定标签集")]
+        [GUIColor(0.30f, 0.80f, 0.45f)]
+        [LabelText("固定标签集"), SerializeField]
+        private GameplayTagSet _tagSet = new();
 
-        public HashSet<Attribute> Attributes => _attributes;
+        [FoldoutGroup("属性配置")] [BoxGroup("属性配置/效果配置")] [GUIColor(1f, 0.62f, 0.20f)] [SerializeField, LabelText("效果配置")]
+        private List<GameplayEffect> _effects = new();
+
+        public Dictionary<AttributeType, Attribute> AttrDic => _attrDic;
         public GameplayTagSet TagSet => _tagSet;
+        public List<GameplayEffect> Effects => _effects;
     }
 }

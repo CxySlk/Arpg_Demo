@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aecd7b748b8bc114a95d0136962a3031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChooseCharacterSceneManager
+  _modelRT: {fileID: 8400000, guid: aa7b8a7cb67384a448b0063ef4f2bfbb, type: 2}
 --- !u!4 &804312053
 Transform:
   m_ObjectHideFlags: 0

@@ -18,6 +18,10 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 7400000, guid: 5af80802066d5af40b46da726ee8970d, type: 2}
     - {fileID: 7400000, guid: 074b8be68c69c6e4494e1026700141ca, type: 2}
+    - {fileID: 7400000, guid: 3e6b6faac061de748837a0fdafca50d7, type: 2}
+    - {fileID: 7400000, guid: c8148f4008d5874438a3e6c2936b3cc7, type: 2}
+    - {fileID: 7400000, guid: 86c77d80f7c6ec04e90f0966d25e9b11, type: 2}
+    - {fileID: 7400000, guid: 219f15e0a9c5b3741a76867f5d120f04, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -25,8 +29,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: standardAnimationDic
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.AnimationClip,
-        UnityEngine.AnimationModule]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Animancer.ClipTransition,
+        Kybernetik.Animancer]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
@@ -36,7 +40,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 6
     - Name: 
       Entry: 7
       Data: 
@@ -44,8 +48,26 @@ MonoBehaviour:
       Entry: 1
       Data: Idle
     - Name: $v
+      Entry: 7
+      Data: 2|Animancer.ClipTransition, Kybernetik.Animancer
+    - Name: _FadeDuration
+      Entry: 4
+      Data: 0.25
+    - Name: _Speed
+      Entry: 4
+      Data: 1
+    - Name: _Events
+      Entry: 6
+      Data: 
+    - Name: _Clip
       Entry: 10
       Data: 0
+    - Name: _NormalizedStartTime
+      Entry: 4
+      Data: NaN
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -54,10 +76,148 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Run
+      Data: Move
     - Name: $v
+      Entry: 7
+      Data: 3|Animancer.ClipTransition, Kybernetik.Animancer
+    - Name: _FadeDuration
+      Entry: 4
+      Data: 0.25
+    - Name: _Speed
+      Entry: 4
+      Data: 1
+    - Name: _Events
+      Entry: 6
+      Data: 
+    - Name: _Clip
       Entry: 10
       Data: 1
+    - Name: _NormalizedStartTime
+      Entry: 4
+      Data: NaN
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Death
+    - Name: $v
+      Entry: 7
+      Data: 4|Animancer.ClipTransition, Kybernetik.Animancer
+    - Name: _FadeDuration
+      Entry: 4
+      Data: 0.25
+    - Name: _Speed
+      Entry: 4
+      Data: 1
+    - Name: _Events
+      Entry: 6
+      Data: 
+    - Name: _Clip
+      Entry: 10
+      Data: 2
+    - Name: _NormalizedStartTime
+      Entry: 4
+      Data: NaN
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Jump_Start
+    - Name: $v
+      Entry: 7
+      Data: 5|Animancer.ClipTransition, Kybernetik.Animancer
+    - Name: _FadeDuration
+      Entry: 4
+      Data: 0.25
+    - Name: _Speed
+      Entry: 4
+      Data: 1
+    - Name: _Events
+      Entry: 6
+      Data: 
+    - Name: _Clip
+      Entry: 10
+      Data: 3
+    - Name: _NormalizedStartTime
+      Entry: 4
+      Data: NaN
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Jump_Loop
+    - Name: $v
+      Entry: 7
+      Data: 6|Animancer.ClipTransition, Kybernetik.Animancer
+    - Name: _FadeDuration
+      Entry: 4
+      Data: 0.25
+    - Name: _Speed
+      Entry: 4
+      Data: 1
+    - Name: _Events
+      Entry: 6
+      Data: 
+    - Name: _Clip
+      Entry: 10
+      Data: 4
+    - Name: _NormalizedStartTime
+      Entry: 4
+      Data: NaN
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Jump_End
+    - Name: $v
+      Entry: 7
+      Data: 7|Animancer.ClipTransition, Kybernetik.Animancer
+    - Name: _FadeDuration
+      Entry: 4
+      Data: 0.25
+    - Name: _Speed
+      Entry: 4
+      Data: 1
+    - Name: _Events
+      Entry: 6
+      Data: 
+    - Name: _Clip
+      Entry: 10
+      Data: 5
+    - Name: _NormalizedStartTime
+      Entry: 4
+      Data: NaN
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -67,10 +227,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  playerName: "\u8587\u62C9"
-  description: "\u5E1D\u56FD\u7814\u7A76\u9662\u7684\u524D\u9996\u5E2D\u70BC\u91D1\u672F\u58EB\uFF0C\u56E0\u5B9E\u9A8C\u5931\u63A7\u88AB\u9010\u51FA\u5B66\u9662\u3002\u5979\u5C06\u7981\u5FCC\u77E5\u8BC6\u523B\u5728\u53F3\u81C2\u7684\u4E49\u80A2\u4E0A\uFF0C\u80FD\u968F\u624B\u5C06\u94A2\u94C1\u7194\u94F8\u6210\u6B66\u5668\u3002\u8868\u9762\u51B7\u6DE1\u523B\u8584\uFF0C\u5B9E\u5219\u5BF9\u88AB\u5979\u7275\u8FDE\u7684\u52A9\u624B\u6000\u6709\u6DF1\u6DF1\u7684\u6127\u759A\u3002"
-  prefab: {fileID: 5884948049787057584, guid: d1d9e5126444ffa418ae7ce7ab35e532, type: 3}
-  attackValue: 45
-  defendValue: 10
-  hpValue: 85
-  mpValue: 90
+  prefabPath: 
+  ascPreset: {fileID: 0}
+  skillConfigList: []
+  defaultLearnSkills: 
+  _playerName: "\u94A2\u5F39"
+  _description: "\u4E00\u4E2A\u86CB\u75BC\u7684\u7537\u4EBA"
+  _viewPrefabPath: 

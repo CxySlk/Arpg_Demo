@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -58,7 +58,7 @@ namespace LLKFrame
             {
                 if (!eventDic.TryGetValue((int)eventType, out ILLKEventData eventData))
                 {
-                    eventData = PoolSystem.GetOrNewObject<LLKEventData<T>>();
+                    eventData = PoolSystem.Global.GetOrNewObject<LLKEventData<T>>();
                     eventDic.Add((int)eventType, eventData);
                 }
                 (eventData as LLKEventData<T>).AddEventListener(action);
@@ -91,7 +91,7 @@ namespace LLKFrame
             }
         }
         #endregion
-        private LLKEventDatas eventDatas = PoolSystem.GetOrNewObject<LLKEventDatas>();
+        private LLKEventDatas eventDatas = PoolSystem.Global.GetOrNewObject<LLKEventDatas>();
 
         #region 鼠标相关（参数为PointerEventData）
         /// 拖拽相关

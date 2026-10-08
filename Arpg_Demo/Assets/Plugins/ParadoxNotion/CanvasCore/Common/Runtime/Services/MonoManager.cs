@@ -88,17 +88,11 @@ namespace ParadoxNotion.Services
             onApplicationPause?.Invoke(isPause);
         }
 
-        protected void Update() {
-            onUpdate?.Invoke();
-        }
+        protected void Update() => onUpdate?.Invoke();
 
-        protected void LateUpdate() {
-            onLateUpdate?.Invoke();
-        }
+        protected void LateUpdate() => onLateUpdate?.Invoke();
 
-        protected void FixedUpdate() {
-            onFixedUpdate?.Invoke();
-        }
+        protected void FixedUpdate() => onFixedUpdate?.Invoke();
 
 #if UNITY_EDITOR
         protected void OnGUI() {

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1ad4cc1573d97d041b9d124008585388
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 20005749
+  packageName: "\u6B66\u4FA0\u98CE\u683C\u89D2\u8272-\u950B"
+  packageVersion: 1.0.0
+  assetPath: Assets/Char_Feng/Animation/Roll.anim
+  uploadId: 0

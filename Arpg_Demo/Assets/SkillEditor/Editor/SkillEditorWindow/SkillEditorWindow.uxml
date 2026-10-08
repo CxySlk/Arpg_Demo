@@ -3,13 +3,14 @@
     <ui:VisualElement name="Top" style="flex-grow: 0; height: 50px; flex-shrink: 1; flex-direction: row; border-bottom-width: 0.5px; border-left-color: rgb(77, 77, 77); border-right-color: rgb(77, 77, 77); border-top-color: rgb(77, 77, 77); border-bottom-color: rgb(77, 77, 77);">
         <ui:Button text="技能编辑场景" name="btnSkillEditorScene" style="height: auto; width: 100px; font-size: 15px; -unity-font-style: bold; -unity-text-auto-size: none;"/>
         <ui:Button text="打开旧场景" name="btnOldScene" style="font-size: 15px; width: 100px; -unity-font-style: bold; -unity-text-auto-size: none;"/>
-        <ui:Button text="配置信息" name="btnConfigInfo" style="font-size: 15px; width: 100px; -unity-font-style: bold; -unity-text-auto-size: none;"/>
+        <ui:Button text="保存配置" name="btnConfigInfo" style="font-size: 15px; width: 100px; -unity-font-style: bold; -unity-text-auto-size: none;"/>
         <uie:ObjectField label="演示角色预制体" name="previewPrefabField" enabled="true" style="flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-center; -unity-font-style: bold; font-size: 15px; height: auto; align-items: stretch; align-self: center;"/>
         <uie:ObjectField label="演示角色物体" name="previewObjectField" style="flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-center; -unity-font-style: bold; font-size: 15px; flex-wrap: wrap; align-self: center;"/>
         <uie:ObjectField label="技能配置" name="skillClipConfigField" style="flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-center; -unity-font-style: bold; font-size: 15px; align-self: center;"/>
     </ui:VisualElement>
     <ui:VisualElement name="Content" style="flex-grow: 1; white-space: normal; flex-direction: row;">
-        <ui:VisualElement name="ContentLeft" style="flex-grow: 0; flex-shrink: 0; width: 222px; border-right-width: 0.5px; border-left-color: rgb(77, 77, 77); border-right-color: rgb(77, 77, 77); border-top-color: rgb(77, 77, 77); border-bottom-color: rgb(77, 77, 77);">
+        <ui:Button text="◀" name="btnToggleLeft" style="width: 16px; flex-shrink: 0; font-size: 12px; -unity-font-style: bold; -unity-text-align: middle-center; height: 100%; padding: 0;"/>
+        <ui:VisualElement name="ContentLeft" style="flex-grow: 0; flex-shrink: 0; width: 222px; min-width: 222px; max-width: 222px; border-right-width: 0.5px; border-left-color: rgb(77, 77, 77); border-right-color: rgb(77, 77, 77); border-top-color: rgb(77, 77, 77); border-bottom-color: rgb(77, 77, 77);">
             <ui:VisualElement name="Menu" style="flex-grow: 0; flex-direction: row; height: 35px; flex-shrink: 0; -unity-text-align: upper-left; flex-wrap: nowrap; justify-content: space-around; width: auto; align-content: flex-start; border-left-color: rgb(77, 77, 77); border-right-color: rgb(77, 77, 77); border-top-color: rgb(77, 77, 77); border-bottom-color: rgb(77, 77, 77); border-bottom-width: 0.5px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
                 <ui:Button text="&lt;" name="btnPreviousFrame" style="width: 30px; font-size: 20px; -unity-font-style: bold; flex-direction: column; flex-wrap: nowrap; -unity-text-align: middle-center; height: 30px;"/>
                 <ui:Button text="▶" name="btnPlay" style="width: 30px; font-size: 20px; -unity-font-style: bold; -unity-text-align: lower-center; height: 30px;"/>
@@ -18,15 +19,19 @@
                 <ui:Label text="/" style="-unity-text-align: middle-center; font-size: 15px; -unity-font-style: bold;"/>
                 <ui:IntegerField label="" value="999" name="totalFrameIndexField" style="width: 30px; height: 30px;"/>
             </ui:VisualElement>
-            <ui:ScrollView name="leftScrollView" vertical-scroller-visibility="Hidden" horizontal-scroller-visibility="Hidden" style="flex-grow: 1; flex-shrink: 1; height: auto; padding-bottom: 13px;">
-                <ui:VisualElement name="leftListView" style="flex-grow: 0; height: auto; flex-shrink: 0;"/>
+            <ui:ScrollView name="leftScrollView" vertical-scroller-visibility="AutoVisible" horizontal-scroller-visibility="Hidden" style="flex-grow: 1; flex-shrink: 1; height: auto; padding-bottom: 13px;">
+                <ui:VisualElement name="leftListView" style="flex-grow: 0; height: auto; flex-shrink: 0; align-items: stretch;"/>
             </ui:ScrollView>
         </ui:VisualElement>
-        <ui:VisualElement name="ContentRight" style="flex-grow: 1;">
+        <ui:VisualElement name="ContentRight" style="flex-grow: 1; flex-shrink: 1;">
             <ui:IMGUIContainer name="timeShaft" style="flex-shrink: 0; height: 35px; border-bottom-width: 0.5px; border-left-color: rgb(77, 77, 77); border-right-color: rgb(77, 77, 77); border-top-color: rgb(77, 77, 77); border-bottom-color: rgb(77, 77, 77);"/>
-            <ui:ScrollView name="rightScrollView" mode="VerticalAndHorizontal" horizontal-scroller-visibility="AlwaysVisible" vertical-scroller-visibility="AlwaysVisible" touch-scroll-type="Clamped" style="flex-shrink: 0; flex-grow: 1; height: auto;">
+            <ui:ScrollView name="rightScrollView" mode="VerticalAndHorizontal" horizontal-scroller-visibility="AlwaysVisible" vertical-scroller-visibility="AlwaysVisible" touch-scroll-type="Clamped" style="flex-shrink: 1; flex-grow: 1; height: auto;">
                 <ui:VisualElement name="rightListView" style="flex-grow: 0; height: auto; width: 350px; flex-shrink: 0; align-items: stretch;"/>
             </ui:ScrollView>
         </ui:VisualElement>
+        <ui:VisualElement name="ContentRightMost" style="flex-grow: 0; flex-shrink: 0; width: 360px; min-width: 360px; max-width: 360px; border-left-width: 0.5px; border-left-color: rgb(77, 77, 77);">
+            <ui:Label text="事件详情" style="height: 30px; -unity-font-style: bold; font-size: 15px; padding-left: 8px; padding-top: 6px; border-bottom-width: 0.5px; border-bottom-color: rgb(77, 77, 77);"/>
+        </ui:VisualElement>
+        <ui:Button text="▶" name="btnToggleRight" style="width: 16px; flex-shrink: 0; font-size: 12px; -unity-font-style: bold; -unity-text-align: middle-center; height: 100%; padding: 0;"/>
     </ui:VisualElement>
 </ui:UXML>

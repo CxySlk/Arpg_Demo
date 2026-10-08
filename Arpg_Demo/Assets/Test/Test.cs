@@ -1,16 +1,25 @@
-using GAS;
-using Sirenix.OdinInspector;
+using System;
+using Animancer;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Test : SerializedMonoBehaviour
+public class Test : MonoBehaviour
 {
-    public Transform A;
-    public Transform B;
-
-    [Button("计算角度")]
-    private void ApplyEffect()
+    private void Start()
     {
-        Debug.Log(GAS.GASTool.CalculateHorizontalAngle(A, B));
+        // animancer = GetComponent<AnimancerComponent>();
+        // animancer.Play(clip);
+    }
+
+    // private void Update()
+    // {
+    //     Vector2MixerState state = animancer.Play(clip, .25f) as Vector2MixerState;
+    //     // 设置参数x、y
+    //     state.ParameterX = x;
+    //     state.ParameterY = y;
+    // }
+
+    private void OnTriggerStay(Collider other)
+    {
+        Debug.Log(other.name);
     }
 }

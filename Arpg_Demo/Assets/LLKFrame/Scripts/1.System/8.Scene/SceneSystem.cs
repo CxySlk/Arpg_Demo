@@ -7,6 +7,8 @@ namespace LLKFrame
 {
     public static class SceneSystem
     {
+        public static readonly EventKey<int> LoadProgressEventKey = "LOAD_SCENE_PROGRESS";
+
         public static void LoadScene(string sceneName, Action action = null)
         {
             SceneManager.LoadScene(sceneName);
@@ -28,7 +30,7 @@ namespace LLKFrame
             {
                 while (curProgress < (int)(ao.progress * 100))
                 {
-                    EventCenter.TriggerEvent(EventCenterType.LOAD_SCENE_PROGRESS, curProgress);
+                    EventCenter.Global.Publish(LoadProgressEventKey, curProgress);
                     curProgress++;
                     yield return null;
                 }
@@ -37,7 +39,7 @@ namespace LLKFrame
 
             while (curProgress < 100)
             {
-                EventCenter.TriggerEvent(EventCenterType.LOAD_SCENE_PROGRESS, curProgress);
+                EventCenter.Global.Publish(LoadProgressEventKey, curProgress);
                 curProgress++;
                 yield return null;
             }

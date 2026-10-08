@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b87e234c93bd2d5409bbcc35065e2463
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 20005749
+  packageName: "\u6B66\u4FA0\u98CE\u683C\u89D2\u8272-\u950B"
+  packageVersion: 1.0.0
+  assetPath: Assets/Char_Feng/Animation/PickUp.anim
+  uploadId: 0

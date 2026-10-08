@@ -376,7 +376,7 @@ namespace NodeCanvas.Framework
         ///<summary>Same as .value. Used for binding.</summary>
         public T GetValue() { return value; }
         ///<summary>Same as .value. Used for binding.</summary>
-        public void SetValue(T value) { this.value = value; }
+        public void  SetValue(T value) { this.value = value; }
 
         protected override void SetDefaultValue() { _value = default(T); }
 

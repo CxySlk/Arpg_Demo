@@ -7,7 +7,6 @@ namespace LLKFrame
 {
     public static class LLKFrameEditor
     {
-        private static readonly string EventTypePath = $"Assets/LLKFrame/Scripts/1.System/1.Event/{nameof(EventCenterType)}.cs";
         #region SaveSystem相关
 #if UNITY_EDITOR
         [MenuItem("LLKFrame/打开存档路径")]
@@ -33,17 +32,6 @@ namespace LLKFrame
             }
         }
 #endif
-        #endregion
-        #region 事件中心相关
-        [MenuItem("LLKFrame/打开事件中心的事件枚举类")]
-        private static void OpenEventCenterType()
-        {
-            var asset = AssetDatabase.LoadAssetAtPath<Object>(EventTypePath);
-            if (asset == null)
-                LogSystem.LogError("打开事件中心的事件类型枚举失败，路径：", LogSystem.ErrorColor(EventTypePath));
-            else
-                AssetDatabase.OpenAsset(asset);
-        }
         #endregion
     }
 }

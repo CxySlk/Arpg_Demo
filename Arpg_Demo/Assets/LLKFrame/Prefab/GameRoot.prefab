@@ -79,6 +79,83 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!1 &1510380503037705847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531306290854469075}
+  - component: {fileID: 1592468981105429995}
+  - component: {fileID: 2673018206228629392}
+  m_Layer: 0
+  m_Name: DragLayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &531306290854469075
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510380503037705847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3041548752449251123}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &1592468981105429995
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510380503037705847}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &2673018206228629392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510380503037705847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 119
 --- !u!1 &1526620375512615769
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8409508920357061288}
   - component: {fileID: 6151454343234036777}
+  - component: {fileID: 4437869485081458680}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -348,6 +426,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5a37baf9cfcb34c9614530f73035ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ManagerController
+--- !u!114 &4437869485081458680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021707785950764437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b25fe74b210414bbd5bc747098485c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatingTextManager
+  _itemPrefab: {fileID: 0}
+  _headOffset: {x: 0, y: 1.6, z: 0}
+  _spreadRange: {x: 0.35, y: 0.25}
 --- !u!1 &2651357837920860480
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +478,7 @@ RectTransform:
   - {fileID: 662559595068709324}
   - {fileID: 5912811725838906331}
   - {fileID: 8579223925940607269}
+  - {fileID: 531306290854469075}
   m_Father: {fileID: 6939374333579097588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -488,13 +582,13 @@ MonoBehaviour:
     SerializationNodes:
     - Name: uiLayers
       Entry: 7
-      Data: 0|LLKFrame.UISystem+UI_Layer[], Assembly-CSharp
+      Data: 0|LLKFrame.UISystem+UI_Layer[], LLKFrame
     - Name: 
       Entry: 12
       Data: 5
     - Name: 
       Entry: 7
-      Data: 1|LLKFrame.UISystem+UI_Layer, Assembly-CSharp
+      Data: 1|LLKFrame.UISystem+UI_Layer, LLKFrame
     - Name: layerRoot
       Entry: 10
       Data: 0
@@ -509,7 +603,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 2|LLKFrame.UISystem+UI_Layer, Assembly-CSharp
+      Data: 2|LLKFrame.UISystem+UI_Layer, LLKFrame
     - Name: layerRoot
       Entry: 10
       Data: 2
@@ -524,7 +618,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 3|LLKFrame.UISystem+UI_Layer, Assembly-CSharp
+      Data: 3|LLKFrame.UISystem+UI_Layer, LLKFrame
     - Name: layerRoot
       Entry: 10
       Data: 4
@@ -539,7 +633,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 4|LLKFrame.UISystem+UI_Layer, Assembly-CSharp
+      Data: 4|LLKFrame.UISystem+UI_Layer, LLKFrame
     - Name: layerRoot
       Entry: 10
       Data: 6
@@ -554,7 +648,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 5|LLKFrame.UISystem+UI_Layer, Assembly-CSharp
+      Data: 5|LLKFrame.UISystem+UI_Layer, LLKFrame
     - Name: layerRoot
       Entry: 10
       Data: 8
@@ -573,6 +667,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  _dragLayer: {fileID: 531306290854469075}
 --- !u!1 &3048194209904593663
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +755,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -969,7 +1064,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1080,13 +1175,13 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  audioSystemRoot: {fileID: 5352097501531506739}
-  bgMusicSource: {fileID: 7334095200092986993}
-  effMusicPrefab: {fileID: 3970462597609507552, guid: 205dca2ecd1cf5543a89b7abbf214a60, type: 3}
-  bgMusicVolume: 0.5
-  effMusicVolume: 0.5
-  globalVolume: 1
-  globalAudioConfig: {fileID: 11400000, guid: becdb6a2b7f16094e9f0e59d9d65e494, type: 2}
+  _audioSystemRoot: {fileID: 5352097501531506739}
+  _bgMusicSource: {fileID: 7334095200092986993}
+  _effMusicPrefab: {fileID: 3970462597609507552, guid: 205dca2ecd1cf5543a89b7abbf214a60, type: 3}
+  _bgMusicVolume: 0.5
+  _effMusicVolume: 0.5
+  _globalVolume: 1
+  _globalAudioConfig: {fileID: 11400000, guid: becdb6a2b7f16094e9f0e59d9d65e494, type: 2}
 --- !u!82 &7334095200092986993
 AudioSource:
   m_ObjectHideFlags: 0

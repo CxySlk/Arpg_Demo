@@ -1,5 +1,7 @@
-﻿using Sirenix.OdinInspector;
+using Sirenix.OdinInspector;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace LLKFrame
@@ -24,13 +26,14 @@ namespace LLKFrame
                 return;
             }
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            // 域重载后 DDOL 场景中的对象会重新 Awake:若已处于 DontDestroyOnLoad 场景,
+            // 再调用 DontDestroyOnLoad 会触发 Unity 场景断言(m_GameObjects.find...),需跳过。
+            if (gameObject.scene.name != "DontDestroyOnLoad")
+                DontDestroyOnLoad(gameObject);
             InitSystems();
         }
         private static void InitSystems()
         {
-            PoolSystem.Init();
-            EventCenter.Init();
             SaveSystem.Init();
             AudioSystem.Init();
             LocalizationSystem.Init();

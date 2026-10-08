@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +12,7 @@ namespace LLKFrame
     public class UISystem : SerializedMonoBehaviour
     {
         #region UI_Layer 内部类
+
         /// <summary>
         /// 单个 UI 层级，管理该层级内窗口的排序、显隐与遮罩
         /// </summary>
@@ -19,7 +20,9 @@ namespace LLKFrame
         {
             [LabelText("层级根节点"), SerializeField] private Transform layerRoot;
             [LabelText("遮罩"), SerializeField] private Image layerMask;
-            [LabelText("是否开启遮罩"), SerializeField, OnValueChanged("IsMaskValueChanged")] private bool isMask;
+
+            [LabelText("是否开启遮罩"), SerializeField, OnValueChanged("IsMaskValueChanged")]
+            private bool isMask;
 
             /// <summary>遮罩开关：开启时拦截下层鼠标事件</summary>
             public bool IsMask
@@ -35,6 +38,7 @@ namespace LLKFrame
             private void IsMaskValueChanged() => layerMask.raycastTarget = isMask;
 #endif
             private int count;
+
             /// <summary>当前层级内的窗口数量</summary>
             public int Count
             {
@@ -60,7 +64,6 @@ namespace LLKFrame
             /// <summary>关闭窗口（失活保留，不销毁）</summary>
             public void CloseWindow(Transform window)
             {
-                window.gameObject.SetActive(false);
                 window.SetAsFirstSibling();
                 layerMask.transform.SetSiblingIndex(layerRoot.childCount > 2 ? layerRoot.childCount - 2 : 0);
                 Count--;
@@ -69,22 +72,32 @@ namespace LLKFrame
             /// <summary>销毁窗口</summary>
             public void DestroyWindow(Transform window)
             {
-                Object.Destroy(window.gameObject);
+                Destroy(window.gameObject);
                 Count--;
                 layerMask.transform.SetSiblingIndex(layerRoot.childCount > 2 ? layerRoot.childCount - 2 : 0);
             }
         }
+
         #endregion
+
         #region 变量定义
+
         [SerializeField] private UI_Layer[] uiLayers;
         private static UISystem instance;
+
+        /// <summary>UISystem 单例实例（供外部访问拖拽层等）</summary>
+        public static UISystem Instance => instance;
 
         /// <summary>窗口配置字典，来自 GameRoot.FrameSetting</summary>
         private static Dictionary<string, UIWindowData> UiWindowDataDic => GameRoot.FrameSetting.uiWindowDataDic;
 
         /// <summary>已实例化的窗口缓存字典</summary>
         private static Dictionary<string, UI_WindowBase> uiWindowDic = new Dictionary<string, UI_WindowBase>();
+
         #endregion
+
+        [LabelText("拖拽层"), SerializeField] private Transform _dragLayer;
+        public Transform DragLayer => _dragLayer;
 
         public static void Init() => instance = GameRoot.Instance.GetComponentInChildren<UISystem>();
 
@@ -113,6 +126,7 @@ namespace LLKFrame
                     instance.uiLayers[window.layer].CloseWindow(window.transform);
                     instance.uiLayers[layer].ShowWindow(window.transform);
                 }
+
                 window.Show(layer);
             }
             else
@@ -126,6 +140,7 @@ namespace LLKFrame
                 window.Show(layer);
                 uiWindowDic.Add(keyName, window);
             }
+
             // 将窗口显示到对应的层级上
             instance.uiLayers[layer].ShowWindow(window.transform);
             return window;
@@ -168,9 +183,6 @@ namespace LLKFrame
             // 无法缓存
             else
             {
-                // 释放Addressables资源
-                ResSystem.Release<GameObject>(windowData.prefabPath);
-
                 windowData.instance = null;
                 instance.uiLayers[window.layer].DestroyWindow(window.transform);
                 uiWindowDic.Remove(keyName);
@@ -181,6 +193,16 @@ namespace LLKFrame
         public static void Close<TWindow>() where TWindow : UI_WindowBase
         {
             Close(typeof(TWindow).Name);
+        }
+
+        public static TWindow GetWindow<TWindow>(string keyName) where TWindow : UI_WindowBase
+        {
+            uiWindowDic.TryGetValue(keyName, out UI_WindowBase window);
+            return window as TWindow;
+        }        
+        public static TWindow GetWindow<TWindow>() where TWindow : UI_WindowBase
+        {
+            return  GetWindow<TWindow>(typeof(TWindow).Name);
         }
     }
 }

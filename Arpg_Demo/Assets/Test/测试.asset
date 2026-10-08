@@ -1,0 +1,253 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527fb754ada487c408ab0659eb9b4b69, type: 3}
+  m_Name: "\u6D4B\u8BD5"
+  m_EditorClassIdentifier: GAS::GAS.GameplayDurationalEffectAssetBase
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 3348509072658391607, guid: 70d717c2027b2bd4e835a2e3b8f3b50f, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: requiredTags
+      Entry: 7
+      Data: 0|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 1|System.Collections.Generic.HashSet`1[[GAS.GameplayTag, GAS]], System.Core
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 2|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 3|System.Collections.Generic.HashSet`1[[GAS.GameplayTag, GAS]], System.Core
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: GrantedTags
+      Entry: 7
+      Data: 4|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 5|System.Collections.Generic.HashSet`1[[GAS.GameplayTag, GAS]], System.Core
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: RemovedTags
+      Entry: 7
+      Data: 6|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 7|System.Collections.Generic.HashSet`1[[GAS.GameplayTag, GAS]], System.Core
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: effectTag
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u4E0B\u843D\u901F\u5EA6"
+    - Name: _hashCode
+      Entry: 3
+      Data: 2022248913
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 8|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: -1623813697
+    - Name: 
+      Entry: 3
+      Data: 862411348
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Attr.Base.\u4E0B\u843D\u901F\u5EA6"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: effectBehavior
+      Entry: 7
+      Data: "9|\u6D4B\u8BD5Effect, Assembly-CSharp"
+    - Name: t
+      Entry: 3
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: cueList
+      Entry: 7
+      Data: 10|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 11|GAS.GameplayCueDurationalParticle, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 12|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 13|System.Collections.Generic.HashSet`1[[GAS.GameplayTag, GAS]], System.Core
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 14|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 15|System.Collections.Generic.HashSet`1[[GAS.GameplayTag, GAS]], System.Core
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ControlByOwner
+      Entry: 5
+      Data: true
+    - Name: DurationFrame
+      Entry: 3
+      Data: 300
+    - Name: ParticlePrefab
+      Entry: 10
+      Data: 0
+    - Name: Position
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Rotation
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: FollowTarget
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: stackData
+      Entry: 7
+      Data: 16|GAS.GameplayEffectStackData, GAS
+    - Name: AggregateType
+      Entry: 3
+      Data: 0
+    - Name: DecreaseType
+      Entry: 3
+      Data: 0
+    - Name: MaxStackCount
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+  isInfinite: 0
+  durationSeconds: 1
+  periodicSeconds: 0
+  beginApplyOnce: 1

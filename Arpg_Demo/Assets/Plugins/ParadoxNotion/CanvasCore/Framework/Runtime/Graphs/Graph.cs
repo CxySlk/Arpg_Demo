@@ -39,7 +39,7 @@ namespace NodeCanvas.Framework
 
         [SerializeField, Tooltip("An external text asset file to serialize the graph on top of the internal serialization")]
         private TextAsset _externalSerializationFile;
-        public TextAsset externalSerializationFile { get { return _externalSerializationFile; } internal set { _externalSerializationFile = value; } }
+        public TextAsset ExternalSerializationFile { get { return _externalSerializationFile; } internal set { _externalSerializationFile = value; } }
 
         [System.NonSerialized] private bool haltForUndo;
 

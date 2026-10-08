@@ -32,10 +32,10 @@ namespace LLKFrame
         public void PushGameObject(GameObject obj)
         {
             obj.SetActive(false);
-            obj.transform.parent = layerRoot;
+            obj.transform.SetParent(layerRoot);
             poolStack.Push(obj);
         }
 
-        public void Destroy() => GameObject.Destroy(layerRoot.gameObject);
+        public void Destroy() => Object.Destroy(layerRoot.gameObject);
     }
 }

@@ -1,5 +1,13 @@
 fileFormatVersion: 2
 guid: fdfc68272c33cb640a6e5b4fa8d824b1
+AssetOrigin:
+  serializedVersion: 1
+  productId: 298577
+  packageName: Space Game GUI kit
+  packageVersion: 1.0
+  assetPath: Assets/Space_Exploration_GUI_Kit/Grid_Components/Extra Large/inventory-item-container
+    copy-extra-large.png
+  uploadId: 700894
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -70,7 +78,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -83,7 +91,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -103,13 +111,14 @@ TextureImporter:
       name: inventory-item-container copy-extra-large (1)_0
       rect:
         serializedVersion: 2
-        x: 33
-        y: 33
-        width: 238
-        height: 230
+        x: 80
+        y: 80
+        width: 146
+        height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -121,15 +130,18 @@ TextureImporter:
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 666110061ec47c9418daa167750cb295
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
       inventory-item-container copy-extra-large (1)_0: -3765440045627780741
   mipmapLimitGroupName: 
@@ -137,11 +149,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 298577
-  packageName: Space Game GUI kit
-  packageVersion: 1.0
-  assetPath: Assets/Space_Exploration_GUI_Kit/Grid_Components/Extra Large/inventory-item-container
-    copy-extra-large.png
-  uploadId: 700894

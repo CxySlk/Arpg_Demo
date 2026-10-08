@@ -157,11 +157,11 @@ namespace NodeCanvas.StateMachines
 
 
         //Converted
-        virtual protected void OnInit() { }
-        virtual protected void OnEnter() { }
-        virtual protected void OnUpdate() { }
-        virtual protected void OnExit() { }
-        virtual protected void OnPause() { }
+        protected virtual void OnInit() { }
+        protected virtual void OnEnter() { }
+        protected virtual void OnUpdate() { }
+        protected virtual void OnExit() { }
+        protected virtual void OnPause() { }
         //
 
 

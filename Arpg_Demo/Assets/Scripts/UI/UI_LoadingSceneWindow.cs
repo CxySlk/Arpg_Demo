@@ -1,30 +1,32 @@
 using LLKFrame;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 [UIWindow(nameof(UI_LoadingSceneWindow), nameof(UI_LoadingSceneWindow), false, 4)]
 public class UI_LoadingSceneWindow : UI_WindowBase
 {
-    [SerializeField] private Image imgProgress;
-    [SerializeField] private TMP_Text txtProgress;
+    [FormerlySerializedAs("imgProgress")] [SerializeField] private Image _imgProgress;
+    [FormerlySerializedAs("txtProgress")] [SerializeField] private TMP_Text _txtProgress;
 
     public override void Show(int layer)
     {
         base.Show(layer);
-        EventCenter.AddEventListener<int>(EventCenterType.LOAD_SCENE_PROGRESS, UpdateProgress);
+        
+        EventCenter.Global.Subscribe(SceneSystem.LoadProgressEventKey,UpdateProgress);
         UpdateProgress(0);
     }
 
     protected override void OnClose()
     {
-        EventCenter.RemoveEventListener<int>(EventCenterType.LOAD_SCENE_PROGRESS, UpdateProgress);
+        EventCenter.Global.UnSubscribe(SceneSystem.LoadProgressEventKey,UpdateProgress);
     }
 
     private void UpdateProgress(int progress)
     {
-        if (imgProgress == null || txtProgress == null) return;
-        imgProgress.fillAmount = progress / 100f;
-        txtProgress.text = progress + "%";
+        if (_imgProgress == null || _txtProgress == null) return;
+        _imgProgress.fillAmount = progress / 100f;
+        _txtProgress.text = progress + "%";
     }
 }

@@ -24,7 +24,6 @@ public class UI_BeginWindow : UI_WindowBase
     #region 按钮事件监听
     private void OnContinueButtonClicked()
     {
-        // TODO:
         // 播放音效
         AudioSystem.PlayEffectMusic("ButtonClick");
     }

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e63833669660c4243982bb662583cae3, type: 3}
   m_Name: GASEditorData
-  m_EditorClassIdentifier: Assembly-CSharp-Editor::GASEditorData
+  m_EditorClassIdentifier: GAS.EditorData::GASEditorData
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -21,12 +21,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  Tags:
-  - "State.\u7729\u6655"
-  - State
-  - "State.\u7729\u6655.1"
-  Attributes:
-  - HP
-  - MP
-  - MoveSpeed
-  - State
+  _tags:
+  - Attr.Effect.Heal.Health
+  - "Status.\u65E0\u654C"
+  - "Status.\u683C\u6321"
+  - "Status.\u9738\u4F53"
+  - "Status.\u6280\u80FD\u524D\u6447"

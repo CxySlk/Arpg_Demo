@@ -76,12 +76,12 @@ namespace LLKFrame
             {
                 // 缓存中有该TObj类型的缓存
                 if (cacheDic.TryGetValue(type, out LoadResItem resItem))
-                    res = (resItem as LoadResItem<TObj>).LoadAsset();
+                    res = (resItem as LoadResItem<TObj>)!.LoadAsset();
                 // 缓存中没有该TObj类型的缓存，调用Addressables加载
                 else
                 {
                     // 加载资源
-                    LoadResItem<TObj> loadResItem = PoolSystem.GetObject<LoadResItem<TObj>>();
+                    LoadResItem<TObj> loadResItem = new LoadResItem<TObj>();
                     res = Addressables.LoadAssetAsync<TObj>(keyName).WaitForCompletion();
                     // 把缓存加入到字典中
                     loadResItem.Init(res);
@@ -96,7 +96,7 @@ namespace LLKFrame
                 // 加载资源
                 res = Addressables.LoadAssetAsync<TObj>(keyName).WaitForCompletion();
                 // 初始化资源加载数据
-                LoadResItem<TObj> resItem = PoolSystem.GetOrNewObject<LoadResItem<TObj>>();
+                LoadResItem<TObj> resItem = PoolSystem.Global.GetOrNewObject<LoadResItem<TObj>>();
                 resItem.Init(res);
                 // 获取真正的资源
                 res = resItem.LoadAsset();

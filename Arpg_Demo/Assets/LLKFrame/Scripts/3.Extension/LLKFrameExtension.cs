@@ -18,9 +18,9 @@ namespace LLKFrame
         }
         #endregion
         #region 对象池
-        public static void PushObject(this object obj) => PoolSystem.PushObject(obj);
-        public static void PushGameObject(this Component component) => PoolSystem.PushGameObject(component.gameObject);
-        public static void PushGameObject(this GameObject obj) => PoolSystem.PushGameObject(obj);
+        public static void PushObject(this object obj) => PoolSystem.Global.PushObject(obj);
+        public static void PushGameObject(this Component component) => PoolSystem.Global.PushGameObject(component.gameObject);
+        public static void PushGameObject(this GameObject obj) => PoolSystem.Global.PushGameObject(obj);
         #endregion
     }
 }

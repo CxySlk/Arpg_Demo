@@ -16,11 +16,13 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 7400000, guid: 5af80802066d5af40b46da726ee8970d, type: 2}
-    - {fileID: 7400000, guid: 074b8be68c69c6e4494e1026700141ca, type: 2}
-    - {fileID: 7400000, guid: 4349a6295c209ff488b57096e8f82f8a, type: 2}
-    - {fileID: 7400000, guid: 86c77d80f7c6ec04e90f0966d25e9b11, type: 2}
-    - {fileID: 7400000, guid: 219f15e0a9c5b3741a76867f5d120f04, type: 2}
+    - {fileID: 11400000, guid: 13696366df9d8b045916243ba9b6daef, type: 2}
+    - {fileID: 11400000, guid: dc55df72a1a558242b2a49dbc342bfad, type: 2}
+    - {fileID: 11400000, guid: 10c80dc2b4d748942b82fbc57523d2e1, type: 2}
+    - {fileID: 11400000, guid: ef3dbf9830bbf1449959b8f031f4fdaf, type: 2}
+    - {fileID: 11400000, guid: a8372bbd2de7f0347a6c40a01d1cba59, type: 2}
+    - {fileID: 11400000, guid: 626e6cd5eed4858469877eeb7e026094, type: 2}
+    - {fileID: 11400000, guid: aec5d54ab6742b14c9de854e37cb2a19, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -28,8 +30,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: standardAnimationDic
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.AnimationClip,
-        UnityEngine.AnimationModule]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Animancer.TransitionAsset,
+        Kybernetik.Animancer]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
@@ -39,13 +41,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 1
-      Data: Idle
+      Data: Death
     - Name: $v
       Entry: 10
       Data: 0
@@ -57,7 +59,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Move
+      Data: Idle
     - Name: $v
       Entry: 10
       Data: 1
@@ -69,7 +71,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Jump_Start
+      Data: Jump
     - Name: $v
       Entry: 10
       Data: 2
@@ -81,7 +83,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Jump_Loop
+      Data: InAir_End
     - Name: $v
       Entry: 10
       Data: 3
@@ -93,10 +95,34 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Jump_End
+      Data: Move
     - Name: $v
       Entry: 10
       Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Move_LockTarget
+    - Name: $v
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: InAir_Loop
+    - Name: $v
+      Entry: 10
+      Data: 6
     - Name: 
       Entry: 8
       Data: 
@@ -106,13 +132,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  playerName: "\u51BD\u5F71"
-  description: "\u6765\u81EA\u5317\u5883\u51B0\u539F\u7684\u6D41\u6D6A\u730E\u4EBA\uFF0C\u81EA\u5E7C\u4E0E\u72FC\u7FA4\u4E3A\u4F34\u3002\u624B\u6301\u53CC\u5203\u5F2F\u5200\uFF0C\u884C\u52A8\u5982\u98CE\u3002\u6C89\u9ED8\u5BE1\u8A00\u7684\u80CC\u540E\u662F\u5BF9\u6545\u4E61\u590D\u82CF\u7684\u6267\u5FF5\uFF0C\u5DE6\u773C\u7684\u4F24\u75A4\u662F\u5979\u4E0E\u51B0\u971C\u5DE8\u9F99\u640F\u6597\u65F6\u7559\u4E0B\u7684\u5370\u8BB0\u3002"
-  prefab: {fileID: 4655545884804830308, guid: b85af62c6aaa01647b1c48694eaff556, type: 3}
-  attackBaseValue: 35
-  defendBaseValue: 30
-  hpBaseValue: 100
-  mpBaseValue: 80
-  moveSpeed: 1
-  rotateSpeed: 10
-  inAirMoveSpeed: 5
+  prefabPath: Player1Root
+  ascPreset: {fileID: 11400000, guid: 0af6b224cee6f354ea751bd68d963397, type: 2}
+  skillConfigList:
+  - {fileID: 11400000, guid: c0049116d3f284847b80168b62e88e14, type: 2}
+  defaultLearnSkills: 00000000
+  _playerName: "\u94C1\u86CB"
+  _description: "\u4E00\u4E2A\u575A\u5F3A\u7684\u7537\u4EBA"
+  _viewPrefabPath: Player1View
+  transitionAsset: {fileID: 0}

@@ -21,17 +21,17 @@ namespace NodeCanvas.Editor
             ShowBasicGUI();
             EditorUtils.Separator();
 
-            if ( graph.externalSerializationFile == null ) {
+            if ( graph.ExternalSerializationFile == null ) {
                 if ( GUILayout.Button("Create External Serialization Text Asset") ) {
                     var path = EditorUtility.SaveFilePanelInProject("Create Text Asset", target.name, "txt", "");
                     if ( !string.IsNullOrEmpty(path) ) {
                         System.IO.File.WriteAllText(path, ParadoxNotion.Serialization.JSONSerializer.PrettifyJson(graph.GetSerializedJsonData()));
                         AssetDatabase.Refresh();
-                        graph.externalSerializationFile = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
+                        graph.ExternalSerializationFile = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
                     }
                 }
             } else {
-                graph.externalSerializationFile = (TextAsset)EditorGUILayout.ObjectField("External Serialization File", graph.externalSerializationFile, typeof(TextAsset), true);
+                graph.ExternalSerializationFile = (TextAsset)EditorGUILayout.ObjectField("External Serialization File", graph.ExternalSerializationFile, typeof(TextAsset), true);
                 EditorGUILayout.HelpBox("Be careful! The assigned Text Asset contents will be completely replaced with the json serialization of this graph. The graph will also deserialize from the json contents of the Text Asset whenever the Text Asset is imported by Unity. You can remove the assigned file at any time.", MessageType.Warning);
             }
 
