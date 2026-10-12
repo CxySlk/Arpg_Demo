@@ -923,18 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23bd78a81a506674fa80a1df09c31056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Test
-  sequence:
-    _FadeDuration: 0.25
-    _Speed: 1
-    _Events:
-      _NormalizedTimes: []
-      _Callbacks: []
-      _Names: []
-    _NormalizedStartTime: NaN
-    _Transitions: []
-  references:
-    version: 2
-    RefIds: []
+  sequence: {fileID: 0}
 --- !u!114 &199371207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,18 +1225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23bd78a81a506674fa80a1df09c31056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Test
-  sequence:
-    _FadeDuration: 0.25
-    _Speed: 1
-    _Events:
-      _NormalizedTimes: []
-      _Callbacks: []
-      _Names: []
-    _NormalizedStartTime: NaN
-    _Transitions: []
-  references:
-    version: 2
-    RefIds: []
+  sequence: {fileID: 11400000, guid: ee8fa6b3073b5b24190d3a2e70805deb, type: 2}
 --- !u!114 &256705753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3514,8 +3492,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014358198}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13718626, y: 0.11313686, z: 0.015774207, w: 0.9839366}
-  m_LocalPosition: {x: 202.09894, y: 127.47468, z: -9.6410055}
+  m_LocalRotation: {x: -0.12475699, y: 0.1937917, z: 0.024853881, w: 0.9727604}
+  m_LocalPosition: {x: 200.5407, y: 127.70046, z: -9.170978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11061,18 +11039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23bd78a81a506674fa80a1df09c31056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Test
-  sequence:
-    _FadeDuration: 0.25
-    _Speed: 1
-    _Events:
-      _NormalizedTimes: []
-      _Callbacks: []
-      _Names: []
-    _NormalizedStartTime: NaN
-    _Transitions: []
-  references:
-    version: 2
-    RefIds: []
+  sequence: {fileID: 0}
 --- !u!114 &4090744170160348521
 MonoBehaviour:
   m_ObjectHideFlags: 0
