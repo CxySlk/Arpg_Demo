@@ -38,7 +38,8 @@ MonoBehaviour:
         _ShowSkybox: 0
         _FrameStep: 0.02
         _SceneEnvironment: {fileID: 0}
-        _Models: []
+        _Models:
+        - {fileID: 2588168048678804747, guid: 7d5843910c0f327479af86a16c5bc576, type: 3}
     - rid: 6923335140897194070
       type: {class: SerializableEventSequenceDrawerSettings, ns: Animancer.Editor, asm: Kybernetik.Animancer.Editor}
       data:

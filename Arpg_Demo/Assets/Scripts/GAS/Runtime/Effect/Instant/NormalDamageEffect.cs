@@ -12,8 +12,13 @@ namespace GAS
         [LabelText("伤害值（大于0）")] public float damage;
         [LabelText("是否可以被格挡")] public bool isParry = true;
 
-        [LabelText("是否开启伤害跳字")]
-        public bool isFloatingText;
+        [LabelText("是否开启伤害跳字")] public bool isFloatingText;
+
+        internal override void Execute(AbilitySystemComponent source, AbilitySystemComponent target)
+        {
+            if (isParry) target.GasEventCenter.Publish(GASEventCenterKeys.ParryableAttackEventKey, source.gameObject);
+            base.Execute(source, target);
+        }
 
         protected override void ApplyEffect()
         {
@@ -33,12 +38,6 @@ namespace GAS
                     worldPos = target!.transform.position
                 });
             }
-            
-            // 告知受击方"这一击允许被格挡"（payload = 攻击方）。
-            // 只是告知，不代表一定被格挡：受击方具备格挡能力的技能行为会去监听这个事件，
-            // 自己决定要不要格挡（没有格挡能力的技能不监听即可）。
-            if (isParry)
-                target.GasEventCenter.Publish(GASEventCenterKeys.ParryableAttackEventKey, source ? source.gameObject : null);
 
             target.AddAttrValue(AttributeType.Hp, AttributeValueType.CurValue, -_damage);
         }

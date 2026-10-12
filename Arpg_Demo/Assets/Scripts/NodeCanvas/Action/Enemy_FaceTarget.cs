@@ -22,6 +22,8 @@ public class Enemy_FaceTarget : ActionTask
         EnemyController controller = enemyController.value;
         if (controller == null) { EndAction(false); return; }
 
+        // 站定盯人:朝向由代码控制
+        controller.NavMeshAgent.updateRotation = false;
         _endTime = Time.time + duration.value;
     }
 

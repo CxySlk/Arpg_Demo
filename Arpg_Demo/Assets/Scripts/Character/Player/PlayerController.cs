@@ -15,6 +15,7 @@ public class PlayerController : CharacterControllerBase
     [LabelText("角色控制器"), SerializeField] protected CharacterController characterController;
     [LabelText("FSM"), SerializeField] protected FSMOwner fsm;
     [LabelText("技能大脑"), SerializeField] protected Player_SkillBrain skillBrain;
+
     [LabelText("技能按键配置"), SerializeField, ListDrawerSettings(AddCopiesLastElement = true)]
     protected List<InputNodeBase> inputNodes = new();
 
@@ -168,15 +169,31 @@ public class PlayerController : CharacterControllerBase
         {
             InputNodeBase inputNode = inputNodes[i];
             inputNode.Init();
-            int slotIndex = i;
+            if (i < 2) continue;
+            int slotIndex = i - 2;
             inputNode.SetCallBack(() => TriggerSkillBySlotIndex(slotIndex));
         }
+    }
+
+    private void TriggerLeftAttack()
+    {
+        TryReleaseSkillByID(0);
+    }
+
+    private void TriggerRightAttack()
+    {
+        TryReleaseSkillByID(1);
     }
 
     private void TriggerSkillBySlotIndex(int slotIndex)
     {
         // 检查技能热栏是否装备了技能
         if (!EquipSlotDic.TryGetValue(slotIndex, out int skillID) || skillID < 0) return;
+        TryReleaseSkillByID(skillID);
+    }
+
+    private void TryReleaseSkillByID(int skillID)
+    {
         // 释放技能
         if (skillBrain.CheckCanPlaySkill(skillID))
         {
@@ -263,19 +280,22 @@ public class PlayerController : CharacterControllerBase
 
     #region 受控（眩晕/受击等"失去控制"的表现：由动画 Cue 驱动 → 状态机切到受控状态）
 
-    /// <summary>受控开始:打断技能、停技能输入、清掉旧动画的根运动回调。</summary>
+    /// <summary>受控开始:意外打断当前技能片段、停技能输入。</summary>
     protected override void OnControlledEnter()
     {
-        InterruptAllSkills();                // 受控期间不能继续放技能
-        StopSkillInputCheck();               // 也不再响应技能输入(否则会切进技能状态)
-        characterView.SetRootMotion(null);   // 受控期间不接受旧动画的根运动回调
+        skillBrain.UnexpectedInterruptAll(); // 受控=意外打断(片段级),不整套结束;后续连段由技能行为决定
+        StopSkillInputCheck(); // 也不再响应技能输入(否则会切进技能状态)
     }
 
     /// <summary>受控结束:恢复技能输入。</summary>
     protected override void OnControlledExit() => StartSkillInputCheck();
 
-    /// <summary>切到状态机的受控状态。</summary>
-    protected override void TriggerControlledState() => fsm?.TriggerState(Player_ControlledState.StateName);
+    /// <summary>切到状态机的受控状态。已在受控状态则不重复切,避免 EnterState 复位受控。</summary>
+    protected override void TriggerControlledState()
+    {
+        if (fsm != null && fsm.currentRootStateName != Player_ControlledState.StateName)
+            fsm.TriggerState(Player_ControlledState.StateName);
+    }
 
     #endregion
 

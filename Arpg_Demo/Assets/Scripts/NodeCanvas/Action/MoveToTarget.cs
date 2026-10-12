@@ -26,18 +26,34 @@ public class MoveToTarget : ActionTask
     [Name("启用音效")] public bool enableAudio;
     [Name("音效表"), ShowIf("enableAudio", 1)] public List<AnimationAudioEntry> audioEntries = new();
 
+    /// <summary>本节点播放的移动动画 state:被受控等打断后用来判断并补播。</summary>
+    private AnimancerState _moveState;
+
     protected override void OnExecute()
     {
         enemyController.value.SetStopChaseDis(stopChaseDis.value);
+        // 追击:朝向交给寻路组件,沿路径转向(绕路时朝前进方向)
+        enemyController.value.NavMeshAgent.updateRotation = true;
+        PlayMove();
+        Chase();
+    }
 
-        AnimancerState state = enemyController.value.Play(moveClipName, playSpeed);
-        if (enableAudio)
-            AnimationAudioHelper.Bind(state, audioEntries, enemyController.value.transform);
+    protected override void OnUpdate()
+    {
+        // 受控等打断会顶掉移动动画;节点被暂停后恢复不会重跑 OnExecute,这里补播
+        if (_moveState is { IsPlaying: false })
+            PlayMove();
 
         Chase();
     }
 
-    protected override void OnUpdate() => Chase();
+    private void PlayMove()
+    {
+        _moveState = enemyController.value.Play(moveClipName, playSpeed);
+        enemyController.value.SetRootMotion(null);
+        if (enableAudio)
+            AnimationAudioHelper.Bind(_moveState, audioEntries, enemyController.value.transform);
+    }
 
     protected override void OnStop() => enemyController.value.StopChase();
 

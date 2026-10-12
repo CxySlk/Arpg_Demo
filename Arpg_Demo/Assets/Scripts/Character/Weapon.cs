@@ -45,12 +45,22 @@ namespace Character
             Status = false;
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (other.gameObject.IsInLayerMask(_triggerLayerMask))
             {
                 GasEventCenter.Publish(GASEventCenterKeys.WeaponHitTarget, other);
             }
+        }
+
+        /// <summary>
+        /// 关闭武器:关碰撞体 + 停拖尾(不隐藏武器本体;死亡等场景用,武器仍可见)。
+        /// </summary>
+        public void Close()
+        {
+            _weaponCollider.enabled = false;
+            Status = false;
+            _swordTrail.StopTrail();
         }
 
         public void ApplyTrailPreset(HS_SwordTrailPreset trailPreset)

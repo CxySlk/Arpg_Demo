@@ -44,7 +44,7 @@ namespace Character
             asc.InitForPreset(_enemyConfig.AscPreset);
             _skillBrain.InitForConfig(_enemyConfig.SkillConfigList);
             characterView.SetStandardAnimation(_enemyConfig.StandardAnimationDic);
-            // 朝向交给 AI 控制(追击时始终面向玩家),不让导航代理的自动旋转和代码抢旋转
+            // 朝向默认由代码控制(站定/环绕/施法);追击时由行为树节点切给寻路组件沿路径转向
             _navMeshAgent.updateRotation = false;
             // 状态机与控制器同物体:外层硬状态(战斗/受击)由它管,行为树只在战斗状态内跑
             Fsm = GetComponent<FSMOwner>();
@@ -61,14 +61,12 @@ namespace Character
 
         #region AI 能力(行为树任务调用)
 
-        /// <summary>追击目标:超出停止距离时寻路靠近,全程朝向目标。</summary>
+        /// <summary>追击目标:超出停止距离时寻路靠近,沿路径前进方向转向(寻路旋转由行为树节点开启)。</summary>
         public void ChaseTarget(Transform target)
         {
             if (IsDead || !target) return;
 
-            FaceTarget(target);
-
-            // 已经在停止距离内:站住(不再下寻路),朝向由上面保持
+            // 已经在停止距离内:站住(不再下寻路)
             if (IsTargetInStopDis())
             {
                 StopMove();
@@ -95,21 +93,19 @@ namespace Character
             StopMove();
         }
 
-        /// <summary>原地待机:停下并播放待机动画。</summary>
+        /// <summary>原地待机:停下(动画由行为树节点负责)。</summary>
         public void Idle()
         {
             if (IsDead) return;
             StopMove();
-            PlayAnimationIfChanged("Idle");
         }
 
-        /// <summary>站住盯着目标:停止移动 + 始终朝向目标 + 播待机动画。</summary>
+        /// <summary>站住盯着目标:停止移动 + 始终朝向目标(动画由行为树节点负责)。</summary>
         public void StandAndFace(Transform target)
         {
             if (IsDead || !target) return;
             StopMove();
             FaceTarget(target);
-            PlayAnimationIfChanged("Idle");
         }
 
         /// <summary>
@@ -136,7 +132,6 @@ namespace Character
 
             StopMove(); // 环绕不用寻路,清掉旧路径,位移全部由这里给
             Move(moveDir.normalized * (speed * Time.deltaTime));
-            PlayAnimationIfChanged("Move");
         }
 
         /// <summary>只转向目标(不改移动、不切动画):给"转向目标"这类 action 用。</summary>
@@ -178,6 +173,9 @@ namespace Character
         /// <summary>指定技能的"整套连段"是否正在播放(基类契约;全部片段播完/续段间隙超时/被打断后为 false)。</summary>
         public override bool SkillIsPlaying(int skillID) => _skillBrain.SkillIsPlaying(skillID);
 
+        /// <summary>指定技能的"当前片段"是否正在播放(这一段 AbilityAsset 播完就为 false;连段时会反复 true→false)。</summary>
+        public bool AbilityIsPlaying(int skillID) => _skillBrain.AbilityIsPlaying(skillID);
+
         /// <summary>打断所有正在播放的技能(技能状态与片段状态一起结束)。</summary>
         public override void InterruptAllSkills(bool resetCd = true, bool force = false) =>
             _skillBrain.InterruptAllSkills(resetCd, force);
@@ -190,22 +188,19 @@ namespace Character
 
         #region 受控（眩晕/受击等"失去控制"的表现：由动画 Cue 驱动 → 外层状态机切到受控状态）
 
-        /// <summary>技能前摇霸体:吃伤害但不进受控(也不打断技能)。</summary>
-        protected override bool CanEnterControlled() => !_skillBrain.IsAnySkillUninterruptible;
-
-        /// <summary>受控开始:停寻路、打断所有技能、清掉旧动画的根运动回调。</summary>
+        /// <summary>受控开始:停寻路、意外打断当前技能片段。</summary>
         protected override void OnControlledEnter()
         {
-            StopChase();                         // 停寻路
-            InterruptAllSkills();                // 打断所有技能(技能状态与片段状态一起结束)
-            characterView.SetRootMotion(null);   // 受控期间不接受旧动画的根运动回调
+            StopChase();                          // 停寻路
+            _skillBrain.UnexpectedInterruptAll(); // 受控=意外打断(片段级),不整套结束;后续连段由技能行为决定
         }
 
-        /// <summary>受控结束:回到标准待机表现(战斗状态里的行为树会重新接管)。</summary>
-        protected override void OnControlledExit() => PlayAnimationIfChanged("Idle");
-
-        /// <summary>切到外层状态机的受控状态(里面的行为树随之停下)。</summary>
-        protected override void TriggerControlledState() => Fsm?.TriggerState(Enemy_ControlledState.StateName);
+        /// <summary>切到外层状态机的受控状态(里面的行为树随之停下)。已在受控状态则不重复切,避免 EnterState 复位受控。</summary>
+        protected override void TriggerControlledState()
+        {
+            if (Fsm != null && Fsm.currentRootStateName != Enemy_ControlledState.StateName)
+                Fsm.TriggerState(Enemy_ControlledState.StateName);
+        }
 
         #endregion
 
@@ -225,14 +220,6 @@ namespace Character
             _hasDestination = false;
             if (_navMeshAgent.enabled && _navMeshAgent.hasPath)
                 _navMeshAgent.ResetPath();
-            PlayAnimationIfChanged("Idle");
-        }
-
-        /// <summary>同名动画不重复播放(避免每帧切动画打断过渡/狂建动画节点)。</summary>
-        private void PlayAnimationIfChanged(string animationName)
-        {
-            if (characterView.CurrentAnimationName == animationName) return;
-            characterView.Play(animationName);
         }
 
         protected override void OnDeathStart()

@@ -9,7 +9,7 @@ using UnityEngine;
 /// 通用转身节点：让角色转向黑板目标。
 /// <para>角度小于「最小角度」时不播转身动画，直接快速摆正(无根运动)。</para>
 /// <para>角度较大时按左/右、90/180 选一段转身动画播放：动画自带旋转、开根运动由它驱动 transform 旋转，
-/// 节点本身不写 rotation，避免与根运动冲突；转到朝向进入容差(或符号翻转/超时)即清根运动结束。</para>
+/// 节点本身不写 rotation，避免与根运动冲突；转到朝向进入容差(或超时)即清根运动、停住动画并结束。</para>
 /// </summary>
 [Category("通用")]
 [Name("转身")]
@@ -31,7 +31,9 @@ public class TurnToTarget : ActionTask
     [Name("最长转向时间(秒)")] public BBParameter<float> maxTime = new(2f);
 
     [Name("启用音效")] public bool enableAudio;
-    [Name("音效表"), ShowIf("enableAudio", 1)] public List<AnimationAudioEntry> audioEntries = new();
+
+    [Name("音效表"), ShowIf("enableAudio", 1)]
+    public List<AnimationAudioEntry> audioEntries = new();
 
     private enum TurnMode
     {
@@ -73,21 +75,13 @@ public class TurnToTarget : ActionTask
         CharacterView view = controller.CharacterView;
         TransitionAsset transition = view.GetTransition(PickName(signedAngle));
         AnimancerComponent animancer = view.Animancer;
-        if (transition == null || !transition.IsValid)
-        {
-            _mode = TurnMode.Slerp;
-            return;
-        }
 
         _mode = TurnMode.Animation;
         controller.SetRootMotion(OnRootMotion);
         _state = animancer.Play(transition);
-        if (_state != null)
-        {
-            _state.Time = 0; // 从头播：避免复用同一 state 时接着上次继续
-            if (enableAudio)
-                AnimationAudioHelper.Bind(_state, audioEntries, controller.transform);
-        }
+        _state.Time = 0; // 从头播：避免复用同一 state 时接着上次继续
+        if (enableAudio)
+            AnimationAudioHelper.Bind(_state, audioEntries, controller.transform);
     }
 
     protected override void OnUpdate()
@@ -123,10 +117,14 @@ public class TurnToTarget : ActionTask
         Cleanup(characterController.value);
     }
 
-    /// <summary>清根运动回调(关键:不清的话循环转身动画会一直推着 transform 转)。</summary>
+    /// <summary>清根运动回调(关键:不清的话循环转身动画会一直推着 transform 转),并停住循环动画。</summary>
     private void Cleanup(CharacterControllerBase controller)
     {
         controller.SetRootMotion(null);
+
+        // 转身动画是循环的:退出时必须停住,否则后续没有节点接管时会一直循环播放
+        if (_state != null)
+            _state.IsPlaying = false; // 冻结在完成的转身姿态
 
         _state = null;
         _mode = TurnMode.None;

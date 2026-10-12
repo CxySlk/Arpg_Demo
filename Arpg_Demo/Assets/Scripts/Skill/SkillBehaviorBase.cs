@@ -34,7 +34,7 @@ namespace Skill
         protected AbilityPlayer abilityPlayer = new();
 
         /// <summary>续段间隙计时器：片段播完时装载 <see cref="abilityInterval"/>，只在"片段已播完、等续段输入"的间隙里递减。</summary>
-        protected float intervalTimer ;
+        protected float intervalTimer;
 
         /// <summary>续段间隙计时是否已启动（片段播完时启动，续上下一段或技能结束时关闭）。</summary>
         protected bool isAbilityInterval;
@@ -187,6 +187,15 @@ namespace Skill
             TimeSystem.Global.Subscribe(TickUpdate);
         }
 
+        protected void UpdateFreezeFrame()
+        {
+            if (freezeTimer > 0)
+            {
+                freezeTimer -= TimeSystem.FrameTime;
+                Time.timeScale = Mathf.Lerp(.5f, 1, 1 - freezeTimer / freezeTotalTime);
+            }
+        }
+
         /// <summary>停止技能行为（退订帧更新、停止能力播放）。技能卸载/销毁时调用。</summary>
         public virtual void Stop()
         {
@@ -212,6 +221,8 @@ namespace Skill
 
             // 当前段已自然播完（FSM 技能状态据此退出）
             isCurrentAbilityDone = true;
+            // 段自然播完：本段的"输入打断"窗口关闭（续段间隙里不应再被移动/跳跃打断）
+            inputInterruptEnabled = false;
 
             // 只有没有触发过可以释放技能的事件，才会在能力播放结束时设置SkillBrain可以释放技能
             // 因此，这一步是防止忘记设置FrameEventType.CanReleaseSkill自动执行的
@@ -235,6 +246,7 @@ namespace Skill
             if (!skillIsPlaying && cdTimer > 0)
                 CdTimer = Mathf.Max(0, cdTimer - TimeSystem.FrameTime);
             TickAbilityInterval();
+            UpdateFreezeFrame();
         }
 
         /// <summary>
@@ -300,6 +312,8 @@ namespace Skill
         /// <summary>启动续段间隙计时（当前片段播完、还有下一段可连时调用）。</summary>
         protected void StartAbilityInterval()
         {
+            // 间隔小于等于0，默认不启用片段间隔
+            if (skillConfig.AbilityInterval <= 0) return;
             isAbilityInterval = true;
             intervalTimer = skillConfig.AbilityInterval;
         }
@@ -350,21 +364,68 @@ namespace Skill
             OnSkillPlayEnd(resetCd);
         }
 
-        /// <summary>移动打断当前技能段（前摇帧事件触发之后按移动触发）。等价于 <see cref="Interrupt"/>。</summary>
-        public void CancelPlaying() => Interrupt();
+        /// <summary>
+        /// 停掉"当前片段"(帧驱动/表现/段级标志),只负责停,不决定连段走向。
+        /// 是否允许打断由调用方判断:输入打断受前摇限制,受控打断不受限。返回是否真的停了。
+        /// </summary>
+        private bool StopCurrentAbility()
+        {
+            if (!skillIsPlaying || !abilityIsPlaying) return false; // 只有正在播的片段能被打断
+
+            abilityPlayer.Stop(); // 停本段帧驱动(剩余帧事件/效果不再触发)
+            AbilityIsPlaying = false; // 本段结束
+            isCurrentAbilityDone = true; // FSM 技能状态据此退出(整套连段仍在)
+            RemoveStartupTag();
+            inputInterruptEnabled = false;
+            isTriggerCanReleaseSkillFlag = false;
+            skillBrain.SetCanReleaseFlag(true); // 允许继续/重放
+            CloseWeaponTrailIfOpened();
+            return true;
+        }
 
         /// <summary>
-        /// 输入打断：本段已解锁"输入打断"时取消当前技能（移动/跳跃输入由外部喂入）。
+        /// 输入打断(移动/跳跃):本段视为"提前释放完" → 下次从下一段开始。
+        /// 有下一段→进续段间隙;已是最后一段→整套结束进 CD。
+        /// </summary>
+        public virtual bool InputInterrupt()
+        {
+            if (IsUninterruptible) return false; // 输入打断(移动/跳跃)不能破前摇
+            if (!StopCurrentAbility()) return false;
+
+            OnInterrupt();
+
+            if (abilityIndex < Abilities.Count) StartAbilityInterval();
+            else OnSkillPlayEnd();
+            return true;
+        }
+
+        /// <summary>
+        /// 意外打断(被敌人攻击/受控等,非输入原因):连段走向由技能行为决定。
+        /// 默认:下次从被打断的这段继续(回退+续段间隙);子类可覆写为"下一段"或其它。
+        /// </summary>
+        public virtual bool UnexpectedInterrupt()
+        {
+            if (!StopCurrentAbility()) return false;
+            
+            OnInterrupt();
+            
+            // abilityIndex 语义是"下一段待播",回退到被打断的这段 → 下次续接/重放它
+            abilityIndex = Mathf.Max(0, abilityIndex - 1);
+            StartAbilityInterval();
+            return true;
+        }
+
+        protected virtual void OnInterrupt()
+        {
+            
+        }
+        
+        /// <summary>
+        /// 输入打断：本段已解锁"输入打断"时,只打断当前片段（移动/跳跃输入由外部喂入）。
         /// 打断的判定与执行都归本行为，状态/输入层只负责调用。
         /// </summary>
         /// <returns>是否真的打断了。</returns>
-        public bool TryInputInterrupt()
-        {
-            if (!skillIsPlaying || !inputInterruptEnabled) return false;
-
-            Interrupt();
-            return true;
-        }
+        public bool TryInputInterrupt() => inputInterruptEnabled && InputInterrupt();
 
         #endregion
 
@@ -424,7 +485,7 @@ namespace Skill
             return frameEvent;
         }
 
-        /// <summary>处理帧事件（按事件类型分发：解锁释放 / 自定义事件等）。</summary>
+        /// <summary>处理帧事件：按事件类型分发到对应的可覆写钩子。</summary>
         public virtual void AfterHandleFrameEvent(FrameEvent frameEvent)
         {
             switch (frameEvent.EventType)
@@ -432,56 +493,132 @@ namespace Skill
                 case FrameEventType.None:
                     break;
                 case FrameEventType.CanReleaseSkill:
-                    skillBrain.SetCanReleaseFlag(true);
-                    isTriggerCanReleaseSkillFlag = true; // 已经触发了可以释放技能标志
+                    OnCanReleaseSkill(frameEvent);
                     break;
-                // 前摇开始帧事件：给自己加上前摇(霸体)标签 → 进入不可打断阶段
                 case FrameEventType.SkillStartupBegin:
-                    AddStartupTag();
+                    OnSkillStartupBegin(frameEvent);
                     break;
-                // 前摇结束帧事件：移除前摇标签 → 解锁打断（FSM 技能状态可在移动输入下打断本段；受击也能打断）
                 case FrameEventType.SkillStartupEnd:
-                    RemoveStartupTag();
+                    OnSkillStartupEnd(frameEvent);
                     break;
-                // 开启根运动：动画位移交给本行为的 OnRootMotion 处理（受 AbilityAsset.rootMotionDis 限制）
                 case FrameEventType.SkillRootMotionOn:
-                    CharacterView.SetRootMotion(OnRootMotion);
+                    OnSkillRootMotionOn(frameEvent);
                     break;
-                // 关闭根运动：清空回调，动画不再推角色
                 case FrameEventType.SkillRootMotionOff:
-                    CharacterView.SetRootMotion(null);
+                    OnSkillRootMotionOff(frameEvent);
                     break;
                 case FrameEventType.LockTarget:
-                    CharacterController.LockTarget(true);
+                    OnLockTarget(frameEvent);
                     break;
                 case FrameEventType.UnLockTarget:
-                    CharacterController.LockTarget(false);
+                    OnUnLockTarget(frameEvent);
                     break;
-                case FrameEventType.StartWeaponTrail: // 开启武器拖尾
-                    HS_SwordTrailPreset tarilPreset = frameEvent.objArg as HS_SwordTrailPreset;
-                    CharacterController.StartWeaponTrail(frameEvent.intArg,tarilPreset);
-                    weaponTrailOpened = true;
+                case FrameEventType.StartWeaponTrail:
+                    OnStartWeaponTrail(frameEvent);
                     break;
-                case FrameEventType.StopWeaponTrail: // 关闭武器拖尾
-                    CharacterController.StopWeaponTrail();
-                    weaponTrailOpened = false;
+                case FrameEventType.StopWeaponTrail:
+                    OnStopWeaponTrail(frameEvent);
                     break;
-                // 输入打断帧事件：解锁本段的"输入打断"（之后移动/跳跃可打断本段）
                 case FrameEventType.SkillInputInterrupt:
-                    inputInterruptEnabled = true;
+                    OnSkillInputInterrupt(frameEvent);
+                    break;                
+                case FrameEventType.FreezeFrame:
+                    OnFreezeFrame(frameEvent.floatArg);
                     break;
                 case FrameEventType.Custom:
-                    HandleCustomEvent(frameEvent.strArg, frameEvent);
+                    OnCustomEvent(frameEvent.eventName, frameEvent);
                     break;
             }
         }
 
-        /// <summary>处理自定义事件（子类覆写实现具体逻辑）。</summary>
-        /// <param name="eventName">自定义事件名（取自 FrameEvent.strArg）。</param>
+        #endregion
+
+        #region 帧事件钩子（子类可覆写）
+
+        /// <summary>可以释放技能帧事件。</summary>
+        protected virtual void OnCanReleaseSkill(FrameEvent frameEvent)
+        {
+            skillBrain.SetCanReleaseFlag(true);
+            isTriggerCanReleaseSkillFlag = true; // 已经触发了可以释放技能标志
+        }
+
+        /// <summary>前摇开始帧事件：给自己加上前摇(霸体)标签 → 进入不可打断阶段。</summary>
+        protected virtual void OnSkillStartupBegin(FrameEvent frameEvent)
+        {
+            AddStartupTag();
+        }
+
+        /// <summary>前摇结束帧事件：移除前摇标签 → 解锁打断。</summary>
+        protected virtual void OnSkillStartupEnd(FrameEvent frameEvent)
+        {
+            RemoveStartupTag();
+        }
+
+        /// <summary>开启根运动：动画位移交给本行为的 OnRootMotion 处理（受 AbilityAsset.rootMotionDis 限制）。</summary>
+        protected virtual void OnSkillRootMotionOn(FrameEvent frameEvent)
+        {
+            CharacterView.SetRootMotion(OnRootMotion);
+        }
+
+        /// <summary>关闭根运动：清空回调，动画不再推角色。</summary>
+        protected virtual void OnSkillRootMotionOff(FrameEvent frameEvent)
+        {
+            CharacterView.SetRootMotion(null);
+        }
+
+        /// <summary>锁定目标帧事件。</summary>
+        protected virtual void OnLockTarget(FrameEvent frameEvent)
+        {
+            CharacterController.LockTarget(true);
+        }
+
+        /// <summary>取消锁定目标帧事件。</summary>
+        protected virtual void OnUnLockTarget(FrameEvent frameEvent)
+        {
+            CharacterController.LockTarget(false);
+        }
+
+        /// <summary>开启武器拖尾帧事件（objArg = HS_SwordTrailPreset，intArg = 拖尾位标）。</summary>
+        protected virtual void OnStartWeaponTrail(FrameEvent frameEvent)
+        {
+            HS_SwordTrailPreset tarilPreset = frameEvent.objArg as HS_SwordTrailPreset;
+            CharacterController.StartWeaponTrail(frameEvent.intArg, tarilPreset);
+            weaponTrailOpened = true;
+        }
+
+        /// <summary>关闭武器拖尾帧事件。</summary>
+        protected virtual void OnStopWeaponTrail(FrameEvent frameEvent)
+        {
+            CharacterController.StopWeaponTrail();
+            weaponTrailOpened = false;
+        }
+
+        /// <summary>输入打断帧事件：解锁本段的"输入打断"（之后移动/跳跃可打断本段）。</summary>
+        protected virtual void OnSkillInputInterrupt(FrameEvent frameEvent)
+        {
+            inputInterruptEnabled = true;
+        }
+
+        /// <summary>顿帧帧事件：按 floatArg 时长做顿帧。</summary>
+        protected virtual void OnFreezeFrame(float freezeTime)
+        {
+            freezeTimer = freezeTime;
+            freezeTotalTime = freezeTime;
+        }
+
+        /// <summary>自定义帧事件（子类覆写实现具体逻辑）。</summary>
+        /// <param name="eventName">自定义事件名（取自 FrameEvent.eventName）。</param>
         /// <param name="frameEvent">帧事件对象。</param>
-        protected virtual void HandleCustomEvent(string eventName, FrameEvent frameEvent)
+        protected virtual void OnCustomEvent(string eventName, FrameEvent frameEvent)
         {
         }
+
+        #endregion
+
+        #region 帧事件内部实现
+
+        protected float freezeTimer;
+        protected float freezeTotalTime;
 
         /// <summary>给自身 ASC 加上固定的前摇(霸体)标签（前摇开始帧事件触发时）。已加过则不重复加。</summary>
         private void AddStartupTag()
@@ -534,13 +671,14 @@ namespace Skill
         /// <summary>动画根运动回调（播放带根运动的动画 Cue 时注册）。</summary>
         protected virtual void OnRootMotion(Vector3 deltaPos, Quaternion deltaRot)
         {
-            if (curAbilityAsset.rootMotionDis <= 0 ||
-                !CharacterController.Target ||
-                CharacterController.GetTargetSqrDis() > Mathf.Pow(curAbilityAsset.rootMotionDis, 2))
+            if (curAbilityAsset.rootMotionDis > 0 &&
+                CharacterController.Target &&
+                CharacterController.GetTargetSqrDis() <= Mathf.Pow(curAbilityAsset.rootMotionDis, 2))
             {
-                CharacterController.Move(deltaPos);
+                deltaPos.x = deltaPos.z = 0;
             }
-
+ 
+            CharacterController.Move(deltaPos);
             CharacterController.Rotate(deltaRot);
         }
 

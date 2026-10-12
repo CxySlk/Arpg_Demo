@@ -158,7 +158,13 @@ public class UI_SkillBagWindow : UI_WindowBase
         // 按技能 id 排序生成，保证列表顺序稳定（HashSet 本身无序）
         List<int> ids = SkillLearnData.skillIdSet.OrderBy(x => x).ToList();
         int slotCount = _skillSlotItemList.Count;
-        int needCount = ids.Count;
+        // 获取需要显示的技能UI数量
+        int needCount = 0;
+        for (int i = 0; i < ids.Count; i++)
+        {
+            if (SkillConfigList[i].IsShowUI)
+                needCount++;
+        }
 
         // 数量不够 → 新建
         for (int i = slotCount; i < needCount; i++)
@@ -179,8 +185,10 @@ public class UI_SkillBagWindow : UI_WindowBase
 
         // 重建 技能id → 槽 映射，并设置信息
         _skillSlotDic.Clear();
-        for (int i = 0; i < needCount; i++)
+        for (int i = 0; i < ids.Count; i++)
         {
+            if (!SkillConfigList[ids[i]].IsShowUI) continue;
+
             int id = ids[i];
             UI_BagSkillSlot slot = _skillSlotItemList[i];
             Sprite icon = SkillConfigList[id].SkillIcon;

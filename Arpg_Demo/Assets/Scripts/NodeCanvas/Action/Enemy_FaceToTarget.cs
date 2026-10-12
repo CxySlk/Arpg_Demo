@@ -20,7 +20,13 @@ public class Enemy_FaceToTarget : ActionTask
 
     private float _startTime;
 
-    protected override void OnExecute() => _startTime = Time.time;
+    protected override void OnExecute()
+    {
+        _startTime = Time.time;
+        // 纯转向:朝向由代码控制
+        EnemyController controller = enemyController.value;
+        if (controller != null) controller.NavMeshAgent.updateRotation = false;
+    }
 
     protected override void OnUpdate()
     {

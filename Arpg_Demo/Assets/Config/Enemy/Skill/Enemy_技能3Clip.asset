@@ -16,8 +16,15 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 7400000, guid: e345093012dc1744387e66f3ec9aef0e, type: 2}
     - {fileID: 8300000, guid: e149611fe1b4ea24f99a26be4258dafb, type: 3}
+    - {fileID: 7400000, guid: 94b06a543200bca448fcc8f5f23f462d, type: 2}
+    - {fileID: 7400000, guid: ddc995fc5fa2f2a47acfdfc67905ea6d, type: 2}
+    - {fileID: 7400000, guid: b09bfa8fd08237a4d8cb6296b30770ba, type: 2}
+    - {fileID: 7400000, guid: c5ca9158bba27e1418b97b4547f4bd97, type: 2}
+    - {fileID: 7400000, guid: a1287d5630a94934ba7b62528b8ebb85, type: 2}
+    - {fileID: 7400000, guid: 8879428e98ea2004d8745c6991b6bf32, type: 2}
+    - {fileID: 7400000, guid: a547b230ae7d156488c10fc305af8e0e, type: 2}
+    - {fileID: 7400000, guid: e41f74a97b944764a87ee5c63d58df9f, type: 2}
     - {fileID: 7400000, guid: 1d76bad13dfd4724286b2f5486ec3992, type: 2}
     - {fileID: 1872147318604286, guid: b676b9eb835c6d749903d91d1a54b29e, type: 3}
     - {fileID: 1602379607235420, guid: 028b1ae485e846c4688aabad7557e474, type: 3}
@@ -132,7 +139,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 6|GAS.ControlCueEffect, GAS
+      Data: 6|GAS.NormalDamageEffect, GAS
     - Name: requiredTags
       Entry: 7
       Data: 7|GAS.GameplayTagSet, GAS
@@ -159,387 +166,6 @@ MonoBehaviour:
       Data: 10|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: GAS.GameplayTag, GAS
-    - Name: _shortTagName
-      Entry: 1
-      Data: "\u9738\u4F53"
-    - Name: _hashCode
-      Entry: 3
-      Data: -2025145563
-    - Name: _ancestorHashCode
-      Entry: 7
-      Data: 11|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 1959773104
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: _tagName
-      Entry: 1
-      Data: "Status.\u9738\u4F53"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: grantedTags
-      Entry: 7
-      Data: 12|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 13|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: removedTags
-      Entry: 7
-      Data: 14|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 15|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: cueList
-      Entry: 7
-      Data: 16|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 17|GAS.GameplayCueDurationalAnimation, GAS
-    - Name: requiredTags
-      Entry: 7
-      Data: 18|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 19|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 20|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 21|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: DurationSeconds
-      Entry: 4
-      Data: 0.8333334
-    - Name: AnimationClip
-      Entry: 10
-      Data: 0
-    - Name: RootMotion
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: isTarget
-      Entry: 5
-      Data: true
-    - Name: controlledTime
-      Entry: 4
-      Data: 0.8333
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: 22|GAS.NormalDamageEffect, GAS
-    - Name: requiredTags
-      Entry: 7
-      Data: 23|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 24|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 25|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 26|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: grantedTags
-      Entry: 7
-      Data: 27|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 28|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: removedTags
-      Entry: 7
-      Data: 29|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 30|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: damage
-      Entry: 4
-      Data: 5
-    - Name: isParry
-      Entry: 5
-      Data: true
-    - Name: isFloatingText
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: 31|GAS.GameplayCueEffect, GAS
-    - Name: requiredTags
-      Entry: 7
-      Data: 32|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 33|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 34|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 35|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: GAS.GameplayTag, GAS
-    - Name: _shortTagName
-      Entry: 1
-      Data: "\u9738\u4F53"
-    - Name: _hashCode
-      Entry: 3
-      Data: -2025145563
-    - Name: _ancestorHashCode
-      Entry: 9
-      Data: 11
-    - Name: _tagName
-      Entry: 1
-      Data: "Status.\u9738\u4F53"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: grantedTags
-      Entry: 7
-      Data: 36|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 37|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: removedTags
-      Entry: 7
-      Data: 38|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 39|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: cueList
-      Entry: 7
-      Data: 40|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 41|GAS.GameplayCueInstantAudio, GAS
-    - Name: requiredTags
-      Entry: 7
-      Data: 42|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 43|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 44|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 45|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
       Data: 2
     - Name: 
       Entry: 7
@@ -552,7 +178,7 @@ MonoBehaviour:
       Data: 1081724539
     - Name: _ancestorHashCode
       Entry: 7
-      Data: 46|System.Int32[], mscorlib
+      Data: 11|System.Int32[], mscorlib
     - Name: 
       Entry: 14
       Data: 2
@@ -585,7 +211,7 @@ MonoBehaviour:
       Data: -229409761
     - Name: _ancestorHashCode
       Entry: 7
-      Data: 47|System.Int32[], mscorlib
+      Data: 12|System.Int32[], mscorlib
     - Name: 
       Entry: 14
       Data: 1
@@ -613,9 +239,150 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: audioClip
-      Entry: 10
+    - Name: grantedTags
+      Entry: 7
+      Data: 13|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 14|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 15|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 16|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: damage
+      Entry: 4
+      Data: 10
+    - Name: isParry
+      Entry: 5
+      Data: true
+    - Name: isFloatingText
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
       Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 17|GAS.GameplayCueEffect, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 18|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 19|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 20|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 21|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u65E0\u654C"
+    - Name: _hashCode
+      Entry: 3
+      Data: 585097710
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 22|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u65E0\u654C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 23|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
     - Name: 
       Entry: 8
       Data: 
@@ -625,6 +392,372 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: grantedTags
+      Entry: 7
+      Data: 24|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 25|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 26|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 27|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: cueList
+      Entry: 7
+      Data: 28|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 29|GAS.GameplayCueDurationalAudio, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 30|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 31|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 32|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 33|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u65E0\u654C"
+    - Name: _hashCode
+      Entry: 3
+      Data: 1081724539
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 34|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 3
+      Data: -2025145563
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u9738\u4F53.\u65E0\u654C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 35|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DurationSeconds
+      Entry: 4
+      Data: 0
+    - Name: AudioClip
+      Entry: 10
+      Data: 0
+    - Name: VolumeMultiplier
+      Entry: 4
+      Data: 1
+    - Name: Is3D
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: isTarget
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 36|GAS.ControlHitCueEffect, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 37|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 38|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 39|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 40|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 41|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u9738\u4F53"
+    - Name: _hashCode
+      Entry: 3
+      Data: -2025145563
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 42|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u9738\u4F53"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u6280\u80FD\u524D\u6447"
+    - Name: _hashCode
+      Entry: 3
+      Data: 220032221
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 43|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u6280\u80FD\u524D\u6447"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: grantedTags
+      Entry: 7
+      Data: 44|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 45|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 46|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 47|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: hitF
+      Entry: 10
+      Data: 1
+    - Name: hitB
+      Entry: 10
+      Data: 2
+    - Name: hitL
+      Entry: 10
+      Data: 3
+    - Name: hitR
+      Entry: 10
+      Data: 4
+    - Name: rootMotion
+      Entry: 5
+      Data: true
+    - Name: hitControlTime
+      Entry: 4
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -732,8 +865,12 @@ MonoBehaviour:
       Data: 50|System.Collections.Generic.Dictionary`2[[GAS.GameplayEffect, GAS],[System.Int32,
         mscorlib]], mscorlib
     - Name: comparer
-      Entry: 9
-      Data: 5
+      Entry: 7
+      Data: 51|System.Collections.Generic.ObjectEqualityComparer`1[[GAS.GameplayEffect,
+        GAS]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 12
       Data: 3
@@ -742,13 +879,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 51|GAS.ControlCueEffect, GAS
+      Data: 52|GAS.NormalDamageEffect, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 52|GAS.GameplayTagSet, GAS
+      Data: 53|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 53|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 54|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -763,199 +900,13 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 54|GAS.GameplayTagSet, GAS
+      Data: 55|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 55|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 56|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: GAS.GameplayTag, GAS
-    - Name: _shortTagName
-      Entry: 1
-      Data: "\u9738\u4F53"
-    - Name: _hashCode
-      Entry: 3
-      Data: -2025145563
-    - Name: _ancestorHashCode
-      Entry: 7
-      Data: 56|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 1959773104
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: _tagName
-      Entry: 1
-      Data: "Status.\u9738\u4F53"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: grantedTags
-      Entry: 7
-      Data: 57|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 58|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: removedTags
-      Entry: 7
-      Data: 59|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 60|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: cueList
-      Entry: 7
-      Data: 61|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 62|GAS.GameplayCueDurationalAnimation, GAS
-    - Name: requiredTags
-      Entry: 7
-      Data: 63|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 64|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 65|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 66|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: DurationSeconds
-      Entry: 4
-      Data: 0.8333334
-    - Name: AnimationClip
-      Entry: 10
-      Data: 0
-    - Name: RootMotion
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: isTarget
-      Entry: 5
-      Data: true
-    - Name: controlledTime
-      Entry: 4
-      Data: 0.8333334
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: 67|GAS.NormalDamageEffect, GAS
-    - Name: requiredTags
-      Entry: 7
-      Data: 68|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 69|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 70|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 71|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: GAS.GameplayTag, GAS
@@ -967,7 +918,7 @@ MonoBehaviour:
       Data: 1081724539
     - Name: _ancestorHashCode
       Entry: 7
-      Data: 72|System.Int32[], mscorlib
+      Data: 57|System.Int32[], mscorlib
     - Name: 
       Entry: 14
       Data: 2
@@ -990,6 +941,36 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 58|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -1000,10 +981,10 @@ MonoBehaviour:
       Data: 
     - Name: grantedTags
       Entry: 7
-      Data: 73|GAS.GameplayTagSet, GAS
+      Data: 59|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 74|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 60|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1018,10 +999,10 @@ MonoBehaviour:
       Data: 
     - Name: removedTags
       Entry: 7
-      Data: 75|GAS.GameplayTagSet, GAS
+      Data: 61|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 76|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 62|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1057,13 +1038,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 77|GAS.GameplayCueEffect, GAS
+      Data: 63|GAS.GameplayCueEffect, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 78|GAS.GameplayTagSet, GAS
+      Data: 64|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 79|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 65|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1078,28 +1059,70 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 80|GAS.GameplayTagSet, GAS
+      Data: 66|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 81|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 67|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: GAS.GameplayTag, GAS
     - Name: _shortTagName
       Entry: 1
-      Data: "\u9738\u4F53"
+      Data: "\u65E0\u654C"
     - Name: _hashCode
       Entry: 3
-      Data: -2025145563
+      Data: 585097710
     - Name: _ancestorHashCode
-      Entry: 9
-      Data: 56
+      Entry: 7
+      Data: 68|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: _tagName
       Entry: 1
-      Data: "Status.\u9738\u4F53"
+      Data: "Status.\u65E0\u654C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 69|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
     - Name: 
       Entry: 8
       Data: 
@@ -1114,10 +1137,10 @@ MonoBehaviour:
       Data: 
     - Name: grantedTags
       Entry: 7
-      Data: 82|GAS.GameplayTagSet, GAS
+      Data: 70|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 83|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 71|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1132,10 +1155,10 @@ MonoBehaviour:
       Data: 
     - Name: removedTags
       Entry: 7
-      Data: 84|GAS.GameplayTagSet, GAS
+      Data: 72|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 85|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 73|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1150,19 +1173,19 @@ MonoBehaviour:
       Data: 
     - Name: cueList
       Entry: 7
-      Data: 86|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
+      Data: 74|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 87|GAS.GameplayCueInstantAudio, GAS
+      Data: 75|GAS.GameplayCueDurationalAudio, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 88|GAS.GameplayTagSet, GAS
+      Data: 76|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 89|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 77|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1177,10 +1200,10 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 90|GAS.GameplayTagSet, GAS
+      Data: 78|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 91|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 79|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 2
@@ -1194,8 +1217,23 @@ MonoBehaviour:
       Entry: 3
       Data: 1081724539
     - Name: _ancestorHashCode
-      Entry: 9
-      Data: 46
+      Entry: 7
+      Data: 80|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 3
+      Data: -2025145563
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: _tagName
       Entry: 1
       Data: "Status.\u9738\u4F53.\u65E0\u654C"
@@ -1212,8 +1250,20 @@ MonoBehaviour:
       Entry: 3
       Data: -229409761
     - Name: _ancestorHashCode
-      Entry: 9
-      Data: 47
+      Entry: 7
+      Data: 81|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: _tagName
       Entry: 1
       Data: "Status.\u683C\u6321"
@@ -1229,9 +1279,18 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: audioClip
+    - Name: DurationSeconds
+      Entry: 4
+      Data: 0
+    - Name: AudioClip
       Entry: 10
+      Data: 0
+    - Name: VolumeMultiplier
+      Entry: 4
       Data: 1
+    - Name: Is3D
+      Entry: 5
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -1241,6 +1300,204 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: isTarget
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 82|GAS.ControlHitCueEffect, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 83|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 84|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 85|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 86|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 87|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u9738\u4F53"
+    - Name: _hashCode
+      Entry: 3
+      Data: -2025145563
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 88|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u9738\u4F53"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u6280\u80FD\u524D\u6447"
+    - Name: _hashCode
+      Entry: 3
+      Data: 220032221
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 89|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u6280\u80FD\u524D\u6447"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: grantedTags
+      Entry: 7
+      Data: 90|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 91|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 92|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 93|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: hitF
+      Entry: 10
+      Data: 1
+    - Name: hitB
+      Entry: 10
+      Data: 2
+    - Name: hitL
+      Entry: 10
+      Data: 3
+    - Name: hitR
+      Entry: 10
+      Data: 4
+    - Name: rootMotion
+      Entry: 5
+      Data: true
+    - Name: hitControlTime
+      Entry: 4
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -1279,7 +1536,7 @@ MonoBehaviour:
       Data: 26
     - Name: $v
       Entry: 7
-      Data: 92|GAS.ReleaseGEMarkEvent, GAS
+      Data: 94|GAS.ReleaseGEMarkEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u6548\u679C"
@@ -1288,7 +1545,7 @@ MonoBehaviour:
       Data: 26
     - Name: targetCatcher
       Entry: 7
-      Data: 93|GAS.TargetSectorCatcher, GAS
+      Data: 95|GAS.TargetSectorCatcher, GAS
     - Name: LayerMask
       Entry: 7
       Data: UnityEngine.LayerMask, UnityEngine.CoreModule
@@ -1345,11 +1602,15 @@ MonoBehaviour:
       Data: 
     - Name: Effects
       Entry: 7
-      Data: 94|System.Collections.Generic.Dictionary`2[[GAS.GameplayEffect, GAS],[System.Int32,
+      Data: 96|System.Collections.Generic.Dictionary`2[[GAS.GameplayEffect, GAS],[System.Int32,
         mscorlib]], mscorlib
     - Name: comparer
-      Entry: 9
-      Data: 5
+      Entry: 7
+      Data: 97|System.Collections.Generic.ObjectEqualityComparer`1[[GAS.GameplayEffect,
+        GAS]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 12
       Data: 3
@@ -1358,13 +1619,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 95|GAS.ControlCueEffect, GAS
+      Data: 98|GAS.NormalDamageEffect, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 96|GAS.GameplayTagSet, GAS
+      Data: 99|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 97|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 100|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1378,54 +1639,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: blockedTags
-      Entry: 7
-      Data: 98|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 99|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: GAS.GameplayTag, GAS
-    - Name: _shortTagName
-      Entry: 1
-      Data: "\u9738\u4F53"
-    - Name: _hashCode
-      Entry: 3
-      Data: -2025145563
-    - Name: _ancestorHashCode
-      Entry: 7
-      Data: 100|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 1959773104
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: _tagName
-      Entry: 1
-      Data: "Status.\u9738\u4F53"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: grantedTags
       Entry: 7
       Data: 101|GAS.GameplayTagSet, GAS
     - Name: tagSet
@@ -1433,145 +1646,7 @@ MonoBehaviour:
       Data: 102|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: removedTags
-      Entry: 7
-      Data: 103|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 104|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: cueList
-      Entry: 7
-      Data: 105|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 106|GAS.GameplayCueDurationalAnimation, GAS
-    - Name: requiredTags
-      Entry: 7
-      Data: 107|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 108|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 109|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 110|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: DurationSeconds
-      Entry: 4
-      Data: 0.8333334
-    - Name: AnimationClip
-      Entry: 10
-      Data: 0
-    - Name: RootMotion
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: isTarget
-      Entry: 5
-      Data: true
-    - Name: controlledTime
-      Entry: 4
-      Data: 0.8333334
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: 111|GAS.NormalDamageEffect, GAS
-    - Name: requiredTags
-      Entry: 7
-      Data: 112|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 113|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 114|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 115|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: GAS.GameplayTag, GAS
@@ -1583,7 +1658,7 @@ MonoBehaviour:
       Data: 1081724539
     - Name: _ancestorHashCode
       Entry: 7
-      Data: 116|System.Int32[], mscorlib
+      Data: 103|System.Int32[], mscorlib
     - Name: 
       Entry: 14
       Data: 2
@@ -1606,6 +1681,36 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 104|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -1616,10 +1721,10 @@ MonoBehaviour:
       Data: 
     - Name: grantedTags
       Entry: 7
-      Data: 117|GAS.GameplayTagSet, GAS
+      Data: 105|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 118|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 106|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1634,10 +1739,10 @@ MonoBehaviour:
       Data: 
     - Name: removedTags
       Entry: 7
-      Data: 119|GAS.GameplayTagSet, GAS
+      Data: 107|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 120|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 108|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1673,7 +1778,148 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 121|GAS.GameplayCueEffect, GAS
+      Data: 109|GAS.GameplayCueEffect, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 110|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 111|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 112|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 113|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u65E0\u654C"
+    - Name: _hashCode
+      Entry: 3
+      Data: 585097710
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 114|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u65E0\u654C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 115|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: grantedTags
+      Entry: 7
+      Data: 116|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 117|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 118|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 119|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: cueList
+      Entry: 7
+      Data: 120|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 121|GAS.GameplayCueDurationalAudio, GAS
     - Name: requiredTags
       Entry: 7
       Data: 122|GAS.GameplayTagSet, GAS
@@ -1700,105 +1946,6 @@ MonoBehaviour:
       Data: 125|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: GAS.GameplayTag, GAS
-    - Name: _shortTagName
-      Entry: 1
-      Data: "\u9738\u4F53"
-    - Name: _hashCode
-      Entry: 3
-      Data: -2025145563
-    - Name: _ancestorHashCode
-      Entry: 9
-      Data: 100
-    - Name: _tagName
-      Entry: 1
-      Data: "Status.\u9738\u4F53"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: grantedTags
-      Entry: 7
-      Data: 126|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 127|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: removedTags
-      Entry: 7
-      Data: 128|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 129|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: cueList
-      Entry: 7
-      Data: 130|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 131|GAS.GameplayCueInstantAudio, GAS
-    - Name: requiredTags
-      Entry: 7
-      Data: 132|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 133|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 134|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 135|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
       Data: 2
     - Name: 
       Entry: 7
@@ -1810,8 +1957,23 @@ MonoBehaviour:
       Entry: 3
       Data: 1081724539
     - Name: _ancestorHashCode
-      Entry: 9
-      Data: 46
+      Entry: 7
+      Data: 126|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 3
+      Data: -2025145563
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: _tagName
       Entry: 1
       Data: "Status.\u9738\u4F53.\u65E0\u654C"
@@ -1828,8 +1990,20 @@ MonoBehaviour:
       Entry: 3
       Data: -229409761
     - Name: _ancestorHashCode
-      Entry: 9
-      Data: 47
+      Entry: 7
+      Data: 127|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: _tagName
       Entry: 1
       Data: "Status.\u683C\u6321"
@@ -1845,9 +2019,18 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: audioClip
+    - Name: DurationSeconds
+      Entry: 4
+      Data: 0
+    - Name: AudioClip
       Entry: 10
+      Data: 0
+    - Name: VolumeMultiplier
+      Entry: 4
       Data: 1
+    - Name: Is3D
+      Entry: 5
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -1857,6 +2040,204 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: isTarget
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 128|GAS.ControlHitCueEffect, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 129|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 130|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 131|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 132|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 133|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u9738\u4F53"
+    - Name: _hashCode
+      Entry: 3
+      Data: -2025145563
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 134|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u9738\u4F53"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u6280\u80FD\u524D\u6447"
+    - Name: _hashCode
+      Entry: 3
+      Data: 220032221
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 135|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u6280\u80FD\u524D\u6447"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: grantedTags
+      Entry: 7
+      Data: 136|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 137|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 138|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 139|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: hitF
+      Entry: 10
+      Data: 1
+    - Name: hitB
+      Entry: 10
+      Data: 2
+    - Name: hitL
+      Entry: 10
+      Data: 3
+    - Name: hitR
+      Entry: 10
+      Data: 4
+    - Name: rootMotion
+      Entry: 5
+      Data: true
+    - Name: hitControlTime
+      Entry: 4
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -1895,7 +2276,7 @@ MonoBehaviour:
       Data: 67
     - Name: $v
       Entry: 7
-      Data: 136|GAS.ReleaseGEMarkEvent, GAS
+      Data: 140|GAS.ReleaseGEMarkEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u6548\u679C"
@@ -1904,7 +2285,7 @@ MonoBehaviour:
       Data: 67
     - Name: targetCatcher
       Entry: 7
-      Data: 137|GAS.TargetSectorCatcher, GAS
+      Data: 141|GAS.TargetSectorCatcher, GAS
     - Name: LayerMask
       Entry: 7
       Data: UnityEngine.LayerMask, UnityEngine.CoreModule
@@ -1961,11 +2342,15 @@ MonoBehaviour:
       Data: 
     - Name: Effects
       Entry: 7
-      Data: 138|System.Collections.Generic.Dictionary`2[[GAS.GameplayEffect, GAS],[System.Int32,
+      Data: 142|System.Collections.Generic.Dictionary`2[[GAS.GameplayEffect, GAS],[System.Int32,
         mscorlib]], mscorlib
     - Name: comparer
-      Entry: 9
-      Data: 5
+      Entry: 7
+      Data: 143|System.Collections.Generic.ObjectEqualityComparer`1[[GAS.GameplayEffect,
+        GAS]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 12
       Data: 3
@@ -1974,74 +2359,8 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 139|GAS.ControlCueEffect, GAS
+      Data: 144|GAS.NormalDamageEffect, GAS
     - Name: requiredTags
-      Entry: 7
-      Data: 140|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 141|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 142|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 143|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: GAS.GameplayTag, GAS
-    - Name: _shortTagName
-      Entry: 1
-      Data: "\u9738\u4F53"
-    - Name: _hashCode
-      Entry: 3
-      Data: -2025145563
-    - Name: _ancestorHashCode
-      Entry: 7
-      Data: 144|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 1959773104
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: _tagName
-      Entry: 1
-      Data: "Status.\u9738\u4F53"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: grantedTags
       Entry: 7
       Data: 145|GAS.GameplayTagSet, GAS
     - Name: tagSet
@@ -2059,7 +2378,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: removedTags
+    - Name: blockedTags
       Entry: 7
       Data: 147|GAS.GameplayTagSet, GAS
     - Name: tagSet
@@ -2067,7 +2386,70 @@ MonoBehaviour:
       Data: 148|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u65E0\u654C"
+    - Name: _hashCode
+      Entry: 3
+      Data: 1081724539
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 149|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 3
+      Data: -2025145563
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u9738\u4F53.\u65E0\u654C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 150|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -2077,16 +2459,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: cueList
-      Entry: 7
-      Data: 149|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 150|GAS.GameplayCueDurationalAnimation, GAS
-    - Name: requiredTags
+    - Name: grantedTags
       Entry: 7
       Data: 151|GAS.GameplayTagSet, GAS
     - Name: tagSet
@@ -2104,7 +2477,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: blockedTags
+    - Name: removedTags
       Entry: 7
       Data: 153|GAS.GameplayTagSet, GAS
     - Name: tagSet
@@ -2122,30 +2495,15 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: DurationSeconds
+    - Name: damage
       Entry: 4
-      Data: 0.8333334
-    - Name: AnimationClip
-      Entry: 10
-      Data: 0
-    - Name: RootMotion
+      Data: 10
+    - Name: isParry
       Entry: 5
       Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: isTarget
+    - Name: isFloatingText
       Entry: 5
-      Data: true
-    - Name: controlledTime
-      Entry: 4
-      Data: 0.8333334
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -2160,7 +2518,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 155|GAS.NormalDamageEffect, GAS
+      Data: 155|GAS.GameplayCueEffect, GAS
     - Name: requiredTags
       Entry: 7
       Data: 156|GAS.GameplayTagSet, GAS
@@ -2187,7 +2545,148 @@ MonoBehaviour:
       Data: 159|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u65E0\u654C"
+    - Name: _hashCode
+      Entry: 3
+      Data: 585097710
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 160|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
       Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u65E0\u654C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 161|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: grantedTags
+      Entry: 7
+      Data: 162|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 163|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 164|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 165|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: cueList
+      Entry: 7
+      Data: 166|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 167|GAS.GameplayCueDurationalAudio, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 168|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 169|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 170|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 171|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
     - Name: 
       Entry: 7
       Data: GAS.GameplayTag, GAS
@@ -2199,7 +2698,7 @@ MonoBehaviour:
       Data: 1081724539
     - Name: _ancestorHashCode
       Entry: 7
-      Data: 160|System.Int32[], mscorlib
+      Data: 172|System.Int32[], mscorlib
     - Name: 
       Entry: 14
       Data: 2
@@ -2222,219 +2721,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: grantedTags
-      Entry: 7
-      Data: 161|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 162|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: removedTags
-      Entry: 7
-      Data: 163|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 164|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: damage
-      Entry: 4
-      Data: 20
-    - Name: isParry
-      Entry: 5
-      Data: true
-    - Name: isFloatingText
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: 165|GAS.GameplayCueEffect, GAS
-    - Name: requiredTags
-      Entry: 7
-      Data: 166|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 167|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 168|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 169|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: GAS.GameplayTag, GAS
-    - Name: _shortTagName
-      Entry: 1
-      Data: "\u9738\u4F53"
-    - Name: _hashCode
-      Entry: 3
-      Data: -2025145563
-    - Name: _ancestorHashCode
-      Entry: 9
-      Data: 144
-    - Name: _tagName
-      Entry: 1
-      Data: "Status.\u9738\u4F53"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: grantedTags
-      Entry: 7
-      Data: 170|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 171|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: removedTags
-      Entry: 7
-      Data: 172|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 173|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: cueList
-      Entry: 7
-      Data: 174|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 175|GAS.GameplayCueInstantAudio, GAS
-    - Name: requiredTags
-      Entry: 7
-      Data: 176|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 177|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: blockedTags
-      Entry: 7
-      Data: 178|GAS.GameplayTagSet, GAS
-    - Name: tagSet
-      Entry: 7
-      Data: 179|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: GAS.GameplayTag, GAS
-    - Name: _shortTagName
-      Entry: 1
-      Data: "\u65E0\u654C"
-    - Name: _hashCode
-      Entry: 3
-      Data: 1081724539
-    - Name: _ancestorHashCode
-      Entry: 9
-      Data: 46
-    - Name: _tagName
-      Entry: 1
-      Data: "Status.\u9738\u4F53.\u65E0\u654C"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
       Entry: 7
       Data: GAS.GameplayTag, GAS
     - Name: _shortTagName
@@ -2444,8 +2730,20 @@ MonoBehaviour:
       Entry: 3
       Data: -229409761
     - Name: _ancestorHashCode
-      Entry: 9
-      Data: 47
+      Entry: 7
+      Data: 173|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: _tagName
       Entry: 1
       Data: "Status.\u683C\u6321"
@@ -2461,9 +2759,18 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: audioClip
+    - Name: DurationSeconds
+      Entry: 4
+      Data: 0
+    - Name: AudioClip
       Entry: 10
+      Data: 0
+    - Name: VolumeMultiplier
+      Entry: 4
       Data: 1
+    - Name: Is3D
+      Entry: 5
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -2473,6 +2780,204 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: isTarget
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 174|GAS.ControlHitCueEffect, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 175|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 176|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 177|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 178|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 179|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u9738\u4F53"
+    - Name: _hashCode
+      Entry: 3
+      Data: -2025145563
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 180|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u9738\u4F53"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u6280\u80FD\u524D\u6447"
+    - Name: _hashCode
+      Entry: 3
+      Data: 220032221
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 181|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u6280\u80FD\u524D\u6447"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: grantedTags
+      Entry: 7
+      Data: 182|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 183|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 184|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 185|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: hitF
+      Entry: 10
+      Data: 5
+    - Name: hitB
+      Entry: 10
+      Data: 6
+    - Name: hitL
+      Entry: 10
+      Data: 7
+    - Name: hitR
+      Entry: 10
+      Data: 8
+    - Name: rootMotion
+      Entry: 5
+      Data: true
+    - Name: hitControlTime
+      Entry: 4
+      Data: 0.7
     - Name: 
       Entry: 8
       Data: 
@@ -2511,7 +3016,7 @@ MonoBehaviour:
       Data: 
     - Name: cueDic
       Entry: 7
-      Data: 180|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent,
+      Data: 186|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent,
         GAS]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -2527,14 +3032,14 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 181|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+      Data: 187|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 182|GAS.DurationCueMarkEvent, GAS
+      Data: 188|GAS.DurationCueMarkEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u52A8\u753B"
@@ -2543,13 +3048,13 @@ MonoBehaviour:
       Data: 0
     - Name: DurationCue
       Entry: 7
-      Data: 183|GAS.GameplayCueDurationalAnimation, GAS
+      Data: 189|GAS.GameplayCueDurationalAnimation, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 184|GAS.GameplayTagSet, GAS
+      Data: 190|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 185|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 191|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -2564,10 +3069,10 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 186|GAS.GameplayTagSet, GAS
+      Data: 192|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 187|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 193|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -2585,7 +3090,7 @@ MonoBehaviour:
       Data: 3.25000024
     - Name: AnimationClip
       Entry: 10
-      Data: 2
+      Data: 9
     - Name: RootMotion
       Entry: 5
       Data: true
@@ -2612,14 +3117,14 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: 188|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+      Data: 194|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 189|GAS.DurationCueMarkEvent, GAS
+      Data: 195|GAS.DurationCueMarkEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u5200\u5149\u7279\u6548"
@@ -2628,13 +3133,13 @@ MonoBehaviour:
       Data: 1
     - Name: DurationCue
       Entry: 7
-      Data: 190|GAS.GameplayCueDurationalParticle, GAS
+      Data: 196|GAS.GameplayCueDurationalParticle, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 191|GAS.GameplayTagSet, GAS
+      Data: 197|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 192|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 198|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -2649,10 +3154,10 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 193|GAS.GameplayTagSet, GAS
+      Data: 199|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 194|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 200|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -2670,7 +3175,7 @@ MonoBehaviour:
       Data: 0.3
     - Name: ParticlePrefab
       Entry: 10
-      Data: 3
+      Data: 10
     - Name: Position
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
@@ -2727,14 +3232,14 @@ MonoBehaviour:
       Data: 11
     - Name: $v
       Entry: 7
-      Data: 195|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+      Data: 201|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 196|GAS.DurationCueMarkEvent, GAS
+      Data: 202|GAS.DurationCueMarkEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u5200\u5149\u7279\u6548"
@@ -2743,13 +3248,13 @@ MonoBehaviour:
       Data: 11
     - Name: DurationCue
       Entry: 7
-      Data: 197|GAS.GameplayCueDurationalParticle, GAS
+      Data: 203|GAS.GameplayCueDurationalParticle, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 198|GAS.GameplayTagSet, GAS
+      Data: 204|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 199|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 205|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -2764,10 +3269,10 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 200|GAS.GameplayTagSet, GAS
+      Data: 206|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 201|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 207|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -2785,7 +3290,7 @@ MonoBehaviour:
       Data: 0.3
     - Name: ParticlePrefab
       Entry: 10
-      Data: 3
+      Data: 10
     - Name: Position
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
@@ -2842,14 +3347,14 @@ MonoBehaviour:
       Data: 20
     - Name: $v
       Entry: 7
-      Data: 202|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+      Data: 208|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 203|GAS.DurationCueMarkEvent, GAS
+      Data: 209|GAS.DurationCueMarkEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u5200\u5149\u7279\u6548"
@@ -2858,13 +3363,13 @@ MonoBehaviour:
       Data: 20
     - Name: DurationCue
       Entry: 7
-      Data: 204|GAS.GameplayCueDurationalParticle, GAS
+      Data: 210|GAS.GameplayCueDurationalParticle, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 205|GAS.GameplayTagSet, GAS
+      Data: 211|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 206|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 212|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -2879,10 +3384,10 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 207|GAS.GameplayTagSet, GAS
+      Data: 213|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 208|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 214|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -2900,7 +3405,7 @@ MonoBehaviour:
       Data: 0.3
     - Name: ParticlePrefab
       Entry: 10
-      Data: 3
+      Data: 10
     - Name: Position
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
@@ -2957,14 +3462,14 @@ MonoBehaviour:
       Data: 59
     - Name: $v
       Entry: 7
-      Data: 209|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+      Data: 215|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 210|GAS.DurationCueMarkEvent, GAS
+      Data: 216|GAS.DurationCueMarkEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u5200\u5149\u7279\u6548"
@@ -2973,13 +3478,13 @@ MonoBehaviour:
       Data: 59
     - Name: DurationCue
       Entry: 7
-      Data: 211|GAS.GameplayCueDurationalParticle, GAS
+      Data: 217|GAS.GameplayCueDurationalParticle, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 212|GAS.GameplayTagSet, GAS
+      Data: 218|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 213|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 219|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -2994,10 +3499,10 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 214|GAS.GameplayTagSet, GAS
+      Data: 220|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 215|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 221|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3015,7 +3520,7 @@ MonoBehaviour:
       Data: 0.5
     - Name: ParticlePrefab
       Entry: 10
-      Data: 4
+      Data: 11
     - Name: Position
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
@@ -3072,14 +3577,14 @@ MonoBehaviour:
       Data: 6
     - Name: $v
       Entry: 7
-      Data: 216|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+      Data: 222|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 217|GAS.DurationCueMarkEvent, GAS
+      Data: 223|GAS.DurationCueMarkEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u6325\u780D\u97F3\u6548"
@@ -3088,13 +3593,13 @@ MonoBehaviour:
       Data: 6
     - Name: DurationCue
       Entry: 7
-      Data: 218|GAS.GameplayCueDurationalAudio, GAS
+      Data: 224|GAS.GameplayCueDurationalAudio, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 219|GAS.GameplayTagSet, GAS
+      Data: 225|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 220|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 226|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3109,10 +3614,10 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 221|GAS.GameplayTagSet, GAS
+      Data: 227|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 222|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 228|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3130,7 +3635,7 @@ MonoBehaviour:
       Data: 0
     - Name: AudioClip
       Entry: 10
-      Data: 5
+      Data: 12
     - Name: VolumeMultiplier
       Entry: 4
       Data: 0.5
@@ -3160,14 +3665,14 @@ MonoBehaviour:
       Data: 16
     - Name: $v
       Entry: 7
-      Data: 223|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+      Data: 229|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 224|GAS.DurationCueMarkEvent, GAS
+      Data: 230|GAS.DurationCueMarkEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u6325\u780D\u97F3\u6548"
@@ -3176,13 +3681,13 @@ MonoBehaviour:
       Data: 16
     - Name: DurationCue
       Entry: 7
-      Data: 225|GAS.GameplayCueDurationalAudio, GAS
+      Data: 231|GAS.GameplayCueDurationalAudio, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 226|GAS.GameplayTagSet, GAS
+      Data: 232|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 227|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 233|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3197,10 +3702,10 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 228|GAS.GameplayTagSet, GAS
+      Data: 234|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 229|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 235|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3218,7 +3723,7 @@ MonoBehaviour:
       Data: 0
     - Name: AudioClip
       Entry: 10
-      Data: 5
+      Data: 12
     - Name: VolumeMultiplier
       Entry: 4
       Data: 0.5
@@ -3248,14 +3753,14 @@ MonoBehaviour:
       Data: 24
     - Name: $v
       Entry: 7
-      Data: 230|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+      Data: 236|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 231|GAS.DurationCueMarkEvent, GAS
+      Data: 237|GAS.DurationCueMarkEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u6325\u780D\u97F3\u6548"
@@ -3264,13 +3769,13 @@ MonoBehaviour:
       Data: 24
     - Name: DurationCue
       Entry: 7
-      Data: 232|GAS.GameplayCueDurationalAudio, GAS
+      Data: 238|GAS.GameplayCueDurationalAudio, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 233|GAS.GameplayTagSet, GAS
+      Data: 239|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 234|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 240|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3285,10 +3790,10 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 235|GAS.GameplayTagSet, GAS
+      Data: 241|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 236|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 242|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3306,7 +3811,7 @@ MonoBehaviour:
       Data: 0
     - Name: AudioClip
       Entry: 10
-      Data: 5
+      Data: 12
     - Name: VolumeMultiplier
       Entry: 4
       Data: 0.5
@@ -3336,14 +3841,14 @@ MonoBehaviour:
       Data: 67
     - Name: $v
       Entry: 7
-      Data: 237|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+      Data: 243|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 238|GAS.DurationCueMarkEvent, GAS
+      Data: 244|GAS.DurationCueMarkEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u6325\u780D\u97F3\u6548"
@@ -3352,13 +3857,13 @@ MonoBehaviour:
       Data: 67
     - Name: DurationCue
       Entry: 7
-      Data: 239|GAS.GameplayCueDurationalAudio, GAS
+      Data: 245|GAS.GameplayCueDurationalAudio, GAS
     - Name: requiredTags
       Entry: 7
-      Data: 240|GAS.GameplayTagSet, GAS
+      Data: 246|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 241|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 247|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3373,10 +3878,10 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 242|GAS.GameplayTagSet, GAS
+      Data: 248|GAS.GameplayTagSet, GAS
     - Name: tagSet
       Entry: 7
-      Data: 243|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 249|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3394,7 +3899,7 @@ MonoBehaviour:
       Data: 0
     - Name: AudioClip
       Entry: 10
-      Data: 5
+      Data: 12
     - Name: VolumeMultiplier
       Entry: 4
       Data: 0.5
@@ -3424,11 +3929,11 @@ MonoBehaviour:
       Data: 
     - Name: eventDic
       Entry: 7
-      Data: 244|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Collections.Generic.List`1[[GAS.FrameEvent,
+      Data: 250|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Collections.Generic.List`1[[GAS.FrameEvent,
         GAS]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 245|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+      Data: 251|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -3444,13 +3949,13 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 246|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+      Data: 252|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 2
     - Name: 
       Entry: 7
-      Data: 247|GAS.FrameEvent, GAS
+      Data: 253|GAS.FrameEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u9501\u5B9A\u76EE\u6807"
@@ -3460,6 +3965,9 @@ MonoBehaviour:
     - Name: EventType
       Entry: 3
       Data: 2
+    - Name: eventName
+      Entry: 6
+      Data: 
     - Name: intArg
       Entry: 3
       Data: 0
@@ -3477,7 +3985,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 248|GAS.FrameEvent, GAS
+      Data: 254|GAS.FrameEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u524D\u6447\u5E27\u8D77\u59CB"
@@ -3487,6 +3995,9 @@ MonoBehaviour:
     - Name: EventType
       Entry: 3
       Data: 6
+    - Name: eventName
+      Entry: 6
+      Data: 
     - Name: intArg
       Entry: 3
       Data: 0
@@ -3519,13 +4030,13 @@ MonoBehaviour:
       Data: 12
     - Name: $v
       Entry: 7
-      Data: 249|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+      Data: 255|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 250|GAS.FrameEvent, GAS
+      Data: 256|GAS.FrameEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u524D\u6447\u5E27\u7ED3\u675F"
@@ -3535,6 +4046,9 @@ MonoBehaviour:
     - Name: EventType
       Entry: 3
       Data: 5
+    - Name: eventName
+      Entry: 6
+      Data: 
     - Name: intArg
       Entry: 3
       Data: 0
@@ -3567,13 +4081,13 @@ MonoBehaviour:
       Data: 10
     - Name: $v
       Entry: 7
-      Data: 251|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+      Data: 257|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 252|GAS.FrameEvent, GAS
+      Data: 258|GAS.FrameEvent, GAS
     - Name: _name
       Entry: 1
       Data: "\u53D6\u6D88\u9501\u5B9A\u76EE\u6807"
@@ -3583,6 +4097,9 @@ MonoBehaviour:
     - Name: EventType
       Entry: 3
       Data: 3
+    - Name: eventName
+      Entry: 6
+      Data: 
     - Name: intArg
       Entry: 3
       Data: 0
@@ -3615,4 +4132,4 @@ MonoBehaviour:
       Data: 
   abilityName: "\u65B0\u6280\u80FD"
   totalFrames: 99
-  rootMotionDis: 1.3
+  rootMotionDis: 0.5

@@ -287,8 +287,6 @@ namespace GAS
         /// <summary>效果应用（提供给外部）</summary>
         public void ApplyEffect(GameplayEffect effect, AbilitySystemComponent source, int stack = 1)
         {
-            if (effect == null || !CheckCanRelease(effect)) return;
-
             switch (effect)
             {
                 // 持续效果：转调它自己的 Execute —— 叠层/新建实例/进入都由效果自己处理

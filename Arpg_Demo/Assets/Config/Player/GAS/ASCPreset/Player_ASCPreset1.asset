@@ -52,13 +52,13 @@ MonoBehaviour:
       Data: 2|GAS.Attribute, GAS
     - Name: _curValue
       Entry: 4
-      Data: 50
+      Data: 10000
     - Name: _minValue
       Entry: 4
       Data: 0
     - Name: _maxValue
       Entry: 4
-      Data: 100
+      Data: 10000
     - Name: 
       Entry: 8
       Data: 

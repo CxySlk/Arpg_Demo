@@ -1,4 +1,5 @@
 using System.Collections;
+using Animancer;
 using UnityEngine;
 
 namespace GAS
@@ -15,12 +16,9 @@ namespace GAS
 
         public override void Apply()
         {
-            // 受控表现：动画交给角色控制器 —— 它按动画长度进入/延长"受控状态"，
-            // 并把当前动画压栈，等这段播完从暂停处继续(眩晕被受击打断、播完受击再接着播眩晕)。
-            // 目标不允许受控(例如技能前摇霸体)时按普通方式播。
-            _controller.SetRootMotion(OnRootMotion);
-            if (!_controller.TryPlayControlledAnimation(InstanceCue.AnimationClip))
-                _controller.Animancer.Play(InstanceCue.AnimationClip);
+            // 纯播动画:是否进入受控由受控效果决定,这里只负责播目标动画 + 按配置挂根运动回调
+            _controller.SetRootMotion(InstanceCue.rootMotion ? OnRootMotion : null);
+            _controller.Animancer.Play(InstanceCue.AnimationClip, .25f, FadeMode.FromStart);
 
             // 播放完动画自动回收
             MonoSystem.Start_Coroutine(WaitTimeRecycle(InstanceCue.AnimationClip.length));

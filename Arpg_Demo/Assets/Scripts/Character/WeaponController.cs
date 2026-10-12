@@ -96,6 +96,13 @@ namespace Character
             }
         }
 
+        /// <summary>关闭所有武器(死亡等场景):只关碰撞体/拖尾,不隐藏武器物体。</summary>
+        public void Close()
+        {
+            foreach (Weapon weapon in _weapons)
+                weapon.Close();
+        }
+
         public void ApplyTrailPreset(HS_SwordTrailPreset trailPreset)
         {
             if (!trailPreset) return;

@@ -1,25 +1,20 @@
-using System;
 using Animancer;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+    public TransitionAsset sequence ;
+    private AnimancerComponent animancer;
+
     private void Start()
     {
-        // animancer = GetComponent<AnimancerComponent>();
-        // animancer.Play(clip);
+        animancer= GetComponent<AnimancerComponent>();
     }
 
-    // private void Update()
-    // {
-    //     Vector2MixerState state = animancer.Play(clip, .25f) as Vector2MixerState;
-    //     // 设置参数x、y
-    //     state.ParameterX = x;
-    //     state.ParameterY = y;
-    // }
-
-    private void OnTriggerStay(Collider other)
+    [Button("顺序播放动画")]
+    private void TestA()
     {
-        Debug.Log(other.name);
+        animancer.Play(sequence,.25f,FadeMode.FromStart);
     }
 }

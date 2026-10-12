@@ -111,14 +111,8 @@ namespace Character
         protected void BindHpMonitor()
         {
             if (asc.AttrDic.TryGetValue(AttributeType.Hp, out GAS.Attribute hp))
-            {
-                _lastHp = hp.CurValue;
                 hp.AddCurValueChanged(OnHpChanged);
-            }
         }
-
-        /// <summary>上一次的 HP 值:用来判断这次变化是掉血还是回血。</summary>
-        private float _lastHp;
 
         private void UnbindHpMonitor()
         {
@@ -155,10 +149,6 @@ namespace Character
         #endregion
 
         #region 受控状态（眩晕/受击等"失去控制"的通用表现）
-
-        /// <summary>没有动画可依时的兜底受控时长(秒)</summary>
-        [LabelText("兜底受控时长(秒)"), SerializeField]
-        protected float defaultControlledTime = 0.3f;
 
         /// <summary>当前是否处于受控状态(失去控制:不能行动、不能放技能)。</summary>
         public bool IsControlled { get; private set; }
@@ -197,27 +187,8 @@ namespace Character
             OnControlledExit();
         }
 
-        /// <summary>
-        /// 用"受控表现"播放动画:先进入/延长受控状态(时长 = 动画长度),再用 Animancer 直接播放。
-        /// 已有受控动画在播时,新动画直接顶掉旧的(不压栈、不续播)。
-        /// 返回 false 表示当前不允许受控(例如技能前摇霸体),调用方自行退化处理。
-        /// </summary>
-        public bool TryPlayControlledAnimation(AnimationClip clip)
-        {
-            if (!clip || !CanBeControlled()) return false;
-
-            EnterControlled(clip.isLooping ? defaultControlledTime : clip.length);
-            if (!IsControlled) return false;
-
-            Animancer.Play(clip);
-            return true;
-        }
-
-        /// <summary>是否允许进入受控。已受控时只延长时间,不做"能否进入"的判定。</summary>
-        protected virtual bool CanBeControlled() => !IsDead && (IsControlled || CanEnterControlled());
-
-        /// <summary>未受控时是否允许进入受控(子类覆写:技能前摇霸体之类)。</summary>
-        protected virtual bool CanEnterControlled() => true;
+        /// <summary>是否允许进入受控(死亡不收控;能否受控由效果的标签门禁决定)。</summary>
+        protected virtual bool CanBeControlled() => !IsDead;
 
         /// <summary>受控开始(子类:停移动、打断技能、清根运动等)。</summary>
         protected virtual void OnControlledEnter()
@@ -243,24 +214,9 @@ namespace Character
 
         protected virtual void OnHpChanged(float hp)
         {
-            // 掉血 = 受击(回血不触发;已经死亡后不再触发受击)
-            if (!IsDead && hp < _lastHp)
-                OnHurt(_lastHp - hp);
-            _lastHp = hp;
-
+            // HP 变化只用于死亡检测(受伤/受控是独立体系,不由扣血驱动)
             if (hp <= 0)
                 Death();
-        }
-
-        /// <summary>
-        /// 掉血回调(HP 下降时触发)。受控表现通常已经由"命中你的那个效果"的动画 Cue 驱动
-        /// (它知道动画长度,会按动画时长进入受控);这里只兜底:
-        /// 掉血了但效果里没配动画时,用兜底时长进受控,至少还能有个硬直。
-        /// </summary>
-        /// <param name="damage">本次掉血量。</param>
-        protected virtual void OnHurt(float damage)
-        {
-            if (!IsControlled) EnterControlled(defaultControlledTime);
         }
 
         /// <summary>是否已死亡(防重复触发,复活后复位)</summary>
@@ -279,10 +235,29 @@ namespace Character
 
             // 打断所有正在播放的技能(技能播放状态与片段播放状态一起结束;force:死亡必定打断,不受"前摇不可打断"限制)
             InterruptAllSkills(resetCd: true, force: true);
+
+            // 关闭角色交互(武器/碰撞体/CharacterController):尸体不再被命中,从而不再播受击/受控动画
+            CloseInteractionOnDeath();
             OnDeathStart();
 
             // 播死亡动画(标准动画字典里有 Death 键;没有则跳过不报错)
             PlayDeathAnimation();
+        }
+
+        /// <summary>
+        /// 死亡时关闭角色交互:关武器(碰撞体+拖尾) + 关闭所有子碰撞体 + 关闭 Unity CharacterController。
+        /// 目的:尸体不再被任何攻击命中,从而不再触发受击/受控表现。
+        /// 不动 Animancer/Animator(死亡倒地动画照常播放)、也不隐藏任何物体(武器仍可见)。
+        /// </summary>
+        protected virtual void CloseInteractionOnDeath()
+        {
+            weaponController.Close();
+
+            foreach (Collider col in GetComponentsInChildren<Collider>(true))
+                col.enabled = false;
+
+            CharacterController cc = GetComponent<CharacterController>();
+            if (cc) cc.enabled = false;
         }
 
         /// <summary>死亡表现开始时的钩子(子类覆写:停 FSM/停输入/禁碰撞等)</summary>

@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 4668024351373241624}
   - component: {fileID: 918861473229154}
   - component: {fileID: 7014605898020017347}
+  - component: {fileID: 1540423477917847470}
+  - component: {fileID: 614248687844355644}
+  - component: {fileID: 5201336313302436376}
   m_Layer: 6
   m_Name: Player1
   m_TagString: Untagged
@@ -76,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: NodeCanvas::NodeCanvas.StateMachines.FSMOwner
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":84.94159,"y":452.61},"$type":"Player_IdleState","$id":"0"},{"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":182.1246,"y":378.7469},"$type":"Player_GroundState","$id":"1"},{"audioEntries":[{"eventName":{"_value":1},"volume":2.0,"clip":{"_name":"footStep","_targetVariableID":"fede39f9-b4b7-4dca-a52c-b684642901cc"}}],"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":287.4594,"y":447.7127},"$type":"Player_MoveState","$id":"2"},{"inAirMoveSpeed":{"_name":"inAirMoveSpeed","_targetVariableID":"c4ee2421-22df-43cc-9e5e-cabc8e68e004"},"fallSpeed":{"_value":10.0},"_transitionEvaluation":1,"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":564.6667,"y":258.3333},"$type":"Player_InAirState","$id":"3"},{"dontRetriggerStates":true,"_position":{"x":366.3731,"y":-32.39487},"$type":"NodeCanvas.StateMachines.AnyState","$id":"4"},{"jumpSpeed":{"_value":1.0},"inAirSpeed":{"_name":"inAirMoveSpeed","_targetVariableID":"c4ee2421-22df-43cc-9e5e-cabc8e68e004"},"_transitionEvaluation":1,"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":353.1006,"y":97.27708},"$type":"Player_JumpAbilityState","$id":"5"},{"_transitionEvaluation":1,"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":92.80768,"y":157.4621},"$type":"Player_SkillState","$id":"6"},{"_transitionEvaluation":1,"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":-820.0,"y":40.0},"$type":"Player_ControlledState","$id":"7"}],"connections":[{"_condition":{"$type":"MoveInputCondition"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"_invert":true,"$type":"IsGroundedCondition"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"_invert":true,"$type":"MoveInputCondition"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"$type":"MoveInputCondition"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"_invert":true,"$type":"MoveInputCondition"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"_invert":true,"$type":"IsGroundedCondition"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"$type":"IsGroundedCondition"},{"$type":"JumpInputCondition"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"$type":"IsGroundedCondition"},"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"_invert":true,"$type":"IsGroundedCondition"},"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"7"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[{"name":"GroundState","rect":{"xMin":54.94159,"yMin":313.7469,"xMax":435.4594,"yMax":509.61},"autoGroup":true},{"name":"...","rect":{"xMin":323.1006,"yMin":32.27708,"xMax":541.1006,"yMax":154.2771},"autoGroup":true},{"name":"InAirState","rect":{"xMin":534.6667,"yMin":196.6667,"xMax":710.6667,"yMax":318.6667},"autoGroup":true}],"localBlackboard":{"_variables":{"jumpInput":{"_propertyPath":"InputManager.JumpInput","_name":"jumpInput","_id":"19e29569-c650-4981-9cb0-9ad9357ce454","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":80.94207,"y":448.6105},"$type":"Player_IdleState","$id":"0"},{"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":182.1246,"y":378.7469},"$type":"Player_GroundState","$id":"1"},{"audioEntries":[{"eventName":{"_value":1},"volume":2.0,"clip":{"_name":"footStep","_targetVariableID":"fede39f9-b4b7-4dca-a52c-b684642901cc"}}],"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":287.4594,"y":447.7127},"$type":"Player_MoveState","$id":"2"},{"inAirMoveSpeed":{"_name":"inAirMoveSpeed","_targetVariableID":"c4ee2421-22df-43cc-9e5e-cabc8e68e004"},"fallSpeed":{"_value":10.0},"_transitionEvaluation":1,"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":564.6667,"y":258.3333},"$type":"Player_InAirState","$id":"3"},{"dontRetriggerStates":true,"_position":{"x":366.3731,"y":-32.39487},"$type":"NodeCanvas.StateMachines.AnyState","$id":"4"},{"jumpSpeed":{"_value":1.0},"inAirSpeed":{"_name":"inAirMoveSpeed","_targetVariableID":"c4ee2421-22df-43cc-9e5e-cabc8e68e004"},"_transitionEvaluation":1,"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":353.1006,"y":97.27708},"$type":"Player_JumpAbilityState","$id":"5"},{"_transitionEvaluation":1,"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":92.80768,"y":157.4621},"$type":"Player_SkillState","$id":"6"},{"_transitionEvaluation":1,"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":-820.0,"y":40.0},"$type":"Player_ControlledState","$id":"7"}],"connections":[{"_condition":{"$type":"MoveInputCondition"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"_invert":true,"$type":"IsGroundedCondition"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"_invert":true,"$type":"MoveInputCondition"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"$type":"MoveInputCondition"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"_invert":true,"$type":"MoveInputCondition"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"_invert":true,"$type":"IsGroundedCondition"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"$type":"IsGroundedCondition"},{"$type":"JumpInputCondition"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"$type":"IsGroundedCondition"},"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"_invert":true,"$type":"IsGroundedCondition"},"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"7"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[{"name":"GroundState","rect":{"xMin":54.94159,"yMin":313.7469,"xMax":435.4594,"yMax":509.61},"autoGroup":true},{"name":"...","rect":{"xMin":323.1006,"yMin":32.27708,"xMax":541.1006,"yMax":154.2771},"autoGroup":true},{"name":"InAirState","rect":{"xMin":534.6667,"yMin":196.6667,"xMax":710.6667,"yMax":318.6667},"autoGroup":true}],"localBlackboard":{"_variables":{"jumpInput":{"_propertyPath":"InputManager.JumpInput","_name":"jumpInput","_id":"19e29569-c650-4981-9cb0-9ad9357ce454","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"moveSpeed":{"_value":4,"_name":"moveSpeed","_id":"3b8b1ba1-0d8a-410f-abf4-e530c4f746dd","$type":"NodeCanvas.Framework.Variable`1[[GAS.AttributeType,
     GAS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"fallSpeed":{"_value":5,"_name":"fallSpeed","_id":"bf7876bf-1fbb-4e8a-87bf-809bdcc3ce46","$type":"NodeCanvas.Framework.Variable`1[[GAS.AttributeType,
     GAS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"inAirMoveSpeed":{"_value":7,"_name":"inAirMoveSpeed","_id":"c4ee2421-22df-43cc-9e5e-cabc8e68e004","$type":"NodeCanvas.Framework.Variable`1[[GAS.AttributeType,
@@ -91,7 +94,7 @@ MonoBehaviour:
     _version: 3.41
     _category: 
     _comments: 
-    _translation: {x: -78, y: -147}
+    _translation: {x: 162, y: -162}
     _zoomFactor: 0.7500931
   _firstActivation: 0
   _enableAction: 0
@@ -116,7 +119,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 7612792938192603759}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -128,7 +132,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 8
     - Name: 
       Entry: 7
       Data: 1|Input.InputMouseNode, Assembly-CSharp
@@ -145,11 +149,245 @@ MonoBehaviour:
       Entry: 5
       Data: true
     - Name: callBack
-      Entry: 6
+      Entry: 7
+      Data: 2|UnityEngine.Events.UnityAction, UnityEngine.CoreModule
+    - Name: target
+      Entry: 10
+      Data: 0
+    - Name: declaringType
+      Entry: 7
+      Data: 3|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: PlayerController, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: methodName
+      Entry: 1
+      Data: TriggerLeftAttack
+    - Name: delegateType
+      Entry: 7
+      Data: 4|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: UnityEngine.Events.UnityAction, UnityEngine.CoreModule
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: signature
+      Entry: 7
+      Data: 5|System.Type[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: mouseType
       Entry: 3
       Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|Input.InputMouseNode, Assembly-CSharp
+    - Name: isCache
+      Entry: 5
+      Data: true
+    - Name: cacheTime
+      Entry: 4
+      Data: 0.25
+    - Name: inputType
+      Entry: 3
+      Data: 0
+    - Name: canInput
+      Entry: 5
+      Data: true
+    - Name: callBack
+      Entry: 7
+      Data: 7|UnityEngine.Events.UnityAction, UnityEngine.CoreModule
+    - Name: target
+      Entry: 10
+      Data: 0
+    - Name: declaringType
+      Entry: 9
+      Data: 3
+    - Name: methodName
+      Entry: 1
+      Data: TriggerRightAttack
+    - Name: delegateType
+      Entry: 9
+      Data: 4
+    - Name: signature
+      Entry: 7
+      Data: 8|System.Type[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mouseType
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|Input.InputKeyNode, Assembly-CSharp
+    - Name: isCache
+      Entry: 5
+      Data: true
+    - Name: cacheTime
+      Entry: 4
+      Data: 0.25
+    - Name: inputType
+      Entry: 3
+      Data: 0
+    - Name: canInput
+      Entry: 5
+      Data: true
+    - Name: callBack
+      Entry: 6
+      Data: 
+    - Name: keyCode
+      Entry: 3
+      Data: 41
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 10|Input.InputKeyNode, Assembly-CSharp
+    - Name: isCache
+      Entry: 5
+      Data: true
+    - Name: cacheTime
+      Entry: 4
+      Data: 0.25
+    - Name: inputType
+      Entry: 3
+      Data: 0
+    - Name: canInput
+      Entry: 5
+      Data: true
+    - Name: callBack
+      Entry: 6
+      Data: 
+    - Name: keyCode
+      Entry: 3
+      Data: 42
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 11|Input.InputKeyNode, Assembly-CSharp
+    - Name: isCache
+      Entry: 5
+      Data: true
+    - Name: cacheTime
+      Entry: 4
+      Data: 0.25
+    - Name: inputType
+      Entry: 3
+      Data: 0
+    - Name: canInput
+      Entry: 5
+      Data: true
+    - Name: callBack
+      Entry: 6
+      Data: 
+    - Name: keyCode
+      Entry: 3
+      Data: 43
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 12|Input.InputKeyNode, Assembly-CSharp
+    - Name: isCache
+      Entry: 5
+      Data: true
+    - Name: cacheTime
+      Entry: 4
+      Data: 0.25
+    - Name: inputType
+      Entry: 3
+      Data: 0
+    - Name: canInput
+      Entry: 5
+      Data: true
+    - Name: callBack
+      Entry: 6
+      Data: 
+    - Name: keyCode
+      Entry: 3
+      Data: 44
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 13|Input.InputKeyNode, Assembly-CSharp
+    - Name: isCache
+      Entry: 5
+      Data: true
+    - Name: cacheTime
+      Entry: 4
+      Data: 0.25
+    - Name: inputType
+      Entry: 3
+      Data: 0
+    - Name: canInput
+      Entry: 5
+      Data: true
+    - Name: callBack
+      Entry: 6
+      Data: 
+    - Name: keyCode
+      Entry: 3
+      Data: 45
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 14|Input.InputKeyNode, Assembly-CSharp
+    - Name: isCache
+      Entry: 5
+      Data: true
+    - Name: cacheTime
+      Entry: 4
+      Data: 0.25
+    - Name: inputType
+      Entry: 3
+      Data: 0
+    - Name: canInput
+      Entry: 5
+      Data: true
+    - Name: callBack
+      Entry: 6
+      Data: 
+    - Name: keyCode
+      Entry: 3
+      Data: 46
     - Name: 
       Entry: 8
       Data: 
@@ -169,7 +407,6 @@ MonoBehaviour:
   posOffset: {x: 0, y: 0.05, z: 0}
   maxDis: 0.1
   rotateSpeed: 10
-  defaultControlledTime: 0.3
   characterController: {fileID: 3548889213786676505}
   fsm: {fileID: 4884650587656384842}
   skillBrain: {fileID: 918861473229154}
@@ -223,6 +460,85 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Character.WeaponController
   _weapons:
   - {fileID: 3852572309050484295}
+--- !u!114 &1540423477917847470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335710400751149909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b1c322138c4e640a7033240b635013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CinemachineImpulseShaker
+  _impulseSource: {fileID: 614248687844355644}
+--- !u!114 &614248687844355644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335710400751149909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 3
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 1
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
+--- !u!114 &5201336313302436376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335710400751149909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23bd78a81a506674fa80a1df09c31056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Test
+  sequence: {fileID: 0}
 --- !u!1 &3744157730137683490
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +583,7 @@ GameObject:
   - component: {fileID: 5443655609333498948}
   - component: {fileID: 1943622912457094589}
   - component: {fileID: 7673841959155388277}
+  - component: {fileID: 1808742261521866534}
   - component: {fileID: 364003319223332053}
   m_Layer: 0
   m_Name: NormalCameras
@@ -283,8 +600,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4359891632778215747}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13718623, y: 0.11313684, z: 0.015774203, w: 0.9839366}
-  m_LocalPosition: {x: -2.2468262, y: -1.415184, z: -9.6410055}
+  m_LocalRotation: {x: -0.12475699, y: 0.1937917, z: 0.02485388, w: 0.9727604}
+  m_LocalPosition: {x: -3.805069, y: -1.1893997, z: -9.170978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -367,7 +684,7 @@ MonoBehaviour:
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: 13.118607
+    Value: 22.533691
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -377,7 +694,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: -8.135728
+    Value: -6.8309164
     Center: 17.5
     Range: {x: -10, y: 45}
     Wrap: 0
@@ -425,6 +742,30 @@ MonoBehaviour:
     Time: 0
     Smoothing: 0
     IgnoreY: 0
+--- !u!114 &1808742261521866534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359891632778215747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 1
+  UseCameraSpace: 0
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    AmplitudeGain: 5
+    FrequencyGain: 4
+    Duration: 1
+    m_NoiseOffsets: {x: 434.26108, y: 579.1929, z: -594.29175}
 --- !u!114 &364003319223332053
 MonoBehaviour:
   m_ObjectHideFlags: 0

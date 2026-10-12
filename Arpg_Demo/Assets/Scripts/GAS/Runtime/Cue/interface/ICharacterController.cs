@@ -11,16 +11,10 @@ namespace GAS
     public interface ICharacterController
     {
         public abstract AnimancerComponent Animancer { get; }
+        public bool IsDead { get; }
 
         /// <summary>设置/清空根运动回调(Animator 同物体,转发 deltaPosition/deltaRotation)。</summary>
         public void SetRootMotion(Action<Vector3, Quaternion> onRootMotion);
-
-        /// <summary>
-        /// 尝试用"受控表现"播放这段动画：目标进入/延长受控状态(时长 = 动画长度)，并把当前动画压栈，
-        /// 等这段播完自动从暂停处继续(眩晕被受击打断、播完受击再接着播眩晕)。
-        /// 返回 false 表示目标当前不允许受控(例如技能前摇霸体)，调用方自行退化处理。
-        /// </summary>
-        public bool TryPlayControlledAnimation(AnimationClip clip);
 
         /// <summary>
         /// 进入/延长受控状态（时长按秒给，例如没有动画的定身、眩晕）。

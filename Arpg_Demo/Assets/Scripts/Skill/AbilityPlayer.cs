@@ -37,6 +37,9 @@ namespace Skill
         /// <summary>当前片段内处于激活期的持续 GE 事件运行时（每段开始时构建，段结束清空）。</summary>
         private readonly List<DurationGEEventRuntime> _durationRuntimes = new();
 
+        /// <summary>本次播放是否已被停止(重入打断时立即中止后续派发；每次 PlayAbility 复位)。</summary>
+        private bool _stopped;
+
         /// <summary>能力播放完毕回调（由技能行为注入）。</summary>
         private Action _onAbilityPlayEnd;
 
@@ -65,6 +68,7 @@ namespace Skill
         public void PlayAbility(AbilityAsset abilityAsset)
         {
             _abilityAsset = abilityAsset;
+            _stopped = false; // 重新开始播放，清除停止标志
 
             // 段与段之间隔离：先清掉上一段残留的持续事件运行时，再按新资产重建
             ClearDurationRuntimes();
@@ -77,7 +81,7 @@ namespace Skill
         }
 
         /// <summary>能力播放到最后一帧：退订帧驱动、清空持续事件记录并通知技能行为播放完毕。</summary>
-        public void AbilityFrameEnd()
+        public void AbilityPlayEnd()
         {
             TimeSystem.Global.UnSubscribe(TickAbility);
             ClearDurationRuntimes();
@@ -88,6 +92,12 @@ namespace Skill
         /// <summary>停止驱动（意外死亡等外部清理时调用，取消所有帧事件订阅）。</summary>
         public void Stop()
         {
+            if (!_stopped)
+            {
+                _stopped = true; // 先置位：若本次是遍历中重入调用，让外层循环/派发立即中止
+                _onAbilityPlayEnd.Invoke();
+            }
+
             TimeSystem.Global.UnSubscribe(TickAbility);
             ClearDurationRuntimes();
         }
@@ -118,14 +128,18 @@ namespace Skill
             int frame = curFrame - _startFrame;
 
             TickEffects(frame);
+            if (_stopped) return;
             TickDurationEffects(frame);
+            if (_stopped) return;
             TickCue(frame);
+            if (_stopped) return;
             TickFrameEvent(frame);
+            if (_stopped) return;
 
             // 结束就可以取消帧驱动监听了
             if (frame >= _abilityAsset.totalFrames)
             {
-                AbilityFrameEnd();
+                AbilityPlayEnd();
             }
         }
 
@@ -146,6 +160,7 @@ namespace Skill
         {
             for (int i = _durationRuntimes.Count - 1; i >= 0; i--)
             {
+                if (_stopped) break; // 遍历中被重入 Stop(列表已清空)：立即停止，避免越界
                 DurationGEEventRuntime runtime = _durationRuntimes[i];
 
                 if (runtime.IsFinished(frame))

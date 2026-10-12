@@ -1,0 +1,1227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0f015a64258b34d8c339fb79097de0, type: 3}
+  m_Name: "Enemy_\u666E\u901A\u653B\u51FBClip1"
+  m_EditorClassIdentifier: GAS::GAS.AbilityAsset
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 8300000, guid: e149611fe1b4ea24f99a26be4258dafb, type: 3}
+    - {fileID: 7400000, guid: 94b06a543200bca448fcc8f5f23f462d, type: 2}
+    - {fileID: 7400000, guid: ddc995fc5fa2f2a47acfdfc67905ea6d, type: 2}
+    - {fileID: 7400000, guid: b09bfa8fd08237a4d8cb6296b30770ba, type: 2}
+    - {fileID: 7400000, guid: c5ca9158bba27e1418b97b4547f4bd97, type: 2}
+    - {fileID: 7400000, guid: c42d7580b8809b049bfbbdb2cf9077d2, type: 2}
+    - {fileID: 8300000, guid: 43c381ff00b32ce4fa2ace8c1c5124eb, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: effectDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[GAS.ReleaseGEMarkEvent,
+        GAS]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: 2|GAS.ReleaseGEMarkEvent, GAS
+    - Name: _name
+      Entry: 1
+      Data: "\u6548\u679C"
+    - Name: _startFrame
+      Entry: 3
+      Data: 6
+    - Name: targetCatcher
+      Entry: 7
+      Data: 3|GAS.WeaponCatcher, GAS
+    - Name: LayerMask
+      Entry: 7
+      Data: UnityEngine.LayerMask, UnityEngine.CoreModule
+    - Name: 
+      Entry: 3
+      Data: 64
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: weaponKeys
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Effects
+      Entry: 7
+      Data: 4|System.Collections.Generic.Dictionary`2[[GAS.GameplayEffect, GAS],[System.Int32,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 5|System.Collections.Generic.ObjectEqualityComparer`1[[GAS.GameplayEffect,
+        GAS]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 6|GAS.NormalDamageEffect, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 7|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 8|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 9|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 10|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u65E0\u654C"
+    - Name: _hashCode
+      Entry: 3
+      Data: 1081724539
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 11|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 3
+      Data: -2025145563
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u9738\u4F53.\u65E0\u654C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 12|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: grantedTags
+      Entry: 7
+      Data: 13|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 14|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 15|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 16|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: damage
+      Entry: 4
+      Data: 10
+    - Name: isParry
+      Entry: 5
+      Data: true
+    - Name: isFloatingText
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 17|GAS.GameplayCueEffect, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 18|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 19|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 20|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 21|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u65E0\u654C"
+    - Name: _hashCode
+      Entry: 3
+      Data: 585097710
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 22|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u65E0\u654C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 23|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: grantedTags
+      Entry: 7
+      Data: 24|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 25|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 26|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 27|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: cueList
+      Entry: 7
+      Data: 28|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 29|GAS.GameplayCueDurationalAudio, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 30|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 31|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 32|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 33|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u65E0\u654C"
+    - Name: _hashCode
+      Entry: 3
+      Data: 1081724539
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 34|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 3
+      Data: -2025145563
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u9738\u4F53.\u65E0\u654C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 35|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DurationSeconds
+      Entry: 4
+      Data: 0
+    - Name: AudioClip
+      Entry: 10
+      Data: 0
+    - Name: VolumeMultiplier
+      Entry: 4
+      Data: 1
+    - Name: Is3D
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: isTarget
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 36|GAS.ControlHitCueEffect, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 37|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 38|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 39|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 40|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u683C\u6321"
+    - Name: _hashCode
+      Entry: 3
+      Data: -229409761
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 41|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u683C\u6321"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u9738\u4F53"
+    - Name: _hashCode
+      Entry: 3
+      Data: -2025145563
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 42|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u9738\u4F53"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: GAS.GameplayTag, GAS
+    - Name: _shortTagName
+      Entry: 1
+      Data: "\u6280\u80FD\u524D\u6447"
+    - Name: _hashCode
+      Entry: 3
+      Data: 220032221
+    - Name: _ancestorHashCode
+      Entry: 7
+      Data: 43|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 1959773104
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tagName
+      Entry: 1
+      Data: "Status.\u6280\u80FD\u524D\u6447"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: grantedTags
+      Entry: 7
+      Data: 44|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 45|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: removedTags
+      Entry: 7
+      Data: 46|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 47|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: hitF
+      Entry: 10
+      Data: 1
+    - Name: hitB
+      Entry: 10
+      Data: 2
+    - Name: hitL
+      Entry: 10
+      Data: 3
+    - Name: hitR
+      Entry: 10
+      Data: 4
+    - Name: rootMotion
+      Entry: 5
+      Data: true
+    - Name: hitControlTime
+      Entry: 4
+      Data: 0.83
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: durationFrames
+      Entry: 3
+      Data: 8
+    - Name: canRepeat
+      Entry: 5
+      Data: false
+    - Name: hitIntervalFrames
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: cueDic
+      Entry: 7
+      Data: 48|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent,
+        GAS]], mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 49|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 50|GAS.DurationCueMarkEvent, GAS
+    - Name: _name
+      Entry: 1
+      Data: "\u52A8\u753B"
+    - Name: _startFrame
+      Entry: 3
+      Data: 0
+    - Name: DurationCue
+      Entry: 7
+      Data: 51|GAS.GameplayCueDurationalAnimation, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 52|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 53|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 54|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 55|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DurationSeconds
+      Entry: 4
+      Data: 1.4000001
+    - Name: AnimationClip
+      Entry: 10
+      Data: 5
+    - Name: RootMotion
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: 56|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 57|GAS.DurationCueMarkEvent, GAS
+    - Name: _name
+      Entry: 1
+      Data: "\u6325\u780D\u97F3\u6548"
+    - Name: _startFrame
+      Entry: 3
+      Data: 6
+    - Name: DurationCue
+      Entry: 7
+      Data: 58|GAS.GameplayCueDurationalAudio, GAS
+    - Name: requiredTags
+      Entry: 7
+      Data: 59|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 60|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blockedTags
+      Entry: 7
+      Data: 61|GAS.GameplayTagSet, GAS
+    - Name: tagSet
+      Entry: 7
+      Data: 62|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DurationSeconds
+      Entry: 4
+      Data: 0
+    - Name: AudioClip
+      Entry: 10
+      Data: 6
+    - Name: VolumeMultiplier
+      Entry: 4
+      Data: 0.5
+    - Name: Is3D
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: eventDic
+      Entry: 7
+      Data: 63|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Collections.Generic.List`1[[GAS.FrameEvent,
+        GAS]], mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 64|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 65|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 66|GAS.FrameEvent, GAS
+    - Name: _name
+      Entry: 1
+      Data: "\u9501\u5B9A\u76EE\u6807"
+    - Name: _startFrame
+      Entry: 3
+      Data: 0
+    - Name: EventType
+      Entry: 3
+      Data: 2
+    - Name: eventName
+      Entry: 6
+      Data: 
+    - Name: intArg
+      Entry: 3
+      Data: 0
+    - Name: floatArg
+      Entry: 4
+      Data: 0
+    - Name: strArg
+      Entry: 6
+      Data: 
+    - Name: objArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 67|GAS.FrameEvent, GAS
+    - Name: _name
+      Entry: 1
+      Data: "\u524D\u6447\u5E27\u8D77\u59CB"
+    - Name: _startFrame
+      Entry: 3
+      Data: 0
+    - Name: EventType
+      Entry: 3
+      Data: 7
+    - Name: eventName
+      Entry: 6
+      Data: 
+    - Name: intArg
+      Entry: 3
+      Data: 0
+    - Name: floatArg
+      Entry: 4
+      Data: 0
+    - Name: strArg
+      Entry: 6
+      Data: 
+    - Name: objArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 68|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 69|GAS.FrameEvent, GAS
+    - Name: _name
+      Entry: 1
+      Data: "\u53D6\u6D88\u9501\u5B9A\u76EE\u6807"
+    - Name: _startFrame
+      Entry: 3
+      Data: 10
+    - Name: EventType
+      Entry: 3
+      Data: 3
+    - Name: eventName
+      Entry: 6
+      Data: 
+    - Name: intArg
+      Entry: 3
+      Data: 0
+    - Name: floatArg
+      Entry: 4
+      Data: 0
+    - Name: strArg
+      Entry: 6
+      Data: 
+    - Name: objArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: 70|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 71|GAS.FrameEvent, GAS
+    - Name: _name
+      Entry: 1
+      Data: "\u5F00\u542F\u6B66\u5668\u62D6\u5C3E"
+    - Name: _startFrame
+      Entry: 3
+      Data: 6
+    - Name: EventType
+      Entry: 3
+      Data: 10
+    - Name: eventName
+      Entry: 6
+      Data: 
+    - Name: intArg
+      Entry: 3
+      Data: 0
+    - Name: floatArg
+      Entry: 4
+      Data: 0
+    - Name: strArg
+      Entry: 6
+      Data: 
+    - Name: objArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 72|GAS.FrameEvent, GAS
+    - Name: _name
+      Entry: 1
+      Data: "\u524D\u6447\u5E27\u7ED3\u675F"
+    - Name: _startFrame
+      Entry: 3
+      Data: 6
+    - Name: EventType
+      Entry: 3
+      Data: 6
+    - Name: eventName
+      Entry: 6
+      Data: 
+    - Name: intArg
+      Entry: 3
+      Data: 0
+    - Name: floatArg
+      Entry: 4
+      Data: 0
+    - Name: strArg
+      Entry: 6
+      Data: 
+    - Name: objArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 14
+    - Name: $v
+      Entry: 7
+      Data: 73|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 74|GAS.FrameEvent, GAS
+    - Name: _name
+      Entry: 1
+      Data: "\u5173\u95ED\u6B66\u5668\u62D6\u5C3E"
+    - Name: _startFrame
+      Entry: 3
+      Data: 14
+    - Name: EventType
+      Entry: 3
+      Data: 11
+    - Name: eventName
+      Entry: 6
+      Data: 
+    - Name: intArg
+      Entry: 3
+      Data: 0
+    - Name: floatArg
+      Entry: 4
+      Data: 0
+    - Name: strArg
+      Entry: 6
+      Data: 
+    - Name: objArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  abilityName: "\u65B0\u6280\u80FD"
+  totalFrames: 42
+  rootMotionDis: 0.5

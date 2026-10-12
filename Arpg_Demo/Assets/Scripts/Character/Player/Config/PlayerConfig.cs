@@ -1,7 +1,4 @@
 using Sirenix.OdinInspector;
-using System.Collections.Generic;
-using Animancer;
-using GAS;
 using UnityEngine;
 
 /// <summary>
@@ -19,8 +16,6 @@ public class PlayerConfig : CharacterConfigBase
     [BoxGroup("资源路径")] [LabelText("View路径"), SerializeField, Required]
     private string _viewPrefabPath;
 
-    public TransitionAsset transitionAsset;
-    
     public string PlayerName => _playerName;
     public string Description => _description;
     public string ViewPrefabPath => _viewPrefabPath;

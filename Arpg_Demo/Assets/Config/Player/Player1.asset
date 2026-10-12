@@ -136,8 +136,8 @@ MonoBehaviour:
   ascPreset: {fileID: 11400000, guid: 0af6b224cee6f354ea751bd68d963397, type: 2}
   skillConfigList:
   - {fileID: 11400000, guid: c0049116d3f284847b80168b62e88e14, type: 2}
-  defaultLearnSkills: 00000000
+  - {fileID: 11400000, guid: 63f44bf918d9efc459d6e1e60339e684, type: 2}
+  defaultLearnSkills: 0000000001000000
   _playerName: "\u94C1\u86CB"
   _description: "\u4E00\u4E2A\u575A\u5F3A\u7684\u7537\u4EBA"
   _viewPrefabPath: Player1View
-  transitionAsset: {fileID: 0}

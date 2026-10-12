@@ -26,34 +26,47 @@ namespace NodeCanvas.BehaviourTrees
         [Name("转向速度(度/秒)"), ShowIf("faceTarget", 1)]
         public float turnSpeed = 360f;
 
-        [Name("启用音效")] public bool enableAudio;
+    [Name("启用音效")] public bool enableAudio;
 
-        [Name("音效表"), ShowIf("enableAudio", 1)]
-        public List<AnimationAudioEntry> audioEntries = new();
+    [Name("音效表"), ShowIf("enableAudio", 1)]
+    public List<AnimationAudioEntry> audioEntries = new();
 
-        protected override void OnExecute()
+    /// <summary>本节点播放的后退动画 state:被受控等打断后用来判断并补播。</summary>
+    private AnimancerState _moveState;
+
+    protected override void OnExecute()
+    {
+        PlayMove();
+    }
+
+    protected override void OnUpdate()
+    {
+        // 受控等打断会顶掉后退动画;节点被暂停后恢复不会重跑 OnExecute,这里补播
+        if (_moveState != null && !_moveState.IsPlaying)
+            PlayMove();
+
+        if (HorizontalDistance() >= minDistance.value)
         {
-            AnimancerState state = controller.value.Play(moveBackClipName, playSpeed);
-            if (enableAudio)
-                AnimationAudioHelper.Bind(state, audioEntries, controller.value.transform);
+            EndAction(true);
+            return;
         }
 
-        protected override void OnUpdate()
-        {
-            if (HorizontalDistance() >= minDistance.value)
-            {
-                EndAction(true);
-                return;
-            }
+        if (faceTarget)
+            FaceTarget();
 
-            if (faceTarget)
-                FaceTarget();
+        controller.value.Asc.TryGetAttrValue(AttributeType.MoveSpeed, out Attribute moveSpeed);
+        Vector3 away = controller.value.transform.position - target.value.position;
+        away.y = 0f;
+        controller.value.Move(away.normalized * (moveSpeed.CurValue * Time.deltaTime * moveBackSpeedPercent));
+    }
 
-            controller.value.Asc.TryGetAttrValue(AttributeType.MoveSpeed, out Attribute moveSpeed);
-            Vector3 away = controller.value.transform.position - target.value.position;
-            away.y = 0f;
-            controller.value.Move(away.normalized * (moveSpeed.CurValue * Time.deltaTime * moveBackSpeedPercent));
-        }
+    private void PlayMove()
+    {
+        _moveState = controller.value.Play(moveBackClipName, playSpeed);
+        controller.value.SetRootMotion(null); // 后退由代码位移,不需要动画根运动
+        if (enableAudio)
+            AnimationAudioHelper.Bind(_moveState, audioEntries, controller.value.transform);
+    }
 
         private float HorizontalDistance()
         {

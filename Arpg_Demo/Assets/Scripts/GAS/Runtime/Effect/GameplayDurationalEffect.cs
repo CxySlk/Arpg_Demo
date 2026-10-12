@@ -28,10 +28,9 @@ namespace GAS
 
         [BoxGroup("持续方式")]
         [LabelText("叠层配置")]
-        // ShowInInspector：readonly 字段 Unity/Odin 默认不生成属性，这里强制显示（内部字段可改）
         [ShowInInspector]
         public readonly GameplayEffectStackData stackData = new();
-
+        
         [BoxGroup("时间相关")]
         [LabelText("持续时长（秒）"), ShowIf("@isInfinite == false")]
         public float durationSeconds;
@@ -43,6 +42,7 @@ namespace GAS
         [BoxGroup("时间相关")]
         [FormerlySerializedAs("BeginApplyOnce")] [LabelText("开始立即生效")]
         public bool beginApplyOnce;
+
 
         #endregion
 
@@ -102,7 +102,7 @@ namespace GAS
         /// <param name="stack">本次叠几层</param>
         public virtual void Execute(AbilitySystemComponent source, AbilitySystemComponent target, int stack = 1)
         {
-            if (target == null || !target.CheckCanRelease(this)) return;
+            if (!target || !target.CheckCanRelease(this)) return;
 
             // 已经有同类效果 → 叠层（不新建实例，时间按叠层规则处理）
             if (target.TryGetEffect(effectTag, out GameplayDurationalEffect existEffect))

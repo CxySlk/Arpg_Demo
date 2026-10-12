@@ -20,9 +20,12 @@ public class SkillConfig : ConfigBase
 {
     [Header("技能信息")] [SerializeField, LabelText("技能名称")]
     private string _skillName = "新技能";
-
     /// <summary>技能名称（读写访问）。</summary>
     public string SkillName => _skillName;
+    
+    [LabelText("是否显示在UI面板"), SerializeField]
+    private bool _isShowUI = true;
+    public bool IsShowUI => _isShowUI;
 
     [SerializeField, LabelText("技能描述")] [TextArea]
     private string _skillDescription;

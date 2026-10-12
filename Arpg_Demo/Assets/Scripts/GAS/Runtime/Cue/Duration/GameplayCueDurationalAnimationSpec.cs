@@ -1,3 +1,4 @@
+using Animancer;
 using UnityEngine;
 
 namespace GAS
@@ -14,7 +15,7 @@ namespace GAS
             base.Apply();
             _controller = target.GetComponent<ICharacterController>();
             _controller.SetRootMotion(OnRootMotion);
-            _controller.Animancer.Play(DurationalCue.AnimationClip);
+            _controller.Animancer.Play(DurationalCue.AnimationClip, .25f, FadeMode.FromStart);
         }
 
         private void OnRootMotion(Vector3 deltaPos, Quaternion deltaRot)

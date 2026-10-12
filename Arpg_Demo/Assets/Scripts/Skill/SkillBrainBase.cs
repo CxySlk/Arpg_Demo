@@ -52,19 +52,6 @@ namespace Skill
         /// <summary>把输入喂给当前技能行为，由行为按"是否解锁输入打断"决定是否取消自己。</summary>
         public void TryInputInterruptCurrentSkill() => CurrentBehavior?.TryInputInterrupt();
 
-        /// <summary>是否有技能正处于"前摇（不可打断）"阶段：此时受击不该进硬直、也不该打断技能。</summary>
-        public bool IsAnySkillUninterruptible
-        {
-            get
-            {
-                for (int i = 0; i < playingSkills.Count; i++)
-                {
-                    if (playingSkills[i].IsUninterruptible) return true;
-                }
-                return false;
-            }
-        }
-
         #endregion
 
         public virtual bool CheckCanPlaySkill(int skillID)
@@ -104,13 +91,6 @@ namespace Skill
             CanRelease = true;
         }
 
-        /// <summary>打断指定技能。</summary>
-        public void InterruptSkill(SkillBehaviorBase skillBehavior, bool resetCd = true, bool force = false)
-        {
-            if (skillBehavior == null) return;
-            skillBehavior.Interrupt(resetCd, force);
-        }
-
         /// <summary>按技能索引打断指定技能。</summary>
         public void InterruptSkill(int skillID, bool resetCd = true, bool force = false)
         {
@@ -118,14 +98,11 @@ namespace Skill
             skillBehavior.Interrupt(resetCd, force);
         }
 
-        /// <summary>移动打断当前技能段（前摇帧事件之后按移动时由 FSM 技能状态调用）。</summary>
-        public void CancelCurrentSkill()
+        /// <summary>意外打断(被敌人攻击/受控等,非输入原因):对所有在播技能逐个走片段级意外打断,不结束整套连段。</summary>
+        public void UnexpectedInterruptAll()
         {
-            SkillBehaviorBase behavior = CurrentBehavior;
-            if (behavior == null) return;
-
-            // 打断会走技能结束流程，行为把自己从播放缓存里移除（CurrentBehavior 随之变成上一个或 null）
-            behavior.Interrupt();
+            for (int i = playingSkills.Count - 1; i >= 0; i--)
+                playingSkills[i].UnexpectedInterrupt();
         }
 
         private void AddPlayingSkill(SkillBehaviorBase skillBehavior)

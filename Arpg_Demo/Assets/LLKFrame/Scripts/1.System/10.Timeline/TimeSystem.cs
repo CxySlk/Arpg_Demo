@@ -29,7 +29,7 @@ namespace LLKFrame
         /// <summary>帧率常量</summary>
         public const int FrameRate = 30;
 
-        public static readonly float FrameTime = 1f / FrameRate;
+        public static readonly float FrameTime = 1f / FrameRate * Time.timeScale;
 
         /// <summary>初始化起始时间戳和帧计数</summary>
         public TimeSystem()
@@ -48,6 +48,17 @@ namespace LLKFrame
             {
                 _curFrame++;
                 Publish(_curFrame);
+            }
+
+            UpdateFreezeFrame();
+        }
+
+        private void UpdateFreezeFrame()
+        {
+            if (_freezeTimer > 0)
+            {
+                _freezeTimer -= Time.deltaTime;
+                Time.timeScale = Mathf.Lerp(_startTimeScale, 1, 1 - _freezeTimer / _freezeTotalTime);
             }
         }
 
@@ -115,5 +126,14 @@ namespace LLKFrame
         private void Publish(int frame) => _onCurFrameChanged?.Invoke(frame);
 
         #endregion
+
+        private static float _freezeTimer;
+        private static float _freezeTotalTime;
+        private static float _startTimeScale;
+        public static void FreezeFrame(float startTimeScale, float fadeDuraation)
+        {
+            _startTimeScale = startTimeScale;
+            _freezeTimer = _freezeTotalTime = fadeDuraation;
+        }
     }
 }
