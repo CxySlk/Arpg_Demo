@@ -11,8 +11,9 @@ namespace Character
     {
         [LabelText("武器碰撞体"), SerializeField, Required]
         private Collider _weaponCollider;
+
         [LabelText("武器拖尾"), SerializeField, Required]
-        private HS_SwordMeshTrail  _swordTrail;
+        private HS_SwordMeshTrail _swordTrail;
 
         public bool Status { get; private set; } = false;
         private LayerMask _triggerLayerMask;

@@ -17,7 +17,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 8300000, guid: 9e377db3d0d8db849bc4a685d6367186, type: 3}
-    - {fileID: 7400000, guid: 600ed202fe7737448957e2a8252bc7ba, type: 2}
+    - {fileID: 7400000, guid: 42b1bde377f9d4949ae997984021aadb, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -28,7 +28,7 @@ MonoBehaviour:
       Data: 0|Skill.ParryAttackBehavior, Assembly-CSharp
     - Name: _parryTag
       Entry: 7
-      Data: GAS.GameplayTag, GAS
+      Data: GAS.GameplayTag, Assembly-CSharp
     - Name: _shortTagName
       Entry: 1
       Data: "\u683C\u6321"
@@ -68,38 +68,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: _costDic
-      Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[GAS.AttributeType, GAS],[System.Single,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[GAS.AttributeType,
-        GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  _skillName: "\u683C\u6321"
-  _isShowUI: 0
-  _skillDescription: "\u683C\u6321\u6280\u80FD"
-  _skillIcon: {fileID: 21300000, guid: 333eddf5f418d124d90ffb2b2d02fd2e, type: 3}
-  _cdTime: 0
+  _skillIcon: {fileID: 21300000, guid: 908852ba200794b47847c2ce103c84f8, type: 3}
   _abilities:
   - {fileID: 11400000, guid: d7a38ce89962aa849a3774c7c1f53dd6, type: 2}
   - {fileID: 11400000, guid: bf77108b44a1f5e4aaa57fc95f563d73, type: 2}
-  _abilityInterval: 0.5

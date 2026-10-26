@@ -164,7 +164,7 @@ namespace SkillEditor
                     EditorGUI.BeginChangeCheck();
                     foreach (FieldInfo field in fields)
                     {
-                        if (field.Name == "DurationSeconds" || field.Name == "RootMotion") continue;
+                        if (field.Name == "DurationSeconds" || field.Name == "RootMotion" || field.Name == "PlaySpeed") continue;
                         DrawFieldByType(cue, field);
                     }
                     if (EditorGUI.EndChangeCheck())
@@ -211,6 +211,25 @@ namespace SkillEditor
                 });
                 rmRow.Add(rmToggle);
                 _root.Add(rmRow);
+
+                // 播放速度：修改后按新速度重算 Cue 时长，并同步到上面的时长输入框。
+                VisualElement speedRow = new VisualElement { style = { flexDirection = FlexDirection.Row, marginTop = 4 } };
+                speedRow.Add(new Label("播放速度") { style = { width = 60 } });
+                FloatField speedField = new FloatField
+                {
+                    value = Mathf.Max(0.01f, animCue.PlaySpeed),
+                    style = { flexGrow = 1 }
+                };
+                speedField.RegisterValueChangedCallback(evt =>
+                {
+                    animCue.PlaySpeed = Mathf.Max(0.01f, evt.newValue);
+                    animCue.CalculateDuration();
+                    durationField.SetValueWithoutNotify(animCue.DurationSeconds);
+                    EditorUtility.SetDirty(_asset);
+                    ContentChanged?.Invoke();
+                });
+                speedRow.Add(speedField);
+                _root.Add(speedRow);
             }
 
             // 重算时长按钮

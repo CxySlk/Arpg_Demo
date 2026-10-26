@@ -15,7 +15,10 @@ namespace GAS
             base.Apply();
             _controller = target.GetComponent<ICharacterController>();
             _controller.SetRootMotion(OnRootMotion);
-            _controller.Animancer.Play(DurationalCue.AnimationClip, .25f, FadeMode.FromStart);
+
+            AnimancerState state = _controller.Animancer.Play(DurationalCue.AnimationClip, .25f, FadeMode.FromStart);
+            if (state != null)
+                state.Speed = Mathf.Max(0.01f, DurationalCue.PlaySpeed);
         }
 
         private void OnRootMotion(Vector3 deltaPos, Quaternion deltaRot)

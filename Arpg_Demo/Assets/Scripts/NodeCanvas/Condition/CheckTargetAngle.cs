@@ -29,7 +29,7 @@ public class CheckTargetAngle : ConditionTask
     protected override bool OnCheck()
     {
         CharacterControllerBase controller = characterController.value;
-        if (controller == null || !controller.Target) return false;
+        if (!controller.Target) return false;
 
         Vector3 direction = controller.Target.position - controller.transform.position;
         direction.y = 0f;

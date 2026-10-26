@@ -14,17 +14,35 @@ namespace cfg
 {
 public partial class Tables
 {
-    public TbPerson TbPerson {get; }
+    public TbPlayerConfig TbPlayerConfig {get; }
+    public TbEnemyConfig TbEnemyConfig {get; }
+    public TbSkill TbSkill {get; }
+    public TbCharacterAttr TbCharacterAttr {get; }
+    public TbKfcConfig TbKfcConfig {get; }
+    public Tb_KFC_EnemyConfig TbKFCEnemyConfig {get; }
+    public TbLevelConfig TbLevelConfig {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
-        TbPerson = new TbPerson(loader("tbperson"));
+        TbPlayerConfig = new TbPlayerConfig(loader("tbplayerconfig"));
+        TbEnemyConfig = new TbEnemyConfig(loader("tbenemyconfig"));
+        TbSkill = new TbSkill(loader("tbskill"));
+        TbCharacterAttr = new TbCharacterAttr(loader("tbcharacterattr"));
+        TbKfcConfig = new TbKfcConfig(loader("tbkfcconfig"));
+        TbKFCEnemyConfig = new Tb_KFC_EnemyConfig(loader("tb_kfc_enemyconfig"));
+        TbLevelConfig = new TbLevelConfig(loader("tblevelconfig"));
         ResolveRef();
     }
     
     private void ResolveRef()
     {
-        TbPerson.ResolveRef(this);
+        TbPlayerConfig.ResolveRef(this);
+        TbEnemyConfig.ResolveRef(this);
+        TbSkill.ResolveRef(this);
+        TbCharacterAttr.ResolveRef(this);
+        TbKfcConfig.ResolveRef(this);
+        TbKFCEnemyConfig.ResolveRef(this);
+        TbLevelConfig.ResolveRef(this);
     }
 }
 

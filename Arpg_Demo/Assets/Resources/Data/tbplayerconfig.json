@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1001,
+    "name": "剑士",
+    "description": "近战角色",
+    "prefabPath": "Player1Root",
+    "viewPrefabPath": "Player1View",
+    "ownedSkills": [
+      3001,
+      3002,
+      3007,
+      3008
+    ],
+    "defaultLearnSkills": [
+      3001,
+      3002
+    ],
+    "ascPresetPath": "Player_ASCPreset1",
+    "kfcConfig": 4001
+  },
+  {
+    "id": 1002,
+    "name": "法师",
+    "description": "远程角色",
+    "prefabPath": "",
+    "viewPrefabPath": "",
+    "ownedSkills": [
+      3001,
+      3002
+    ],
+    "defaultLearnSkills": [
+      3001,
+      3002
+    ],
+    "ascPresetPath": "ASCPreset2",
+    "kfcConfig": 4002
+  }
+]

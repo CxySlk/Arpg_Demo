@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using LLKFrame;
 using UnityEngine;
 
 namespace GAS
@@ -51,12 +52,11 @@ namespace GAS
             if (_entered) return;
             _entered = true;
             _source = source;
-
             if (_isWeaponMode)
             {
                 WeaponCatcher weaponCatcher = _event.targetCatcher as WeaponCatcher;
                 source.GasEventCenter.Publish(GASEventCenterKeys.StartWeaponColliderKey,
-                    weaponCatcher.weaponKeys, weaponCatcher.LayerMask);
+                    weaponCatcher!.weaponKeys, weaponCatcher.LayerMask);
                 source.GasEventCenter.Subscribe(GASEventCenterKeys.WeaponHitTarget, WeaponHitTarget);
             }
         }
@@ -68,7 +68,7 @@ namespace GAS
 
             // 武器模式跳过
             if (_isWeaponMode) return;
-            
+
             switch (_event.targetCatcher)
             {
                 case null:
@@ -83,6 +83,7 @@ namespace GAS
 
                         TryApply(target, frame);
                     }
+
                     break;
             }
         }

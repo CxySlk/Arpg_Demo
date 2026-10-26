@@ -31,5 +31,5 @@ MonoBehaviour:
           _Names:
           - {fileID: 11400000, guid: c8f0d04bdd51d4f4dbfb416aa4477a5d, type: 2}
           - {fileID: 11400000, guid: c8f0d04bdd51d4f4dbfb416aa4477a5d, type: 2}
-        _Clip: {fileID: 7400000, guid: 97a0c54883c40b54ea3f71c4c61cf19f, type: 2}
+        _Clip: {fileID: 7400000, guid: b0db836ab1a1e28459f5ad7938d4a6e4, type: 2}
         _NormalizedStartTime: NaN

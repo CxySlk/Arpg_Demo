@@ -65,8 +65,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 11c6374ed7e19f8459ea58fe4681d72b, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -625,8 +625,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 11c6374ed7e19f8459ea58fe4681d72b, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -864,7 +864,105 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: _attrNameDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[cfg.EAttributeType, Assembly-CSharp],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[cfg.EAttributeType,
+        GAS]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 1
+      Data: "\u751F\u547D\u503C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 1
+      Data: "\u6CD5\u529B\u503C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: "\u653B\u51FB\u529B"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: "\u9632\u5FA1\u529B"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 8
+    - Name: $v
+      Entry: 1
+      Data: "\u56DE\u8840\u901F\u5EA6"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 9
+    - Name: $v
+      Entry: 1
+      Data: "\u56DE\u84DD\u901F\u5EA6"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   _btnLeft: {fileID: 2478190214155412193}
   _btnRight: {fileID: 5317911309605248079}
   _btnSure: {fileID: 4930375080451738684}
@@ -873,7 +971,6 @@ MonoBehaviour:
   _imgModelDrag: {fileID: 5425500809043544036}
   _txtName: {fileID: 3065839427809885483}
   _txtDescription: {fileID: 2398495035277085378}
-  _playerConfigList: {fileID: 11400000, guid: 58d0b0481d50a5249b0e335754329ca1, type: 2}
   _propertyRoot: {fileID: 4175917198024178725}
   _attrPrefab: {fileID: 7717001396603718597, guid: 25f561bae5056484ca01c78ef57357e3, type: 3}
 --- !u!1 &3292859468610960945
@@ -963,6 +1060,7 @@ GameObject:
   - component: {fileID: 8674100661105985044}
   - component: {fileID: 285715624359157205}
   - component: {fileID: 4930375080451738684}
+  - component: {fileID: 1730398535557300701}
   m_Layer: 0
   m_Name: btnSure
   m_TagString: Untagged
@@ -1072,6 +1170,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1730398535557300701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3418111023844296246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c4b8d2b19f4f5ab84d5693bf51e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UI_MouseEnterExitEffect
+  component: {fileID: 0}
+  _scale: 1.2
+  _duration: 0.25
+  _ease: 6
 --- !u!1 &3516751689208238893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,6 +1263,7 @@ GameObject:
   - component: {fileID: 5826555044496133323}
   - component: {fileID: 67120440967359588}
   - component: {fileID: 5317911309605248079}
+  - component: {fileID: 3338037083467521409}
   m_Layer: 0
   m_Name: btnRight
   m_TagString: Untagged
@@ -1258,6 +1373,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3338037083467521409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4203416512545316423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c4b8d2b19f4f5ab84d5693bf51e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UI_MouseEnterExitEffect
+  component: {fileID: 0}
+  _scale: 1.2
+  _duration: 0.25
+  _ease: 6
 --- !u!1 &4824024100056845613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,6 +1401,7 @@ GameObject:
   - component: {fileID: 4872624974259552610}
   - component: {fileID: 8686123565437965991}
   - component: {fileID: 2478190214155412193}
+  - component: {fileID: 1662955404856001844}
   m_Layer: 0
   m_Name: btnLeft
   m_TagString: Untagged
@@ -1379,6 +1511,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1662955404856001844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4824024100056845613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c4b8d2b19f4f5ab84d5693bf51e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UI_MouseEnterExitEffect
+  component: {fileID: 0}
+  _scale: 1.2
+  _duration: 0.25
+  _ease: 6
 --- !u!1 &5636960678232150379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,6 +1738,7 @@ GameObject:
   - component: {fileID: 8245498714245752216}
   - component: {fileID: 1265594290713778277}
   - component: {fileID: 5952160278525108178}
+  - component: {fileID: 8782710211652889423}
   m_Layer: 0
   m_Name: btnBack
   m_TagString: Untagged
@@ -1645,7 +1794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 23d1cd24980d3364b88267a8a86fbe0c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ac4a4c411a7bdf4b982a82afbe4fc73, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1699,6 +1848,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8782710211652889423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7260564232190369228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c4b8d2b19f4f5ab84d5693bf51e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UI_MouseEnterExitEffect
+  component: {fileID: 0}
+  _scale: 1.2
+  _duration: 0.25
+  _ease: 6
 --- !u!1 &7898009565388056731
 GameObject:
   m_ObjectHideFlags: 0

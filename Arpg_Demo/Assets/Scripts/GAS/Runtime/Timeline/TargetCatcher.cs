@@ -29,7 +29,7 @@ namespace GAS
     {
         [LabelText("长宽高的一半")] public Vector3 HalfExtents;
 
-        [LabelText("旋转"), OnValueChanged(nameof(OnRotationChanged))]
+        [LabelText("旋转"), OnValueChanged("OnRotationChanged")]
         public Vector3 Rotation;
 
         public override Collider[] GetTargets(Transform checker)
@@ -87,13 +87,13 @@ namespace GAS
     /// </summary>
     public sealed class TargetSectorCatcher : TargetShapeCatcherBase
     {
-        [LabelText("内半径"), MinValue(0), OnValueChanged(nameof(OnInsideRadiusValueChanged))]
+        [LabelText("内半径"), MinValue(0), OnValueChanged("OnInsideRadiusValueChanged")]
         public float InsideRadius;
 
-        [LabelText("外半径"), MinValue(0), OnValueChanged(nameof(OnOutsideRadiusValueChanged))]
+        [LabelText("外半径"), MinValue(0), OnValueChanged("OnOutsideRadiusValueChanged")]
         public float OutsideRadius;
 
-        [LabelText("旋转"), OnValueChanged(nameof(OnRotationChanged))]
+        [LabelText("旋转"), OnValueChanged("OnRotationChanged")]
         public Vector3 Rotation;
 
         [LabelText("高度")] public float Height;

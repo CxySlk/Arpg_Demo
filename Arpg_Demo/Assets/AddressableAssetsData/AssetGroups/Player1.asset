@@ -15,13 +15,38 @@ MonoBehaviour:
   m_GroupName: Player1
   m_GUID: ccbdc7ff962eb384e83c6fcbddf58125
   m_SerializeEntries:
+  - m_GUID: 0af6b224cee6f354ea751bd68d963397
+    m_Address: Player_ASCPreset1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f5ac2a02b440b14db827479f9fb3260
+    m_Address: "\u6CBB\u6108"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63f44bf918d9efc459d6e1e60339e684
+    m_Address: "\u683C\u6321"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7d5843910c0f327479af86a16c5bc576
     m_Address: Player1View
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86e2e2e389add4d46a322ff4061a2e70
+    m_Address: "\u9738\u4F53"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b85af62c6aaa01647b1c48694eaff556
     m_Address: Player1Root
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0049116d3f284847b80168b62e88e14
+    m_Address: "\u666E\u901A\u653B\u51FB"
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -28,7 +28,7 @@ public class Enemy_CircleTarget : ActionTask
     {
         // 环绕:朝向由代码控制(始终朝目标)
         EnemyController controller = enemyController.value;
-        if (controller != null) controller.NavMeshAgent.updateRotation = false;
+        controller.NavMeshAgent.updateRotation = false;
 
         // 每次环绕随机方向,避免一直朝同一边转
         _direction = Random.value < 0.5f ? 1 : -1;

@@ -16,12 +16,12 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 7400000, guid: 600ed202fe7737448957e2a8252bc7ba, type: 2}
-    - {fileID: 7400000, guid: b27bd114751bac94ea97533bdcd2df60, type: 2}
-    - {fileID: 7400000, guid: e9aa30054aa9a704bbbfeab4739a1db9, type: 2}
-    - {fileID: 7400000, guid: f04a95b04f85f674ca993ebe6345c456, type: 2}
+    - {fileID: 7400000, guid: 42b1bde377f9d4949ae997984021aadb, type: 2}
+    - {fileID: 7400000, guid: 0c32a66ee7d3cfb4492920af20cfdf81, type: 2}
+    - {fileID: 7400000, guid: 6860b48f33624d1459ab210b12e9e418, type: 2}
+    - {fileID: 7400000, guid: 702632aa4d5d5694abdfd556210b6a74, type: 2}
     - {fileID: 8300000, guid: e149611fe1b4ea24f99a26be4258dafb, type: 3}
-    - {fileID: 7400000, guid: e80e11e5aaa5d9f46a2f3a228b6cc110, type: 2}
+    - {fileID: 7400000, guid: d76c40d7975346e45bd7acc16ceedfc2, type: 2}
     - {fileID: 8300000, guid: 43c381ff00b32ce4fa2ace8c1c5124eb, type: 3}
     - {fileID: 11400000, guid: d3db3200ec2e18745b6f69e1736207e1, type: 2}
     SerializedBytesString: 
@@ -32,7 +32,7 @@ MonoBehaviour:
     - Name: effectDic
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[GAS.ReleaseGEMarkEvent,
-        GAS]], mscorlib
+        Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
@@ -51,7 +51,7 @@ MonoBehaviour:
       Data: 22
     - Name: $v
       Entry: 7
-      Data: 2|GAS.ReleaseGEMarkEvent, GAS
+      Data: 2|GAS.ReleaseGEMarkEvent, Assembly-CSharp
     - Name: _name
       Entry: 1
       Data: "\u653B\u51FB\u6548\u679C"
@@ -60,7 +60,7 @@ MonoBehaviour:
       Data: 22
     - Name: targetCatcher
       Entry: 7
-      Data: 3|GAS.WeaponCatcher, GAS
+      Data: 3|GAS.WeaponCatcher, Assembly-CSharp
     - Name: LayerMask
       Entry: 7
       Data: UnityEngine.LayerMask, UnityEngine.CoreModule
@@ -78,12 +78,12 @@ MonoBehaviour:
       Data: 
     - Name: Effects
       Entry: 7
-      Data: 4|System.Collections.Generic.Dictionary`2[[GAS.GameplayEffect, GAS],[System.Int32,
+      Data: 4|System.Collections.Generic.Dictionary`2[[GAS.GameplayEffect, Assembly-CSharp],[System.Int32,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 5|System.Collections.Generic.ObjectEqualityComparer`1[[GAS.GameplayEffect,
-        GAS]], mscorlib
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
       Data: 
@@ -95,13 +95,14 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 6|GAS.ControlHitCueEffect, GAS
+      Data: 6|GAS.ControlHitCueEffect, Assembly-CSharp
     - Name: requiredTags
       Entry: 7
-      Data: 7|GAS.GameplayTagSet, GAS
+      Data: 7|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 8|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -116,16 +117,17 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 9|GAS.GameplayTagSet, GAS
+      Data: 9|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 10|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 10|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 3
     - Name: 
       Entry: 7
-      Data: GAS.GameplayTag, GAS
+      Data: GAS.GameplayTag, Assembly-CSharp
     - Name: _shortTagName
       Entry: 1
       Data: "\u9738\u4F53"
@@ -155,7 +157,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: GAS.GameplayTag, GAS
+      Data: GAS.GameplayTag, Assembly-CSharp
     - Name: _shortTagName
       Entry: 1
       Data: "\u683C\u6321"
@@ -185,7 +187,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: GAS.GameplayTag, GAS
+      Data: GAS.GameplayTag, Assembly-CSharp
     - Name: _shortTagName
       Entry: 1
       Data: "\u6280\u80FD\u524D\u6447"
@@ -224,10 +226,11 @@ MonoBehaviour:
       Data: 
     - Name: grantedTags
       Entry: 7
-      Data: 14|GAS.GameplayTagSet, GAS
+      Data: 14|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 15|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 15|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -242,10 +245,11 @@ MonoBehaviour:
       Data: 
     - Name: removedTags
       Entry: 7
-      Data: 16|GAS.GameplayTagSet, GAS
+      Data: 16|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 17|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 17|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -290,13 +294,14 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 18|GAS.NormalDamageEffect, GAS
+      Data: 18|GAS.NormalDamageEffect, Assembly-CSharp
     - Name: requiredTags
       Entry: 7
-      Data: 19|GAS.GameplayTagSet, GAS
+      Data: 19|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 20|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 20|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -311,16 +316,17 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 21|GAS.GameplayTagSet, GAS
+      Data: 21|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 22|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 22|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: GAS.GameplayTag, GAS
+      Data: GAS.GameplayTag, Assembly-CSharp
     - Name: _shortTagName
       Entry: 1
       Data: "\u683C\u6321"
@@ -359,10 +365,11 @@ MonoBehaviour:
       Data: 
     - Name: grantedTags
       Entry: 7
-      Data: 24|GAS.GameplayTagSet, GAS
+      Data: 24|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 25|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 25|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -377,10 +384,11 @@ MonoBehaviour:
       Data: 
     - Name: removedTags
       Entry: 7
-      Data: 26|GAS.GameplayTagSet, GAS
+      Data: 26|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 27|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 27|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -416,13 +424,14 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 28|GAS.GameplayCueEffect, GAS
+      Data: 28|GAS.GameplayCueEffect, Assembly-CSharp
     - Name: requiredTags
       Entry: 7
-      Data: 29|GAS.GameplayTagSet, GAS
+      Data: 29|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 30|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 30|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -437,16 +446,17 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 31|GAS.GameplayTagSet, GAS
+      Data: 31|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 32|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 32|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 2
     - Name: 
       Entry: 7
-      Data: GAS.GameplayTag, GAS
+      Data: GAS.GameplayTag, Assembly-CSharp
     - Name: _shortTagName
       Entry: 1
       Data: "\u65E0\u654C"
@@ -476,7 +486,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: GAS.GameplayTag, GAS
+      Data: GAS.GameplayTag, Assembly-CSharp
     - Name: _shortTagName
       Entry: 1
       Data: "\u683C\u6321"
@@ -515,10 +525,11 @@ MonoBehaviour:
       Data: 
     - Name: grantedTags
       Entry: 7
-      Data: 35|GAS.GameplayTagSet, GAS
+      Data: 35|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 36|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 36|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -533,10 +544,11 @@ MonoBehaviour:
       Data: 
     - Name: removedTags
       Entry: 7
-      Data: 37|GAS.GameplayTagSet, GAS
+      Data: 37|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 38|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 38|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -551,19 +563,21 @@ MonoBehaviour:
       Data: 
     - Name: cueList
       Entry: 7
-      Data: 39|System.Collections.Generic.List`1[[GAS.GameplayCue, GAS]], mscorlib
+      Data: 39|System.Collections.Generic.List`1[[GAS.GameplayCue, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 40|GAS.GameplayCueInstantAudio, GAS
+      Data: 40|GAS.GameplayCueInstantAudio, Assembly-CSharp
     - Name: requiredTags
       Entry: 7
-      Data: 41|GAS.GameplayTagSet, GAS
+      Data: 41|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 42|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 42|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -578,10 +592,11 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 43|GAS.GameplayTagSet, GAS
+      Data: 43|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 44|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 44|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -623,13 +638,14 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 45|GAS.FreezeFrameEffect, GAS
+      Data: 45|GAS.FreezeFrameEffect, Assembly-CSharp
     - Name: requiredTags
       Entry: 7
-      Data: 46|GAS.GameplayTagSet, GAS
+      Data: 46|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 47|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 47|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -644,10 +660,11 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 48|GAS.GameplayTagSet, GAS
+      Data: 48|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 49|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 49|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -662,10 +679,11 @@ MonoBehaviour:
       Data: 
     - Name: grantedTags
       Entry: 7
-      Data: 50|GAS.GameplayTagSet, GAS
+      Data: 50|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 51|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 51|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -680,10 +698,11 @@ MonoBehaviour:
       Data: 
     - Name: removedTags
       Entry: 7
-      Data: 52|GAS.GameplayTagSet, GAS
+      Data: 52|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 53|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 53|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -713,13 +732,14 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 54|GAS.ScreenShakeEffect, GAS
+      Data: 54|GAS.ScreenShakeEffect, Assembly-CSharp
     - Name: requiredTags
       Entry: 7
-      Data: 55|GAS.GameplayTagSet, GAS
+      Data: 55|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 56|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 56|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -734,10 +754,11 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 57|GAS.GameplayTagSet, GAS
+      Data: 57|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 58|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 58|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -752,10 +773,11 @@ MonoBehaviour:
       Data: 
     - Name: grantedTags
       Entry: 7
-      Data: 59|GAS.GameplayTagSet, GAS
+      Data: 59|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 60|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 60|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -770,10 +792,11 @@ MonoBehaviour:
       Data: 
     - Name: removedTags
       Entry: 7
-      Data: 61|GAS.GameplayTagSet, GAS
+      Data: 61|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 62|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 62|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -846,7 +869,7 @@ MonoBehaviour:
     - Name: cueDic
       Entry: 7
       Data: 63|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent,
-        GAS]], mscorlib]], mscorlib
+        Assembly-CSharp]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 1
@@ -861,14 +884,14 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 64|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+      Data: 64|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 65|GAS.DurationCueMarkEvent, GAS
+      Data: 65|GAS.DurationCueMarkEvent, Assembly-CSharp
     - Name: _name
       Entry: 1
       Data: "\u52A8\u753B"
@@ -877,13 +900,14 @@ MonoBehaviour:
       Data: 0
     - Name: DurationCue
       Entry: 7
-      Data: 66|GAS.GameplayCueDurationalAnimation, GAS
+      Data: 66|GAS.GameplayCueDurationalAnimation, Assembly-CSharp
     - Name: requiredTags
       Entry: 7
-      Data: 67|GAS.GameplayTagSet, GAS
+      Data: 67|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 68|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 68|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -898,10 +922,11 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 69|GAS.GameplayTagSet, GAS
+      Data: 69|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 70|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 70|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -923,6 +948,9 @@ MonoBehaviour:
     - Name: RootMotion
       Entry: 5
       Data: true
+    - Name: PlaySpeed
+      Entry: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -946,14 +974,14 @@ MonoBehaviour:
       Data: 16
     - Name: $v
       Entry: 7
-      Data: 71|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, GAS]],
+      Data: 71|System.Collections.Generic.List`1[[GAS.DurationCueMarkEvent, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 72|GAS.DurationCueMarkEvent, GAS
+      Data: 72|GAS.DurationCueMarkEvent, Assembly-CSharp
     - Name: _name
       Entry: 1
       Data: "\u97F3\u6548"
@@ -962,13 +990,14 @@ MonoBehaviour:
       Data: 16
     - Name: DurationCue
       Entry: 7
-      Data: 73|GAS.GameplayCueDurationalAudio, GAS
+      Data: 73|GAS.GameplayCueDurationalAudio, Assembly-CSharp
     - Name: requiredTags
       Entry: 7
-      Data: 74|GAS.GameplayTagSet, GAS
+      Data: 74|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 75|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 75|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -983,10 +1012,11 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 76|GAS.GameplayTagSet, GAS
+      Data: 76|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 77|System.Collections.Generic.List`1[[GAS.GameplayTag, GAS]], mscorlib
+      Data: 77|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1035,7 +1065,7 @@ MonoBehaviour:
     - Name: eventDic
       Entry: 7
       Data: 78|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Collections.Generic.List`1[[GAS.FrameEvent,
-        GAS]], mscorlib]], mscorlib
+        Assembly-CSharp]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 1
@@ -1050,13 +1080,14 @@ MonoBehaviour:
       Data: 22
     - Name: $v
       Entry: 7
-      Data: 79|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+      Data: 79|System.Collections.Generic.List`1[[GAS.FrameEvent, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
-      Data: 80|GAS.FrameEvent, GAS
+      Data: 80|GAS.FrameEvent, Assembly-CSharp
     - Name: _name
       Entry: 1
       Data: "\u5F00\u542F\u6B66\u5668\u62D6\u5C3E"
@@ -1085,14 +1116,66 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 7
-      Data: 81|GAS.FrameEvent, GAS
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 33
+    - Name: $v
+      Entry: 7
+      Data: 81|System.Collections.Generic.List`1[[GAS.FrameEvent, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 82|GAS.FrameEvent, Assembly-CSharp
+    - Name: _name
+      Entry: 1
+      Data: "\u5173\u95ED\u6B66\u5668\u62D6\u5C3E"
+    - Name: _startFrame
+      Entry: 3
+      Data: 33
+    - Name: EventType
+      Entry: 3
+      Data: 11
+    - Name: eventName
+      Entry: 6
+      Data: 
+    - Name: intArg
+      Entry: 3
+      Data: 0
+    - Name: floatArg
+      Entry: 4
+      Data: 0
+    - Name: strArg
+      Entry: 6
+      Data: 
+    - Name: objArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 83|GAS.FrameEvent, Assembly-CSharp
     - Name: _name
       Entry: 1
       Data: "\u53D6\u6D88\u9501\u5B9A\u76EE\u6807"
     - Name: _startFrame
       Entry: 3
-      Data: 22
+      Data: 33
     - Name: EventType
       Entry: 3
       Data: 3
@@ -1128,67 +1211,17 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 33
-    - Name: $v
-      Entry: 7
-      Data: 82|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 83|GAS.FrameEvent, GAS
-    - Name: _name
-      Entry: 1
-      Data: "\u5173\u95ED\u6B66\u5668\u62D6\u5C3E"
-    - Name: _startFrame
-      Entry: 3
-      Data: 33
-    - Name: EventType
-      Entry: 3
-      Data: 11
-    - Name: eventName
-      Entry: 6
-      Data: 
-    - Name: intArg
-      Entry: 3
-      Data: 0
-    - Name: floatArg
-      Entry: 4
-      Data: 0
-    - Name: strArg
-      Entry: 6
-      Data: 
-    - Name: objArg
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 84|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+      Data: 84|System.Collections.Generic.List`1[[GAS.FrameEvent, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 2
     - Name: 
       Entry: 7
-      Data: 85|GAS.FrameEvent, GAS
+      Data: 85|GAS.FrameEvent, Assembly-CSharp
     - Name: _name
       Entry: 1
       Data: "\u9501\u5B9A\u76EE\u6807"
@@ -1218,7 +1251,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 86|GAS.FrameEvent, GAS
+      Data: 86|GAS.FrameEvent, Assembly-CSharp
     - Name: _name
       Entry: 1
       Data: "\u524D\u6447\u5F00\u59CB"
@@ -1263,13 +1296,14 @@ MonoBehaviour:
       Data: 5
     - Name: $v
       Entry: 7
-      Data: 87|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+      Data: 87|System.Collections.Generic.List`1[[GAS.FrameEvent, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 88|GAS.FrameEvent, GAS
+      Data: 88|GAS.FrameEvent, Assembly-CSharp
     - Name: _name
       Entry: 1
       Data: "\u524D\u6447\u7ED3\u675F"
@@ -1314,13 +1348,14 @@ MonoBehaviour:
       Data: 36
     - Name: $v
       Entry: 7
-      Data: 89|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+      Data: 89|System.Collections.Generic.List`1[[GAS.FrameEvent, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 90|GAS.FrameEvent, GAS
+      Data: 90|GAS.FrameEvent, Assembly-CSharp
     - Name: _name
       Entry: 1
       Data: "\u8F93\u5165\u5E27\u6253\u65AD\u4E8B\u4EF6"
@@ -1365,13 +1400,14 @@ MonoBehaviour:
       Data: 30
     - Name: $v
       Entry: 7
-      Data: 91|System.Collections.Generic.List`1[[GAS.FrameEvent, GAS]], mscorlib
+      Data: 91|System.Collections.Generic.List`1[[GAS.FrameEvent, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 92|GAS.FrameEvent, GAS
+      Data: 92|GAS.FrameEvent, Assembly-CSharp
     - Name: _name
       Entry: 1
       Data: "\u53EF\u4EE5\u91CA\u653E\u6280\u80FD"

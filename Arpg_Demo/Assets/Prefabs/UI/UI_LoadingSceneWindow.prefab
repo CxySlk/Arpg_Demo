@@ -204,8 +204,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 11c6374ed7e19f8459ea58fe4681d72b, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 4c28085364c935b4295c0f547a2bc088, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb3e3e6c5cda01a4fb472f04c6d35bea, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -299,6 +299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5068317591032451948}
   - component: {fileID: 8232687794226023188}
+  - component: {fileID: 6626927982094777699}
   - component: {fileID: 22299540731528102}
   m_Layer: 0
   m_Name: UI_LoadingSceneWindow
@@ -335,6 +336,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5749244025675374092}
   m_CullTransparentMesh: 1
+--- !u!114 &6626927982094777699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5749244025675374092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.13950695, g: 0.23752463, b: 0.5377358, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 11c6374ed7e19f8459ea58fe4681d72b, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &22299540731528102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,5 +387,5 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  imgProgress: {fileID: 5056193924186810009}
-  txtProgress: {fileID: 1879414301745918593}
+  _imgProgress: {fileID: 5056193924186810009}
+  _txtProgress: {fileID: 1879414301745918593}

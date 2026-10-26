@@ -12,11 +12,21 @@ namespace LLKFrame
 
         public ArchiveItem CreateArchiveItem()
         {
-            ArchiveItem saveItem = new ArchiveItem(createSaveID, Time.time);
+            ArchiveItem saveItem = new (createSaveID, Time.time);
             archiveItemDic.Add(createSaveID, saveItem);
             createSaveID++;
             return saveItem;
+        }    
+        
+        public bool HasArchive(int saveID) => archiveItemDic.ContainsKey(saveID);
+        
+        public ArchiveItem CreateArchiveItem(int saveID)
+        {
+            ArchiveItem saveItem = new (saveID, Time.time);
+            archiveItemDic.Add(saveID, saveItem);
+            return saveItem;
         }
+        
         public void DeleteArchiveItem(int saveID) => archiveItemDic.Remove(saveID);
         public void CleanAllArchive()
         {

@@ -25,13 +25,13 @@ public class Enemy_FaceToTarget : ActionTask
         _startTime = Time.time;
         // 纯转向:朝向由代码控制
         EnemyController controller = enemyController.value;
-        if (controller != null) controller.NavMeshAgent.updateRotation = false;
+        controller.NavMeshAgent.updateRotation = false;
     }
 
     protected override void OnUpdate()
     {
         EnemyController controller = enemyController.value;
-        if (!controller || !controller.Target) { EndAction(false); return; }
+        if (!controller.Target) { EndAction(false); return; }
 
         controller.FaceTargetOnly(controller.Target);
 

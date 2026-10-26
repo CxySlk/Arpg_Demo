@@ -10,7 +10,7 @@ namespace GAS
     [System.Serializable]
     public class GameplayCueDurationalParticle : GameplayCueDurational
     {
-        [LabelText("粒子预制体"), OnValueChanged(nameof(CalculateDuration))]
+        [LabelText("粒子预制体"), OnValueChanged("CalculateDuration")]
         public GameObject ParticlePrefab;
 
         [LabelText("生成位置偏移")]

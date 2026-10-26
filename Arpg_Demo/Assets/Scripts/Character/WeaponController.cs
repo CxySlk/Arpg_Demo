@@ -11,7 +11,7 @@ namespace Character
     {
         [LabelText("武器"), SerializeField] private List<Weapon> _weapons = new();
         private CharacterControllerBase controller;
-        public EventCenter GasEventCenter => controller.Asc.GasEventCenter;
+        public EventCenter GasEventCenter => controller.EventCenter;
 
         public void Init(CharacterControllerBase controller)
         {
@@ -31,6 +31,8 @@ namespace Character
 
         private void OnDisable()
         {
+            // 从未 Init（例如没被初始化的敌人被销毁）或角色控制器已销毁时，没有订阅过，直接返回
+            if (controller == null) return;
             // 取消订阅开启武器事件
             GasEventCenter.UnSubscribe(GASEventCenterKeys.StartWeaponColliderKey, StartWeapons);
             GasEventCenter.UnSubscribe(GASEventCenterKeys.StartAllWeaponColliderKey, StartAllWeapons);

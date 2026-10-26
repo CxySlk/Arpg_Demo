@@ -1,5 +1,7 @@
 using System.Collections;
+using cfg;
 using GAS;
+using LLKFrame;
 using NodeCanvas.StateMachines;
 using Sirenix.OdinInspector;
 using Skill;
@@ -8,12 +10,12 @@ using UnityEngine.AI;
 
 namespace Character
 {
-    public class EnemyController : CharacterControllerBase
+    public class EnemyController : CharacterControllerBase,IKFCEnemy
     {
         [LabelText("技能大脑"), SerializeField, Required]
         private Enemy_SkillBrain _skillBrain;
 
-        [LabelText("敌人配置"), SerializeField, Required]
+        // 敌人配置
         private EnemyConfig _enemyConfig;
 
         [LabelText("死亡延迟销毁时间(秒)"), SerializeField]
@@ -33,17 +35,20 @@ namespace Character
 
         public EnemyConfig EnemyConfig => _enemyConfig;
 
-        private void Awake()
+        /// <summary>敌人初始化：传入敌人配置（Luban）。配置来源待定（第5点暂缓）。</summary>
+        public void Init(EnemyConfig config)
         {
-            Init();
-        }
+            _enemyConfig = config;
+            InitShared();
 
-        protected override void Init()
-        {
-            base.Init();
-            asc.InitForPreset(_enemyConfig.AscPreset);
-            _skillBrain.InitForConfig(_enemyConfig.SkillConfigList);
-            characterView.SetStandardAnimation(_enemyConfig.StandardAnimationDic);
+            // ASC 预设（tags/默认效果）走 Addressable 地址
+            AbilitySystemComponentPreset preset = string.IsNullOrEmpty(config.AscPresetPath)
+                ? null
+                : ResSystem.LoadAsset<AbilitySystemComponentPreset>(config.AscPresetPath);
+            asc.Init(preset, CollectAttrs(config.Id), EventCenter);
+
+            // 敌人拥有的技能：初始化即全部学会
+            _skillBrain.InitForConfig(config);
             // 朝向默认由代码控制(站定/环绕/施法);追击时由行为树节点切给寻路组件沿路径转向
             _navMeshAgent.updateRotation = false;
             // 状态机与控制器同物体:外层硬状态(战斗/受击)由它管,行为树只在战斗状态内跑
@@ -73,7 +78,7 @@ namespace Character
                 return;
             }
 
-            asc.AttrDic.TryGetValue(AttributeType.MoveSpeed, out Attribute moveSpeed);
+            asc.AttrDic.TryGetValue(EAttributeType.MoveSpeed, out Attribute moveSpeed);
             _navMeshAgent.speed = moveSpeed!.CurValue;
             Vector3 destination = target.position;
             if (!_hasDestination || (destination - _lastDestination).sqrMagnitude > 0.04f)
@@ -156,14 +161,14 @@ namespace Character
         /// <summary>技能是否就绪(未在施法 + CD/消耗/释放标记都满足)。</summary>
         public bool CanCastSkill(int skillID)
         {
-            if (IsDead || !_skillBrain) return false;
+            if (IsDead) return false;
             return _skillBrain.CheckCanPlaySkill(skillID);
         }
 
         /// <summary>释放技能:停下移动 + 朝向目标 + 交给技能大脑播放。</summary>
         public void CastSkill(int skillID)
         {
-            if (IsDead || !_skillBrain) return;
+            if (IsDead) return;
 
             StopMove();
             if (Target) FaceTarget(Target);
@@ -191,14 +196,14 @@ namespace Character
         /// <summary>受控开始:停寻路、意外打断当前技能片段。</summary>
         protected override void OnControlledEnter()
         {
-            StopChase();                          // 停寻路
+            StopChase(); // 停寻路
             _skillBrain.UnexpectedInterruptAll(); // 受控=意外打断(片段级),不整套结束;后续连段由技能行为决定
         }
 
         /// <summary>切到外层状态机的受控状态(里面的行为树随之停下)。已在受控状态则不重复切,避免 EnterState 复位受控。</summary>
         protected override void TriggerControlledState()
         {
-            if (Fsm != null && Fsm.currentRootStateName != Enemy_ControlledState.StateName)
+            if (Fsm.currentRootStateName != Enemy_ControlledState.StateName)
                 Fsm.TriggerState(Enemy_ControlledState.StateName);
         }
 
@@ -259,5 +264,8 @@ namespace Character
             offset.y = 0f;
             return offset.sqrMagnitude <= _stopChaseDis * _stopChaseDis;
         }
+
+        public KFC_EnemyConfig kfcEnemyConfig => _enemyConfig.KfcEnemyConfig_Ref;
+        public Transform selfTrans => transform;
     }
 }

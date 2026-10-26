@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f548f9c25146386469d0649839b0bca4, type: 3}
+  m_Name: "\u6CBB\u6108"
+  m_EditorClassIdentifier: Assembly-CSharp::SkillConfig
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _skillBehavior
+      Entry: 7
+      Data: 0|Skill.NormalAttackBehavior, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+  _skillIcon: {fileID: 21300000, guid: 1b81f528af4645a41a8bdb59ee2c9b6f, type: 3}
+  _abilities:
+  - {fileID: 11400000, guid: 5f076a413d632d948958a4a09602c779, type: 2}

@@ -35,9 +35,9 @@ public class CheckTargetDistance : ConditionTask
 
     // NodeCanvas 的 ShowIf 只支持"某字段/属性 == 某个定值"，不支持表达式，
     // 所以用这两个只读属性把条件先算好（只给节点面板用，不参与序列化）。
-    public bool ShowMaxDistance => checkType != CheckType.GreaterThan;
-    public bool ShowMinDistance => checkType != CheckType.LessThan;
-
+    public bool ShowMaxDistance => checkType != CheckType.GreaterThan && checkType != CheckType.GreaterThanOrEqualTo;
+    public bool ShowMinDistance => checkType != CheckType.LessThan && checkType != CheckType.LessThanOrEqualTo;
+    
     protected override bool OnCheck()
     {
         Transform targetTransform = target.value;

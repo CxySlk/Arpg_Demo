@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using cfg;
 using LLKFrame;
 using UnityEngine;
 
@@ -22,6 +23,18 @@ namespace GAS
 
         /// <summary>新增属性事件</summary>
         public static readonly EventKey<Attribute> AddAttributeKey = "GAS.Attribute.Add";
+
+        /// <summary>当前值变化事件，payload = (属性类型, 当前值)</summary>
+        public static readonly EventKey<EAttributeType, float> CurValueChangedKey = "GAS.Attribute.CurValue.Changed";
+
+        /// <summary>最小值变化事件，payload = (属性类型, 最小值)</summary>
+        public static readonly EventKey<EAttributeType, float> MinValueChangedKey = "GAS.Attribute.MinValue.Changed";
+
+        /// <summary>最大值变化事件，payload = (属性类型, 最大值)</summary>
+        public static readonly EventKey<EAttributeType, float> MaxValueChangedKey = "GAS.Attribute.MaxValue.Changed";
+
+        /// <summary>归一化值变化事件，payload = (属性类型, 归一值)</summary>
+        public static readonly EventKey<EAttributeType, float> NormalizeValueChangedKey = "GAS.Attribute.NormalizeValue.Changed";
 
         /// <summary>
         /// 可以被格挡的攻击：攻击方在结算伤害时发布到**受击方**的事件中心，payload = 攻击方 GameObject。

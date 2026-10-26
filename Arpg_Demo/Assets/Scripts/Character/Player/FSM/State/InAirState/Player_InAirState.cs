@@ -1,4 +1,5 @@
 ﻿using Animancer;
+using cfg;
 using GAS;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
@@ -23,7 +24,7 @@ public class Player_InAirState : PlayerStateBase
     protected override void OnInit()
     {
         base.OnInit();
-        Asc.TryGetAttrValue(AttributeType.MoveSpeed, out _moveSpeedAttr);
+        Asc.TryGetAttrValue(EAttributeType.MoveSpeed, out _moveSpeedAttr);
     }
 
     protected override void OnEnter()

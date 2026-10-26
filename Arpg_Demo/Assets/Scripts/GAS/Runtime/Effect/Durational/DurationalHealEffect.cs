@@ -1,3 +1,4 @@
+using cfg;
 using Sirenix.OdinInspector;
 
 namespace GAS
@@ -11,7 +12,7 @@ namespace GAS
         public float healSpeed;
 
         [BoxGroup("回血配置"), LabelText("恢复属性类型")]
-        public AttributeType healAttrTag;
+        public EAttributeType healAttrTag;
 
         private Attribute _attr;
 

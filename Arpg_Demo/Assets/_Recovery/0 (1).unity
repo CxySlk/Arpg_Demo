@@ -5067,8 +5067,8 @@ MonoBehaviour:
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"enemyController":{"_value":1,"_name":"enemyController","_id":"eeb7d7d6-2252-4e2b-8398-9e58abed51ec","$type":"NodeCanvas.Framework.Variable`1[[Character.EnemyController,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"characterView":{"_value":2,"_name":"characterView","_id":"91f72b94-c8ed-44f8-8ea1-8a22f81e1200","$type":"NodeCanvas.Framework.Variable`1[[CharacterView,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"frontTargetCatcher":{"_value":{"OutsideRadius":10.0,"Height":1.0,"Angle":90.0,"centerPos":{"y":0.5},"LayerMask":{"value":64}},"_name":"frontTargetCatcher","_id":"bd9baf69-310d-4de0-b284-e1bc7bc789c6","$type":"NodeCanvas.Framework.Variable`1[[GAS.TargetSectorCatcher,
-    GAS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"circleTargetCatcher":{"_value":{"OutsideRadius":3.0,"Height":1.0,"Angle":360.0,"centerPos":{"y":0.5},"LayerMask":{"value":64}},"_name":"circleTargetCatcher","_id":"cc265bc3-7c4b-4b8c-94ca-2c66b2e41173","$type":"NodeCanvas.Framework.Variable`1[[GAS.TargetSectorCatcher,
-    GAS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"stopChaseDis":{"_value":3.0,"_name":"stopChaseDis","_id":"acb1c011-7ba5-4f4d-a754-8b2ff81629f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"circleTargetCatcher":{"_value":{"OutsideRadius":3.0,"Height":1.0,"Angle":360.0,"centerPos":{"y":0.5},"LayerMask":{"value":64}},"_name":"circleTargetCatcher","_id":"cc265bc3-7c4b-4b8c-94ca-2c66b2e41173","$type":"NodeCanvas.Framework.Variable`1[[GAS.TargetSectorCatcher,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"stopChaseDis":{"_value":3.0,"_name":"stopChaseDis","_id":"acb1c011-7ba5-4f4d-a754-8b2ff81629f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"eyeOffset":{"_value":{"y":1.0},"_name":"eyeOffset","_id":"954bba70-b7a4-45a9-9358-6b6a35914f9e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"obstacleLayer":{"_value":{"value":8},"_name":"obstacleLayer","_id":"8020928c-900e-4389-8766-7c1faaa2c74f","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.LayerMask,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"chaseDis":{"_value":7.0,"_name":"chaseDis","_id":"b5021eea-5c50-472e-b933-5215560b0870","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
@@ -5092,10 +5092,10 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 3176627917500399294}
   - _json: '{"_value":{"OutsideRadius":10.0,"Height":1.0,"Angle":90.0,"centerPos":{"y":0.5},"LayerMask":{"value":64}},"_name":"frontTargetCatcher","_id":"bd9baf69-310d-4de0-b284-e1bc7bc789c6","$type":"NodeCanvas.Framework.Variable`1[[GAS.TargetSectorCatcher,
-      GAS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
   - _json: '{"_value":{"OutsideRadius":3.0,"Height":1.0,"Angle":360.0,"centerPos":{"y":0.5},"LayerMask":{"value":64}},"_name":"circleTargetCatcher","_id":"cc265bc3-7c4b-4b8c-94ca-2c66b2e41173","$type":"NodeCanvas.Framework.Variable`1[[GAS.TargetSectorCatcher,
-      GAS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
   - _json: '{"_value":3.0,"_name":"stopChaseDis","_id":"acb1c011-7ba5-4f4d-a754-8b2ff81629f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'

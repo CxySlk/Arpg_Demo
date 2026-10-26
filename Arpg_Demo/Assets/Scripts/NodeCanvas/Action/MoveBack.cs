@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Animancer;
+using cfg;
 using Character;
 using GAS;
 using NodeCanvas.Framework;
@@ -17,7 +18,7 @@ namespace NodeCanvas.BehaviourTrees
         [Name("角色控制器"), RequiredField] public BBParameter<CharacterControllerBase> controller;
         [Name("目标"), RequiredField] public BBParameter<Transform> target;
         [Name("后退动画名"), RequiredField] public string moveBackClipName;
-        [Name("播放速度")] public float playSpeed = 1f;
+        [Name("停步动画名"), RequiredField] public string stopClipName;
         [Name("后退速度比例")] public float moveBackSpeedPercent = .5f;
         [Name("最小距离"), RequiredField] public BBParameter<float> minDistance;
 
@@ -54,7 +55,7 @@ namespace NodeCanvas.BehaviourTrees
         if (faceTarget)
             FaceTarget();
 
-        controller.value.Asc.TryGetAttrValue(AttributeType.MoveSpeed, out Attribute moveSpeed);
+        controller.value.Asc.TryGetAttrValue(EAttributeType.MoveSpeed, out Attribute moveSpeed);
         Vector3 away = controller.value.transform.position - target.value.position;
         away.y = 0f;
         controller.value.Move(away.normalized * (moveSpeed.CurValue * Time.deltaTime * moveBackSpeedPercent));
@@ -62,10 +63,17 @@ namespace NodeCanvas.BehaviourTrees
 
     private void PlayMove()
     {
-        _moveState = controller.value.Play(moveBackClipName, playSpeed);
+        _moveState = controller.value.Play(moveBackClipName);
         controller.value.SetRootMotion(null); // 后退由代码位移,不需要动画根运动
         if (enableAudio)
             AnimationAudioHelper.Bind(_moveState, audioEntries, controller.value.transform);
+    }
+
+    protected override void OnStop(bool interrupted)
+    {
+        // 只有正常结束才播收步动画；被打断(受控/受击)不播
+        if (!interrupted)
+            controller.value.Play(stopClipName);
     }
 
         private float HorizontalDistance()

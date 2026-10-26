@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloatingTextManager
   _itemPrefab: {fileID: 0}
-  _headOffset: {x: 0, y: 1.6, z: 0}
+  _headOffset: {x: 0, y: 0.8, z: 0}
   _spreadRange: {x: 0.35, y: 0.25}
 --- !u!1 &2651357837920860480
 GameObject:
@@ -1100,6 +1100,7 @@ GameObject:
   - component: {fileID: 443727977325405871}
   - component: {fileID: 7334095200092986993}
   - component: {fileID: 7166935552746385854}
+  - component: {fileID: 400788690236550294}
   m_Layer: 0
   m_Name: GameRoot
   m_TagString: Untagged
@@ -1291,6 +1292,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e8f991e654a0049b18a511583b9d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonoSystem
+--- !u!114 &400788690236550294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8032865327304773989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f32ee9f357608947b0a664b7b5c8a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YooAssetMgr
+  _hostInEditor: 0
+  _autoUpdate: 1
 --- !u!1 &8453619630752505732
 GameObject:
   m_ObjectHideFlags: 0

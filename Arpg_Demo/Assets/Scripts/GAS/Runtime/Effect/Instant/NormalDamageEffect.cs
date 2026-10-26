@@ -1,3 +1,4 @@
+using cfg;
 using LLKFrame;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -22,8 +23,8 @@ namespace GAS
 
         protected override void ApplyEffect()
         {
-            source.TryGetAttrValue(AttributeType.Atk, out Attribute atkAttr);
-            target.TryGetAttrValue(AttributeType.Def, out Attribute defAttr);
+            source.TryGetAttrValue(EAttributeType.Atk, out Attribute atkAttr);
+            target.TryGetAttrValue(EAttributeType.Def, out Attribute defAttr);
 
             float _damage = Mathf.Max(0, (atkAttr?.CurValue ?? 0) - (defAttr?.CurValue ?? 0) + damage);
 
@@ -39,7 +40,7 @@ namespace GAS
                 });
             }
 
-            target.AddAttrValue(AttributeType.Hp, AttributeValueType.CurValue, -_damage);
+            target.AddAttrValue(EAttributeType.Hp, AttributeValueType.CurValue, -_damage);
         }
     }
 }

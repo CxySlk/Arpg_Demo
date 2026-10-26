@@ -14,12 +14,6 @@ public class Enemy_Idle : ActionTask
     protected override void OnExecute()
     {
         EnemyController controller = enemyController.value;
-        if (controller == null)
-        {
-            EndAction(false);
-            return;
-        }
-
         // 待机:朝向由代码控制
         controller.NavMeshAgent.updateRotation = false;
         controller.Idle();

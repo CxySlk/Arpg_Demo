@@ -1085,6 +1085,7 @@ GameObject:
   - component: {fileID: 2981261165859420970}
   - component: {fileID: 7316623068245740949}
   - component: {fileID: 1095748678477575609}
+  - component: {fileID: 9033891981897573958}
   m_Layer: 0
   m_Name: btnBack
   m_TagString: Untagged
@@ -1193,6 +1194,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9033891981897573958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4155245880258821110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c4b8d2b19f4f5ab84d5693bf51e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UI_MouseEnterExitEffect
+  component: {fileID: 0}
+  _scale: 1.2
+  _duration: 0.25
+  _ease: 6
 --- !u!1 &4172135498075819322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,6 +1797,9 @@ GameObject:
   - component: {fileID: 20261088007487106}
   - component: {fileID: 4861588841350869851}
   - component: {fileID: 7944683522591153608}
+  - component: {fileID: 5501208524866262919}
+  - component: {fileID: 5340745866998931405}
+  - component: {fileID: 4832061408642561270}
   m_Layer: 0
   m_Name: UI_SettingWindow
   m_TagString: Untagged
@@ -1874,6 +1894,49 @@ MonoBehaviour:
   txtGlobalMusic: {fileID: 9040816756094752846}
   btnBack: {fileID: 1095748678477575609}
   volumeSlideClip: {fileID: 8300000, guid: cbe62805faafc4b47a6ad50a1f590bd7, type: 3}
+--- !u!114 &5501208524866262919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5952711027884179801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa972ddfa84c1fc4d96df6acf71edc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UI_WindowScaleEffect
+  _duration: 0.3
+  _scaleFrom: 0
+  _enterEase: 6
+  _exitEase: 5
+--- !u!225 &5340745866998931405
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5952711027884179801}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &4832061408642561270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5952711027884179801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b303d43693fed4b9fc7966ea7f4e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UI_WindowFadeEffect
+  _duration: 0.3
+  _enterEase: 6
+  _exitEase: 6
 --- !u!1 &6019427240486929612
 GameObject:
   m_ObjectHideFlags: 0

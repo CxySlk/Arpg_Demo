@@ -23,11 +23,11 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _attrDic
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[GAS.AttributeType, GAS],[GAS.Attribute,
+      Data: 0|System.Collections.Generic.Dictionary`2[[cfg.EAttributeType, Assembly-CSharp],[GAS.Attribute,
         GAS]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[GAS.AttributeType,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[cfg.EAttributeType,
         GAS]], mscorlib
     - Name: 
       Entry: 12
@@ -289,7 +289,7 @@ MonoBehaviour:
       Data: 
     - Name: _effects
       Entry: 7
-      Data: 12|System.Collections.Generic.List`1[[GAS.GameplayEffect, GAS]], mscorlib
+      Data: 12|System.Collections.Generic.List`1[[GAS.GameplayEffect, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0

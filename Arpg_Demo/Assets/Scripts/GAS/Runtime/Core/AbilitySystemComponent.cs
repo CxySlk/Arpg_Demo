@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using cfg;
 using LLKFrame;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -18,7 +18,7 @@ namespace GAS
         [DictionaryDrawerSettings(KeyLabel = "属性类型", ValueLabel = "属性")]
         [LabelText("属性集")]
         [ShowInInspector, ReadOnly]
-        private Dictionary<AttributeType, Attribute> _attrDic = new();
+        private Dictionary<EAttributeType, Attribute> _attrDic = new();
 
         [FoldoutGroup("运行时数据")] [GUIColor(0.30f, 0.80f, 0.45f)] [LabelText("标签集"), ShowInInspector, ReadOnly]
         private GameplayTagAggregator _tagAggregator = new();
@@ -32,29 +32,41 @@ namespace GAS
         /// <summary>驱动 OnUpdate 时用的缓存列表（复用一个，避免每帧分配）</summary>
         private readonly List<GameplayDurationalEffect> _effectUpdateCache = new();
 
-        public Dictionary<AttributeType, Attribute> AttrDic => _attrDic;
+        public Dictionary<EAttributeType, Attribute> AttrDic => _attrDic;
         public GameplayTagAggregator TagAggregator => _tagAggregator;
-        private readonly EventCenter _gasEventCenter = new();
-        public EventCenter GasEventCenter => _gasEventCenter;
+
+        /// <summary>本 ASC 的事件中心（由角色控制器在 <see cref="Init"/> 时注入，与角色共用同一个）</summary>
+        public EventCenter GasEventCenter { get; private set; }
 
         #region 生命周期
 
-        public void InitForPreset(AbilitySystemComponentPreset ascPreset)
+        /// <summary>初始化 ASC：属性来自 Luban 属性表（attrs）；preset 只提供固定标签/默认效果（可为 null）。</summary>
+        public void Init(AbilitySystemComponentPreset preset, IReadOnlyList<cfg.CharacterAttr> attrs, EventCenter eventCenter)
         {
-            // 属性初始化
-            foreach (KeyValuePair<AttributeType, Attribute> _attr in ascPreset.AttrDic)
+            GasEventCenter = eventCenter;
+
+            // 属性初始化（来自 Luban 属性表，按角色 id 过滤后的行）
+            if (attrs != null)
             {
-                Attribute attr = new(_attr.Value);
-                _attrDic.Add(_attr.Key, attr);
-                _gasEventCenter.Publish(GASEventCenterKeys.AddAttributeKey, attr);
+                foreach (cfg.CharacterAttr ca in attrs)
+                {
+                    Attribute attr = new();
+                    attr.Init(ca.AttrType, GasEventCenter);
+                    attr.SetMinValue(ca.Min);
+                    attr.SetMaxValue(ca.Max);
+                    attr.SetCurrentValue(ca.Cur);
+                    _attrDic[ca.AttrType] = attr;
+                    GasEventCenter.Publish(GASEventCenterKeys.AddAttributeKey, attr);
+                }
             }
 
-            // 标签初始化
-            _tagAggregator.AddFixedTags(ascPreset.TagSet);
-
-            // 应用默认的效果
-            foreach (GameplayEffect effect in ascPreset.Effects)
-                ApplyEffect(effect, this);
+            // 预设（可选）：固定标签 + 默认效果
+            if (preset != null)
+            {
+                _tagAggregator.AddFixedTags(preset.TagSet);
+                foreach (GameplayEffect effect in preset.Effects)
+                    ApplyEffect(effect, this);
+            }
         }
 
         private void OnEnable()
@@ -95,14 +107,14 @@ namespace GAS
         #region 属性相关
 
         /// <summary>根据属性类型检查是否存在</summary>
-        public bool HasAttr(AttributeType attrType) => _attrDic.ContainsKey(attrType);
+        public bool HasAttr(EAttributeType attrType) => _attrDic.ContainsKey(attrType);
 
         /// <summary>尝试获取属性</summary>
-        public bool TryGetAttrValue(AttributeType attrType, out Attribute attr) =>
+        public bool TryGetAttrValue(EAttributeType attrType, out Attribute attr) =>
             _attrDic.TryGetValue(attrType, out attr);
 
         /// <summary>设置属性值</summary>
-        public void SetAttrValue(AttributeType attrType, AttributeValueType valueType, float attrValue)
+        public void SetAttrValue(EAttributeType attrType, AttributeValueType valueType, float attrValue)
         {
             if (_attrDic.TryGetValue(attrType, out Attribute attribute))
             {
@@ -125,7 +137,7 @@ namespace GAS
         /// 属性值增加，返回**实际改动量**（被上下限截断之后真正变了多少）。
         /// 例：满血时回血返回 0，溢出的伤害返回被截断后的值 —— 飘字/结算用它才不会显示假数字。
         /// </summary>
-        public float AddAttrValue(AttributeType attrType, AttributeValueType valueType, float addValue)
+        public float AddAttrValue(EAttributeType attrType, AttributeValueType valueType, float addValue)
         {
             if (!_attrDic.TryGetValue(attrType, out Attribute attribute)) return 0f;
 
@@ -148,75 +160,6 @@ namespace GAS
 
                 default:
                     return 0f;
-            }
-        }
-
-        public void AddAttrValueChangedCallBack(AttributeType attrType, AttributeValueType valueType,
-            Action<float> callBack)
-        {
-            if (_attrDic.TryGetValue(attrType, out Attribute attribute))
-            {
-                switch (valueType)
-                {
-                    case AttributeValueType.CurValue:
-                        attribute.AddCurValueChanged(callBack);
-                        break;
-                    case AttributeValueType.MinValue:
-                        attribute.AddMinValueChanged(callBack);
-                        break;
-                    case AttributeValueType.MaxValue:
-                        attribute.AddMaxValueChanged(callBack);
-                        break;
-                    case AttributeValueType.NormalizeValue:
-                        attribute.AddNormalizeValueChanged(callBack);
-                        break;
-                }
-            }
-        }
-
-        public void SetAttrValueChangedCallBack(AttributeType attrType, AttributeValueType valueType,
-            Action<float> callBack)
-        {
-            if (_attrDic.TryGetValue(attrType, out Attribute attribute))
-            {
-                switch (valueType)
-                {
-                    case AttributeValueType.CurValue:
-                        attribute.SetCurValueChanged(callBack);
-                        break;
-                    case AttributeValueType.MinValue:
-                        attribute.SetMinValueChanged(callBack);
-                        break;
-                    case AttributeValueType.MaxValue:
-                        attribute.SetMaxValueChanged(callBack);
-                        break;
-                    case AttributeValueType.NormalizeValue:
-                        attribute.SetNormalizeValueChanged(callBack);
-                        break;
-                }
-            }
-        }
-
-        public void RemoveAttrValueChangedCallBack(AttributeType attrType, AttributeValueType valueType,
-            Action<float> callBack)
-        {
-            if (_attrDic.TryGetValue(attrType, out Attribute attribute))
-            {
-                switch (valueType)
-                {
-                    case AttributeValueType.CurValue:
-                        attribute.RemoveCurValueChanged(callBack);
-                        break;
-                    case AttributeValueType.MinValue:
-                        attribute.RemoveMinValueChanged(callBack);
-                        break;
-                    case AttributeValueType.MaxValue:
-                        attribute.RemoveMaxValueChanged(callBack);
-                        break;
-                    case AttributeValueType.NormalizeValue:
-                        attribute.RemoveNormalizeValueChanged(callBack);
-                        break;
-                }
             }
         }
 
@@ -260,7 +203,7 @@ namespace GAS
 
             _effectDic.TryAdd(effect.EffectTag, effect);
             // 告知事件中心，效果被添加
-            _gasEventCenter.Publish(GASEventCenterKeys.AddEffectEvent, effect);
+            GasEventCenter.Publish(GASEventCenterKeys.AddEffectEvent, effect);
         }
 
         public void RemoveEffect(GameplayDurationalEffect effect)
@@ -271,14 +214,14 @@ namespace GAS
             _effectDic.Remove(effect.EffectTag);
 
             // 告知事件中心，效果被移除
-            _gasEventCenter.Publish(
+            GasEventCenter.Publish(
                 GASEventCenterKeys.RemoveEffectEvent,
                 effect.EffectTag);
         }
 
         public void EffectStackChanged(GameplayDurationalEffect effect, int curStack)
         {
-            _gasEventCenter.Publish(
+            GasEventCenter.Publish(
                 GASEventCenterKeys.EffectStackChangedEvent,
                 effect,
                 curStack);

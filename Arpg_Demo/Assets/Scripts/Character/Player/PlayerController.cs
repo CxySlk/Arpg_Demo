@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using cfg;
+using Data;
 using Sirenix.OdinInspector;
 using Character;
 using GAS;
@@ -8,9 +11,9 @@ using Skill;
 using Skill.Data;
 using UnityEngine;
 
-public class PlayerController : CharacterControllerBase
+public partial class PlayerController : CharacterControllerBase, IKFCProvider
 {
-    #region 组件相关
+    #region 组件与引用
 
     [LabelText("角色控制器"), SerializeField] protected CharacterController characterController;
     [LabelText("FSM"), SerializeField] protected FSMOwner fsm;
@@ -23,23 +26,14 @@ public class PlayerController : CharacterControllerBase
     public static PlayerController Instance => _instance;
     private Dictionary<int, int> EquipSlotDic => DataManager.PlayerData.equipSlotDic;
 
-    #endregion
-
-    #region 敌人搜寻相关
-
-    [LabelText("目标最远的距离"), SerializeField] private float _targetMaxDistance = 10f;
-
-    [LabelText("搜寻点的中心位置"), SerializeField]
-    private Vector3 _searchPosOffset = new(0, .75f, .5f);
-
-    private TargetSectorCatcher _targetCatcher;
-
-    #endregion
-
     // 玩家配置
     public PlayerConfig PlayerConfig { get; private set; }
     public FSMOwner Fsm => fsm;
     public Player_SkillBrain SkillBrain => skillBrain;
+
+    #endregion
+
+    #region 生命周期
 
     // 出生点(死亡复活回这里;在 Start 记录)
     private Vector3 _spawnPos;
@@ -48,22 +42,6 @@ public class PlayerController : CharacterControllerBase
     private void Awake()
     {
         _instance = this;
-        Init();
-    }
-
-    protected override void Init()
-    {
-        base.Init();
-        _targetCatcher = new()
-        {
-            Angle = 360,
-            centerPos = _searchPosOffset,
-            Height = 1.5f,
-            InsideRadius = 0,
-            OutsideRadius = _targetMaxDistance,
-            Rotation = default,
-            LayerMask = 1 << LayerMask.NameToLayer("Enemy"),
-        };
     }
 
     private void Start()
@@ -71,50 +49,6 @@ public class PlayerController : CharacterControllerBase
         // 记录出生点(复活时回到这里)
         _spawnPos = transform.position;
         _spawnRot = transform.rotation;
-    }
-
-    public override void LockTarget(bool isLock)
-    {
-        base.LockTarget(isLock);
-        if (!isLock || TargetIsLegal(Target)) return;
-        SearchTarget();
-    }
-
-    public void RefreshLockTarget()
-    {
-        SearchTarget();
-    }
-
-    // 判断目标是否合法
-    private bool TargetIsLegal(Transform target)
-    {
-        // 1、目标存在
-        // 2、与目标之间的距离在
-        return target &&
-               (target.position - transform.position).sqrMagnitude <= Mathf.Pow(_targetMaxDistance, 2) &&
-               CheckHasObstacle(target);
-    }
-
-    private bool CheckHasObstacle(Transform target)
-    {
-        return !Physics.Linecast(transform.TransformPoint(_searchPosOffset), target.position + Vector3.up,
-            1 << LayerMask.NameToLayer("Env"));
-    }
-
-    private void SearchTarget()
-    {
-        Collider[] targets = _targetCatcher.GetTargets(transform);
-        Transform tempTarget = null;
-        float sqrMaxDis = float.MaxValue;
-        for (int i = 0; i < targets.Length && targets[i]; i++)
-        {
-            Vector3 workspace = targets[i].transform.position;
-            float sqrDic = (workspace - transform.position).sqrMagnitude;
-            if (sqrDic < sqrMaxDis && TargetIsLegal(targets[i].transform))
-                tempTarget = targets[i].transform;
-        }
-
-        SetTarget(tempTarget);
     }
 
     protected override void OnEnable()
@@ -137,18 +71,37 @@ public class PlayerController : CharacterControllerBase
         OnInputInterruptCheckUpdate();
     }
 
-    public void SetConfig(PlayerConfig playerConfig, SkillLearnData skillLearnData)
+    private void FixedUpdate()
     {
-        PlayerConfig = playerConfig;
-        characterView.SetStandardAnimation(playerConfig.StandardAnimationDic);
-        asc.InitForPreset(playerConfig.AscPreset);
-        // asc 现在才有 Hp 属性,补绑定死亡监听(OnEnable 时 asc 尚未初始化)
-        BindHpMonitor();
-        skillBrain.InitForConfig(playerConfig.SkillConfigList, skillLearnData);
+        _stageController.UpdateCirclePos();
+    }
 
-        // 学习默认的技能
-        foreach (int id in playerConfig.DefaultLearnSkills)
-            skillBrain.LearnSkill(id);
+    private void LateUpdate()
+    {
+        _stageController.UpdateRequest();
+    }
+
+    /// <summary>玩家初始化：传入玩家配置（Luban）。属性来自属性表，ascPreset 走地址加载，技能按技能 id 装配。</summary>
+    public void Init(PlayerConfig config, SkillLearnData learnData)
+    {
+        PlayerConfig = config;
+        InitShared();
+        InitTargetLock();
+        // 初始化功夫圈
+        _kungFuCircle = new(config.KfcConfig_Ref);
+        _stageController = new StageController(config.KfcConfig_Ref, transform);
+
+        // ASC 预设（tags/默认效果）走 Addressable 地址
+        AbilitySystemComponentPreset preset = string.IsNullOrEmpty(config.AscPresetPath)
+            ? null
+            : ResSystem.LoadAsset<AbilitySystemComponentPreset>(config.AscPresetPath);
+        asc.Init(preset, CollectAttrs(config.Id), EventCenter);
+
+        skillBrain.InitForConfig(config, learnData);
+
+        // 学习默认的技能（技能 id）
+        foreach (int skillId in config.DefaultLearnSkills)
+            skillBrain.LearnSkill(skillId);
 
         // 开启技能输入检测
         InitSkillInputNodes();
@@ -161,205 +114,32 @@ public class PlayerController : CharacterControllerBase
         else StopSkillInputCheck();
     }
 
-    #region 技能输入按键相关
-
-    private void InitSkillInputNodes()
-    {
-        for (int i = 0; i < inputNodes.Count; i++)
-        {
-            InputNodeBase inputNode = inputNodes[i];
-            inputNode.Init();
-            if (i < 2) continue;
-            int slotIndex = i - 2;
-            inputNode.SetCallBack(() => TriggerSkillBySlotIndex(slotIndex));
-        }
-    }
-
-    private void TriggerLeftAttack()
-    {
-        TryReleaseSkillByID(0);
-    }
-
-    private void TriggerRightAttack()
-    {
-        TryReleaseSkillByID(1);
-    }
-
-    private void TriggerSkillBySlotIndex(int slotIndex)
-    {
-        // 检查技能热栏是否装备了技能
-        if (!EquipSlotDic.TryGetValue(slotIndex, out int skillID) || skillID < 0) return;
-        TryReleaseSkillByID(skillID);
-    }
-
-    private void TryReleaseSkillByID(int skillID)
-    {
-        // 释放技能
-        if (skillBrain.CheckCanPlaySkill(skillID))
-        {
-            skillBrain.PlaySkill(skillID);
-            // 技能播放进入 FSM 技能状态（每段独立进出；已在技能状态中连段时不重复重入）
-            if (fsm != null && fsm.currentRootStateName != Player_SkillState.StateName)
-                fsm.TriggerState(Player_SkillState.StateName);
-        }
-    }
-
-    public void StartSkillInputCheck()
-    {
-        foreach (InputNodeBase inputNode in inputNodes)
-            inputNode.CanInput = true;
-    }
-
-    public void StopSkillInputCheck()
-    {
-        foreach (InputNodeBase inputNode in inputNodes)
-            inputNode.CanInput = false;
-    }
-
-    /// <summary>
-    /// 按键每帧检测
-    /// </summary>
-    private void OnInputCheckUpdate()
-    {
-        foreach (InputNodeBase inputNode in inputNodes)
-        {
-            inputNode.OnUpdate();
-        }
-    }
-
-    /// <summary>
-    /// 输入打断检测：把移动/跳跃输入喂给当前技能行为，由行为按"是否解锁输入打断"决定是否取消自己。
-    /// 打断逻辑归技能行为，本控制器只负责读输入。
-    /// </summary>
-    private void OnInputInterruptCheckUpdate()
-    {
-        if (InputManager.MoveInput != Vector2.zero || InputManager.JumpInput)
-            skillBrain?.TryInputInterruptCurrentSkill();
-    }
-
     #endregion
 
-    #region 移动、旋转相关
-
-    public void Rotate(Vector2 moveInput)
-    {
-        Vector3 input = new(moveInput.x, 0, moveInput.y);
-        Vector3 target = Quaternion.Euler(0, Camera.main!.transform.eulerAngles.y, 0) * input;
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target), 10 * Time.deltaTime);
-    }
-
-    /// <summary>死亡表现开始:停 FSM/停技能输入/停技能/禁碰撞,并弹死亡 UI。</summary>
-    protected override void OnDeathStart()
-    {
-        // 停 FSM(不再响应移动/技能状态切换)
-        if (fsm != null)
-            fsm.StopBehaviour();
-
-        // 停技能输入检测(正在播放的技能由基类 Death() 统一 InterruptAllSkills 打断)
-        StopSkillInputCheck();
-
-        // 禁 CharacterController:尸体不再被推动/下落/移动
-        if (characterController != null)
-            characterController.enabled = false;
-
-        // 弹出死亡 UI(面板按钮回调 Revive)
-        UISystem.Show<UI_DeathWindow>();
-    }
-
-    public override bool SkillIsPlaying(int skillID)
-    {
-        return skillBrain.SkillIsPlaying(skillID);
-    }
-
-    /// <summary>打断所有正在播放的技能(技能状态与片段状态一起结束)。</summary>
-    public override void InterruptAllSkills(bool resetCd = true, bool force = false)
-    {
-        skillBrain?.InterruptAllSkills(resetCd, force);
-    }
-
-    #region 受控（眩晕/受击等"失去控制"的表现：由动画 Cue 驱动 → 状态机切到受控状态）
-
-    /// <summary>受控开始:意外打断当前技能片段、停技能输入。</summary>
-    protected override void OnControlledEnter()
-    {
-        skillBrain.UnexpectedInterruptAll(); // 受控=意外打断(片段级),不整套结束;后续连段由技能行为决定
-        StopSkillInputCheck(); // 也不再响应技能输入(否则会切进技能状态)
-    }
-
-    /// <summary>受控结束:恢复技能输入。</summary>
-    protected override void OnControlledExit() => StartSkillInputCheck();
-
-    /// <summary>切到状态机的受控状态。已在受控状态则不重复切,避免 EnterState 复位受控。</summary>
-    protected override void TriggerControlledState()
-    {
-        if (fsm != null && fsm.currentRootStateName != Player_ControlledState.StateName)
-            fsm.TriggerState(Player_ControlledState.StateName);
-    }
-
-    #endregion
-
-    /// <summary>打断指定技能。</summary>
-    public override void InterruptSkill(int skillID, bool resetCd = true, bool force = false)
-    {
-        skillBrain?.InterruptSkill(skillID, resetCd, force);
-    }
+    #region 复活
 
     /// <summary>复活:回满血、回出生点、恢复 FSM/输入/碰撞/技能。</summary>
     public void Revive()
     {
         if (!IsDead) return;
 
-        // 回满血(先复位 IsDead,避免回血瞬间又触发 OnHpChanged 死亡)
+        // 回满血(先复位 IsDead,避免回血瞬间又触发 OnAttrCurValueChanged 死亡)
         IsDead = false;
-        asc.SetAttrValue(AttributeType.Hp, AttributeValueType.CurValue, asc.AttrDic[AttributeType.Hp].MaxValue);
+        asc.SetAttrValue(EAttributeType.Hp, AttributeValueType.CurValue, asc.AttrDic[EAttributeType.Hp].MaxValue);
 
         // 回到出生点
         transform.SetPositionAndRotation(_spawnPos, _spawnRot);
 
         // 恢复碰撞与控制
-        if (characterController != null)
-            characterController.enabled = true;
+        characterController.enabled = true;
 
         // 恢复 FSM(从出生状态重新开始)与技能输入
-        fsm?.StartBehaviour();
+        fsm.StartBehaviour();
         StartSkillInputCheck();
 
         // 回到待机表现
         Play("Idle");
     }
-
-    /// <summary>移除自身(玩家死亡不销毁,只由 Revive 恢复;此方法为统一入口预留)。</summary>
-    public void ReviveAt(Vector3 pos, Quaternion rot)
-    {
-        _spawnPos = pos;
-        _spawnRot = rot;
-        Revive();
-    }
-
-    public override void Move(Vector3 deltaPos) => characterController.Move(deltaPos);
-
-    public void Move(Vector2 moveInput, float moveSpeed)
-    {
-        Vector3 moveDir = new Vector3(moveInput.x, 0, moveInput.y).normalized;
-        moveDir = Quaternion.Euler(0, Camera.main!.transform.eulerAngles.y, 0) * moveDir;
-        characterController.Move(moveDir * (moveSpeed * Time.deltaTime));
-    }
-
-    #endregion
-
-    #region Unity Editor
-
-#if UNITY_EDITOR
-
-    private void OnDrawGizmosSelected()
-    {
-        Vector3 origin = transform.TransformPoint(posOffset);
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(origin, origin + Vector3.down * maxDis);
-    }
-
-#endif
 
     #endregion
 }

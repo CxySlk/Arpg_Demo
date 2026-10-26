@@ -14,23 +14,38 @@ namespace GAS.EditorData
     public class GASEditorData : SerializedScriptableObject
     {
 #if UNITY_EDITOR
-        public const string AssetPath = "Assets/Scripts/GAS/EditorData/GASEditorData.asset";
+        /// <summary>找不到现有资产时的兜底创建路径；正常情况通过 FindAssets 定位，不依赖固定目录。</summary>
+        private const string FallbackAssetPath = "Assets/AoT/Scripts/GAS/EditorData/GASEditorData.asset";
         private static GASEditorData _instance;
 
         public static GASEditorData Instance
         {
             get
             {
+                if (_instance != null) return _instance;
+
+                // 按类型查找：脚本目录改动后也不会读错/创建到旧路径。
+                string[] guids = AssetDatabase.FindAssets("t:GASEditorData");
+                if (guids.Length > 1)
+                    Debug.LogWarning($"找到多个 GASEditorData 资产，使用第一个：{AssetDatabase.GUIDToAssetPath(guids[0])}");
+
+                for (int i = 0; i < guids.Length; i++)
+                {
+                    string path = AssetDatabase.GUIDToAssetPath(guids[i]);
+                    GASEditorData asset = AssetDatabase.LoadAssetAtPath<GASEditorData>(path);
+                    if (asset == null) continue;
+
+                    _instance = asset;
+                    break;
+                }
+
                 if (_instance == null)
                 {
-                    _instance = AssetDatabase.LoadAssetAtPath<GASEditorData>(AssetPath);
-                    if (_instance == null)
-                    {
-                        _instance = CreateInstance<GASEditorData>();
-                        AssetDatabase.CreateAsset(_instance, AssetPath);
-                        AssetDatabase.SaveAssets();
-                    }
+                    _instance = CreateInstance<GASEditorData>();
+                    AssetDatabase.CreateAsset(_instance, FallbackAssetPath);
+                    AssetDatabase.SaveAssets();
                 }
+
                 return _instance;
             }
         }

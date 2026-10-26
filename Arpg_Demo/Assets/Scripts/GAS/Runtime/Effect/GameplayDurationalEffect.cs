@@ -64,7 +64,9 @@ namespace GAS
             {
                 value = Mathf.Clamp(value, 0, stackData.MaxStackCount + 1);
                 if (effectStack == value) return;
+                int previousStack = effectStack;
                 effectStack = value;
+                OnStackChanged(previousStack, value);
                 // 层数归零 = 效果结束；否则只是广播层数变化
                 if (value == 0) Exit();
                 else target.EffectStackChanged(this, value);
@@ -132,6 +134,7 @@ namespace GAS
         internal void Enter()
         {
             target.AddEffect(this);
+            OnEnter();
         }
 
         /// <summary>
@@ -162,8 +165,18 @@ namespace GAS
         /// <summary>结束效果：摘掉标签并从效果表移除（移除后 ASC 不会再驱动 OnUpdate）。</summary>
         internal void Exit()
         {
+            OnExit();
             target.RemoveEffect(this);
         }
+
+        /// <summary>进入效果时回调（由 <see cref="Enter"/> 调用）。</summary>
+        protected virtual void OnEnter() { }
+
+        /// <summary>退出效果时回调（由 <see cref="Exit"/> 调用），用于还原持续期间的修改。</summary>
+        protected virtual void OnExit() { }
+
+        /// <summary>层数变化时回调，参数为变化前后的层数。</summary>
+        protected virtual void OnStackChanged(int previousStack, int currentStack) { }
 
         /// <summary>叠层（叠层规则决定要不要刷新持续时间）。</summary>
         internal void IncreaseStack(int stack)

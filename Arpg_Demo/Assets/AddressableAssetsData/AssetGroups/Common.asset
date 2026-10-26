@@ -15,13 +15,38 @@ MonoBehaviour:
   m_GroupName: Common
   m_GUID: 7101d9a579596de4b9f60d54dbe03c8a
   m_SerializeEntries:
+  - m_GUID: 1efe85a30fd6c534d96ca1435cbf4f81
+    m_Address: UI_GameSettingWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55dbe77ea4d4c334facb902c522c0d87
+    m_Address: UI_UpdateConfirmWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58d0b0481d50a5249b0e335754329ca1
+    m_Address: PlayerConfigList
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 59cf1f443a643b24cb0b902912602919
     m_Address: UI_LoadingSceneWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 769ab69d68406f94fb0e4f334924e09c
+    m_Address: UI_HotUpdateWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 96b2043b667c6f94cb132c9b4ef86455
     m_Address: UI_SettingWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2bfc0ebccf68ec4a8480ec1f8631420
+    m_Address: UI_TipWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

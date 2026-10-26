@@ -21,12 +21,6 @@ public class Enemy_Controlled : ActionTask
     protected override void OnExecute()
     {
         EnemyController controller = enemyController.value;
-        if (controller == null)
-        {
-            EndAction(false);
-            return;
-        }
-
         controller.EnterControlled(duration.value > 0f ? duration.value : fallbackTime);
 
         // 被"不允许受控"的规则挡下(例如技能前摇霸体) → 这个节点直接失败
@@ -38,13 +32,13 @@ public class Enemy_Controlled : ActionTask
         EnemyController controller = enemyController.value;
 
         // 受控时长由控制器自己管(再次受击只会延长时间),这里只等它结束
-        if (controller == null || controller.IsDead || !controller.IsControlled)
+        if (controller.IsDead || !controller.IsControlled)
             EndAction(true);
     }
 
     /// <summary>正常结束 or 被更高优先级分支打断,都要退出受控,否则敌人会被永久锁在受控状态。</summary>
     protected override void OnStop(bool interrupted)
     {
-        enemyController.value?.ExitControlled();
+        enemyController.value.ExitControlled();
     }
 }

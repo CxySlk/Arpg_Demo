@@ -121,7 +121,7 @@ namespace LLKFrame
                 }
             }
 #if UNITY_EDITOR
-            else LogError("Addressables资源释放出错，Type：", ErrorColor(type), "，KeyName：" + ErrorColor(keyName));
+            else Log("Addressables资源释放出错，Type：", ErrorColor(type), "，KeyName：" + ErrorColor(keyName));
 #endif
         }
 

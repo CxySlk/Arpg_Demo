@@ -1,0 +1,100 @@
+[
+  {
+    "characterId": 1001,
+    "attrType": 2,
+    "min": 0,
+    "cur": 100,
+    "max": 80
+  },
+  {
+    "characterId": 1001,
+    "attrType": 3,
+    "min": 0,
+    "cur": 10,
+    "max": 30
+  },
+  {
+    "characterId": 1001,
+    "attrType": 0,
+    "min": 0,
+    "cur": 500,
+    "max": 500
+  },
+  {
+    "characterId": 1001,
+    "attrType": 4,
+    "min": 0,
+    "cur": 1,
+    "max": 100
+  },
+  {
+    "characterId": 1002,
+    "attrType": 0,
+    "min": 0,
+    "cur": 300,
+    "max": 300
+  },
+  {
+    "characterId": 1002,
+    "attrType": 1,
+    "min": 0,
+    "cur": 200,
+    "max": 200
+  },
+  {
+    "characterId": 2001,
+    "attrType": 2,
+    "min": 0,
+    "cur": 20,
+    "max": 20
+  },
+  {
+    "characterId": 2001,
+    "attrType": 3,
+    "min": 0,
+    "cur": 50,
+    "max": 50
+  },
+  {
+    "characterId": 2001,
+    "attrType": 0,
+    "min": 0,
+    "cur": 500,
+    "max": 500
+  },
+  {
+    "characterId": 2001,
+    "attrType": 4,
+    "min": 0,
+    "cur": 3,
+    "max": 100
+  },
+  {
+    "characterId": 2002,
+    "attrType": 2,
+    "min": 0,
+    "cur": 20,
+    "max": 20
+  },
+  {
+    "characterId": 2002,
+    "attrType": 3,
+    "min": 0,
+    "cur": 50,
+    "max": 50
+  },
+  {
+    "characterId": 2002,
+    "attrType": 0,
+    "min": 0,
+    "cur": 200,
+    "max": 200
+  },
+  {
+    "characterId": 2002,
+    "attrType": 4,
+    "min": 0,
+    "cur": 3,
+    "max": 100
+  }
+]

@@ -1,3 +1,4 @@
+using cfg;
 using GAS;
 using System.Collections.Generic;
 using Sirenix.OdinInspector.Editor;
@@ -46,13 +47,13 @@ namespace Player.Editor
 
         private void DrawAttributes()
         {
-            Dictionary<AttributeType, Attribute> attrDic = _playerController.Asc.AttrDic;
+            Dictionary<EAttributeType, Attribute> attrDic = _playerController.Asc.AttrDic;
             Color originalBg = GUI.backgroundColor;
             Color progressFg = new(0.25f, 0.56f, 1f);
             Color progressBg = new(0.10f, 0.13f, 0.20f);
             Color buttonBg = new(0.23f, 0.26f, 0.31f);
 
-            foreach (KeyValuePair<AttributeType, Attribute> kv in attrDic)
+            foreach (KeyValuePair<EAttributeType, Attribute> kv in attrDic)
             {
                 SirenixEditorGUI.BeginBox();
 

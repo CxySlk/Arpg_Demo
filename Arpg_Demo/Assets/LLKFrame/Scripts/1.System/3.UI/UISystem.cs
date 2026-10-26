@@ -57,25 +57,28 @@ namespace LLKFrame
                 window.SetParent(layerRoot, false);
                 window.gameObject.SetActive(true);
                 window.SetAsLastSibling();
-                layerMask.transform.SetSiblingIndex(layerRoot.childCount > 2 ? layerRoot.childCount - 2 : 0);
+                RefreshMaskIndex();
                 Count++;
             }
 
-            /// <summary>关闭窗口（失活保留，不销毁）</summary>
+            /// <summary>关闭记账：让出层级计数（是否销毁、何时销毁由调用方决定）。
+            /// 不重排 sibling，避免正在播退出动画的窗口被同层窗口挡住。</summary>
             public void CloseWindow(Transform window)
             {
-                window.SetAsFirstSibling();
-                layerMask.transform.SetSiblingIndex(layerRoot.childCount > 2 ? layerRoot.childCount - 2 : 0);
+                RefreshMaskIndex();
                 Count--;
             }
 
-            /// <summary>销毁窗口</summary>
+            /// <summary>销毁窗口（层级计数已由 <see cref="CloseWindow"/> 扣过）</summary>
             public void DestroyWindow(Transform window)
             {
                 Destroy(window.gameObject);
-                Count--;
-                layerMask.transform.SetSiblingIndex(layerRoot.childCount > 2 ? layerRoot.childCount - 2 : 0);
+                RefreshMaskIndex();
             }
+
+            /// <summary>遮罩始终保持在层级根的倒数第二位</summary>
+            private void RefreshMaskIndex() =>
+                layerMask.transform.SetSiblingIndex(layerRoot.childCount > 2 ? layerRoot.childCount - 2 : 0);
         }
 
         #endregion
@@ -165,7 +168,7 @@ namespace LLKFrame
         /// <summary>
         /// 通过 keyName 关闭窗口。
         /// <br/>- isCache = true：失活保留到缓存中
-        /// <br/>- isCache = false：直接销毁并从缓存移除
+        /// <br/>- isCache = false：关闭表现播完后销毁并从缓存移除
         /// </summary>
         /// <param name=""keyName"">窗口标识</param>
         public static void Close(string keyName)
@@ -176,17 +179,25 @@ namespace LLKFrame
             if (!UiWindowDataDic.TryGetValue(keyName, out UIWindowData windowData))
                 Debug.LogError($"LLKFrame：未找到{keyName}的Window配置");
 
-            window.Close();
-            // 可以缓存的窗口
+            // 可以缓存的窗口：关闭表现照常播，播完由窗口自己失活，实例留在缓存中
             if (windowData.isCache)
-                instance.uiLayers[window.layer].CloseWindow(window.transform);
-            // 无法缓存
-            else
             {
+                window.Close();
+                instance.uiLayers[window.layer].CloseWindow(window.transform);
+                return;
+            }
+
+            // 无法缓存：先记账（关闭表现期间窗口仍然可见），等表现播完再真正销毁，避免销毁打断关闭动画
+            instance.uiLayers[window.layer].CloseWindow(window.transform);
+            window.Close(() =>
+            {
+                // 关闭表现期间窗口又被 Show 出来 → 取消本次销毁
+                if (window.IsShow) return;
+
                 windowData.instance = null;
                 instance.uiLayers[window.layer].DestroyWindow(window.transform);
                 uiWindowDic.Remove(keyName);
-            }
+            });
         }
 
         /// <summary>通过泛型类型名关闭窗口</summary>
@@ -203,6 +214,27 @@ namespace LLKFrame
         public static TWindow GetWindow<TWindow>() where TWindow : UI_WindowBase
         {
             return  GetWindow<TWindow>(typeof(TWindow).Name);
+        }
+
+        /// <summary>
+        /// 关闭所有的窗口，即使是缓存中的
+        /// </summary>
+        public static void CloseAll()
+        {
+            if (instance == null)
+                return;
+
+            List<string> keys = new(uiWindowDic.Keys);
+            for (int i = 0; i < keys.Count; i++)
+            {
+                if (!uiWindowDic.TryGetValue(keys[i], out UI_WindowBase window) || window == null)
+                    continue;
+
+                if (window.IsShow)
+                    Close(keys[i]);
+                else if (UiWindowDataDic.TryGetValue(keys[i], out UIWindowData data) && data.isCache)
+                    window.gameObject.SetActive(false);
+            }
         }
     }
 }

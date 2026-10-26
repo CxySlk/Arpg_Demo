@@ -143,8 +143,8 @@ public class FloatingTextManager : MonoBehaviour
             UnityEngine.Random.Range(0f, _spreadRange.y),
             UnityEngine.Random.Range(-_spreadRange.x, _spreadRange.x));
 
-        // 取池实例(不传 parent:对象池会在场景根与池根之间转移;3D 文字无需 Canvas)
-        FloatingTextItem item = PoolSystem.Global.GetGameObject<FloatingTextItem>(_itemPrefab, null);
+        // 取池实例(挂到本管理器下;回池时对象池会自动转回池根)
+        FloatingTextItem item = PoolSystem.Global.GetGameObject<FloatingTextItem>(_itemPrefab, transform);
         if (!item) return;
 
         item.transform.position = spawnPos;

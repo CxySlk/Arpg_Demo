@@ -8,7 +8,16 @@ public class UI_GameWindow : UI_WindowBase
 {
     [LabelText("技能热栏槽"), SerializeField] private UI_SkillSlots  _skillSlots;
     private Dictionary<int, int> EquipSlotDic => DataManager.PlayerData.equipSlotDic;
-    public override void OnShow()
+    [LabelText("玩家信息UI"),SerializeField,Required]
+    private UI_PlayerInfo _uiPlayerInfo;
+
+    public override void Init()
+    {
+        base.Init();
+        _uiPlayerInfo.Init();
+    }
+
+    protected override void OnShow()
     {
         // 打开游戏主界面时,按 PlayerData 的热栏装备数据初始化热栏槽(显示图标 + 记录技能 id)
         InitSlotItems();
@@ -18,7 +27,6 @@ public class UI_GameWindow : UI_WindowBase
 
     private void InitSlotItems()
     {
-        if (_skillSlots != null)
-            _skillSlots.RefreshFromData();
+        _skillSlots.RefreshFromData();
     }
 }

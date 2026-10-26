@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using cfg;
 using LLKFrame;
 using MessagePack;
 using UnityEngine;
@@ -11,15 +12,15 @@ namespace GAS
     /// </summary>
     public class AttributeDic
     {
-        public Dictionary<AttributeType, Attribute> attrDic = new();
+        public Dictionary<EAttributeType, Attribute> attrDic = new();
         public bool Empty => attrDic.Count == 0;
 
         /// <summary>根据属性类型检查是否存在</summary>
-        public bool HasAttr(AttributeType attrType) => attrDic.ContainsKey(attrType);
+        public bool HasAttr(EAttributeType attrType) => attrDic.ContainsKey(attrType);
         /// <summary>尝试获取属性</summary>
-        public bool TryGetAttrValue(AttributeType attrType, out Attribute attr) => attrDic.TryGetValue(attrType, out attr);
+        public bool TryGetAttrValue(EAttributeType attrType, out Attribute attr) => attrDic.TryGetValue(attrType, out attr);
         /// <summary>设置属性值</summary>
-        public void SetAttrValue(AttributeType attrType, AttributeValueType valueType, float attrValue)
+        public void SetAttrValue(EAttributeType attrType, AttributeValueType valueType, float attrValue)
         {
             if (attrDic.TryGetValue(attrType, out Attribute attribute))
             {
@@ -38,7 +39,7 @@ namespace GAS
             }
         }
         /// <summary>属性值增加</summary>
-        public void AddAttrValue(AttributeType attrType, AttributeValueType valueType, float addValue)
+        public void AddAttrValue(EAttributeType attrType, AttributeValueType valueType, float addValue)
         {
             if (attrDic.TryGetValue(attrType, out Attribute attribute))
             {

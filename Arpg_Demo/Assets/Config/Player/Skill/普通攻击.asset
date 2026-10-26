@@ -27,40 +27,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: _costDic
-      Entry: 7
-      Data: 1|System.Collections.Generic.Dictionary`2[[GAS.AttributeType, GAS],[System.Single,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 2|System.Collections.Generic.EnumEqualityComparer`1[[GAS.AttributeType,
-        GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  _skillName: "\u666E\u901A\u653B\u51FB"
-  _isShowUI: 0
-  _skillDescription: "\u5F88\u666E\u901A\u7684\u653B\u51FB"
-  _skillIcon: {fileID: 21300000, guid: 8c878d0bb4ea1194bbf42beaf6ee48dd, type: 3}
-  _cdTime: 0
+  _skillIcon: {fileID: 21300000, guid: 839c981ea4bb69448990de4fceff511e, type: 3}
   _abilities:
   - {fileID: 11400000, guid: 61ecadf3180a82c47a964e0f8e646db9, type: 2}
   - {fileID: 11400000, guid: 7f424005d3cb1cb47a70b81d063b6984, type: 2}
   - {fileID: 11400000, guid: 5cca107f016aa0c4295b4961f785e923, type: 2}
   - {fileID: 11400000, guid: c462c846d59a7ed428c344d538e80f50, type: 2}
-  _abilityInterval: 3

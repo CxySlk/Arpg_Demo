@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Animancer;
+using cfg;
 using GAS;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
@@ -20,7 +21,7 @@ public class Player_MoveState : Player_GroundState
     protected override void OnInit()
     {
         base.OnInit();
-        Asc.TryGetAttrValue(AttributeType.MoveSpeed, out _moveSpeedAttr);
+        Asc.TryGetAttrValue(EAttributeType.MoveSpeed, out _moveSpeedAttr);
     }
 
     protected override void OnEnter()

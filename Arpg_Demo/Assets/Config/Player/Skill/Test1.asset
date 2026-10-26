@@ -32,11 +32,11 @@ MonoBehaviour:
       Data: 
     - Name: _costDic
       Entry: 7
-      Data: 1|System.Collections.Generic.Dictionary`2[[GAS.AttributeType, GAS],[System.Single,
+      Data: 1|System.Collections.Generic.Dictionary`2[[cfg.EAttributeType, Assembly-CSharp],[System.Single,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 2|System.Collections.Generic.EnumEqualityComparer`1[[GAS.AttributeType,
+      Data: 2|System.Collections.Generic.EnumEqualityComparer`1[[cfg.EAttributeType,
         GAS]], mscorlib
     - Name: 
       Entry: 12
@@ -58,6 +58,6 @@ MonoBehaviour:
       Data: 
   _skillName: "\u65B0\u6280\u80FD"
   _skillDescription: 
-  _skillIcon: {fileID: 21300000, guid: fae460ddf0a92a246bbabb115aecfb5a, type: 3}
+  _skillIcon: {fileID: 21300000, guid: 40465a97fceef6544a49282bf683c5f7, type: 3}
   _cdTime: 0
   _abilities: []

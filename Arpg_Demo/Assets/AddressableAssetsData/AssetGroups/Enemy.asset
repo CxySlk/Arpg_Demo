@@ -15,8 +15,43 @@ MonoBehaviour:
   m_GroupName: Enemy
   m_GUID: 89c028ce5eb2183498625c419c6cc51d
   m_SerializeEntries:
+  - m_GUID: 0490c7efe92e8f742abae9950e68d812
+    m_Address: "Enemy_\u9B54\u6CD5\u653B\u51FB"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3bba8ae9467dedb4ca800c9c846e69fd
+    m_Address: "Enemy_\u6280\u80FD2"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d839075205ad2e48ae0bcff297251e9
+    m_Address: "Enemy_\u666E\u901A\u653B\u51FB"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 811c7e4c82b42f941a7f6415f92d489b
+    m_Address: Enemy_Wizard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9321ebc3b4d19dd40997e3657bbd6ca0
+    m_Address: "Enemy_\u6280\u80FD1"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9454e8a2f5a1961429772147e5e6f782
-    m_Address: Enemy1
+    m_Address: Enemy_Sword
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9fedac9cdf01da64ebed0d0de77a5faa
+    m_Address: "Enemy_\u6280\u80FD3"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad4d689ee9bfb344fb88744334978f82
+    m_Address: Enemy_ASCPreset1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -21,7 +21,7 @@ public class MoveToTarget : ActionTask
     public BBParameter<float> stopChaseDis;
 
     [Name("移动动画名"), RequiredField] public string moveClipName;
-    [Name("播放速度")] public float playSpeed = 1f;
+    [Name("停步动画名"), RequiredField] public string stopClipName;
 
     [Name("启用音效")] public bool enableAudio;
     [Name("音效表"), ShowIf("enableAudio", 1)] public List<AnimationAudioEntry> audioEntries = new();
@@ -49,13 +49,19 @@ public class MoveToTarget : ActionTask
 
     private void PlayMove()
     {
-        _moveState = enemyController.value.Play(moveClipName, playSpeed);
+        _moveState = enemyController.value.Play(moveClipName);
         enemyController.value.SetRootMotion(null);
         if (enableAudio)
             AnimationAudioHelper.Bind(_moveState, audioEntries, enemyController.value.transform);
     }
 
-    protected override void OnStop() => enemyController.value.StopChase();
+    protected override void OnStop(bool interrupted)
+    {
+        enemyController.value.StopChase();
+        // 只有正常结束(追到点/失败)才播收步动画；被打断(受控/受击)不播，避免盖掉受击表现
+        if (!interrupted)
+            enemyController.value.Play(stopClipName);
+    }
 
     /// <summary>agent 到达判定的小容差:避免"路径剩余距离已 &lt;= stoppingDistance、但直线距离略大"导致的永久卡住。</summary>
     private const float ArriveEpsilon = 0.1f;

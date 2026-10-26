@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// 输入管理器（静态）：基于 Input System 生成的 <see cref="GameInputAction"/> 资产，提供全局输入查询。
@@ -48,4 +49,52 @@ public static class InputManager
     
     /// <summary>跳跃：本帧是否刚按下（且输入开关开启）。</summary>
     public static bool JumpInput => CanInput && inputAction.Jump.WasPressedThisFrame();
+
+    // 手柄右摇杆去抖计时：摇杆推住不动时数值会一直超过阈值，需要冷却，避免每帧都在切目标。
+    private static float _lastSwitchTime;
+
+    /// <summary>
+    /// 锁定/解锁：本帧是否刚按下（鼠标中键 或 手柄右摇杆按下）。
+    /// 这里直接读 Mouse/Gamepad，暂未走 GameInputAction 资产（以后要统一可再迁）。
+    /// </summary>
+    public static bool LockOnInput =>
+        CanInput && ((Mouse.current != null && Mouse.current.middleButton.wasPressedThisFrame)
+                  || (Gamepad.current != null && Gamepad.current.rightStickButton.wasPressedThisFrame));
+
+    /// <summary>
+    /// 切换目标方向：返回 +1 / -1 / 0。
+    /// <para>滚轮：下滚 = +1（下一个/右），上滚 = -1（上一个/左）。</para>
+    /// <para>手柄：右摇杆 X &gt; 0 = +1，&lt; 0 = -1（带 0.2s 去抖）。</para>
+    /// </summary>
+    public static int SwitchTargetInput
+    {
+        get
+        {
+            if (!CanInput) return 0;
+
+            if (Mouse.current != null)
+            {
+                // scroll.y 每格是离散值（Windows 约 ±120）：>0 向上滚，<0 向下滚。
+                float scroll = Mouse.current.scroll.ReadValue().y;
+                if (Mathf.Abs(scroll) > 0.01f)
+                {
+                    _lastSwitchTime = Time.unscaledTime;
+                    return scroll < 0f ? 1 : -1; // 下滚 = 下一个
+                }
+            }
+
+            if (Gamepad.current != null)
+            {
+                float x = Gamepad.current.rightStick.ReadValue().x;
+                // 摇杆推住会持续 > 阈值，所以用 _lastSwitchTime 做冷却，保证一次推动只切一次。
+                if (Mathf.Abs(x) > 0.6f && Time.unscaledTime - _lastSwitchTime > 0.2f)
+                {
+                    _lastSwitchTime = Time.unscaledTime;
+                    return x > 0f ? 1 : -1;
+                }
+            }
+
+            return 0;
+        }
+    }
 }

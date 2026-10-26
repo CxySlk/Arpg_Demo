@@ -1,4 +1,5 @@
 ﻿using Animancer;
+using cfg;
 using GAS;
 using NodeCanvas.Framework;
 using NodeCanvas.Tasks.Actions;
@@ -16,7 +17,7 @@ public class Player_JumpAbilityState : PlayerAbilityStateBase
     protected override void OnInit()
     {
         base.OnInit();
-        Asc.TryGetAttrValue(AttributeType.MoveSpeed, out _moveSpeedAttr);
+        Asc.TryGetAttrValue(EAttributeType.MoveSpeed, out _moveSpeedAttr);
     }
 
     protected override void OnEnter()

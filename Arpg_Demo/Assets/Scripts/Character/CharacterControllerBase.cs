@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Animancer;
+using cfg;
 using GAS;
 using Hovl;
+using LLKFrame;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Attribute = GAS.Attribute;
@@ -25,6 +27,11 @@ namespace Character
         public AnimancerComponent Animancer => characterView.Animancer;
         public WeaponController WeaponController => weaponController;
         private HS_SwordTrailAnimationEvents SwordTrailAnimationEvents => swordTrailAnimationEvents;
+
+        /// <summary>角色级事件中心。ASC 与武器的技能/效果事件都挂在这里（ASC 初始化时注入同一个引用）。</summary>
+        private readonly EventCenter _eventCenter = new();
+
+        public EventCenter EventCenter => _eventCenter;
 
         #endregion
 
@@ -49,9 +56,21 @@ namespace Character
 
         #endregion
 
-        protected virtual void Init()
+        /// <summary>共享初始化（子类各自的 Init 里首先调用）：武器等与配置无关的部分。</summary>
+        protected void InitShared()
         {
             weaponController.Init(this);
+        }
+
+        /// <summary>按角色 id 从 Luban 属性表收集属性行（供 ASC 初始化）。</summary>
+        protected static IReadOnlyList<CharacterAttr> CollectAttrs(int characterId)
+        {
+            IReadOnlyList<CharacterAttr> all = Data.ConfigManager.Tables.TbCharacterAttr.DataList;
+            List<CharacterAttr> list = new();
+            for (int i = 0; i < all.Count; i++)
+                if (all[i].CharacterId == characterId)
+                    list.Add(all[i]);
+            return list;
         }
 
         protected virtual void OnEnable()
@@ -79,7 +98,8 @@ namespace Character
 
         public Transform Target { get; protected set; }
         protected bool isLockTarget;
-        [LabelText("旋转速度"), SerializeField] protected float rotateSpeed;
+        public bool IsLocked => isLockTarget;
+        [LabelText("旋转速度"), SerializeField] protected float rotateSpeed = 360;
 
         public void SetTarget(Transform target) => Target = target;
         public virtual void LockTarget(bool isLock) => isLockTarget = isLock;
@@ -105,19 +125,16 @@ namespace Character
 
         /// <summary>
         /// 绑定 HP 变化监听(死亡检测入口)。
-        /// 玩家 asc 在 SetConfig 后才初始化,此时 AttrDic 还没有 Hp,故绑定放到 asc 就绪后调用;
-        /// 敌人 asc 在 Awake 内已初始化,OnEnable 即可绑上。
+        /// 事件中心属于角色控制器本身，随时可用，不依赖 ASC 是否已初始化。
         /// </summary>
         protected void BindHpMonitor()
         {
-            if (asc.AttrDic.TryGetValue(AttributeType.Hp, out GAS.Attribute hp))
-                hp.AddCurValueChanged(OnHpChanged);
+            EventCenter.Subscribe(GASEventCenterKeys.CurValueChangedKey, OnAttrCurValueChanged);
         }
 
         private void UnbindHpMonitor()
         {
-            if (asc.AttrDic.TryGetValue(AttributeType.Hp, out GAS.Attribute hp))
-                hp.RemoveCurValueChanged(OnHpChanged);
+            EventCenter.UnSubscribe(GASEventCenterKeys.CurValueChangedKey, OnAttrCurValueChanged);
         }
 
         #endregion
@@ -136,8 +153,9 @@ namespace Character
         }
 
         /// <summary>播放标准动画字典里的动画(按名字查找)。用 ClipTransition 自身设置，只覆盖播放速度。</summary>
-        public AnimancerState Play(string animationName, float speed = 1f)
-            => characterView.Play(animationName, speed);
+        public AnimancerState Play(string animationName, float fadeDuration = .25f,
+            FadeMode fadeMode = FadeMode.FixedDuration)
+            => characterView.Play(animationName, fadeDuration, fadeMode);
 
         /// <summary>按名字取动画长度(秒)。供行为树等"等播完"计时。</summary>
         public float GetClipLength(string animationName) => characterView.GetClipLength(animationName);
@@ -212,10 +230,10 @@ namespace Character
 
         public void Rotate(Quaternion deltaRot) => transform.rotation *= deltaRot;
 
-        protected virtual void OnHpChanged(float hp)
+        protected virtual void OnAttrCurValueChanged(EAttributeType attrType, float value)
         {
             // HP 变化只用于死亡检测(受伤/受控是独立体系,不由扣血驱动)
-            if (hp <= 0)
+            if (attrType == EAttributeType.Hp && value <= 0)
                 Death();
         }
 
@@ -289,31 +307,36 @@ namespace Character
         protected void OnAttrHealUpdate()
         {
             // 生命恢复效果：每帧按 恢复速度*deltaTime 回血；hpHealValue 只用于攒够 1 秒的飘字显示
-            if (asc.TryGetAttrValue(AttributeType.HpRegenSpeed, out Attribute hpRegenSpeedAttr) &&
-                asc.TryGetAttrValue(AttributeType.Hp, out Attribute hpAttr))
+            if (asc.TryGetAttrValue(EAttributeType.HpRegenSpeed, out Attribute hpRegenSpeedAttr) &&
+                asc.TryGetAttrValue(EAttributeType.Hp, out Attribute hpAttr))
             {
                 float healValue = hpRegenSpeedAttr.CurValue * Time.deltaTime;
                 hpHealValue += healValue;
                 hpIntervalTimer += Time.deltaTime;
                 if (hpIntervalTimer >= 1f)
                 {
-                    hpIntervalTimer %= 1f;
+                    hpAttr.AddCurrentValue(hpHealValue);
                     FloatingTextManager.Instance.ShowAt(transform.position, hpHealValue, false, FloatTextKind.Heal);
+                    hpIntervalTimer %= 1f;
                     hpHealValue = 0f;
                 }
-
-                hpAttr.AddCurrentValue(healValue);
             }
 
             // 法力恢复效果（同样用 deltaTime，帧率无关）
-            if (asc.TryGetAttrValue(AttributeType.MpRegenSpeed, out Attribute mpRegenSpeedAttr) &&
-                asc.TryGetAttrValue(AttributeType.Mp, out Attribute mpAttr))
+            if (asc.TryGetAttrValue(EAttributeType.MpRegenSpeed, out Attribute mpRegenSpeedAttr) &&
+                asc.TryGetAttrValue(EAttributeType.Mp, out Attribute mpAttr))
             {
                 mpAttr.AddCurrentValue(mpRegenSpeedAttr.CurValue * Time.deltaTime);
             }
         }
 
         #endregion
+
+        public float GetTargetDis()
+        {
+            if (!Target) return -1f;
+            return (Target.position - transform.position).magnitude;
+        }
 
         public float GetTargetSqrDis()
         {
@@ -350,10 +373,10 @@ namespace Character
         /// <param name="meshTrail"></param>
         public void StartWeaponTrail(int swordTrailKey, HS_SwordTrailPreset meshTrail)
         {
-            if(meshTrail)
+            if (meshTrail)
                 // swordTrailAnimationEv
                 weaponController.ApplyTrailPreset(meshTrail);
-            
+
             if (swordTrailKey == 0)
             {
                 swordTrailAnimationEvents.StartSwordTrail();

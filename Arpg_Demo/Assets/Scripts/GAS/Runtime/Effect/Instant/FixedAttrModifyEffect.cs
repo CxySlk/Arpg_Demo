@@ -1,3 +1,4 @@
+using cfg;
 using LLKFrame;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -12,15 +13,15 @@ namespace GAS
         public float fixedModify;
 
         [LabelText("修改属性类型"), Required]
-        public AttributeType attrType;
+        public EAttributeType attrType;
 
-        [LabelText("是否开启伤害跳字"), ShowIf("@attrType==AttributeType.Hp")]
+        [LabelText("是否开启伤害跳字"), ShowIf("@attrType==EAttributeType.Hp")]
         public bool isFloatingText;
 
         protected override void ApplyEffect()
         {
             // 开启伤害跳字
-            if (attrType == AttributeType.Hp && isFloatingText)
+            if (attrType == EAttributeType.Hp && isFloatingText)
             {
                 EventCenter.Global.Publish(FloatTextEventKey.RequestKey, new FloatTextRequest()
                 {

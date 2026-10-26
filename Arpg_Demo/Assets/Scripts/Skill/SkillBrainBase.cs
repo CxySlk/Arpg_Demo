@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Character;
+using Data;
 using GAS;
 using LLKFrame;
 using Sirenix.OdinInspector;
@@ -20,10 +21,28 @@ namespace Skill
         public EventCenter SkillEventCenter => skillEventCenter; // 事件中心
         public bool CanRelease { get; private set; } = true; // 能否释放技能标志
 
-        protected List<SkillConfig> skillConfigs;
-
-        // 技能行为：[技能列表索引，技能行为]
+        // 技能行为：[技能 id，技能行为]
         protected readonly Dictionary<int, SkillBehaviorBase> behaviorDic = new();
+
+        /// <summary>
+        /// 按技能 id 装配一个技能行为：数据取 Laban 技能表(<c>cfg.Skill</c>)，资产取 <c>SkillConfig</c>(按地址加载)。
+        /// 深拷贝行为模板并启动。
+        /// </summary>
+        protected SkillBehaviorBase CreateBehavior(int skillId)
+        {
+            cfg.Skill data = ConfigManager.Tables.TbSkill.GetOrDefault(skillId);
+            if (data == null)
+            {
+                Debug.LogError($"技能表(TbSkill)里找不到技能 id={skillId}");
+                return null;
+            }
+
+            SkillConfig asset = ResSystem.LoadAsset<SkillConfig>(data.SkillConfigPath);
+            SkillBehaviorBase behavior = asset.SkillBehavior.DeepCopy();
+            behavior.Init(this, asset, data, skillId);
+            behavior.Start();
+            return behavior;
+        }
 
         /// <summary>正在播放的技能行为缓存（技能自然播完/续段间隙超时/被打断时由行为自己回调移除）。
         /// 允许同时存在多个：比如一个持续型技能 + 一个攻击段。</summary>

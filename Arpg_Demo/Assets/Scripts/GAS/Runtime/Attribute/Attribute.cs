@@ -1,29 +1,30 @@
-﻿using System;
+﻿using cfg;
+using LLKFrame;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace GAS
 {
-    public enum AttributeType
-    {
-        [LabelText("生命值")] Hp,
-        [LabelText("法力值")] Mp,
-        [LabelText("攻击力")] Atk,
-        [LabelText("防御力")] Def,
-        [LabelText("移动速度")] MoveSpeed,
-        [LabelText("下落速度")] FallSpeed,
-        [LabelText("跳跃速度")] JumpSpeed,
-        [LabelText("空中移动速度")] InAirMoveSpeed,
-        [LabelText("回血速度")] HpRegenSpeed,
-        [LabelText("回蓝速度")] MpRegenSpeed,
-    }
+    // public enum AttributeType
+    // {
+    //     [LabelText("生命值")] Hp,
+    //     [LabelText("法力值")] Mp,
+    //     [LabelText("攻击力")] Atk,
+    //     [LabelText("防御力")] Def,
+    //     [LabelText("移动速度")] MoveSpeed,
+    //     [LabelText("下落速度")] FallSpeed,
+    //     [LabelText("跳跃速度")] JumpSpeed,
+    //     [LabelText("空中移动速度")] InAirMoveSpeed,
+    //     [LabelText("回血速度")] HpRegenSpeed,
+    //     [LabelText("回蓝速度")] MpRegenSpeed,
+    // }
     
     /// <summary>
     /// 游戏属性定义。包含属性名（通过 HashCode 标识）、当前/最小/最大值，
     /// 以及值变化时的归一化事件回调。支持 Set/Add 操作，区分 BaseValue 和 CurValue 修改目标。
     /// </summary>
     [InlineProperty]
-    public class Attribute
+    public class  Attribute
     {
         #region 属性变量
 
@@ -40,8 +41,8 @@ namespace GAS
                 value = Mathf.Clamp(value, _minValue, _maxValue);
                 if (Mathf.Approximately(_curValue, value)) return;
                 _curValue = value;
-                _onCurrentValueChanged?.Invoke(_curValue);
-                _onNormalizeValueChanged?.Invoke(NormalizeValue);
+                _eventCenter?.Publish(GASEventCenterKeys.CurValueChangedKey, _attrType, _curValue);
+                _eventCenter?.Publish(GASEventCenterKeys.NormalizeValueChangedKey, _attrType, NormalizeValue);
             }
         }
 
@@ -58,14 +59,14 @@ namespace GAS
                 value = Mathf.Min(value, _maxValue);
                 if (Mathf.Approximately(_minValue, value)) return;
                 _minValue = value;
-                _onMinValueChanged?.Invoke(value);
+                _eventCenter?.Publish(GASEventCenterKeys.MinValueChangedKey, _attrType, value);
                 if (_curValue < value)
                 {
                     _curValue = value;
-                    _onCurrentValueChanged?.Invoke(value);
+                    _eventCenter?.Publish(GASEventCenterKeys.CurValueChangedKey, _attrType, value);
                 }
 
-                _onNormalizeValueChanged?.Invoke(NormalizeValue);
+                _eventCenter?.Publish(GASEventCenterKeys.NormalizeValueChangedKey, _attrType, NormalizeValue);
             }
         }
 
@@ -82,14 +83,14 @@ namespace GAS
                 value = Mathf.Max(value, _minValue);
                 if (Mathf.Approximately(_maxValue, value)) return;
                 _maxValue = value;
-                _onMaxValueChanged?.Invoke(value);
+                _eventCenter?.Publish(GASEventCenterKeys.MaxValueChangedKey, _attrType, value);
                 if (_curValue > value)
                 {
                     _curValue = value;
-                    _onCurrentValueChanged?.Invoke(value);
+                    _eventCenter?.Publish(GASEventCenterKeys.CurValueChangedKey, _attrType, value);
                 }
 
-                _onNormalizeValueChanged?.Invoke(NormalizeValue);
+                _eventCenter?.Publish(GASEventCenterKeys.NormalizeValueChangedKey, _attrType, NormalizeValue);
             }
         }
 
@@ -98,31 +99,27 @@ namespace GAS
 
         #endregion
 
-        #region 事件相关
+        #region 运行时依赖
 
-        private event Action<float> _onCurrentValueChanged;
-        private event Action<float> _onMinValueChanged;
-        private event Action<float> _onMaxValueChanged;
-        private event Action<float> _onNormalizeValueChanged;
-        public void AddCurValueChanged(Action<float> action) => _onCurrentValueChanged += action;
-        public void SetCurValueChanged(Action<float> action) => _onCurrentValueChanged = action;
-        public void RemoveCurValueChanged(Action<float> action) => _onCurrentValueChanged -= action;
-        public void AddMinValueChanged(Action<float> action) => _onMinValueChanged += action;
-        public void SetMinValueChanged(Action<float> action) => _onMinValueChanged = action;
-        public void RemoveMinValueChanged(Action<float> action) => _onMinValueChanged -= action;
-        public void AddMaxValueChanged(Action<float> action) => _onMaxValueChanged += action;
-        public void SetMaxValueChanged(Action<float> action) => _onMaxValueChanged = action;
-        public void RemoveMaxValueChanged(Action<float> action) => _onMaxValueChanged -= action;
-        public void AddNormalizeValueChanged(Action<float> action) => _onNormalizeValueChanged += action;
-        public void SetNormalizeValueChanged(Action<float> action) => _onNormalizeValueChanged = action;
-        public void RemoveNormalizeValueChanged(Action<float> action) => _onNormalizeValueChanged -= action;
+        /// <summary>本属性所属的类型，随变化事件一起发布给订阅者</summary>
+        private EAttributeType _attrType;
+
+        /// <summary>变化事件发布到的事件中心（由 ASC 注入，即角色控制器的事件中心）</summary>
+        private EventCenter _eventCenter;
+
+        /// <summary>注入属性类型与事件中心（由 ASC 初始化属性集时调用）</summary>
+        public void Init(EAttributeType attrType, EventCenter eventCenter)
+        {
+            _attrType = attrType;
+            _eventCenter = eventCenter;
+        }
 
         #endregion
 
         public Attribute()
         {
             _minValue = 0;
-            _curValue = 50;
+            _curValue = 100;
             _maxValue = 100;
         }
 

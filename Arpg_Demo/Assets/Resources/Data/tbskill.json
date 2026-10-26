@@ -1,0 +1,149 @@
+[
+  {
+    "id": 3001,
+    "name": "普通攻击",
+    "description": "基础攻击",
+    "isShowUI": false,
+    "cdTime": 0,
+    "abilityInterval": 3,
+    "cost": [
+      {
+        "attrType": 0,
+        "value": 5
+      }
+    ],
+    "skillConfigPath": "普通攻击",
+    "skillReleaseDis": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "learnCostPoints": 0
+  },
+  {
+    "id": 3002,
+    "name": "格挡",
+    "description": "格挡技能",
+    "isShowUI": false,
+    "cdTime": 5,
+    "abilityInterval": 3,
+    "cost": [],
+    "skillConfigPath": "格挡",
+    "skillReleaseDis": [
+      2,
+      2
+    ],
+    "learnCostPoints": 0
+  },
+  {
+    "id": 3003,
+    "name": "普通攻击",
+    "description": "敌人普攻",
+    "isShowUI": false,
+    "cdTime": 0,
+    "abilityInterval": 3,
+    "cost": [],
+    "skillConfigPath": "Enemy_普通攻击",
+    "skillReleaseDis": [
+      2,
+      2,
+      2
+    ],
+    "learnCostPoints": 0
+  },
+  {
+    "id": 3004,
+    "name": "技能1",
+    "description": "敌人技能1",
+    "isShowUI": false,
+    "cdTime": 0,
+    "abilityInterval": 3,
+    "cost": [],
+    "skillConfigPath": "Enemy_技能1",
+    "skillReleaseDis": [
+      2
+    ],
+    "learnCostPoints": 0
+  },
+  {
+    "id": 3005,
+    "name": "技能2",
+    "description": "敌人技能2",
+    "isShowUI": false,
+    "cdTime": 0,
+    "abilityInterval": 3,
+    "cost": [],
+    "skillConfigPath": "Enemy_技能2",
+    "skillReleaseDis": [
+      2
+    ],
+    "learnCostPoints": 0
+  },
+  {
+    "id": 3006,
+    "name": "技能3",
+    "description": "敌人技能3",
+    "isShowUI": false,
+    "cdTime": 0,
+    "abilityInterval": 3,
+    "cost": [],
+    "skillConfigPath": "Enemy_技能3",
+    "skillReleaseDis": [
+      2
+    ],
+    "learnCostPoints": 0
+  },
+  {
+    "id": 3007,
+    "name": "暴怒",
+    "description": "霸体并提升攻击力",
+    "isShowUI": true,
+    "cdTime": 2,
+    "abilityInterval": 0,
+    "cost": [
+      {
+        "attrType": 1,
+        "value": 10
+      }
+    ],
+    "skillConfigPath": "霸体",
+    "skillReleaseDis": [
+      1
+    ],
+    "learnCostPoints": 1
+  },
+  {
+    "id": 3008,
+    "name": "治愈",
+    "description": "回血",
+    "isShowUI": true,
+    "cdTime": 2,
+    "abilityInterval": 0,
+    "cost": [
+      {
+        "attrType": 1,
+        "value": 10
+      }
+    ],
+    "skillConfigPath": "治愈",
+    "skillReleaseDis": [
+      1
+    ],
+    "learnCostPoints": 1
+  },
+  {
+    "id": 3009,
+    "name": "魔法球",
+    "description": "魔法攻击",
+    "isShowUI": true,
+    "cdTime": 3,
+    "abilityInterval": 0,
+    "cost": [],
+    "skillConfigPath": "Enemy_魔法攻击",
+    "skillReleaseDis": [
+      3
+    ],
+    "learnCostPoints": 0
+  }
+]

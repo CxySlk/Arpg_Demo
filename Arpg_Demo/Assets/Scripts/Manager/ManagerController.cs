@@ -1,10 +1,23 @@
-using LLKFrame;
+using UnityEngine;
 
-public class ManagerController : SingletonMonoBase<ManagerController>
+public class ManagerController : MonoBehaviour
 {
-    protected override void Awake()
+    private static ManagerController _instance;
+
+    protected void Awake()
     {
-        base.Awake();
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        _instance = this;
+        InitManager();
+    }
+
+    private void InitManager()
+    {
         DataManager.Init();
     }
 }

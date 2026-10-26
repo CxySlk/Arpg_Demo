@@ -14,6 +14,6 @@ public class Enemy_CheckControlled : ConditionTask
     protected override bool OnCheck()
     {
         EnemyController controller = enemyController.value;
-        return controller != null && controller.IsControlled;
+        return controller.IsControlled;
     }
 }

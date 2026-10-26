@@ -32,12 +32,12 @@ MonoBehaviour:
           - {fileID: 11400000, guid: c8f0d04bdd51d4f4dbfb416aa4477a5d, type: 2}
           - {fileID: 11400000, guid: c8f0d04bdd51d4f4dbfb416aa4477a5d, type: 2}
         _Animations:
-        - {fileID: 7400000, guid: 6d345497a8bcf1f44925d3912bde1adb, type: 2}
-        - {fileID: 7400000, guid: 48f49e635d7b6ca4ca2e1e8e05a85c10, type: 2}
-        - {fileID: 7400000, guid: 995c71107a88ba3479b87fca634a5c17, type: 2}
-        - {fileID: 7400000, guid: 79724ca016b51c1409c1e8787845303f, type: 2}
-        - {fileID: 7400000, guid: 55536ccd01ce69a4eb885f44ed5a1763, type: 2}
-        - {fileID: 7400000, guid: f8e64b588e156af4084936492f72ec74, type: 2}
+        - {fileID: 7400000, guid: f750d279f99382f499b384eec6685516, type: 2}
+        - {fileID: 7400000, guid: b07d2aac17fecd948a62313b09f606f3, type: 2}
+        - {fileID: 7400000, guid: 2431d82cecc0daa4e89998a190d7da61, type: 2}
+        - {fileID: 7400000, guid: ed9481e9d58585b468253ba719ae6bfd, type: 2}
+        - {fileID: 7400000, guid: 5170ae79ffbb6dd4e89c3bf0fcc67eca, type: 2}
+        - {fileID: 7400000, guid: 025b9e719501be94da76dd20e12c1c58, type: 2}
         _Speeds: []
         _SynchronizeChildren: 
         _Thresholds:

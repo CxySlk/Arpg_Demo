@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using cfg;
 using Character;
 using GAS;
 using Hovl;
@@ -27,8 +28,11 @@ namespace Skill
         /// <summary>所属技能大脑（技能的拥有者/管理者）。</summary>
         protected SkillBrainBase skillBrain;
 
-        /// <summary>本行为对应的技能配置资产。</summary>
+        /// <summary>本行为对应的技能资产（SkillConfig：行为模板/片段/图标）。</summary>
         protected SkillConfig skillConfig;
+
+        /// <summary>本行为对应的技能数据（Luban 技能表 cfg.Skill：名字/CD/消耗/片段间隔…）。</summary>
+        protected cfg.Skill skill;
 
         /// <summary>帧驱动播放器：负责按帧执行 AbilityAsset 的帧事件。</summary>
         protected AbilityPlayer abilityPlayer = new();
@@ -69,6 +73,9 @@ namespace Skill
         /// <summary>是否已触发"开启武器拖尾"但还没触发"关闭武器拖尾"（段结束/打断/停驱动时兜底关闭）。</summary>
         protected bool weaponTrailOpened;
 
+        /// <summary>各动画片段的根运动总水平位移缓存(键=clip 的 EntityId,值=米)。首次查询时计算。</summary>
+        private readonly Dictionary<EntityId, float> _rootMotionDistanceDic = new();
+
         #endregion
 
         #region 快捷访问（配置与角色）
@@ -88,13 +95,10 @@ namespace Skill
         /// <summary>技能专属事件中心（用于广播 CD、播放状态等）。</summary>
         protected EventCenter EventCenter => skillBrain.SkillEventCenter;
 
-        /// <summary>技能完整冷却时间（秒），取自 <see cref="SkillConfig.CdTime"/>。</summary>
-        protected float CdTime => skillConfig.CdTime;
+        /// <summary>技能完整冷却时间（秒），取自 Luban 技能表。</summary>
+        protected float CdTime => skill.CdTime;
 
-        // 消耗
-        protected Dictionary<AttributeType, float> CostDic => skillConfig.CostDic;
-
-        /// <summary>该技能的多段技能片段（AbilityAsset 列表），取自配置。</summary>
+        /// <summary>该技能的多段技能片段（AbilityAsset 列表），取自 SkillConfig 资产。</summary>
         protected List<AbilityAsset> Abilities => skillConfig.Abilities;
 
         #endregion
@@ -173,10 +177,11 @@ namespace Skill
         /// <param name="skillBrain">所属技能大脑。</param>
         /// <param name="skillConfig">技能配置。</param>
         /// <param name="skillID">技能 ID（配置列表索引）。</param>
-        public void Init(SkillBrainBase skillBrain, SkillConfig skillConfig, int skillID)
+        public void Init(SkillBrainBase skillBrain, SkillConfig skillConfig, cfg.Skill skill, int skillID)
         {
             this.skillBrain = skillBrain;
             this.skillConfig = skillConfig;
+            this.skill = skill;
             this.skillID = skillID;
             abilityPlayer.Init(this, OnAbilityPlayEnd);
         }
@@ -185,15 +190,6 @@ namespace Skill
         public virtual void Start()
         {
             TimeSystem.Global.Subscribe(TickUpdate);
-        }
-
-        protected void UpdateFreezeFrame()
-        {
-            if (freezeTimer > 0)
-            {
-                freezeTimer -= TimeSystem.FrameTime;
-                Time.timeScale = Mathf.Lerp(.5f, 1, 1 - freezeTimer / freezeTotalTime);
-            }
         }
 
         /// <summary>停止技能行为（退订帧更新、停止能力播放）。技能卸载/销毁时调用。</summary>
@@ -246,7 +242,6 @@ namespace Skill
             if (!skillIsPlaying && cdTimer > 0)
                 CdTimer = Mathf.Max(0, cdTimer - TimeSystem.FrameTime);
             TickAbilityInterval();
-            UpdateFreezeFrame();
         }
 
         /// <summary>
@@ -313,9 +308,9 @@ namespace Skill
         protected void StartAbilityInterval()
         {
             // 间隔小于等于0，默认不启用片段间隔
-            if (skillConfig.AbilityInterval <= 0) return;
+            if (skill.AbilityInterval <= 0) return;
             isAbilityInterval = true;
-            intervalTimer = skillConfig.AbilityInterval;
+            intervalTimer = skill.AbilityInterval;
         }
 
         /// <summary>
@@ -406,9 +401,9 @@ namespace Skill
         public virtual bool UnexpectedInterrupt()
         {
             if (!StopCurrentAbility()) return false;
-            
+
             OnInterrupt();
-            
+
             // abilityIndex 语义是"下一段待播",回退到被打断的这段 → 下次续接/重放它
             abilityIndex = Mathf.Max(0, abilityIndex - 1);
             StartAbilityInterval();
@@ -417,9 +412,8 @@ namespace Skill
 
         protected virtual void OnInterrupt()
         {
-            
         }
-        
+
         /// <summary>
         /// 输入打断：本段已解锁"输入打断"时,只打断当前片段（移动/跳跃输入由外部喂入）。
         /// 打断的判定与执行都归本行为，状态/输入层只负责调用。
@@ -454,9 +448,9 @@ namespace Skill
         protected virtual bool CheckSkillCost()
         {
             if (abilityIndex != 0) return true;
-            foreach (KeyValuePair<AttributeType, float> cost in skillConfig.CostDic)
+            foreach (CostEntry cost in skill.Cost)
             {
-                if (GasOwner.TryGetAttrValue(cost.Key, out Attribute attr))
+                if (GasOwner.TryGetAttrValue(cost.AttrType, out Attribute attr))
                 {
                     if (attr.CurValue < cost.Value)
                         return false;
@@ -469,9 +463,9 @@ namespace Skill
         /// <summary>结算技能消耗（默认扣除 MP 属性的 <see cref="Cost"/>）。</summary>
         protected virtual void ApplySkillCost()
         {
-            foreach (KeyValuePair<AttributeType, float> cost in CostDic)
+            foreach (CostEntry cost in skill.Cost)
             {
-                GasOwner.AddAttrValue(cost.Key, AttributeValueType.CurValue, -cost.Value);
+                GasOwner.AddAttrValue(cost.AttrType, AttributeValueType.CurValue, -cost.Value);
             }
         }
 
@@ -521,9 +515,6 @@ namespace Skill
                     break;
                 case FrameEventType.SkillInputInterrupt:
                     OnSkillInputInterrupt(frameEvent);
-                    break;                
-                case FrameEventType.FreezeFrame:
-                    OnFreezeFrame(frameEvent.floatArg);
                     break;
                 case FrameEventType.Custom:
                     OnCustomEvent(frameEvent.eventName, frameEvent);
@@ -599,13 +590,6 @@ namespace Skill
             inputInterruptEnabled = true;
         }
 
-        /// <summary>顿帧帧事件：按 floatArg 时长做顿帧。</summary>
-        protected virtual void OnFreezeFrame(float freezeTime)
-        {
-            freezeTimer = freezeTime;
-            freezeTotalTime = freezeTime;
-        }
-
         /// <summary>自定义帧事件（子类覆写实现具体逻辑）。</summary>
         /// <param name="eventName">自定义事件名（取自 FrameEvent.eventName）。</param>
         /// <param name="frameEvent">帧事件对象。</param>
@@ -616,9 +600,6 @@ namespace Skill
         #endregion
 
         #region 帧事件内部实现
-
-        protected float freezeTimer;
-        protected float freezeTotalTime;
 
         /// <summary>给自身 ASC 加上固定的前摇(霸体)标签（前摇开始帧事件触发时）。已加过则不重复加。</summary>
         private void AddStartupTag()
@@ -668,18 +649,35 @@ namespace Skill
             }
         }
 
-        /// <summary>动画根运动回调（播放带根运动的动画 Cue 时注册）。</summary>
+        /// <summary>动画根运动回调。靠近目标时按 还能走的距离/动画总水平位移 等比缩放水平位移(motion warping),停在 rootMotionDis 处。</summary>
         protected virtual void OnRootMotion(Vector3 deltaPos, Quaternion deltaRot)
         {
-            if (curAbilityAsset.rootMotionDis > 0 &&
-                CharacterController.Target &&
-                CharacterController.GetTargetSqrDis() <= Mathf.Pow(curAbilityAsset.rootMotionDis, 2))
+            if (curAbilityAsset.rootMotionDis > 0 && CharacterController.Target)
             {
-                deltaPos.x = deltaPos.z = 0;
+                float available = CharacterController.GetTargetDis() - curAbilityAsset.rootMotionDis; // 还能走多远
+                AnimationClip clip = CharacterView.Animancer.Graph.Layers[0].CurrentState.Clip;
+                float naturalTravel = GetRootMotionDistance(clip);                                     // 动画总共要走多远(缓存)
+            
+                float ratio = naturalTravel > 0.0001f ? Mathf.Clamp01(available / naturalTravel) : 1f;
+                deltaPos.x *= ratio;
+                deltaPos.z *= ratio;
             }
- 
+
             CharacterController.Move(deltaPos);
             CharacterController.Rotate(deltaRot);
+        }
+
+        /// <summary>取动画片段的根运动总水平位移(米):命中缓存返回,否则用 水平平均速度 × 时长 估算并缓存。</summary>
+        private float GetRootMotionDistance(AnimationClip clip)
+        {
+            EntityId id = clip.GetEntityId();
+            if (_rootMotionDistanceDic.TryGetValue(id, out float distance))
+                return distance;
+
+            Vector3 avg = clip.averageSpeed;
+            distance = new Vector2(avg.x, avg.z).magnitude * clip.length;
+            _rootMotionDistanceDic.Add(id, distance);
+            return distance;
         }
 
         #endregion

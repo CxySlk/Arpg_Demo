@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3479996252943228173}
   - component: {fileID: 3352875613368580347}
   - component: {fileID: 5563652352441174920}
+  - component: {fileID: 7466697297447789405}
   m_Layer: 0
   m_Name: UI_BagSkillSlot
   m_TagString: Untagged
@@ -68,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ce1828a7fab491449c62fe41a36b77c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 942d68151b49fe742b74df29e23d4f15, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,11 +135,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1500beebcefffd240a4216924384881a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_BagSkillSlot
-  _hoverScale: 1.1
-  _scaleDuration: 0.15
   _imgIcon: {fileID: 253595606310576823}
   _imgBorder: {fileID: 3479996252943228173}
   _btnSlot: {fileID: 3352875613368580347}
+--- !u!114 &7466697297447789405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4901911999415220845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c4b8d2b19f4f5ab84d5693bf51e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UI_MouseEnterExitEffect
+  component: {fileID: 3479996252943228173}
+  _scale: 1.2
+  _duration: 0.25
+  _ease: 6
 --- !u!1 &6477908155041557570
 GameObject:
   m_ObjectHideFlags: 0

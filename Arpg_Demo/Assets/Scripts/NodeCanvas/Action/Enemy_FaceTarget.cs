@@ -20,8 +20,6 @@ public class Enemy_FaceTarget : ActionTask
     protected override void OnExecute()
     {
         EnemyController controller = enemyController.value;
-        if (controller == null) { EndAction(false); return; }
-
         // 站定盯人:朝向由代码控制
         controller.NavMeshAgent.updateRotation = false;
         _endTime = Time.time + duration.value;
@@ -30,7 +28,7 @@ public class Enemy_FaceTarget : ActionTask
     protected override void OnUpdate()
     {
         EnemyController controller = enemyController.value;
-        if (controller == null || !controller.Target) { EndAction(false); return; }
+        if (!controller.Target) { EndAction(false); return; }
 
         controller.StandAndFace(controller.Target);
 
@@ -40,6 +38,6 @@ public class Enemy_FaceTarget : ActionTask
     protected override void OnStop()
     {
         EnemyController controller = enemyController.value;
-        if (controller != null) controller.StopChase();
+        controller.StopChase();
     }
 }

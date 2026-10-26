@@ -21,7 +21,7 @@ public class UI_SettingWindow : UI_WindowBase
 
     private VolumeData VolumeData => DataManager.VolumeData;
 
-    public override void OnShow()
+    protected override void OnShow()
     {
         // 滑动条更新
         sliderBgMusic.value = VolumeData.bgVolume * 100;

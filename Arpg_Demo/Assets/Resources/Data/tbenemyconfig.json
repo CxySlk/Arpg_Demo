@@ -1,0 +1,23 @@
+[
+  {
+    "id": 2001,
+    "prefabPath": "Enemy_Sword",
+    "ownedSkills": [
+      3003,
+      3004,
+      3005,
+      3006
+    ],
+    "ascPresetPath": "Enemy_ASCPreset1",
+    "kfcEnemyConfig": 5001
+  },
+  {
+    "id": 2002,
+    "prefabPath": "Enemy_Wizard",
+    "ownedSkills": [
+      3008
+    ],
+    "ascPresetPath": "Enemy_ASCPreset1",
+    "kfcEnemyConfig": 5002
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 4001,
+    "weightLimit": 5,
+    "atkLimit": 5,
+    "waitRadius": 5,
+    "outCircleDis": 2
+  },
+  {
+    "id": 4002,
+    "weightLimit": 5,
+    "atkLimit": 5,
+    "waitRadius": 5,
+    "outCircleDis": 2
+  }
+]

@@ -10,7 +10,7 @@ namespace GAS
     [System.Serializable]
     public class GameplayCueDurationalAudio : GameplayCueDurational
     {
-        [LabelText("音频片段"),OnValueChanged(nameof(CalculateDuration))]
+        [LabelText("音频片段"), OnValueChanged("CalculateDuration")]
         public AudioClip AudioClip;
 
         [LabelText("音量倍率")]

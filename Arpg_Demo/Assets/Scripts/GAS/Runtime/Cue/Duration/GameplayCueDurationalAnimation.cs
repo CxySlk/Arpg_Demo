@@ -10,10 +10,13 @@ namespace GAS
     [System.Serializable]
     public class GameplayCueDurationalAnimation : GameplayCueDurational
     {
-        [LabelText("动画片段"), OnValueChanged(nameof(CalculateDuration))]
+        [LabelText("动画片段"), OnValueChanged("CalculateDuration")]
         public AnimationClip AnimationClip;
 
         [LabelText("RootMotion")] public bool RootMotion;
+
+        [LabelText("播放速度"), MinValue(0.01f), OnValueChanged("CalculateDuration")]
+        public float PlaySpeed = 1f;
 
         protected override GameplayCueSpec CreateSpec() =>
             PoolSystem.Global.GetOrNewObject<GameplayCueDurationalAnimationSpec>();
@@ -24,13 +27,18 @@ namespace GAS
             animCue.DurationSeconds = DurationSeconds;
             animCue.AnimationClip = AnimationClip;
             animCue.RootMotion = RootMotion;
+            animCue.PlaySpeed = PlaySpeed;
             return animCue;
         }
 
 #if UNITY_EDITOR
 
-        /// <summary>持续时长 = 动画长度（秒）</summary>
-        public override void CalculateDuration() => DurationSeconds = AnimationClip ? AnimationClip.length : 0f;
+        /// <summary>持续时长 = 动画长度（秒）/ 播放速度</summary>
+        public override void CalculateDuration()
+        {
+            float speed = Mathf.Max(0.01f, PlaySpeed);
+            DurationSeconds = AnimationClip ? AnimationClip.length / speed : 0f;
+        }
 #endif
     }
 }

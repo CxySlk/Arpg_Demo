@@ -16,7 +16,7 @@ public class UI_DeathWindow : UI_WindowBase
     private Button _reviveButton;
     private bool _uiBuilt;
 
-    public override void OnShow()
+    protected override void OnShow()
     {
         base.OnShow();
         BuildUI();

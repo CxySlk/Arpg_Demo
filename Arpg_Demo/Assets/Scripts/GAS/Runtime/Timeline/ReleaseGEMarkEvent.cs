@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
-
+#if UNITY_EDITOR
+using LLKFrame;
+#endif
 namespace GAS
 {
     /// <summary>
@@ -9,8 +11,7 @@ namespace GAS
     /// </summary>
     public class ReleaseGEMarkEvent : MarkEventBase
     {
-        [LabelText("目标捕捉器")]
-        public TargetCatcherBase targetCatcher;
+        [LabelText("目标捕捉器")] public TargetCatcherBase targetCatcher;
 
         [LabelText("Effect"), DictionaryDrawerSettings(KeyLabel = "效果", ValueLabel = "层数")]
         public Dictionary<GameplayEffect, int> Effects = new();
@@ -41,9 +42,12 @@ namespace GAS
                     ApplyEffects(source, source);
                     break;
                 // 武器检测通过触发器来执行，因此帧数不能小于等于1，所以根本不会走该路径
+#if UNITY_EDITOR
                 case WeaponCatcher:
-                    Debug.Log("开启武器检测不走该路径，而是走DurationGEEventRuntime（错误原因：帧数设置需要大于1）");
+                    LogSystem.Log("开启武器检测不走该路径，而是走DurationGEEventRuntime" +
+                                           LogSystem.ErrorColor("（错误原因：帧数设置需要大于1）"));
                     break;
+#endif
                 // 剩余的是形状检测
                 default:
                     Collider[] targets = targetCatcher.GetTargets(source.transform);
@@ -55,6 +59,7 @@ namespace GAS
 
                         ApplyEffects(source, target);
                     }
+
                     break;
             }
         }

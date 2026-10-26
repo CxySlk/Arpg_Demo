@@ -8,37 +8,42 @@ namespace Skill
     {
         protected SkillLearnData learnSkillData;
 
-        public void InitForConfig(List<SkillConfig> skillConfigs, SkillLearnData learnSkills)
+        /// <summary>玩家拥有的技能 id（可能需等级解锁；默认技能初始化即学）。</summary>
+        protected IReadOnlyList<int> ownedSkills;
+
+        /// <summary>按玩家配置 + 存档里的已学技能 id 装配技能行为。</summary>
+        public void InitForConfig(cfg.PlayerConfig config, SkillLearnData learnSkills)
         {
-            // 重复初始化(换角色/重开一局)时先清掉旧行为,避免旧行为继续逐帧驱动、以及字典重复键异常
             ClearBehaviors();
 
             skillEventCenter = new EventCenter();
             skillEventCenter.ClearAll();
 
-            this.skillConfigs = skillConfigs;
             learnSkillData = learnSkills;
+            ownedSkills = config.OwnedSkills;
 
-            foreach (int skillID in learnSkills.skillIdSet)
-            {
-                SkillBehaviorBase skillBehavior = skillConfigs[skillID].SkillBehavior.DeepCopy();
-                skillBehavior.Init(this, skillConfigs[skillID], skillID);
-                skillBehavior.Start();
-                behaviorDic.Add(skillID, skillBehavior);
-            }
+            foreach (int skillId in learnSkills.skillIdSet)
+                AddLearnedSkill(skillId);
         }
 
-        public void LearnSkill(int skillID)
+        /// <summary>学习技能：同时写入存档并确保运行时行为已注册。</summary>
+        public bool LearnSkill(int skillId)
         {
-            if (learnSkillData.skillIdSet.Add(skillID))
-            {
-                SkillBehaviorBase skillBehavior = skillConfigs[skillID].SkillBehavior.DeepCopy();
-                skillBehavior.Init(this, skillConfigs[skillID], skillID);
-                skillBehavior.Start();
-                behaviorDic.Add(skillID, skillBehavior);
-            }
+            if (learnSkillData == null) return false;
+
+            learnSkillData.skillIdSet.Add(skillId);
+            if (!behaviorDic.ContainsKey(skillId))
+                AddLearnedSkill(skillId);
 
             DataManager.SavePlayerData();
+            return behaviorDic.ContainsKey(skillId);
+        }
+
+        private void AddLearnedSkill(int skillId)
+        {
+            SkillBehaviorBase behavior = CreateBehavior(skillId);
+            if (behavior != null)
+                behaviorDic[skillId] = behavior;
         }
     }
 }

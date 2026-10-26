@@ -39,7 +39,7 @@ MonoBehaviour:
           _NormalizedTimes: []
           _Callbacks: []
           _Names: []
-        _Clip: {fileID: 7400000, guid: d10be8516ea1f764eb7ec00869a4a4f0, type: 2}
+        _Clip: {fileID: 7400000, guid: b745ef2854f49ac49ab01a1443d98ac3, type: 2}
         _NormalizedStartTime: NaN
     - rid: 5432491376459907173
       type: {class: ClipTransition, ns: Animancer, asm: Kybernetik.Animancer}
@@ -50,5 +50,5 @@ MonoBehaviour:
           _NormalizedTimes: []
           _Callbacks: []
           _Names: []
-        _Clip: {fileID: 7400000, guid: 49050d80e85efe54abae015009a3861a, type: 2}
+        _Clip: {fileID: 7400000, guid: c00a6af60c6a28646bae5838c4cbf4b1, type: 2}
         _NormalizedStartTime: NaN

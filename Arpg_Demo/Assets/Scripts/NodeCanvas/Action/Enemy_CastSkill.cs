@@ -12,7 +12,7 @@ public class Enemy_CastSkill : ActionTask
     [LabelText("敌人控制器"), RequiredField]
     public BBParameter<EnemyController> enemyController = new();
 
-    [LabelText("技能ID"), Tooltip("对应 EnemyConfig.SkillConfigList 里的下标")]
+    [LabelText("技能ID"), Tooltip("对应 Luban 技能表 cfg.TbSkill 的技能 id")]
     public BBParameter<int> skillID = new(0);
 
     protected override void OnExecute()

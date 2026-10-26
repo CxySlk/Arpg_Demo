@@ -1,0 +1,68 @@
+[
+  {
+    "id": 6001,
+    "levelName": "1-1",
+    "levelDescription": "好多怪",
+    "levelIcon": "1-1",
+    "sceneName": "1-1",
+    "defaultUnlock": true,
+    "completeUnlockID": 6002,
+    "compeleteSkillPoints": 1,
+    "bgMusic": "1-1"
+  },
+  {
+    "id": 6002,
+    "levelName": "1-2",
+    "levelDescription": "1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪1只怪",
+    "levelIcon": "1-2",
+    "sceneName": "1-2",
+    "defaultUnlock": false,
+    "completeUnlockID": 6003,
+    "compeleteSkillPoints": 1,
+    "bgMusic": "1-2"
+  },
+  {
+    "id": 6003,
+    "levelName": "1-3",
+    "levelDescription": "2只怪",
+    "levelIcon": "1-3",
+    "sceneName": "1-3",
+    "defaultUnlock": false,
+    "completeUnlockID": 6004,
+    "compeleteSkillPoints": 1,
+    "bgMusic": "1-3"
+  },
+  {
+    "id": 6004,
+    "levelName": "1-4",
+    "levelDescription": "3只怪",
+    "levelIcon": "1-4",
+    "sceneName": "1-4",
+    "defaultUnlock": false,
+    "completeUnlockID": 6005,
+    "compeleteSkillPoints": 1,
+    "bgMusic": "1-4"
+  },
+  {
+    "id": 6005,
+    "levelName": "1-5",
+    "levelDescription": "4只怪",
+    "levelIcon": "1-5",
+    "sceneName": "1-5",
+    "defaultUnlock": false,
+    "completeUnlockID": 6006,
+    "compeleteSkillPoints": 1,
+    "bgMusic": "1-5"
+  },
+  {
+    "id": 6006,
+    "levelName": "1-6",
+    "levelDescription": "5只怪",
+    "levelIcon": "1-6",
+    "sceneName": "1-6",
+    "defaultUnlock": false,
+    "completeUnlockID": -1,
+    "compeleteSkillPoints": 1,
+    "bgMusic": "1-6"
+  }
+]

@@ -246,22 +246,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!114 &553649737 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7364153705209977822, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-  m_PrefabInstance: {fileID: 7479385180389403980}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!224 &592049519 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5912811725838906331, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-  m_PrefabInstance: {fileID: 7479385180389403980}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &804312051
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,98 +291,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &855605628 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6964650369990926635, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-  m_PrefabInstance: {fileID: 7479385180389403980}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!114 &975931943 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6524967551204638732, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-  m_PrefabInstance: {fileID: 7479385180389403980}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!224 &1082518245 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 662559595068709324, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-  m_PrefabInstance: {fileID: 7479385180389403980}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1089946751 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6127036420058184018, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-  m_PrefabInstance: {fileID: 7479385180389403980}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!224 &1312623178 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3581443858153536405, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-  m_PrefabInstance: {fileID: 7479385180389403980}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1453718156 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7933410478676357370, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-  m_PrefabInstance: {fileID: 7479385180389403980}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1520045707
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1520045709}
-  - component: {fileID: 1520045708}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1520045708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520045707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81b23db3289f2a84aad50f197366c4a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Test
---- !u!4 &1520045709
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520045707}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 599.0786, y: 412.00107, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1726771611
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +300,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1726771612}
-  - component: {fileID: 1726771613}
   m_Layer: 0
   m_Name: ChooseCharacter
   m_TagString: Untagged
@@ -432,18 +323,6 @@ Transform:
   - {fileID: 1964767839226665999}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1726771613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726771611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6a5522da554fdf4db3b546604bbccb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChooseCharacter
 --- !u!1 &1759527861
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,22 +460,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &1836274734 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 378290732296292076, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-  m_PrefabInstance: {fileID: 7479385180389403980}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!224 &1906018335 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8579223925940607269, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-  m_PrefabInstance: {fileID: 7479385180389403980}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1964767839226665999
 RectTransform:
   m_ObjectHideFlags: 0
@@ -683,94 +546,6 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
-      value: '"path":"uiLayers.[0].layerMask","value":$eref:0'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
-      value: '"path":"uiLayers.[0].layerRoot","value":$eref:1'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[2]'
-      value: '"path":"uiLayers.[1].layerMask","value":$eref:2'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[3]'
-      value: '"path":"uiLayers.[1].layerRoot","value":$eref:3'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[4]'
-      value: '"path":"uiLayers.[2].layerMask","value":$eref:4'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[5]'
-      value: '"path":"uiLayers.[2].layerRoot","value":$eref:5'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[6]'
-      value: '"path":"uiLayers.[3].layerMask","value":$eref:6'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[7]'
-      value: '"path":"uiLayers.[3].layerRoot","value":$eref:7'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[8]'
-      value: '"path":"uiLayers.[4].layerMask","value":$eref:8'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[9]'
-      value: '"path":"uiLayers.[4].layerRoot","value":$eref:9'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]'
-      value: 
-      objectReference: {fileID: 553649737}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1312623178}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]'
-      value: 
-      objectReference: {fileID: 975931943}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]'
-      value: 
-      objectReference: {fileID: 1453718156}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[4]'
-      value: 
-      objectReference: {fileID: 1836274734}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[5]'
-      value: 
-      objectReference: {fileID: 1082518245}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[6]'
-      value: 
-      objectReference: {fileID: 1089946751}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[7]'
-      value: 
-      objectReference: {fileID: 592049519}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[8]'
-      value: 
-      objectReference: {fileID: 855605628}
-    - target: {fileID: 1490523193022213302, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[9]'
-      value: 
-      objectReference: {fileID: 1906018335}
     - target: {fileID: 6939374333579097588, guid: 0ed1b7cd0a940d44fbb593eb4d89bf48, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -891,4 +666,3 @@ SceneRoots:
   - {fileID: 1726771612}
   - {fileID: 7479385180389403980}
   - {fileID: 804312053}
-  - {fileID: 1520045709}
