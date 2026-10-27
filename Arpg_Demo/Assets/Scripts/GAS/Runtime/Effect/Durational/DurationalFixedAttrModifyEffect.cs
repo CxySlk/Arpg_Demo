@@ -49,7 +49,7 @@ namespace GAS
 
         protected override void ApplyEffect()
         {
-            // 固定属性修改只在进入/层数变化时处理，periodicSeconds 对它无效。
+            
         }
 
         protected override void OnCopied()

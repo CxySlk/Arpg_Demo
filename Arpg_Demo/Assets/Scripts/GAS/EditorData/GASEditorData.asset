@@ -22,8 +22,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _tags:
-  - Attr.Effect.Heal.Health
-  - "Status.Effect.\u9738\u4F53"
+  - effect.atk_buff
+  - effect.heal
+  - effect.heal_preset
   - "Status.\u6280\u80FD\u524D\u6447"
   - "Status.\u65E0\u654C"
   - "Status.\u683C\u6321"

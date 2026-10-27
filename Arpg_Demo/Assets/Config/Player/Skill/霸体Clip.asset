@@ -186,22 +186,19 @@ MonoBehaviour:
       Data: GAS.GameplayTag, Assembly-CSharp
     - Name: _shortTagName
       Entry: 1
-      Data: "\u9738\u4F53"
+      Data: atk_buff
     - Name: _hashCode
       Entry: 3
-      Data: 475127322
+      Data: -1142550881
     - Name: _ancestorHashCode
       Entry: 7
       Data: 15|System.Int32[], mscorlib
     - Name: 
       Entry: 14
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 3
-      Data: 1959773104
-    - Name: 
-      Entry: 3
-      Data: 1792114665
+      Data: 2083186687
     - Name: 
       Entry: 13
       Data: 
@@ -210,7 +207,7 @@ MonoBehaviour:
       Data: 
     - Name: _tagName
       Entry: 1
-      Data: "Status.Effect.\u9738\u4F53"
+      Data: effect.atk_buff
     - Name: 
       Entry: 8
       Data: 

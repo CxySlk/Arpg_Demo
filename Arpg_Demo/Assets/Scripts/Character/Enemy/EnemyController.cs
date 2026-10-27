@@ -265,6 +265,17 @@ namespace Character
             return offset.sqrMagnitude <= _stopChaseDis * _stopChaseDis;
         }
 
+        protected override void Death()
+        {
+            base.Death();
+            if (Target)
+            {
+                var sc = Target.transform.root.GetComponentInChildren<PlayerController>().StageController;
+                if (sc == null) return;
+                sc.ReleaseAllWeight(this);
+            }
+        }
+
         public KFC_EnemyConfig kfcEnemyConfig => _enemyConfig.KfcEnemyConfig_Ref;
         public Transform selfTrans => transform;
     }

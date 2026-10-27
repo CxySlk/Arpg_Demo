@@ -21,47 +21,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _attrDic
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[cfg.EAttributeType, Assembly-CSharp],[GAS.Attribute,
-        GAS]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[cfg.EAttributeType,
-        GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: _effects
       Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[GAS.GameplayEffect, Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[GAS.GameplayEffect, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 3|GAS.DurationalHealEffect, GAS
+      Data: 1|GAS.DurationalHealEffect, Assembly-CSharp
     - Name: requiredTags
       Entry: 7
-      Data: 4|GAS.GameplayTagSet, GAS
+      Data: 2|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]], mscorlib
+      Data: 3|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -76,10 +52,11 @@ MonoBehaviour:
       Data: 
     - Name: blockedTags
       Entry: 7
-      Data: 6|GAS.GameplayTagSet, GAS
+      Data: 4|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 7|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]], mscorlib
+      Data: 5|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -94,10 +71,11 @@ MonoBehaviour:
       Data: 
     - Name: grantedTags
       Entry: 7
-      Data: 8|GAS.GameplayTagSet, GAS
+      Data: 6|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 9|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]], mscorlib
+      Data: 7|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -112,10 +90,11 @@ MonoBehaviour:
       Data: 
     - Name: removedTags
       Entry: 7
-      Data: 10|GAS.GameplayTagSet, GAS
+      Data: 8|GAS.GameplayTagSet, Assembly-CSharp
     - Name: tagSet
       Entry: 7
-      Data: 11|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]], mscorlib
+      Data: 9|System.Collections.Generic.List`1[[GAS.GameplayTag, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -130,28 +109,22 @@ MonoBehaviour:
       Data: 
     - Name: effectTag
       Entry: 7
-      Data: GAS.GameplayTag, GAS
+      Data: GAS.GameplayTag, Assembly-CSharp
     - Name: _shortTagName
       Entry: 1
-      Data: Health
+      Data: heal_preset
     - Name: _hashCode
       Entry: 3
-      Data: 1244978060
+      Data: 1515585191
     - Name: _ancestorHashCode
       Entry: 7
-      Data: 12|System.Int32[], mscorlib
+      Data: 10|System.Int32[], mscorlib
     - Name: 
       Entry: 14
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 3
-      Data: -1623813697
-    - Name: 
-      Entry: 3
-      Data: 1239030520
-    - Name: 
-      Entry: 3
-      Data: 332643092
+      Data: 2083186687
     - Name: 
       Entry: 13
       Data: 
@@ -160,7 +133,7 @@ MonoBehaviour:
       Data: 
     - Name: _tagName
       Entry: 1
-      Data: Attr.Effect.Heal.Health
+      Data: effect.heal_preset
     - Name: 
       Entry: 8
       Data: 
@@ -169,7 +142,7 @@ MonoBehaviour:
       Data: true
     - Name: stackData
       Entry: 7
-      Data: 13|GAS.GameplayEffectStackData, GAS
+      Data: 11|GAS.GameplayEffectStackData, Assembly-CSharp
     - Name: AggregateType
       Entry: 3
       Data: 0

@@ -39,7 +39,7 @@ public class UI_DeathWindow : UI_WindowBase
 
         // 根铺满父(窗口根),半透明黑遮罩挡操作
         RectTransform root = transform as RectTransform;
-        if (root != null)
+        if (root)
         {
             root.anchorMin = Vector2.zero;
             root.anchorMax = Vector2.one;
@@ -71,7 +71,7 @@ public class UI_DeathWindow : UI_WindowBase
     private void OnReviveClick()
     {
         // 玩家控制器复活并关闭面板
-        if (PlayerController.Instance != null)
+        if (PlayerController.Instance)
             PlayerController.Instance.Revive();
         UISystem.Close<UI_DeathWindow>();
     }

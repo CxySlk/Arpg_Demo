@@ -31,6 +31,10 @@ public partial class PlayerController : CharacterControllerBase, IKFCProvider
     public FSMOwner Fsm => fsm;
     public Player_SkillBrain SkillBrain => skillBrain;
 
+    // 摄像机控制器
+    [LabelText("摄像机控制器"), SerializeField, Required]
+    private CameraController _cameraController;
+
     #endregion
 
     #region 生命周期
@@ -87,6 +91,8 @@ public partial class PlayerController : CharacterControllerBase, IKFCProvider
         PlayerConfig = config;
         InitShared();
         InitTargetLock();
+        // 摄像机初始化
+        _cameraController.Init();
         // 初始化功夫圈
         _kungFuCircle = new(config.KfcConfig_Ref);
         _stageController = new StageController(config.KfcConfig_Ref, transform);
@@ -110,8 +116,20 @@ public partial class PlayerController : CharacterControllerBase, IKFCProvider
 
     private void OnTimeStateChanged(bool isRunning)
     {
-        if (isRunning) StartSkillInputCheck();
-        else StopSkillInputCheck();
+        if (isRunning)
+        {
+            // 开启技能输入
+            StartSkillInputCheck();
+            // 开启摄像机
+            _cameraController.StartCurCamera();
+        }
+        else
+        {
+            // 关闭技能输入            
+            StopSkillInputCheck();
+            // 关闭Cinemachine
+            _cameraController.StopCurCamera();
+        }
     }
 
     #endregion

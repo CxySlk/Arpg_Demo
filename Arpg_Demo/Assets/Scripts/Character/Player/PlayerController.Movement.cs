@@ -12,7 +12,11 @@ public partial class PlayerController
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target), 10 * Time.deltaTime);
     }
 
-    public override void Move(Vector3 deltaPos) => characterController.Move(deltaPos);
+    public override void Move(Vector3 deltaPos)
+    {
+        if (!characterController.enabled) return;
+        characterController.Move(deltaPos);
+    }
 
     public void Move(Vector2 moveInput, float moveSpeed)
     {

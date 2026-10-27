@@ -24,6 +24,9 @@ public class TargetSelector
     // 切目标排序时的复用列表（同样是避免每帧 new）。
     private List<TargetCandidate> _sortBuffer;
 
+    // 同一敌人可能挂多个碰撞体（身体/武器/Trigger），候选按角色去重。
+    private readonly HashSet<CharacterControllerBase> _seenTargets = new();
+
     private float _lockRadius;      // 锁定半径（米）：初次获取目标的范围
     private float _loseRadius;      // 脱离半径（米）：已锁定的目标超出这个范围才算丢失（迟滞）
     private float _anchorHeight;    // 锁定锚点相对敌人根的高度（米，胸口位置）
@@ -72,9 +75,10 @@ public class TargetSelector
     public void Gather(Vector3 origin, List<TargetCandidate> results)
     {
         results.Clear();
+        _seenTargets.Clear();
 
         // NonAlloc：结果写进复用缓冲，避免每帧分配数组。
-        int count = Physics.OverlapSphereNonAlloc(origin, _lockRadius, _buffer, _enemyMask, QueryTriggerInteraction.Ignore);
+        int count = Physics.OverlapSphereNonAlloc(origin, _lockRadius, _buffer, _enemyMask, QueryTriggerInteraction.Collide);
         Vector3 eye = origin + _eyeOffset;
 
         for (int i = 0; i < count; i++)
@@ -85,6 +89,7 @@ public class TargetSelector
             // 碰撞体通常挂在模型的子物体上，所以要从父级找角色控制器。
             CharacterControllerBase target = col.GetComponentInParent<CharacterControllerBase>();
             if (!target || target.IsDead) continue; // 死亡目标不可锁定
+            if (!_seenTargets.Add(target)) continue;
 
             Transform t = target.transform;
             Vector3 anchor = AnchorOf(t);

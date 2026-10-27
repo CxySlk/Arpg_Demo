@@ -74,7 +74,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 5|GAS.DurationalFixedAttrModifyEffect, Assembly-CSharp
+      Data: 5|GAS.DurationalHealEffect, Assembly-CSharp
     - Name: requiredTags
       Entry: 7
       Data: 6|GAS.GameplayTagSet, Assembly-CSharp
@@ -156,25 +156,19 @@ MonoBehaviour:
       Data: GAS.GameplayTag, Assembly-CSharp
     - Name: _shortTagName
       Entry: 1
-      Data: Health
+      Data: heal
     - Name: _hashCode
       Entry: 3
-      Data: 1244978060
+      Data: 479650729
     - Name: _ancestorHashCode
       Entry: 7
       Data: 14|System.Int32[], mscorlib
     - Name: 
       Entry: 14
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 3
-      Data: -1623813697
-    - Name: 
-      Entry: 3
-      Data: 1239030520
-    - Name: 
-      Entry: 3
-      Data: 332643092
+      Data: 2083186687
     - Name: 
       Entry: 13
       Data: 
@@ -183,7 +177,7 @@ MonoBehaviour:
       Data: 
     - Name: _tagName
       Entry: 1
-      Data: Attr.Effect.Heal.Health
+      Data: effect.heal
     - Name: 
       Entry: 8
       Data: 
@@ -195,7 +189,7 @@ MonoBehaviour:
       Data: 15|GAS.GameplayEffectStackData, Assembly-CSharp
     - Name: AggregateType
       Entry: 3
-      Data: 1
+      Data: 0
     - Name: DecreaseType
       Entry: 3
       Data: 0
@@ -207,17 +201,17 @@ MonoBehaviour:
       Data: 
     - Name: durationSeconds
       Entry: 4
-      Data: 10
+      Data: 5
     - Name: periodicSeconds
       Entry: 4
       Data: 1
     - Name: beginApplyOnce
       Entry: 5
-      Data: true
-    - Name: fixedModify
+      Data: false
+    - Name: healSpeed
       Entry: 4
-      Data: 15
-    - Name: attrType
+      Data: 20
+    - Name: healAttrTag
       Entry: 3
       Data: 0
     - Name: 
