@@ -642,6 +642,9 @@ MonoBehaviour:
     - Name: audioClip
       Entry: 10
       Data: 4
+    - Name: VolumeMultiplier
+      Entry: 4
+      Data: 2
     - Name: 
       Entry: 8
       Data: 

@@ -1,3 +1,5 @@
+using System;
+using Character;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
@@ -25,23 +27,52 @@ public class CheckTargetDistance : ConditionTask
 
     [Name("判定方式")] public CheckType checkType = CheckType.LessThan;
 
-    [Name("目标"), RequiredField] public BBParameter<Transform> target;
-
     [Name("最大距离"), ShowIf("ShowMaxDistance", 1)]
     public BBParameter<float> maxDistance = new(3f);
 
     [Name("最小距离"), ShowIf("ShowMinDistance", 1)]
     public BBParameter<float> minDistance = new(1f);
 
+    private CharacterControllerBase _controller;
+    private Transform Target => _controller?.Target;
+
     // NodeCanvas 的 ShowIf 只支持"某字段/属性 == 某个定值"，不支持表达式，
     // 所以用这两个只读属性把条件先算好（只给节点面板用，不参与序列化）。
     public bool ShowMaxDistance => checkType != CheckType.GreaterThan && checkType != CheckType.GreaterThanOrEqualTo;
     public bool ShowMinDistance => checkType != CheckType.LessThan && checkType != CheckType.LessThanOrEqualTo;
-    
+
+    protected override string info
+    {
+        get
+        {
+            switch (checkType)
+            {
+                case CheckType.LessThan: return "dis < " + maxDistance;
+                case CheckType.GreaterThan: return "dis > " + minDistance;
+                case CheckType.LessThanOrEqualTo: return "dis <= " + maxDistance;
+                case CheckType.GreaterThanOrEqualTo: return "dis >= " + minDistance;
+                case CheckType.Between: return "dis >= " + minDistance + " and dis <= " + maxDistance;
+            }
+
+            return null;
+        }
+    }
+
+    protected override string OnInit()
+    {
+        _controller = agent.GetComponentInChildren<CharacterControllerBase>();
+        return null;
+    }
+
     protected override bool OnCheck()
     {
-        Transform targetTransform = target.value;
-        float sqrDistance = (agent.transform.position - targetTransform.position).sqrMagnitude;
+        if (!Target)
+        {
+            Debug.LogWarning("目标Target为空！");
+            return false;
+        }
+
+        float sqrDistance = (agent.transform.position - Target.position).sqrMagnitude;
 
         switch (checkType)
         {

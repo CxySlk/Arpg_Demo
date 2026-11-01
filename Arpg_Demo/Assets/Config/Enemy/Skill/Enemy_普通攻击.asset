@@ -23,43 +23,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _skillBehavior
       Entry: 7
-      Data: 0|Skill.NormalAttackBehavior, Assembly-CSharp
+      Data: 0|Skill.SkillBehavior, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
-    - Name: _costDic
-      Entry: 7
-      Data: 1|System.Collections.Generic.Dictionary`2[[cfg.EAttributeType, Assembly-CSharp],[System.Single,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 2|System.Collections.Generic.EnumEqualityComparer`1[[cfg.EAttributeType,
-        GAS]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  _skillName: "\u666E\u901A\u653B\u51FB"
-  _isShowUI: 1
-  _skillDescription: "\u5F88\u666E\u901A\u7684\u653B\u51FB"
   _skillIcon: {fileID: 21300000, guid: d6b86daa69e9d034a8d3e584e1f8bc96, type: 3}
-  _cdTime: 0
   _abilities:
   - {fileID: 11400000, guid: 10388539259d35c49966eb386507ccc3, type: 2}
   - {fileID: 11400000, guid: 0f19bb6afb6834f4fb81286cdd42266e, type: 2}
   - {fileID: 11400000, guid: 275f8f0f567d2ba4e958afe76e7d881b, type: 2}
-  _abilityInterval: 0

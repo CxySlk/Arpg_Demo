@@ -4,14 +4,14 @@
     "attrType": 2,
     "min": 0,
     "cur": 100,
-    "max": 80
+    "max": 114514
   },
   {
     "characterId": 1001,
     "attrType": 3,
     "min": 0,
     "cur": 10,
-    "max": 30
+    "max": 114514
   },
   {
     "characterId": 1001,
@@ -25,6 +25,13 @@
     "attrType": 4,
     "min": 0,
     "cur": 1,
+    "max": 100
+  },
+  {
+    "characterId": 1001,
+    "attrType": 1,
+    "min": 0,
+    "cur": 100,
     "max": 100
   },
   {

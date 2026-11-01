@@ -40,7 +40,7 @@ MonoBehaviour:
       Data: UnityEngine.LayerMask, UnityEngine.CoreModule
     - Name: 
       Entry: 3
-      Data: 136
+      Data: 8
     - Name: 
       Entry: 8
       Data: 
@@ -382,10 +382,10 @@ MonoBehaviour:
       Data: 
     - Name: maxSpeed
       Entry: 4
-      Data: 10
+      Data: 20
     - Name: accelerate
       Entry: 4
-      Data: 10
+      Data: 20
     - Name: maxDuration
       Entry: 4
       Data: 3

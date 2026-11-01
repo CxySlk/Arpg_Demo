@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _skillBehavior
       Entry: 7
-      Data: 0|Skill.NormalAttackBehavior, Assembly-CSharp
+      Data: 0|Skill.SkillBehavior, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 

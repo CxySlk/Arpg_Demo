@@ -19,6 +19,8 @@ public class UI_GameWindow : UI_WindowBase
 
     protected override void OnShow()
     {
+        // 玩家可能比窗口晚初始化：这里再绑定一次（幂等），确保 CD 事件监听的是玩家 SkillEventCenter
+        _skillSlots.BindSkillEvents();
         // 打开游戏主界面时,按 PlayerData 的热栏装备数据初始化热栏槽(显示图标 + 记录技能 id)
         InitSlotItems();
         // 确保战斗飘字管理器已初始化(订阅伤害事件,创建 Overlay Canvas)

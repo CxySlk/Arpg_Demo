@@ -8,12 +8,13 @@ public class CircleFindTargetCondition : ConditionTask
 {
     [Name("检测半径")] public BBParameter<float> checkRadius = 3;
 
-    [Name("目标变量(黑板)")]
-    public BBParameter<Transform> target;
+    [Name("目标变量(黑板)")] public BBParameter<Transform> target;
 
     [Name("检测层级")] public BBParameter<LayerMask> checkLayerMask;
 
     private Collider[] _colliders = new Collider[10];
+
+    protected override string info => "搜索目标：" + target;
 
     protected override bool OnCheck()
     {

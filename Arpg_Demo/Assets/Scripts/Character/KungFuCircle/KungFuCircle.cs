@@ -53,7 +53,7 @@ public class KungFuCircle
     public int GetClosestPosIndex(Vector3 curPos)
     {
         int posIndex = -1;
-        float curDist, closestDis = float.MaxValue;
+        float closestDis = float.MaxValue;
         for(int i = 0; i < waitPosArr.Length; ++i)
         {
             //如果i下标的点位已被占据，就找其他的
@@ -62,7 +62,7 @@ public class KungFuCircle
                 continue;
             }
             //计算与i下标点位置的距离平方（仅比较大小，可不开根号）
-            curDist = Vector3.SqrMagnitude(curPos - waitPosArr[i]);
+            float curDist = Vector3.SqrMagnitude(curPos - waitPosArr[i]);
             if(curDist < closestDis)
             {
                 closestDis = curDist;

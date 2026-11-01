@@ -15,6 +15,7 @@ using UnityEngine.UI;
 public class UI_SkillBagWindow : UI_WindowBase
 {
     [SerializeField] private GameObject _skillInfoObj;
+    [SerializeField] private TMP_Text _txtSkillPoint;
     [SerializeField] private TMP_Text _txtName;
     [SerializeField] private TMP_Text _txtDescription;
     [SerializeField] private GameObject _skillSlotPrefab;
@@ -54,6 +55,8 @@ public class UI_SkillBagWindow : UI_WindowBase
         TimeSystem.Global.Pause();
         Cursor.lockState = CursorLockMode.None;
         _skillInfoObj.SetActive(false);
+
+        RefreshSkillPoint();
 
         _tabGroup.SelectTabPage(_ownerTab);
         if (!_tabGroup.CurTabButton) ShowTab(true);
@@ -142,6 +145,8 @@ public class UI_SkillBagWindow : UI_WindowBase
         playerData.skillPoints -= skill.LearnCostPoints;
         DataManager.SavePlayerData();
 
+        RefreshSkillPoint();
+
         UI_BagSkillSlot learnedSlot = _selectedSlot;
         learnedSlot.SetLearned(true);
 
@@ -165,6 +170,11 @@ public class UI_SkillBagWindow : UI_WindowBase
             bool equipped = slot.IsLearned && SkillEquipManager.FindSlotBySkill(slot.SkillId) >= 0;
             slot.SetEquipped(equipped);
         }
+    }
+
+    private void RefreshSkillPoint()
+    {
+        _txtSkillPoint.SetText($"技能点：{DataManager.PlayerData.skillPoints}");
     }
 
     private static cfg.Skill GetSkill(int id) => ConfigManager.Tables.TbSkill.GetOrDefault(id);

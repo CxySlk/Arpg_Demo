@@ -265,11 +265,16 @@ namespace Character
             return offset.sqrMagnitude <= _stopChaseDis * _stopChaseDis;
         }
 
+        private static int num = 0;
+        
         protected override void Death()
         {
             base.Death();
+            EventCenter.Global.Publish(CharacterEventKey.EnemyDeathEventKey,this);
             if (Target)
             {
+                num++;
+                Debug.Log(num);
                 var sc = Target.transform.root.GetComponentInChildren<PlayerController>().StageController;
                 if (sc == null) return;
                 sc.ReleaseAllWeight(this);

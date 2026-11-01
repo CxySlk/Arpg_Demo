@@ -54,7 +54,7 @@ public class YooAssetMgr : MonoBehaviour
 
     /// <summary>远端 CDN 根地址。</summary>
     /// <remarks>最终远端根 = DefaultUrl + DefaultVersion + "/" + 包名，见 <see cref="GetRemoteRoot"/>。</remarks>
-    public const string DefaultUrl = "http://127.0.0.1:8000/CDN/PC/";
+    public const string DefaultUrl = "http://127.0.0.1:8080/CDN/PC/";
 
     /// <summary>远端版本目录（不是 YooAsset 的包版本；包版本由 RequestPackageVersionAsync 获取）。</summary>
     public const string DefaultVersion = "v1.0";
@@ -64,15 +64,13 @@ public class YooAssetMgr : MonoBehaviour
     /// 这是唯一需要按项目改包名的地方。新增包时在这里追加；
     /// 不在数组里的包也可以直接调 <see cref="InitPackage"/> 懒加载。
     /// </remarks>
-    public const string WindowPackage = "Window";
+    public const string UIPackage = "UI";
+
     public const string AudioPackage = "Audio";
-    public static readonly string[] PackageNames = { WindowPackage, AudioPackage };
+    private static readonly string[] PackageNames = { UIPackage, AudioPackage };
 
-    [Tooltip("编辑器里勾选则走 HostPlayMode（测远端更新）；不勾则走 EditorSimulateMode")]
-    [SerializeField] private bool _hostInEditor;
-
-    [Tooltip("初始化时是否自动检查并下载更新；关闭后初始化只到清单，之后手动调 DownloadPackage")]
-    [SerializeField] private bool _autoUpdate = true;
+    [Tooltip("初始化时是否自动检查并下载更新；关闭后初始化只到清单，之后手动调 DownloadPackage")] [SerializeField]
+    private bool _autoUpdate = true;
 
     /// <summary>包名 → 已创建的 ResourcePackage，避免重复 CreatePackage。</summary>
     private readonly Dictionary<string, ResourcePackage> _packages = new();
@@ -354,6 +352,7 @@ public class YooAssetMgr : MonoBehaviour
         if (initOp.Status != EOperationStatus.Succeeded)
         {
             Fail(packageName, initOp.Error, onComplete);
+            Debug.LogError("初始化文件系统失败：" + initOp.Error);
             yield break;
         }
 
@@ -364,7 +363,8 @@ public class YooAssetMgr : MonoBehaviour
         yield return versionOp;
         if (versionOp.Status != EOperationStatus.Succeeded)
         {
-            Fail(packageName, versionOp.Error, onComplete);
+            EventCenter.Global.Publish(YooAssetEventKey.Failed, packageName, versionOp.Error);
+            Debug.LogError("请求版本号失败：" + versionOp.Error);
             yield break;
         }
 
@@ -377,6 +377,7 @@ public class YooAssetMgr : MonoBehaviour
         if (manifestOp.Status != EOperationStatus.Succeeded)
         {
             Fail(packageName, manifestOp.Error, onComplete);
+            Debug.LogError("加载资源清单失败：" + manifestOp.Error);
             yield break;
         }
 
@@ -471,19 +472,6 @@ public class YooAssetMgr : MonoBehaviour
     /// </remarks>
     private InitializePackageOptions BuildInitOptions(string packageName)
     {
-#if UNITY_EDITOR
-        if (!_hostInEditor)
-        {
-            // 每个包单独做一次模拟构建，拿到该包的模拟根目录。
-            // 模拟构建不会生成真实 bundle，只用于编辑器快速跑通加载流程。
-            PackageBuildResult buildResult =
-                EditorSimulateBuildInvoker.Build(packageName, (int)EBundleType.VirtualAssetBundle);
-            EditorSimulateModeOptions editorOptions = new();
-            editorOptions.EditorFileSystemParameters =
-                FileSystemParameters.CreateDefaultEditorFileSystemParameters(buildResult.PackageRootDirectory);
-            return editorOptions;
-        }
-#endif
         HostPlayModeOptions hostOptions = new();
         // 内置包：随包体发布，首次启动/断网时可用。
         hostOptions.BuiltinFileSystemParameters = FileSystemParameters.CreateDefaultBuiltinFileSystemParameters();
@@ -491,7 +479,8 @@ public class YooAssetMgr : MonoBehaviour
         hostOptions.BuiltinFileSystemParameters.AddParameter(EFileSystemParameter.CopyBuiltinPackageManifest, true);
         // 沙盒缓存：远端下载的文件落到可写目录，后续直接复用。
         hostOptions.CacheFileSystemParameters =
-            FileSystemParameters.CreateDefaultSandboxFileSystemParameters(new RemoteService(GetRemoteRoot(packageName)));
+            FileSystemParameters.CreateDefaultSandboxFileSystemParameters(
+                new RemoteService(GetRemoteRoot(packageName)));
         // 同时下载的 bundle 数；按带宽/服务器承受能力调整。
         hostOptions.CacheFileSystemParameters.AddParameter(EFileSystemParameter.DownloadMaxConcurrency, 5);
         return hostOptions;

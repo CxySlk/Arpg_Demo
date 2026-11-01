@@ -2,7 +2,7 @@
   {
     "id": 1001,
     "name": "剑士",
-    "description": "近战角色",
+    "description": "这是一个酷酷的男人",
     "prefabPath": "Player1Root",
     "viewPrefabPath": "Player1View",
     "ownedSkills": [
@@ -20,10 +20,10 @@
   },
   {
     "id": 1002,
-    "name": "法师",
-    "description": "远程角色",
-    "prefabPath": "",
-    "viewPrefabPath": "",
+    "name": "剑士2",
+    "description": "这是一个拽拽的男人",
+    "prefabPath": "Player2Root",
+    "viewPrefabPath": "Player2View",
     "ownedSkills": [
       3001,
       3002

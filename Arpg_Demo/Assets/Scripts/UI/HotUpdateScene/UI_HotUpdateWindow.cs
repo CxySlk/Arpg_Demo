@@ -73,7 +73,7 @@ public class UI_HotUpdateWindow : UI_WindowBase
 
     public void SetPackage(string packageName)
     {
-        if (_packageText != null)
+        if (_packageText)
             _packageText.text = string.IsNullOrEmpty(packageName) ? string.Empty : "资源包：" + packageName;
     }
 

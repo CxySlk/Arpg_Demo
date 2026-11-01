@@ -1,0 +1,104 @@
+{
+    "Summary": {
+        "YooVersion": "3.0.6",
+        "UnityVersion": "6000.3.12f1",
+        "BuildDate": "2026/10/31 13:00:54",
+        "BuildSeconds": 36,
+        "BuildTarget": 19,
+        "BuildPipeline": "ScriptableBuildPipeline",
+        "BuildBundleType": 2,
+        "BuildPackageName": "Audio",
+        "BuildPackageVersion": "v1.0.100",
+        "BuildPackageNote": "2026/10/31 13:00:17",
+        "UniqueBundleName": true,
+        "EnableAddressable": true,
+        "SupportExtensionless": true,
+        "LocationToLower": false,
+        "IncludeAssetGuid": false,
+        "AutoCollectShaders": true,
+        "IgnoreRuleName": "YooAsset.Editor.NormalIgnoreRule",
+        "ClearBuildCacheFiles": true,
+        "UseAssetDependencyDB": false,
+        "EnableSharePackRule": true,
+        "SingleReferencedPackAlone": true,
+        "EncryptionServicesClassName": "YooAsset.Editor.EncryptionNone",
+        "ManifestProcessServicesClassName": "YooAsset.Editor.ManifestEncryptorNone",
+        "ManifestRestoreServicesClassName": "YooAsset.Editor.ManifestDecryptorNone",
+        "FileNameStyle": 0,
+        "CompressOption": 2,
+        "DisableWriteTypeTree": false,
+        "IgnoreTypeTreeChanges": false,
+        "ReplaceAssetPathWithAddress": false,
+        "WriteLinkXML": true,
+        "CacheServerHost": "",
+        "CacheServerPort": 0,
+        "BuiltinShadersBundleName": "audio_unityshaders.bundle",
+        "MonoScriptsBundleName": "",
+        "AssetFileTotalCount": 3,
+        "MainAssetTotalCount": 3,
+        "AllBundleTotalCount": 1,
+        "AllBundleTotalSize": 3516820,
+        "EncryptedBundleTotalCount": 0,
+        "EncryptedBundleTotalSize": 0
+    },
+    "AssetInfos": [
+        {
+            "Address": "1-1",
+            "AssetPath": "Assets/Res/Audio/Bg/1-1.mp3",
+            "AssetGuid": "2091f939ac361b54d9d7deef0b0e18b8",
+            "AssetTags": [],
+            "MainBundleName": "audio_assets_res_audio_bg.bundle",
+            "MainBundleSize": 3516820,
+            "DependAssets": [],
+            "DependBundles": []
+        },
+        {
+            "Address": "1-2",
+            "AssetPath": "Assets/Res/Audio/Bg/1-2.mp3",
+            "AssetGuid": "23672544ff99def4f85cf67278b53bda",
+            "AssetTags": [],
+            "MainBundleName": "audio_assets_res_audio_bg.bundle",
+            "MainBundleSize": 3516820,
+            "DependAssets": [],
+            "DependBundles": []
+        },
+        {
+            "Address": "BgMusic",
+            "AssetPath": "Assets/Res/Audio/Bg/BgMusic1.mp3",
+            "AssetGuid": "1013b780c796b3d4daeefba7b948cdb7",
+            "AssetTags": [],
+            "MainBundleName": "audio_assets_res_audio_bg.bundle",
+            "MainBundleSize": 3516820,
+            "DependAssets": [],
+            "DependBundles": []
+        }
+    ],
+    "BundleInfos": [
+        {
+            "BundleName": "audio_assets_res_audio_bg.bundle",
+            "FileName": "b336e5cb19de74a4624f358adf3a401b.bundle",
+            "FileHash": "b336e5cb19de74a4624f358adf3a401b",
+            "FileCrc": 3170897015,
+            "FileSize": 3516820,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "ReferenceBundles": [],
+            "BundleContents": [
+                {
+                    "AssetPath": "Assets/Res/Audio/Bg/1-1.mp3",
+                    "AssetGUID": "2091f939ac361b54d9d7deef0b0e18b8"
+                },
+                {
+                    "AssetPath": "Assets/Res/Audio/Bg/1-2.mp3",
+                    "AssetGUID": "23672544ff99def4f85cf67278b53bda"
+                },
+                {
+                    "AssetPath": "Assets/Res/Audio/Bg/BgMusic1.mp3",
+                    "AssetGUID": "1013b780c796b3d4daeefba7b948cdb7"
+                }
+            ]
+        }
+    ],
+    "IndependentAssets": []
+}

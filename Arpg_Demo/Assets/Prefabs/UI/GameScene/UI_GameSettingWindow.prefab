@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c4b8d2b19f4f5ab84d5693bf51e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.UI_MouseEnterExitEffect
-  component: {fileID: 0}
+  component: {fileID: 2315369449253601873}
   _scale: 1.2
   _duration: 0.25
   _ease: 6
@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c4b8d2b19f4f5ab84d5693bf51e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.UI_MouseEnterExitEffect
-  component: {fileID: 0}
+  component: {fileID: 758998753674343382}
   _scale: 1.2
   _duration: 0.25
   _ease: 6
@@ -1498,7 +1498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c4b8d2b19f4f5ab84d5693bf51e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.UI_MouseEnterExitEffect
-  component: {fileID: 0}
+  component: {fileID: 9221641015405117947}
   _scale: 1.2
   _duration: 0.25
   _ease: 6
@@ -1636,7 +1636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c4b8d2b19f4f5ab84d5693bf51e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.UI_MouseEnterExitEffect
-  component: {fileID: 0}
+  component: {fileID: 5356452395067199399}
   _scale: 1.2
   _duration: 0.25
   _ease: 6
@@ -1774,7 +1774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c4b8d2b19f4f5ab84d5693bf51e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.UI_MouseEnterExitEffect
-  component: {fileID: 0}
+  component: {fileID: 4205251750140305675}
   _scale: 1.2
   _duration: 0.25
   _ease: 6

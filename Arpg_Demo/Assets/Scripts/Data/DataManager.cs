@@ -37,10 +37,7 @@ public static class DataManager
 
     #region 存档通用相关
 
-    public static bool HasArchive()
-    {
-        return ArchiveInfo.HasArchive(LoginDataItem.saveKey);
-    }
+    public static bool HasArchive() => ArchiveInfo.HasArchive(LoginDataItem.saveKey);
 
     public static void LoadArchive() => SaveSystem.TryGetArchive(LoginDataItem.saveKey, out _archive);
 
@@ -66,7 +63,7 @@ public static class DataManager
 
     public static TObj LoadArchiveFile<TObj>() where TObj : new() => LoadArchiveFile<TObj>(typeof(TObj).Name);
 
-    public static void SaveArchiveFile(object obj, string fileName)
+    public static void SaveArchiveFile<T>(T obj, string fileName)
     {
 #if UNITY_EDITOR
         if (Archive == null)
@@ -75,7 +72,7 @@ public static class DataManager
         SaveSystem.SaveFile(obj, fileName, Archive);
     }
 
-    public static void SaveArchiveFile(object obj) => SaveArchiveFile(obj, obj.GetType().Name);
+    public static void SaveArchiveFile<T>(T obj) => SaveArchiveFile(obj, obj.GetType().Name);
 
     #endregion
 
@@ -109,17 +106,18 @@ public static class DataManager
         SaveSystem.SaveFile(PlayerData, Archive);
     }
 
-    public static void LoadPlayerData()
+    public static PlayerData LoadPlayerData()
     {
 #if UNITY_EDITOR
         // 没有存档（例如直接 Play GameScene 调试）时给一份空数据，避免 SaveSystem 空引用
         if (Archive == null)
         {
             PlayerData = new();
-            return;
+            return null;
         }
 #endif
         PlayerData = SaveSystem.LoadFile<PlayerData>(Archive);
+        return PlayerData;
     }
 
     #endregion

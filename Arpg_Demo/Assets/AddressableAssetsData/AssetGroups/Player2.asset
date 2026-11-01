@@ -15,8 +15,13 @@ MonoBehaviour:
   m_GroupName: Player2
   m_GUID: 8acd8176ccb77f0428b16184145ecc96
   m_SerializeEntries:
-  - m_GUID: d1d9e5126444ffa418ae7ce7ab35e532
-    m_Address: Player2
+  - m_GUID: 103dad24dea6fc74091d17df745dc451
+    m_Address: Player2View
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 729119916c53d9b46828303cefcb01ff
+    m_Address: Player2Root
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using cfg;
 using Character;
@@ -5,6 +6,7 @@ using LLKFrame;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// GameScene 敌人生成器：按「生成点 + 敌人ID + 数量」生成敌人并完成初始化。
@@ -15,9 +17,8 @@ using UnityEngine.AI;
 /// </summary>
 public class EnemySpawner : MonoBehaviour
 {
-    [LabelText("生成条目"), SerializeField]
-    private List<EnemySpawnItem> _items = new();
-
+    [LabelText("生成条目"), SerializeField] private List<EnemySpawnItem> _items = new();
+    
     [LabelText("随机散布半径"), SerializeField, MinValue(0f)]
     private float _randomRadius = 2f;
 
@@ -30,9 +31,29 @@ public class EnemySpawner : MonoBehaviour
     [LabelText("进入场景自动生成"), SerializeField]
     private bool _spawnOnStart = true;
 
-    private void Start()
+    private readonly List<EnemyController> _existMonster = new();    // 记录存活的怪物
+    private EnemyMgr _enemyMgr;
+
+    public void Init(EnemyMgr enemyMgr)
     {
+        _enemyMgr = enemyMgr;
         if (_spawnOnStart) SpawnAll();
+        EventCenter.Global.UnSubscribe(CharacterEventKey.EnemyDeathEventKey,OnEnemyDeath);
+        EventCenter.Global.Subscribe(CharacterEventKey.EnemyDeathEventKey,OnEnemyDeath);
+    }
+
+    private void OnDisable()
+    {
+        EventCenter.Global.UnSubscribe(CharacterEventKey.EnemyDeathEventKey,OnEnemyDeath);
+    }
+    
+    private void OnEnemyDeath(EnemyController enemy)
+    {
+        _existMonster.Remove(enemy);
+        if (_existMonster.Count == 0)
+        {
+            _enemyMgr.RemoveSpawner(this);
+        }
     }
 
     /// <summary>按配置生成全部敌人；编辑器里也可以点按钮反复调（调试用）。</summary>
@@ -69,7 +90,10 @@ public class EnemySpawner : MonoBehaviour
         NavMeshAgent agent = enemyObj.GetComponentInChildren<NavMeshAgent>();
         if (onNavMesh && agent) agent.Warp(position);
 
-        enemyObj.GetComponentInChildren<EnemyController>().Init(config);
+        var enemy = enemyObj.GetComponentInChildren<EnemyController>();
+        enemy.Init(config);
+        
+        _existMonster.Add(enemy);
     }
 
     /// <summary>生成点 + 随机散布（水平面）。</summary>

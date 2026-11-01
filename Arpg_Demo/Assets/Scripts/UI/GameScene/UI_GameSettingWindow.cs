@@ -2,6 +2,7 @@ using Level;
 using LLKFrame;
 using UnityEngine;
 using UnityEngine.UI;
+using YooAsset;
 
 namespace UI.GameScene
 {
@@ -58,10 +59,22 @@ namespace UI.GameScene
         private void OnBackClicked()
         {
             Click();
+            UISystem.CloseAll();
             UISystem.Show<UI_LoadingSceneWindow>();
             SceneSystem.LoadSceneAsync("SelectLevelScene", UISystem.Close<UI_LoadingSceneWindow>);
-            UISystem.Close<UI_GameSettingWindow>();
-            UISystem.Close<UI_GameWindow>();
+            
+            // 播放背景音乐
+            var handle = YooAssetMgr.Instance.LoadAssetSync<AudioClip>(YooAssetMgr.AudioPackage, "BgMusic");
+            if (handle.Status != EOperationStatus.Succeeded)
+            {
+                Debug.LogError("加载音频失败！");
+                handle.Release();
+                return;
+            }
+
+            var clip = handle.AssetObject as AudioClip;
+            AudioSystem.PlayBgMusic(clip);
+            handle.Release();
         }
 
         /// <summary>设置：打开音量设置面板（本窗口保持暂停）。</summary>
@@ -75,7 +88,7 @@ namespace UI.GameScene
         private void OnRestartClicked()
         {
             Click();
-            UISystem.Close<UI_GameSettingWindow>();
+            UISystem.CloseAll();
             LevelManager.EnterLevel(LevelManager.LevelID);
         }
 

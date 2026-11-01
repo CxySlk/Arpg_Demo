@@ -442,7 +442,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 29|GAS.GameplayCueDurationalAudio, Assembly-CSharp
+      Data: 29|GAS.GameplayCueInstantAudio, Assembly-CSharp
     - Name: requiredTags
       Entry: 7
       Data: 30|GAS.GameplayTagSet, Assembly-CSharp
@@ -544,18 +544,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: DurationSeconds
-      Entry: 4
-      Data: 0
-    - Name: AudioClip
+    - Name: audioClip
       Entry: 10
       Data: 0
     - Name: VolumeMultiplier
       Entry: 4
-      Data: 1
-    - Name: Is3D
-      Entry: 5
-      Data: true
+      Data: 2
     - Name: 
       Entry: 8
       Data: 

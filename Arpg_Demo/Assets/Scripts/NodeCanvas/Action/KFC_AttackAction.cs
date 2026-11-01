@@ -100,11 +100,7 @@ namespace NodeCanvas.Action
 
                 // 真正开始走位时才播 Move（已在攻击点则直接出招，不闪一下）
                 if (!_moveAnimPlaying)
-                {
-                    _controller.CharacterView.Play("Move");
-                    _controller.SetRootMotion(null);
-                    _moveAnimPlaying = true;
-                }
+                    PlayMove();
 
                 if (!_hasDest || Vector3.SqrMagnitude(target - _lastDest) > ignoreDis * ignoreDis)
                 {
@@ -135,6 +131,15 @@ namespace NodeCanvas.Action
             _hasDest = false;
         }
 
+        protected override void OnResume()
+        {
+            if (_moving)
+            {
+                PlayMove();
+                _hasDest = false;
+            }
+        }
+
         protected override void OnStop()
         {
             if (_forceReleaseAll)
@@ -146,6 +151,13 @@ namespace NodeCanvas.Action
 
             if (releaseAllOnExit) stageController.value.ReleaseAllWeight(_controller);
             else stageController.value.ReleaseAttackWeight(_controller);
+        }
+
+        private void PlayMove()
+        {
+            _controller.CharacterView.Play("Move");
+            _controller.SetRootMotion(null);
+            _moveAnimPlaying = true;
         }
 
         private List<float> GetReleaseTable(int skillID) =>

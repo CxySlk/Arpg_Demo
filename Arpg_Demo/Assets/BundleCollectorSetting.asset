@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BundleCollectorSetting
   m_EditorClassIdentifier: YooAsset.Editor::YooAsset.Editor.BundleCollectorSetting
   ShowPackageView: 1
-  ShowEditorAlias: 0
-  UniqueBundleName: 0
+  ShowEditorAlias: 1
+  UniqueBundleName: 1
   Packages:
-  - PackageName: Window
+  - PackageName: UI
     PackageDesc: 
     EnableAddressable: 1
     SupportExtensionless: 1
@@ -25,24 +25,19 @@ MonoBehaviour:
     AutoCollectShaders: 1
     IgnoreRuleName: NormalIgnoreRule
     Groups:
-    - GroupName: Prefab
+    - GroupName: Image
       GroupDesc: 
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/Prefabs/UI
-        CollectorGUID: 
+      - CollectPath: "Assets/Res/Sprite/\u5F00\u59CB\u573A\u666F\u80CC\u666F\u56FE2.png"
+        CollectorGUID: 43d67f65f256d00419015c0cb39eee98
         CollectorType: 0
-        AddressRuleName: AddressByFileName
+        AddressRuleName: FixedAddressRule
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll
         AssetTags: 
-        UserData: 
-    - GroupName: Default Group
-      GroupDesc: 
-      AssetTags: 
-      ActiveRuleName: EnableGroup
-      Collectors: []
+        UserData: BeginSceneBgImage
   - PackageName: Audio
     PackageDesc: 
     EnableAddressable: 1
@@ -60,11 +55,11 @@ MonoBehaviour:
       - CollectPath: Assets/Res/Audio/Bg/BgMusic1.mp3
         CollectorGUID: 1013b780c796b3d4daeefba7b948cdb7
         CollectorType: 0
-        AddressRuleName: AddressByFileName
+        AddressRuleName: FixedAddressRule
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll
         AssetTags: 
-        UserData: 
+        UserData: BgMusic
       - CollectPath: Assets/Res/Audio/Bg/1-1.mp3
         CollectorGUID: 2091f939ac361b54d9d7deef0b0e18b8
         CollectorType: 0

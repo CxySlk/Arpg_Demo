@@ -1,8 +1,15 @@
+using Character;
 using LLKFrame;
 
 public partial class PlayerController
 {
     #region 死亡
+
+    protected override void Death()
+    {
+        base.Death();
+        EventCenter.Global.Publish(CharacterEventKey.PlayerDeathEventKey, this);
+    }
 
     /// <summary>死亡表现开始:停 FSM/停技能输入/停技能/禁碰撞,并弹死亡 UI。</summary>
     protected override void OnDeathStart()

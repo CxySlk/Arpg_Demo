@@ -1,6 +1,5 @@
 using LLKFrame;
 using Sirenix.OdinInspector;
-using Skill;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -27,22 +26,12 @@ public class UI_SkillSlotItem : MonoBehaviour, IDropHandler, IPointerClickHandle
         imgMask.gameObject.SetActive(false);
     }
 
-    private void OnEnable()
-    {
-        EventCenter.Global.Subscribe(SkillEventKey.SkillCdTimerKey, OnSkillCdChanged);
-    }
-
-    private void OnDisable()
-    {
-        EventCenter.Global.UnSubscribe(SkillEventKey.SkillCdTimerKey, OnSkillCdChanged);
-    }
-
     public void BindSlotIndex(int index) => SlotIndex = index;
 
     public void SetIcon(Sprite skillIcon)
     {
         imgIcon.sprite = skillIcon;
-        imgIcon.enabled = skillIcon != null;
+        imgIcon.enabled = skillIcon;
     }
 
     public void EquipSkill(int newSkillId, Sprite icon)
@@ -59,21 +48,24 @@ public class UI_SkillSlotItem : MonoBehaviour, IDropHandler, IPointerClickHandle
         RefreshMask();
     }
 
+    /// <summary>重置遮罩显示：Awake 会关掉遮罩物体，CD 事件到来时再由 SetMaskFillAmount 打开。</summary>
     private void RefreshMask()
     {
         imgMask.fillAmount = 0f;
-        imgMask.gameObject.SetActive(skillID >= 0);
-    }
-
-    private void OnSkillCdChanged(int changedSkillId, float remainCd, float skillCd)
-    {
-        if (changedSkillId == skillID)
-            SetMaskFillAmount(remainCd, skillCd);
+        imgMask.enabled = false;
+        imgMask.gameObject.SetActive(false);
     }
 
     public void SetMaskFillAmount(float remainCd, float cdTime)
     {
-        imgMask.fillAmount = cdTime > 0f ? remainCd / cdTime : 0f;
+        bool show = skillID >= 0 && cdTime > 0f && remainCd > 0f;
+
+        // Awake 里把遮罩物体 SetActive(false) 了，这里必须同时恢复物体激活，否则只改 enabled 不会显示
+        if (imgMask.gameObject.activeSelf != show)
+            imgMask.gameObject.SetActive(show);
+
+        imgMask.enabled = show;
+        imgMask.fillAmount = show ? Mathf.Clamp01(remainCd / cdTime) : 0f;
     }
 
     public void OnDrop(PointerEventData eventData)

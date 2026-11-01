@@ -210,7 +210,7 @@ MonoBehaviour:
       Data: false
     - Name: healSpeed
       Entry: 4
-      Data: 20
+      Data: 60
     - Name: healAttrTag
       Entry: 3
       Data: 0

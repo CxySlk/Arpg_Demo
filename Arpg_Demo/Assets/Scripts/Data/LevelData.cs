@@ -18,8 +18,7 @@ namespace Data
 
         public bool IsCompleted(int levelID)
         {
-            unlockDic.TryGetValue(levelID, out bool isCompleted);
-            return isCompleted;
+            return unlockDic.GetValueOrDefault(levelID, false);
         }
 
         public void CompleteLevel(int levelID) => unlockDic[levelID] = true;

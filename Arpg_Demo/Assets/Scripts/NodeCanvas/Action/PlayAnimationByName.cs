@@ -10,16 +10,17 @@ using UnityEngine;
 public class PlayAnimationByName : ActionTask
 {
     [Name("动画片段名"), Required] public BBParameter<string> clipName;
-    [Name("播放速度"), Required] public float playSpeed = 1;
+    [Name("播放速度")] public float playSpeed = 1;
     [Name("开启根运动")] public bool onRootMotion;
     [Name("等待播放完毕")] public bool waitForComplete;
-
     [Name("启用音效")] public bool enableAudio;
     [Name("音效表"), ParadoxNotion.Design.ShowIf("enableAudio", 1)]
     public List<AnimationAudioEntry> audioEntries = new();
 
     private AnimancerState _state;
     private CharacterControllerBase _controller;
+
+    protected override string info => "播放动画：" + clipName;
 
     protected override string OnInit()
     {
@@ -37,13 +38,14 @@ public class PlayAnimationByName : ActionTask
     {
         if (!_state.IsPlaying)
             Play();
-        if(!_state.IsPlayingAndNotEnding())
+        if (!_state.IsPlayingAndNotEnding())
             EndAction();
     }
 
     private void Play()
     {
         _state = _controller.Play(clipName.value);
+        _state.Speed =  playSpeed;
         if (enableAudio)
             AnimationAudioHelper.Bind(_state, audioEntries, _controller.transform);
 

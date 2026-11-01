@@ -12,6 +12,10 @@
             "FileName": "123ba1023b0013c78acc9d18f889926e.bundle"
         },
         {
+            "BundleGuid": "1b21d58d38f518294b627254fd407d44",
+            "FileName": "1b21d58d38f518294b627254fd407d44.bundle"
+        },
+        {
             "BundleGuid": "1c3d85cfdae64740fda095e6ce50fcdc",
             "FileName": "1c3d85cfdae64740fda095e6ce50fcdc.bundle"
         },
@@ -46,10 +50,6 @@
         {
             "BundleGuid": "af798d32d757493be97155dde88633e6",
             "FileName": "af798d32d757493be97155dde88633e6.bundle"
-        },
-        {
-            "BundleGuid": "c006e79a271fd84f9114f828e9192a78",
-            "FileName": "c006e79a271fd84f9114f828e9192a78.bundle"
         },
         {
             "BundleGuid": "cb4d4e2f69450b3eb1eb0981cada8ace",

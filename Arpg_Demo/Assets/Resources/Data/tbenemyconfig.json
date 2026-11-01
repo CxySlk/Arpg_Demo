@@ -15,7 +15,7 @@
     "id": 2002,
     "prefabPath": "Enemy_Wizard",
     "ownedSkills": [
-      3008
+      3009
     ],
     "ascPresetPath": "Enemy_ASCPreset1",
     "kfcEnemyConfig": 5002

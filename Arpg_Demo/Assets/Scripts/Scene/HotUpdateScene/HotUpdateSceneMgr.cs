@@ -1,5 +1,6 @@
 using LLKFrame;
 using UnityEngine;
+using YooAsset;
 
 public class HotUpdateSceneMgr : SingletonMonoBase<HotUpdateSceneMgr>
 {
@@ -11,10 +12,7 @@ public class HotUpdateSceneMgr : SingletonMonoBase<HotUpdateSceneMgr>
     private bool _updatePrompted;
     private UI_HotUpdateWindow _progressWindow;
 
-    private void Start()
-    {
-        Begin();
-    }
+    private void Start() => Begin();
 
     private void Begin()
     {
@@ -139,15 +137,22 @@ public class HotUpdateSceneMgr : SingletonMonoBase<HotUpdateSceneMgr>
         _enteringLogin = true;
         _running = false;
 
-        UISystem.Close<UI_HotUpdateWindow>();
-        UISystem.Close<UI_UpdateConfirmWindow>();
+        UISystem.CloseAll();
         UISystem.Show<UI_LoadingSceneWindow>();
-        SceneSystem.LoadSceneAsync(LoginSceneName, OnLoginSceneLoaded);
-    }
+        SceneSystem.LoadSceneAsync(LoginSceneName, UISystem.Close<UI_LoadingSceneWindow>);
 
-    private void OnLoginSceneLoaded()
-    {
-        UISystem.Close<UI_LoadingSceneWindow>();
+        // 播放背景音乐
+        var handle = YooAssetMgr.Instance.LoadAssetSync<AudioClip>(YooAssetMgr.AudioPackage, "BgMusic");
+        if (handle.Status != EOperationStatus.Succeeded)
+        {
+            Debug.LogError("加载音频失败！");
+            handle.Release();
+            return;
+        }
+
+        var clip = handle.AssetObject as AudioClip;
+        AudioSystem.PlayBgMusic(clip);
+        handle.Release();
     }
 
     private void OnDestroy()

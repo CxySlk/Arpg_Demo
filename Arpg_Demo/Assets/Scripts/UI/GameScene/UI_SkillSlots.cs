@@ -2,6 +2,7 @@ using System.Collections;
 using Data;
 using LLKFrame;
 using Sirenix.OdinInspector;
+using Skill;
 using UnityEngine;
 
 /// <summary>
@@ -13,18 +14,52 @@ public class UI_SkillSlots : MonoBehaviour
 
     private readonly SkillIconCache _iconCache = new();
 
+    /// <summary>玩家技能事件中心（CD 事件发布在 SkillBrain.SkillEventCenter，不是 EventCenter.Global）</summary>
+    private EventCenter _skillEvents;
+
     private void OnEnable()
     {
         for (int i = 0; i < slotItems.Length; i++)
             slotItems[i].BindSlotIndex(i);
 
         SkillEquipManager.EquipChanged += OnEquipChanged;
+        BindSkillEvents();
         RefreshFromData();
     }
 
     private void OnDisable()
     {
         SkillEquipManager.EquipChanged -= OnEquipChanged;
+        UnbindSkillEvents();
+    }
+
+    /// <summary>绑定玩家技能事件中心。重复调用安全：先解绑再绑定。</summary>
+    public void BindSkillEvents()
+    {
+        UnbindSkillEvents();
+
+        _skillEvents = PlayerController.Instance?.SkillBrain?.SkillEventCenter;
+        if (_skillEvents == null) return;
+
+        _skillEvents.Subscribe(SkillEventKey.SkillCdTimerKey, OnSkillCdChanged);
+    }
+
+    private void UnbindSkillEvents()
+    {
+        if (_skillEvents == null) return;
+
+        _skillEvents.UnSubscribe(SkillEventKey.SkillCdTimerKey, OnSkillCdChanged);
+        _skillEvents = null;
+    }
+
+    private void OnSkillCdChanged(int changedSkillId, float remainCd, float totalCd)
+    {
+        for (int i = 0; i < slotItems.Length; i++)
+        {
+            UI_SkillSlotItem item = slotItems[i];
+            if (item != null && item.SkillID == changedSkillId)
+                item.SetMaskFillAmount(remainCd, totalCd);
+        }
     }
 
     private void OnDestroy()

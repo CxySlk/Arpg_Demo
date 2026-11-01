@@ -14,6 +14,7 @@ public class UI_LevelSelectWindow : UI_WindowBase
     [SerializeField] private Button _btnLeft;
     [SerializeField] private Button _btnRight;
     [SerializeField] private Button _btnSure;
+    [SerializeField] private Button _btnBack;
     [SerializeField] private UI_LevelSelectView _levelSelectView;
 
     private IReadOnlyList<LevelConfig> _levelConfigList;
@@ -24,9 +25,18 @@ public class UI_LevelSelectWindow : UI_WindowBase
         _btnLeft.onClick.AddListener(OnLeftBtnClicked);
         _btnRight.onClick.AddListener(OnRightBtnClicked);
         _btnSure.onClick.AddListener(OnSureBtnClicked);
+        _btnBack.onClick.AddListener(OnBackBtnClicked);
         // 获取关卡配置
         _levelConfigList = ConfigManager.Tables.TbLevelConfig.DataList;
         _levelSelectView.Init(_levelConfigList);
+    }
+
+    private void OnBackBtnClicked()
+    {
+        AudioSystem.PlayEffectMusic("ButtonClick");
+        UISystem.CloseAll();
+        UISystem.Show<UI_LoadingSceneWindow>();
+        SceneSystem.LoadSceneAsync("BeginScene",UISystem.Close<UI_LoadingSceneWindow>);
     }
 
     [Button("上一个")]

@@ -1,0 +1,76 @@
+{
+    "Summary": {
+        "YooVersion": "3.0.6",
+        "UnityVersion": "6000.3.12f1",
+        "BuildDate": "2026/10/31 13:32:37",
+        "BuildSeconds": 37,
+        "BuildTarget": 19,
+        "BuildPipeline": "ScriptableBuildPipeline",
+        "BuildBundleType": 2,
+        "BuildPackageName": "UI",
+        "BuildPackageVersion": "v1.0.10086",
+        "BuildPackageNote": "2026/10/31 13:31:59",
+        "UniqueBundleName": true,
+        "EnableAddressable": true,
+        "SupportExtensionless": true,
+        "LocationToLower": false,
+        "IncludeAssetGuid": false,
+        "AutoCollectShaders": true,
+        "IgnoreRuleName": "YooAsset.Editor.NormalIgnoreRule",
+        "ClearBuildCacheFiles": true,
+        "UseAssetDependencyDB": false,
+        "EnableSharePackRule": true,
+        "SingleReferencedPackAlone": true,
+        "EncryptionServicesClassName": "YooAsset.Editor.EncryptionNone",
+        "ManifestProcessServicesClassName": "YooAsset.Editor.ManifestEncryptorNone",
+        "ManifestRestoreServicesClassName": "YooAsset.Editor.ManifestDecryptorNone",
+        "FileNameStyle": 0,
+        "CompressOption": 2,
+        "DisableWriteTypeTree": false,
+        "IgnoreTypeTreeChanges": false,
+        "ReplaceAssetPathWithAddress": false,
+        "WriteLinkXML": true,
+        "CacheServerHost": "",
+        "CacheServerPort": 0,
+        "BuiltinShadersBundleName": "ui_unityshaders.bundle",
+        "MonoScriptsBundleName": "",
+        "AssetFileTotalCount": 1,
+        "MainAssetTotalCount": 1,
+        "AllBundleTotalCount": 1,
+        "AllBundleTotalSize": 600673,
+        "EncryptedBundleTotalCount": 0,
+        "EncryptedBundleTotalSize": 0
+    },
+    "AssetInfos": [
+        {
+            "Address": "BeginSceneBgImage",
+            "AssetPath": "Assets/Res/Sprite/开始场景背景图2.png",
+            "AssetGuid": "43d67f65f256d00419015c0cb39eee98",
+            "AssetTags": [],
+            "MainBundleName": "ui_assets_res_sprite.bundle",
+            "MainBundleSize": 600673,
+            "DependAssets": [],
+            "DependBundles": []
+        }
+    ],
+    "BundleInfos": [
+        {
+            "BundleName": "ui_assets_res_sprite.bundle",
+            "FileName": "be78b9120513af85afb9435863a2216f.bundle",
+            "FileHash": "be78b9120513af85afb9435863a2216f",
+            "FileCrc": 2794115693,
+            "FileSize": 600673,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "ReferenceBundles": [],
+            "BundleContents": [
+                {
+                    "AssetPath": "Assets/Res/Sprite/开始场景背景图2.png",
+                    "AssetGUID": "43d67f65f256d00419015c0cb39eee98"
+                }
+            ]
+        }
+    ],
+    "IndependentAssets": []
+}

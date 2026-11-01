@@ -157,7 +157,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -280,10 +280,62 @@ MonoBehaviour:
       Data: 16|GAS.FrameEvent, Assembly-CSharp
     - Name: _name
       Entry: 1
-      Data: "\u91CA\u653E\u6CD5\u7403"
+      Data: "\u751F\u6210\u6CD5\u7403"
     - Name: _startFrame
       Entry: 3
       Data: 24
+    - Name: EventType
+      Entry: 3
+      Data: 5
+    - Name: eventName
+      Entry: 1
+      Data: SpawnOrb
+    - Name: intArg
+      Entry: 3
+      Data: 0
+    - Name: floatArg
+      Entry: 4
+      Data: 0
+    - Name: strArg
+      Entry: 6
+      Data: 
+    - Name: objArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 26
+    - Name: $v
+      Entry: 7
+      Data: 17|System.Collections.Generic.List`1[[GAS.FrameEvent, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 18|GAS.FrameEvent, Assembly-CSharp
+    - Name: _name
+      Entry: 1
+      Data: "\u91CA\u653E\u6CD5\u7403"
+    - Name: _startFrame
+      Entry: 3
+      Data: 26
     - Name: EventType
       Entry: 3
       Data: 5

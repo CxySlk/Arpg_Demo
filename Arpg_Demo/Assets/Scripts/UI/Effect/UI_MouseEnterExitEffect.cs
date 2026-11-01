@@ -40,13 +40,13 @@ namespace UI
         private void OnMouseEnterCallBack(PointerEventData eventData)
         {
             _tween?.Kill();
-            _tween = component.transform.DOScale(_baseScale * _scale, _duration).SetEase(_ease);
+            _tween = component.transform.DOScale(_baseScale * _scale, _duration).SetEase(_ease).SetUpdate(true);
         }
 
         private void OnMouseExitCallBack(PointerEventData eventData)
         {
             _tween?.Kill();
-            _tween = component.transform.DOScale(_baseScale, _duration).SetEase(_ease);
+            _tween = component.transform.DOScale(_baseScale, _duration).SetEase(_ease).SetUpdate(true);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace NodeCanvas.Action
     {
         public BBParameter<StageController>stageController;
         private IKFCEnemy _kfcEnemy;
-        
+
         protected override string OnInit()
         {
             _kfcEnemy = agent.GetComponent<IKFCEnemy>();

@@ -49,22 +49,11 @@ namespace NodeCanvas.Action
             _navMeshAgent.updateRotation = false;
             _controller.LockTarget(true);
 
-            _state = _controller.CharacterView.Play("Move2D") as Vector2MixerState;
-            _controller.SetRootMotion(null);
-            if (_state == null)
-            {
-                Debug.LogError("[KFC_PatrolCircle] \"Move2D\" 不是 2D 混合(MixerTransition2D)");
-                EndAction(false);
-                return;
-            }
-
-            _state.ParameterNameX = ParameterX;
-            _state.ParameterNameY = ParameterY;
-            _state.Parameter = Vector2.zero;
-
             _smoothed?.Dispose();
             _smoothed = new SmoothedVector2Parameter(
                 _controller.CharacterView.Animancer.Graph, ParameterX, ParameterY, smoothTime);
+
+            if (!PlayMove()) return;
 
             _navMeshAgent.speed = _moveSpeedAttr.CurValue;
             _navMeshAgent.stoppingDistance = 0.1f;
@@ -95,11 +84,34 @@ namespace NodeCanvas.Action
                 new Vector2(localVelocity.x / speed, localVelocity.z / speed), 1f);
         }
 
+        protected override void OnResume()
+        {
+            PlayMove();
+            _hasDest = false;
+        }
+
         protected override void OnStop()
         {
             _smoothed?.Dispose();
             _smoothed = null;
             _controller.LockTarget(false);
+        }
+
+        private bool PlayMove()
+        {
+            _state = _controller.CharacterView.Play("Move2D") as Vector2MixerState;
+            _controller.SetRootMotion(null);
+            if (_state == null)
+            {
+                Debug.LogError("[KFC_PatrolCircle] \"Move2D\" 不是 2D 混合(MixerTransition2D)");
+                EndAction(false);
+                return false;
+            }
+
+            _state.ParameterNameX = ParameterX;
+            _state.ParameterNameY = ParameterY;
+            _state.Parameter = Vector2.zero;
+            return true;
         }
     }
 }

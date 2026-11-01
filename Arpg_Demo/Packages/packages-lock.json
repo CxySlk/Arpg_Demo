@@ -18,7 +18,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "9f80a327ae139203c1e48fa678f95cf45e878963"
+      "hash": "9bc353141d0a280b6a470f1db29d3e0790cbb8b4"
     },
     "com.kybernetik.animancer": {
       "version": "file:com.kybernetik.animancer",
@@ -29,7 +29,7 @@
       }
     },
     "com.tuyoogame.yooasset": {
-      "version": "3.0.5",
+      "version": "3.0.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -214,11 +214,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.playablegraph-visualizer": {
-      "version": "https://github.com/Unity-Technologies/graph-visualizer.git",
+      "version": "0.2.1-preview.3",
       "depth": 0,
-      "source": "git",
+      "source": "registry",
       "dependencies": {},
-      "hash": "cfb3a9f75dd2ef7cc4253b0439806646cdd79814"
+      "url": "https://packages.unity.com"
     },
     "com.unity.profiling.core": {
       "version": "1.0.3",

@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEditor;
 using UnityEngine;
 
 namespace LLKFrame
@@ -34,6 +35,7 @@ namespace LLKFrame
                     }
                 }
             }
+            EditorUtility.SetDirty(this);
         }
 #endif
     }

@@ -8,7 +8,7 @@ namespace Character
     public class StageController
     {
         public readonly KungFuCircle kungFuCircle; //功夫圈
-        public readonly Transform circleCenterTrans; //功夫圈的中心（一般为玩家）
+        private readonly Transform _circleCenterTrans; //功夫圈的中心（一般为玩家）
         private int _curWeightLimit; //当前剩余的敌人权重
         private int _curAtkLimit; //当前剩余的攻击权重
 
@@ -28,7 +28,7 @@ namespace Character
         {
             _curWeightLimit = config.WeightLimit;
             _curAtkLimit = config.AtkLimit;
-            this.circleCenterTrans = circleCenterTrans;
+            _circleCenterTrans = circleCenterTrans;
             kungFuCircle = new(config);
         }
 
@@ -77,21 +77,22 @@ namespace Character
         /// <summary>
         /// 遍历请求队列，符合条件的转入等待队列
         /// </summary>
-        private void Requst2Wait()
+        private void Request2Wait()
         {
             int length = _requestQueue.Count;
             for (int i = 0; i < length; ++i)
             {
                 IKFCEnemy cur = _requestQueue.Dequeue();
+
+                if (!_requestMarks.Contains(cur))
+                    continue;
+
                 if (TryGetWaitPos(cur))
                 {
                     _requestMarks.Remove(cur);
                     _waitQueue.Enqueue(cur);
                 }
-                else if (_requestMarks.Contains(cur))
-                {
-                    _requestQueue.Enqueue(cur);
-                }
+                else _requestQueue.Enqueue(cur);
             }
         }
 
@@ -104,10 +105,10 @@ namespace Character
         {
             if (enemy.kfcEnemyConfig.SelfWeight <= _curWeightLimit)
             {
-                _curWeightLimit -= enemy.kfcEnemyConfig.SelfWeight;
                 int res = kungFuCircle.GetClosestPosIndex(enemy.selfTrans.position);
                 if (res > -1)
                 {
+                    _curWeightLimit -= enemy.kfcEnemyConfig.SelfWeight;
                     _posIndexTable[enemy] = res;
                     kungFuCircle.waitPosFlags[res] = true;
                     return true;
@@ -151,9 +152,9 @@ namespace Character
                     if (TryAttack(cur, out int res))
                     {
                         _atkIndexTable.Add(cur, res);
-                        _waitQueue.Enqueue(cur);   
+                        _waitQueue.Enqueue(cur);
                     }
-                    else 
+                    else
                     {
                         _waitQueue.Enqueue(cur);
                         return;
@@ -190,24 +191,25 @@ namespace Character
                     return true;
                 }
             }
+
             res = -1;
             return false;
         }
-        
+
         /// <summary>
         /// 更新功夫圈的点位（可在FixedUpdate中调用）
         /// </summary>
-        public void UpdateCirclePos() 
+        public void UpdateCirclePos()
         {
-            kungFuCircle.PlaceCirclePos(circleCenterTrans.position, kungFuCircle.WaitRadius, kungFuCircle.waitPosArr);
+            kungFuCircle.PlaceCirclePos(_circleCenterTrans.position, kungFuCircle.WaitRadius, kungFuCircle.waitPosArr);
         }
 
         /// <summary>
         /// 更新攻击请求与实际攻击（可在LateUpdate中调用）
         /// </summary>
-        public void UpdateRequest() 
+        public void UpdateRequest()
         {
-            Requst2Wait();
+            Request2Wait();
             Wait2Attack();
         }
 
@@ -224,6 +226,7 @@ namespace Character
                 _curWeightLimit += enemy.kfcEnemyConfig.SelfWeight;
                 _posIndexTable.Remove(enemy);
             }
+
             ReleaseAttackWeight(enemy);
         }
 
@@ -244,7 +247,7 @@ namespace Character
         /// <returns>如果是，返回攻击类型下标；否则返回-1</returns>
         public int IsOnAtkCircle(IKFCEnemy enemy)
         {
-            return _atkIndexTable.TryGetValue(enemy, out int res) ? res : -1;
+            return _atkIndexTable.GetValueOrDefault(enemy, -1);
         }
 
         /// <summary>
@@ -255,18 +258,18 @@ namespace Character
         /// <param name="res">返回的徘徊点位置</param>
         public void GetOutCirclePatrolPos(Vector3 curPos, float patrolSpeed, out Vector3 res)
         {
-            res = kungFuCircle.CirclePatrol(curPos, circleCenterTrans.position, patrolSpeed);
+            res = kungFuCircle.CirclePatrol(curPos, _circleCenterTrans.position, patrolSpeed);
         }
-        
+
         /// <summary>
         /// 让敌人靠近攻击圈
         /// </summary>
         /// <param name="curPos">敌人当前位置</param>
         /// <param name="res">返回的目标攻击点位置</param>
-        public void GetAtkCirclePos(Vector3 curPos,float atkRadius, out Vector3 res)
+        public void GetAtkCirclePos(Vector3 curPos, float atkRadius, out Vector3 res)
         {
-            Vector3 dir = (curPos - circleCenterTrans.position).normalized;
-            res = circleCenterTrans.position + dir * atkRadius;
+            Vector3 dir = (curPos - _circleCenterTrans.position).normalized;
+            res = _circleCenterTrans.position + dir * atkRadius;
         }
     }
 }

@@ -43,24 +43,13 @@ namespace NodeCanvas.Action
         {
             _waitIndex = stageController.value.IsOnWaitCircle(_controller);
             _navMeshAgent.updateRotation = false;
-            _state = _controller.CharacterView.Play("Move2D") as Vector2MixerState;
-            _controller.SetRootMotion(null);
-            if (_state == null)
-            {
-                Debug.LogError("[KFC_MoveToWaitPos] \"Move2D\" 不是 2D 混合(MixerTransition2D),无法驱动混合参数");
-                EndAction(false);
-                return;
-            }
-
-            // 让 mixer 绑定到这两个参数名，并从 0 开始平滑
-            _state.ParameterNameX = ParameterX;
-            _state.ParameterNameY = ParameterY;
-            _state.Parameter = Vector2.zero;
 
             // 每次执行重建平滑器（OnStop 会 Dispose）
             _smoothed?.Dispose();
             _smoothed = new SmoothedVector2Parameter(
                 _controller.CharacterView.Animancer.Graph, ParameterX, ParameterY, smoothTime);
+
+            if (!PlayMove()) return;
 
             _controller.LockTarget(true);
             // 当前agent不在等待队列中
@@ -104,11 +93,36 @@ namespace NodeCanvas.Action
                 _navMeshAgent.SetDestination(_waitPos);
         }
 
+        protected override void OnResume()
+        {
+            PlayMove();
+            if (_waitIndex != -1)
+                _navMeshAgent.SetDestination(_waitPos);
+        }
+
         protected override void OnStop()
         {
             _smoothed?.Dispose();
             _smoothed = null;
             _controller.LockTarget(false);
+        }
+
+        private bool PlayMove()
+        {
+            _state = _controller.CharacterView.Play("Move2D") as Vector2MixerState;
+            _controller.SetRootMotion(null);
+            if (_state == null)
+            {
+                Debug.LogError("[KFC_MoveToWaitPos] \"Move2D\" 不是 2D 混合(MixerTransition2D),无法驱动混合参数");
+                EndAction(false);
+                return false;
+            }
+
+            // 让 mixer 绑定到这两个参数名，并从 0 开始平滑
+            _state.ParameterNameX = ParameterX;
+            _state.ParameterNameY = ParameterY;
+            _state.Parameter = Vector2.zero;
+            return true;
         }
 
         private Vector3 GetWaitPos(int waitIndex)

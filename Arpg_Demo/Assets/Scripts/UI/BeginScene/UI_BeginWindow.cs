@@ -1,6 +1,7 @@
 using LLKFrame;
 using UnityEngine;
 using UnityEngine.UI;
+using YooAsset;
 
 [UIWindow(nameof(UI_BeginWindow), nameof(UI_BeginWindow), false, 4)]
 public class UI_BeginWindow : UI_WindowBase
@@ -10,6 +11,7 @@ public class UI_BeginWindow : UI_WindowBase
     [SerializeField] private Button _btnSetting;
     [SerializeField] private Button _btnReturnLogin;
     [SerializeField] private Button _btnQuit;
+    [SerializeField] private Image _imgBg;
 
     protected override void OnShow()
     {
@@ -19,8 +21,20 @@ public class UI_BeginWindow : UI_WindowBase
         _btnReturnLogin.onClick.AddListener(OnReturnButtonClicked);
         _btnQuit.onClick.AddListener(OnQuitButtonClicked);
         
+                
         if (!DataManager.HasArchive())
-            _btnContinue.gameObject.SetActive(false);
+            _btnContinue.gameObject.SetActive(false); 
+        
+        // 设置背景图
+        var handle = YooAssetMgr.Instance.LoadAssetSync<Sprite>(YooAssetMgr.UIPackage, "BeginSceneBgImage");
+        if (handle.Status != EOperationStatus.Succeeded)
+        {
+            Debug.LogError("加载图片失败！");
+            return;
+        }
+
+        var sprite = handle.AssetObject as Sprite;
+        _imgBg.sprite = sprite;
     }
 
 

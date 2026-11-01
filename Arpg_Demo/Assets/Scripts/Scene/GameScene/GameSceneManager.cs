@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using cfg;
+using Character;
 using Data;
 using Level;
 using LLKFrame;
@@ -26,7 +27,7 @@ public class GameSceneManager : SingletonMonoBase<GameSceneManager>
 
     [LabelText("玩家根物体"), SerializeField, Required]
     private Transform _playerRoot;
-    
+
     protected void Start()
     {
         // 播放背景音乐
@@ -39,6 +40,76 @@ public class GameSceneManager : SingletonMonoBase<GameSceneManager>
         UISystem.Show<UI_GameWindow>();
 
         Cursor.lockState = CursorLockMode.Locked;
+        // 游戏胜利
+        EventCenter.Global.Subscribe(CharacterEventKey.EnemyAllDeathEventKey, OnGameWin);
+        // 游戏失败
+        EventCenter.Global.Subscribe(CharacterEventKey.PlayerDeathEventKey, OnGameFail);
+    }
+
+    private void OnGameFail(PlayerController obj)
+    {
+        Cursor.lockState = CursorLockMode.None;
+        var window = UISystem.Show<UI_TipWindow>();
+        window.ShowTip("游戏失败", "您已死亡，关卡结束！");
+        window.SetCallBack(OnGameOver);
+    }
+
+    private void OnDisable()
+    {
+        EventCenter.Global.UnSubscribe(CharacterEventKey.EnemyAllDeathEventKey, OnGameWin);
+        EventCenter.Global.UnSubscribe(CharacterEventKey.PlayerDeathEventKey, OnGameFail);
+    }
+
+    private void OnGameWin()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        // 关卡胜利：只有首次通关才加技能点/解锁下一关
+        bool firstClear = LevelManager.CompleteLevel();
+        DataManager.SaveLevelData();
+        DataManager.SavePlayerData();
+
+        var window = UISystem.Show<UI_TipWindow>();
+        if (firstClear)
+        {
+            LevelConfig lf = ConfigManager.Tables.TbLevelConfig.Get(LevelManager.LevelID);
+            window.ShowTip(
+                "游戏胜利！",
+                $"获得技能点：{lf.CompeleteSkillPoints}\n是否返回关卡选择界面？");
+        }
+        else
+        {
+            window.ShowTip("游戏胜利！", "当前关卡已通关，是否返回关卡选择界面？");
+        }
+
+        // 确定返回关卡选择；叉只关闭弹窗，留在当前场景
+        window.SetSureCallBack(OnGameOver);
+        window.SetCancelCallBack(OnStayInLevel);
+    }
+
+    private void OnStayInLevel()
+    {
+        // 取消返回选关后，重新锁定鼠标，继续在当前场景操作
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void OnGameOver()
+    {
+        UISystem.CloseAll();
+        UISystem.Show<UI_LoadingSceneWindow>();
+        SceneSystem.LoadSceneAsync("SelectLevelScene", UISystem.Close<UI_LoadingSceneWindow>);
+
+        // 播放背景音乐
+        var handle = YooAssetMgr.Instance.LoadAssetSync<AudioClip>(YooAssetMgr.AudioPackage, "BgMusic");
+        if (handle.Status != EOperationStatus.Succeeded)
+        {
+            Debug.LogError("加载音频失败！");
+            handle.Release();
+            return;
+        }
+
+        var clip = handle.AssetObject as AudioClip;
+        AudioSystem.PlayBgMusic(clip);
+        handle.Release();
     }
 
     /// <summary>
@@ -53,18 +124,12 @@ public class GameSceneManager : SingletonMonoBase<GameSceneManager>
         if (handle.Status != EOperationStatus.Succeeded)
         {
             Debug.LogError("加载音频失败：" + handle.Status);
+            handle.Release();
             yield break;
         }
-        AudioSystem.PlayBgMusic(handle.AssetObject as AudioClip);
-    }
 
-    private void OnDestroy()
-    {
-        // TODO：释放YooAsset加载的音乐
-        
-        DataManager.SetPlayerConfig(null);
-        // 只释放自己加载过的那份引用（Start 之前被销毁时不能去减别人的计数）
-        if (_playerConfigList == null) return;
+        AudioSystem.PlayBgMusic(handle.AssetObject as AudioClip);
+        handle.Release();
     }
 
     // 角色创建及初始化
@@ -116,7 +181,10 @@ public class GameSceneManager : SingletonMonoBase<GameSceneManager>
     private void OpenOrCloseSetting()
     {
         if (UISystem.GetWindow<UI_GameSettingWindow>() is { IsShow: true })
+        {
             UISystem.Close<UI_GameSettingWindow>();
+            Cursor.lockState = CursorLockMode.Locked;
+        }
         else UISystem.Show<UI_GameSettingWindow>();
     }
 }

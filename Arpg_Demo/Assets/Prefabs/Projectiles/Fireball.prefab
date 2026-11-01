@@ -4992,7 +4992,8 @@ GameObject:
   - component: {fileID: 3960045399054184613}
   - component: {fileID: 5613042648921092807}
   - component: {fileID: 2172671997060553085}
-  - component: {fileID: 3924468421980274540}
+  - component: {fileID: 528093216504262522}
+  - component: {fileID: 494395815950067300}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -5171,7 +5172,34 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.11
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3924468421980274540
+--- !u!54 &528093216504262522
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5509327310924063421}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
+--- !u!114 &494395815950067300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5180,9 +5208,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5509327310924063421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bef4875fb6134d21aa60ac1e8e794044, type: 3}
+  m_Script: {fileID: 11500000, guid: 207928f66fb5427bb88efc46c20e56c6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullet.BulletBase
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet.OrbBullet
+  _explodeEffect: {fileID: 6347824507862875273, guid: 1a66916300dd6d748b0007e70105e451, type: 3}
+  _audioClip: {fileID: 8300000, guid: a7e5a16b53cff6142b3430dac1028a13, type: 3}
+  _volume: 1
 --- !u!1 &6111361576331072418
 GameObject:
   m_ObjectHideFlags: 0

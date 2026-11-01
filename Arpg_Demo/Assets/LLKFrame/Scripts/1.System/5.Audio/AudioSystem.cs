@@ -17,6 +17,7 @@ namespace LLKFrame
         private static AudioSystem _instance;
         [SerializeField] private Transform _audioSystemRoot;
         private static Transform AudioSystemRoot => _instance._audioSystemRoot;
+        private static HashSet<AudioSource> _effAudioHashSet = new ();
 
         #region 组件、预制体相关
 
@@ -60,8 +61,6 @@ namespace LLKFrame
 #endif
 
         #endregion
-
-        private static HashSet<AudioSource> _effAudioHashSet = new HashSet<AudioSource>();
 
         /// <summary>初始化音频系统，查找场景中的 AudioSystem 实例并设置背景音乐初始音量</summary>
         public static void Init()
@@ -124,7 +123,7 @@ namespace LLKFrame
         public static AudioSource PlayEffectMusic(string keyName, float volumeMultiplier = 1)
         {
 #if UNITY_EDITOR
-            if (GlobalAudioConfig == null)
+            if (!GlobalAudioConfig)
             {
                 LogError("LLKFrame：全局Audio配置不能为空");
                 return null;
@@ -237,7 +236,7 @@ namespace LLKFrame
         private static IEnumerator RecyclyAudioGameObject(AudioSource audioSource, AudioClip clip)
         {
             yield return new WaitForSeconds(clip.length);
-            if (audioSource == null) yield break;
+            if (!audioSource) yield break;
             audioSource.PushGameObject();
             _effAudioHashSet.Remove(audioSource);
         }

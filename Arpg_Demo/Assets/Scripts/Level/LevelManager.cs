@@ -18,20 +18,26 @@ namespace Level
             SceneSystem.LoadSceneAsync(sceneName, UISystem.Close<UI_LoadingSceneWindow>);
         }
 
-        public static void CompleteLevel()
+        /// <summary>完成关卡。返回 true = 本次是首次通关（已加技能点/解锁下一关）。</summary>
+        public static bool CompleteLevel()
         {
             // 获取下一个关卡
             LevelData levelData = DataManager.LoadLevelData();
-            // 这个关卡如果本身就已经通关了的话，就直接返回
-            if (levelData.IsUnlocked(LevelID))
-                return;
+            // 这个关卡如果本身就已经通关了的话，就不再重复加技能点/解锁
+            if (levelData.IsCompleted(LevelID))
+                return false;
+
             // 关卡通关，解锁下一关卡
             levelData.CompleteLevel(LevelID);
             LevelConfig config = ConfigManager.Tables.TbLevelConfig.Get(LevelID);
+            // 加技能点
+            PlayerData playerData = DataManager.LoadPlayerData();
+            playerData.skillPoints += config.CompeleteSkillPoints;
             // 解锁ID小于等于0不生效
-            if (config.CompleteUnlockID <= 0)
-                return;
-            levelData.UnlockLevel(config.CompleteUnlockID);
+            if (config.CompleteUnlockID > 0)
+                levelData.UnlockLevel(config.CompleteUnlockID);
+
+            return true;
         }
 
         public static bool IsUnlock(int levelID)

@@ -6,12 +6,7 @@
     "isShowUI": false,
     "cdTime": 0,
     "abilityInterval": 3,
-    "cost": [
-      {
-        "attrType": 0,
-        "value": 5
-      }
-    ],
+    "cost": [],
     "skillConfigPath": "普通攻击",
     "skillReleaseDis": [
       1,

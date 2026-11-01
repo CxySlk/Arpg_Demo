@@ -44,7 +44,7 @@ namespace LLKFrame
 
         #region 文件的基础操作
 
-        private static void SaveObject(object obj, string directory, string fileName)
+        private static void SaveObject<T>(T obj, string directory, string fileName)
         {
 #if UNITY_EDITOR
             if (obj.GetType().GetCustomAttribute<MessagePackObjectAttribute>() == null)
@@ -211,7 +211,7 @@ namespace LLKFrame
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="saveID"></param>
-        public static void SaveFile(object obj, string fileName, int saveID = 0)
+        public static void SaveFile<T>(T obj, string fileName, int saveID = 0)
         {
             if (ArchiveInfo.archiveItemDic.TryGetValue(saveID, out ArchiveItem saveItem))
             {
@@ -224,12 +224,12 @@ namespace LLKFrame
 #endif
         }
 
-        public static void SaveFile(object obj, int saveID = 0) => SaveFile(obj, obj.GetType().Name, saveID);
+        public static void SaveFile<T>(T obj, int saveID = 0) => SaveFile(obj, obj.GetType().Name, saveID);
 
-        public static void SaveFile(object obj, string fileName, ArchiveItem archiveItem) =>
+        public static void SaveFile<T>(T obj, string fileName, ArchiveItem archiveItem) =>
             SaveFile(obj, fileName, archiveItem.saveID);
 
-        public static void SaveFile(object obj, ArchiveItem archiveItem) =>
+        public static void SaveFile<T>(T obj, ArchiveItem archiveItem) =>
             SaveFile(obj, obj.GetType().Name, archiveItem.saveID);
 
         #endregion
@@ -284,8 +284,8 @@ namespace LLKFrame
 
         #region 全局设置
 
-        public static void SaveGlobalSetting(object obj, string fileName) => SaveObject(obj, SavePath, fileName);
-        public static void SaveGlobalSetting(object obj) => SaveObject(obj, SavePath, obj.GetType().Name);
+        public static void SaveGlobalSetting<T>(T obj, string fileName) => SaveObject(obj, SavePath, fileName);
+        public static void SaveGlobalSetting<T>(T obj) => SaveObject(obj, SavePath, obj.GetType().Name);
 
         public static TObj LoadGlobalSetting<TObj>(string fileName) where TObj : new() =>
             LoadObject<TObj>(SavePath + fileName);

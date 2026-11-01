@@ -1,4 +1,5 @@
 using LLKFrame;
+using UnityEngine;
 
 public class BeginSceneManager : SingletonMonoBase<BeginSceneManager>
 {

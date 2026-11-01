@@ -1,5 +1,6 @@
 using GAS;
 using LLKFrame;
+using UnityEngine;
 
 namespace Skill
 {
@@ -41,6 +42,11 @@ namespace Skill
             }
 
             base.PlaySkill();
+        }
+
+        protected override void OnRootMotion(Vector3 deltaPos, Quaternion deltaRot)
+        {
+            base.OnRootMotion(deltaPos, deltaRot);
         }
     }
 }

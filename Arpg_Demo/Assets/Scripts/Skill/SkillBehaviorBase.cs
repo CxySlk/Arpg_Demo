@@ -426,7 +426,7 @@ namespace Skill
         #region 冷却计算
 
         /// <summary>重置技能 CD（通常为整段连段播放完毕时）。</summary>
-        protected virtual void ResetCdTimer() => cdTimer = CalculateCdTime();
+        protected virtual void ResetCdTimer() => CdTimer = CalculateCdTime();
 
         /// <summary>计算技能 CD 时长（默认取配置 CD）。</summary>
         protected virtual float CalculateCdTime() => CdTime;
