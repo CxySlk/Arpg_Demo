@@ -231,7 +231,7 @@ MonoBehaviour:
       Data: 
     - Name: durationSeconds
       Entry: 4
-      Data: 5
+      Data: 10
     - Name: periodicSeconds
       Entry: 4
       Data: 0

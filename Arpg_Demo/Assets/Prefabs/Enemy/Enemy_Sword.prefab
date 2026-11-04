@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerView
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 0101170000005f0061006e0069006d006100740069006f006e005400720061006e0073006900740069006f006e004400690063002f00000000017e000000530079007300740065006d002e0043006f006c006c0065006300740069006f006e0073002e00470065006e0065007200690063002e00440069006300740069006f006e00610072007900600032005b005b00530079007300740065006d002e0053007400720069006e0067002c0020006d00730063006f0072006c00690062005d002c005b0041006e0069006d0061006e006300650072002e005400720061006e0073006900740069006f006e00410073007300650074002c0020004b0079006200650072006e006500740069006b002e0041006e0069006d0061006e006300650072005d005d002c0020006d00730063006f0072006c00690062000000000001010800000063006f006d00700061007200650072002f010000000159000000530079007300740065006d002e0043006f006c006c0065006300740069006f006e0073002e00470065006e0065007200690063002e00470065006e00650072006900630045007100750061006c0069007400790043006f006d0070006100720065007200600031005b005b00530079007300740065006d002e0053007400720069006e0067002c0020006d00730063006f0072006c00690062005d005d002c0020006d00730063006f0072006c00690062000100000005060c00000000000000042e27010200000024006b000104000000490064006c0065000b0102000000240076000000000005042e27010200000024006b000105000000440065006100740068000b0102000000240076000100000005042e27010200000024006b00010b000000490064006c0065005f0043006f006d006200610074000b0102000000240076000200000005042e27010200000024006b000113000000490064006c0065005f0043006f006d006200610074005f0074006f005f00490064006c0065000b0102000000240076000300000005042e27010200000024006b000113000000490064006c0065005f0074006f005f00490064006c0065005f0043006f006d006200610074000b0102000000240076000400000005042e27010200000024006b0001040000004d006f00760065000b0102000000240076000500000005042e27010200000024006b0001080000004d006f00760065004200610063006b000b0102000000240076000600000005042e27010200000024006b0001090000005400750072006e005f00390030005f004c000b0102000000240076000700000005042e27010200000024006b0001090000005400750072006e005f00390030005f0052000b0102000000240076000800000005042e27010200000024006b00010a0000005400750072006e005f003100380030005f004c000b0102000000240076000900000005042e27010200000024006b00010a0000005400750072006e005f003100380030005f0052000b0102000000240076000a00000005042e27010200000024006b0001060000004d006f0076006500320044000b0102000000240076000b000000050705
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: dab4668b5d9e6ac4dae9e41d7c8dcae2, type: 2}
     - {fileID: 11400000, guid: 4c18cbb86776725488d0d4a75e8df696, type: 2}
@@ -123,7 +123,171 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: _animationTransitionDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Animancer.TransitionAsset,
+        Kybernetik.Animancer]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 12
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Idle
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Death
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Idle_Combat
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Idle_Combat_to_Idle
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Idle_to_Idle_Combat
+    - Name: $v
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Move
+    - Name: $v
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: MoveBack
+    - Name: $v
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Turn_90_L
+    - Name: $v
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Turn_90_R
+    - Name: $v
+      Entry: 10
+      Data: 8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Turn_180_L
+    - Name: $v
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Turn_180_R
+    - Name: $v
+      Entry: 10
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Move2D
+    - Name: $v
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   _animancer: {fileID: 3883895833112789774}
   _animator: {fileID: 5842596722734360322}
 --- !u!114 &3883895833112789774
@@ -692,7 +856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character.Enemy.EnemyController
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -726,7 +890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GAS::GAS.AbilitySystemComponent
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 

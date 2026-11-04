@@ -30,7 +30,7 @@
     "defaultUnlock": false,
     "completeUnlockID": 6004,
     "compeleteSkillPoints": 1,
-    "bgMusic": "1-3"
+    "bgMusic": "1-2"
   },
   {
     "id": 6004,
@@ -41,7 +41,7 @@
     "defaultUnlock": false,
     "completeUnlockID": 6005,
     "compeleteSkillPoints": 1,
-    "bgMusic": "1-4"
+    "bgMusic": "1-2"
   },
   {
     "id": 6005,
@@ -52,7 +52,7 @@
     "defaultUnlock": false,
     "completeUnlockID": 6006,
     "compeleteSkillPoints": 1,
-    "bgMusic": "1-5"
+    "bgMusic": "1-2"
   },
   {
     "id": 6006,
@@ -63,6 +63,6 @@
     "defaultUnlock": false,
     "completeUnlockID": -1,
     "compeleteSkillPoints": 1,
-    "bgMusic": "1-6"
+    "bgMusic": "1-2"
   }
 ]

@@ -119,7 +119,7 @@ public class YooAssetMgr : MonoBehaviour
     /// 顺序执行，避免多个包同时下载抢带宽；单个包失败不会中断后续包，
     /// 最终通过 onComplete 的 bool 和 <see cref="YooAssetEventKey.AllInitCompleted"/> 汇总结果。
     /// </remarks>
-    public void InitAll(Action<bool> onComplete = null, bool autoDownload = true)
+    public void InitAll(Action<bool> onComplete = null, bool autoDownload = false)
     {
         if (_isInitializingAll)
         {
@@ -170,7 +170,7 @@ public class YooAssetMgr : MonoBehaviour
     /// </remarks>
     public void InitPackage(string packageName, Action<bool> onComplete = null)
     {
-        StartCoroutine(InitPackageAsync(packageName, onComplete));
+        StartCoroutine(InitPackageAsync(packageName, onComplete, false));
     }
 
     /// <summary>手动下载更新（<c>_autoUpdate = false</c> 时使用）。</summary>
@@ -502,6 +502,7 @@ public class YooAssetMgr : MonoBehaviour
     #endregion
 
     #region 事件与工具
+
 
     /// <summary>YooAssets.Initialize() 是全局操作，整个进程只执行一次。</summary>
     private static void EnsureYooInitialized()

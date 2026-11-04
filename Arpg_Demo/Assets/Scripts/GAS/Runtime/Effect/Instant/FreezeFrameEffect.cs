@@ -5,7 +5,7 @@ namespace GAS
 {
     public class FreezeFrameEffect : GameplayInstantEffect
     {
-        [LabelText("顿帧时长")] public float freezeTime = 1;
+        [LabelText("顿帧时长")] public float freezeTime = .3f;
 
         protected override void ApplyEffect()
         {

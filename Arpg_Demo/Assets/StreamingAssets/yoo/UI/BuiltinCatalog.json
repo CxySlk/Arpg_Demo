@@ -1,7 +1,7 @@
 {
     "FileVersion": 1,
     "PackageName": "UI",
-    "PackageVersion": "v1.0.10086",
+    "PackageVersion": "v1.1.0",
     "Entries": [
         {
             "BundleGuid": "be78b9120513af85afb9435863a2216f",

@@ -37,7 +37,10 @@ public class HotUpdateSceneMgr : SingletonMonoBase<HotUpdateSceneMgr>
         }
 
         YooAssetMgr.DownloadSummary summary = YooAssetMgr.Instance.GetDownloadSummary();
-        if (!summary.HasUpdate)
+
+        Debug.Log($"[HotUpdate] 文件数：{summary.Count}，大小：{summary.Bytes}");
+
+        if (summary.Count <= 0)
         {
             EnterLoginScene();
             return;
@@ -57,10 +60,19 @@ public class HotUpdateSceneMgr : SingletonMonoBase<HotUpdateSceneMgr>
     {
         string content =
             $"检测到新的资源包，共 {summary.Count} 个文件，约 {FormatBytes(summary.Bytes)}。\n" +
-            "更新后可以获得最新内容，是否立即下载？";
+            "是否立即下载？";
 
         UI_UpdateConfirmWindow window = UISystem.Show<UI_UpdateConfirmWindow>();
-        window.ShowConfirm("发现新版本", content, StartDownload, EnterLoginScene);
+        window.ShowConfirm("发现新版本", content, StartDownload, QuitApplication);
+    }
+
+    private void QuitApplication()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     private void StartDownload()
@@ -151,6 +163,7 @@ public class HotUpdateSceneMgr : SingletonMonoBase<HotUpdateSceneMgr>
         }
 
         var clip = handle.AssetObject as AudioClip;
+        DataManager.ApplyVolumeSettings();
         AudioSystem.PlayBgMusic(clip);
         handle.Release();
     }

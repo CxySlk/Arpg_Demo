@@ -179,7 +179,7 @@ public class UI_ChooseCharacterWindow : UI_WindowBase
         {
             CharacterAttr attr = tbAttr.Get(playerID, kv.Key);
             if (attr == null) continue;
-            _attrPartList[shown].SetInfo(kv.Value, attr.Cur + "/" + attr.Max);
+            _attrPartList[shown].SetInfo(kv.Value, attr.Cur.ToString());
             _attrPartList[shown].gameObject.SetActive(true);
             shown++;
         }

@@ -83,6 +83,16 @@ public static class DataManager
     public static void SetEffVolume(float volume) => VolumeData.effVolume = volume;
     public static void SetGlobalVolume(float volume) => VolumeData.globalVolume = volume;
 
+    public static void ApplyVolumeSettings()
+    {
+        if (VolumeData == null)
+            return;
+
+        AudioSystem.SetBgMusicVolume(VolumeData.bgVolume);
+        AudioSystem.SetEffMusicVolume(VolumeData.effVolume);
+        AudioSystem.SetGlobalVolume(VolumeData.globalVolume);
+    }
+
     #endregion
 
     #region 角色数据相关

@@ -15,8 +15,6 @@ public class BeginSceneManager : SingletonMonoBase<BeginSceneManager>
 
     private void InitVolumeSetting()
     {
-        AudioSystem.SetBgMusicVolume(DataManager.VolumeData.bgVolume);
-        AudioSystem.SetEffMusicVolume(DataManager.VolumeData.effVolume);
-        AudioSystem.SetGlobalVolume(DataManager.VolumeData.globalVolume);
+        DataManager.ApplyVolumeSettings();
     }
 }

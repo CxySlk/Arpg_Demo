@@ -641,8 +641,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4359891632778215747}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.12475699, y: 0.1937917, z: 0.02485388, w: 0.9727604}
-  m_LocalPosition: {x: -3.805069, y: -1.1893997, z: -9.170978}
+  m_LocalRotation: {x: -0.0044434913, y: 0.4414195, z: 0.0021859712, w: 0.8972872}
+  m_LocalPosition: {x: -2.6623225, y: 1.3604572, z: -2.9751265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -672,7 +672,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 25
+    FieldOfView: 50
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -710,22 +710,22 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  OrbitStyle: 0
+  OrbitStyle: 1
   Radius: 10
   Orbits:
     Top:
-      Radius: 2
-      Height: 5
+      Radius: 3
+      Height: 3
     Center:
       Radius: 4
-      Height: 2.25
+      Height: 1.5
     Bottom:
-      Radius: 2.5
+      Radius: 3
       Height: 0.1
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: 22.533691
+    Value: 41.824097
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -735,7 +735,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: -6.8309164
+    Value: 15.448302
     Center: 17.5
     Range: {x: -10, y: 45}
     Wrap: 0
@@ -767,7 +767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
   Composition:
-    ScreenPosition: {x: 0, y: 0}
+    ScreenPosition: {x: -0.2, y: 0}
     DeadZone:
       Enabled: 0
       Size: {x: 0.1, y: 0.2}

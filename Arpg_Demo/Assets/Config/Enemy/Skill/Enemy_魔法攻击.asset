@@ -221,19 +221,16 @@ MonoBehaviour:
       Data: "\u9738\u4F53"
     - Name: _hashCode
       Entry: 3
-      Data: 475127322
+      Data: -2025145563
     - Name: _ancestorHashCode
       Entry: 7
       Data: 18|System.Int32[], mscorlib
     - Name: 
       Entry: 14
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 3
       Data: 1959773104
-    - Name: 
-      Entry: 3
-      Data: 1792114665
     - Name: 
       Entry: 13
       Data: 
@@ -242,7 +239,7 @@ MonoBehaviour:
       Data: 
     - Name: _tagName
       Entry: 1
-      Data: "Status.Effect.\u9738\u4F53"
+      Data: "Status.\u9738\u4F53"
     - Name: 
       Entry: 8
       Data: 

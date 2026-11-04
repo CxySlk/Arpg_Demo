@@ -24,6 +24,7 @@ MonoBehaviour:
     - {fileID: 7400000, guid: 5cc8a9a40ce268c42a032dc2bacb58b4, type: 2}
     - {fileID: 1872147318604286, guid: b676b9eb835c6d749903d91d1a54b29e, type: 3}
     - {fileID: 1130446560849736, guid: c4d564b5d4682ad46b8621f0fa6f40d9, type: 3}
+    - {fileID: 8300000, guid: 9e377db3d0d8db849bc4a685d6367186, type: 3}
     - {fileID: 8300000, guid: 43c381ff00b32ce4fa2ace8c1c5124eb, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -638,7 +639,7 @@ MonoBehaviour:
       Data: 
     - Name: InsideRadius
       Entry: 4
-      Data: 0
+      Data: 2.22
     - Name: OutsideRadius
       Entry: 4
       Data: 2.68611145
@@ -647,19 +648,19 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 8.53773656E-07
     - Name: 
       Entry: 4
-      Data: 0
+      Data: -24.7198486
     - Name: 
       Entry: 4
-      Data: 0
+      Data: -31.2937012
     - Name: 
       Entry: 8
       Data: 
     - Name: Height
       Entry: 4
-      Data: 0.3
+      Data: 0.4
     - Name: Angle
       Entry: 4
       Data: 180
@@ -2614,7 +2615,7 @@ MonoBehaviour:
       Data: 
     - Name: DurationSeconds
       Entry: 4
-      Data: 0.333333343
+      Data: 5
     - Name: ParticlePrefab
       Entry: 10
       Data: 6
@@ -3175,7 +3176,7 @@ MonoBehaviour:
       Data: 0
     - Name: AudioClip
       Entry: 10
-      Data: 8
+      Data: 9
     - Name: VolumeMultiplier
       Entry: 4
       Data: 0.5
@@ -3265,7 +3266,7 @@ MonoBehaviour:
       Data: 0
     - Name: AudioClip
       Entry: 10
-      Data: 8
+      Data: 9
     - Name: VolumeMultiplier
       Entry: 4
       Data: 0.5
@@ -3355,7 +3356,7 @@ MonoBehaviour:
       Data: 0
     - Name: AudioClip
       Entry: 10
-      Data: 8
+      Data: 9
     - Name: VolumeMultiplier
       Entry: 4
       Data: 0.5
